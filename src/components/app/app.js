@@ -2,9 +2,9 @@ import React from 'react';
 import {
     Switch,
     Route,
-    Link
 } from "react-router-dom";
 import Header from '../header'
+import ShopListItems from '../shop-list-items'
 import { Shop } from '../pages/index'
 
 const App = () => {
@@ -17,7 +17,7 @@ const App = () => {
             <Switch>
 
                 <Route exact path='/'>
-                    <Shop />
+                    <ShopListItems />
                 </Route>
 
             </Switch>

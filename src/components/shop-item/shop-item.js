@@ -11,8 +11,6 @@ const ShopItem = () => {
         <div class="product-label-bottom"></div>
     </div>
 
-
-
     return (
 
         <div class="product">

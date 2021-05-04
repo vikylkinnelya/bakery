@@ -1070,7 +1070,7 @@ ul {
   display: table;
   width: 100%;
   position: relative;
-  height: 300px;
+  height: 150px;
 }
 .full-header-container:after {
   position: absolute;

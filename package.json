@@ -36,6 +36,8 @@
     ]
   },
   "devDependencies": {
+    "bootstrap": "^4.6.0",
+    "react-bootstrap": "^1.5.2",
     "react-router-dom": "^5.2.0"
   }
 }
