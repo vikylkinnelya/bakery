@@ -1,6 +1,6 @@
 import React from 'react';
 import { FullHeaderContainer } from '../details/index'
-import ShopListItems from '../shop-list-items';
+import ShopListItems from '../shop-list';
 
 const Shop = () => {
 

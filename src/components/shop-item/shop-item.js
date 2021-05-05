@@ -4,34 +4,34 @@ const ShopItem = () => {
 
     const item = {}
 
-    const productLabel = <div class="product-label-container-alt">
-        <div class="product-label">
+    const productLabel = <div className="product-label-container-alt">
+        <div className="product-label">
             {item.label}
         </div>
-        <div class="product-label-bottom"></div>
+        <div className="product-label-bottom"></div>
     </div>
 
     return (
 
-        <div class="product">
+        <div className="product">
             {item.label && productLabel}
 
-            <div class="product-preview">
+            <div className="product-preview">
                 <img alt={item.title} src={item.url} />
             </div>
 
-            <div class="product-detail-container">
+            <div className="product-detail-container">
 
-                <div class="product-icons">
-                    <div class="product-icon-container">
-                        <a href="#"><i class="fa fa-shopping-cart"></i></a>
+                <div className="product-icons">
+                    <div className="product-icon-container">
+                        <a href="#"><i className="fa fa-shopping-cart"></i></a>
                     </div>
-                    <div class="product-icon-container">
-                        <a href="#"><i class="fa fa-heart"></i></a>
+                    <div className="product-icon-container">
+                        <a href="#"><i className="fa fa-heart"></i></a>
                     </div>
                 </div>
-                <div class="product-detail">
-                    <p class="product-price">{item.price}</p>
+                <div className="product-detail">
+                    <p className="product-price">{item.price}</p>
                 </div>
             </div>
 

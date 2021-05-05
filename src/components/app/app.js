@@ -4,7 +4,7 @@ import {
     Route,
 } from "react-router-dom";
 import Header from '../header'
-import ShopListItems from '../shop-list-items'
+import ShopListItems from '../shop-list'
 import { Shop } from '../pages/index'
 
 const App = () => {
@@ -13,14 +13,17 @@ const App = () => {
     return (
         <>
             <Header />
+
             
-            <Switch>
+                <Switch>
 
-                <Route exact path='/'>
-                    <ShopListItems />
-                </Route>
+                    <Route exact path='/'>
+                        <Shop className="container" />
+                    </Route>
 
-            </Switch>
+                </Switch>
+            
+
         </>
     )
 }

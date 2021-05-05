@@ -10,9 +10,7 @@ This is compiled file, for the original file please see .less file
 6. Less Elements (in .less file only)
 */
 
-.container-row{
-  justify-content: center;
-}
+
 
 /*== 1 HTML Elements ==*/
 
@@ -1835,30 +1833,8 @@ ul {
   margin-top: 0;
   margin-bottom: 0;
 }
-
-.pagination-item a {
-  background: none; 
-  border: none;
-  color: #684f40;
-}
-
-.page-item.active .page-link{
-  background-color: transparent;
-  color: #684f40; 
-  border-color: #684f40;
-}
-
-.pagination-item .page-link:hover,
-.page-link a:hover{
-  color: #FFF;
-}
-.pagination-item .page-link{
-  background-color: transparent;
-  border: none;
-}
-
 .pagination {
-  justify-content: center;
+  display: inline-block;
   overflow: auto;
 }
 .pagination .pagination-item,
@@ -1877,36 +1853,26 @@ ul {
   -moz-transition: all 0.2s ease-out;
   -o-transition: all 0.2s ease-out;
   transition: all 0.2s ease-out;
-  z-index: 4;
-
 }
 .pagination .pagination-item:hover,
 .pagination .pagination-nav:hover{
   background-color: #684f40;
   border-color: #684f40;
   color: #FFF;
-  z-index: 4;
-  
 }
 .pagination .pagination-item.active,
 .pagination .pagination-nav.active {
   background-color: transparent;
   color: #684f40;
   border-color: #684f40;
-  z-index: 4;
-
 }
-.pagination .pagination-item{
+.pagination .pagination-item {
   width: 35px;
-  z-index: 4;
-
 }
 .pagination .pagination-nav {
   width: auto;
   padding-left: 17px;
   padding-right: 17px;
-  z-index: 4;
-
 }
 .pagination .pagination-nav:first-of-type {
   margin-left: 0;

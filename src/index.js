@@ -1,16 +1,26 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {
-  BrowserRouter as Router } from "react-router-dom";
 import App from './components/app';
+import { Provider } from 'react-redux';
+import { BrowserRouter as Router } from "react-router-dom";
+import RestoService from './servises/restoService';
+import RestoServiceContext from './components/resto-service-context';
+import store from './store';
+
 import reportWebVitals from './reportWebVitals';
+import "bootstrap/dist/css/bootstrap.css"
 import './main.css'
 
 ReactDOM.render(
   <React.StrictMode>
-    <Router>
-      <App />
-    </Router>
+
+    <Provider store={store}>
+      <RestoServiceContext.Provider value={RestoService}>
+        <Router>
+          <App />
+        </Router>
+      </RestoServiceContext.Provider>
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );
