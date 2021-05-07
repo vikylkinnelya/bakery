@@ -83,7 +83,6 @@
             }
         ],
         "cakes": [
-            [
                 {
                     "id": 21,
                     "title": "Lemon cheesecake",
@@ -133,9 +132,8 @@
                     "image": "https://raw.githubusercontent.com/filippella/Dagger-Rx-Database-MVP/master/cakes/strawberry_cake.jpg",
                     "price": 13
                 }
-            ]
         ],
-        "flour-products": [
+        "flour": [
             {
                 "id": 31,
                 "title": "Classic Rosemary & Sea Salt Focaccia",

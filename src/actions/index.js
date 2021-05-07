@@ -1,22 +1,30 @@
-const menuLoaded = (newMenu) => {
+const setMenu = (newMenu) => {
     return {
-        type: 'MENU_LOADED',
+        type: 'SET_MENU',
         payload: newMenu
     }
 }
 
-const menuRequested = () => {
+const setLoading = () => {
     return {
-        type:'MENU_REQUESTED'
+        type:'SET_LOADING'
     }
 }
 
-const menuError = () => {
+const setError = () => {
     return {
-        type: 'MENU_ERROR'
+        type: 'SET_ERROR'
+    }
+}
+
+const setMenuType = (type) => {
+    return {
+        type: 'SET_MENU_TYPE',
+        payload: type
     }
 }
 
 export {
-    menuLoaded, menuRequested, menuError
+    setMenu, setLoading, setError, 
+    setMenuType
 }

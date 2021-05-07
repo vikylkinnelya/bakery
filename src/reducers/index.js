@@ -1,4 +1,5 @@
 const initialState = {
+    menuType: '',
     menu: [],
     error: false,
     loading: true,
@@ -9,22 +10,34 @@ const reducer = (state = initialState, action) => {
 
     switch (action.type) {
 
-        case "MENU_LOADED":
+        case 'SET_MENU':
             return {
                 ...state,
                 menu: action.payload,
-                loadig: false
+                loading: false
             };
-        case 'MENU_REQUESTED':
+
+
+        case 'SET_LOADING':
             return {
                 ...state,
+                menu: state.menu,
                 loadig: true
             };
-        case 'MENU_ERROR':
+
+            
+        case 'SET_ERROR':
             return {
                 ...state,
                 error: true
             };
+
+
+        case 'SET_MENU_TYPE':
+            return {
+                ...state, 
+                menuType: action.payload
+            }
 
         default:
             return state;

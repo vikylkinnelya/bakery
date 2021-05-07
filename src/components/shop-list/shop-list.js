@@ -2,23 +2,11 @@ import React, { useEffect } from 'react';
 import ShopItem from '../shop-item';
 import { connect } from 'react-redux';
 import WithRestoService from '../hoc';
-import { menuLoaded, menuRequested, menuError } from '../../actions'
-
+import { setMenu, setLoading, setError } from '../../actions'
 import { Col, Container, Row, Pagination } from 'react-bootstrap'
 import { Link } from 'react-router-dom';
 
-const ShopListItems = ({menuItems, menuRequested, RestoService}) => {
-
-    //const { menuItems, loading, error, addedToCart } = this.props;
-
-    useEffect(() => {
-        menuRequested() //set loading
-
-        //const { RestoService } = this.props;
-        RestoService.getMenuItems()
-            .then(res => this.props.menuLoaded(res)) //setMenu(res)
-            .catch(error => this.props.menuError()) //setError(true)
-    }, [])
+const ShopListItems = ({ menuItems, setLoading, RestoService }) => {
 
     const shopItems = menuItems.map(menuItem => {
         return (
@@ -29,9 +17,19 @@ const ShopListItems = ({menuItems, menuRequested, RestoService}) => {
         )
     })
 
+    const getMenuItems = () => {
+        setLoading()
+        RestoService.getMenuItems()
+            .then(res => setMenu(res))
+            .then(res => console.log(res, '1'))
+            .catch(error => setError())
+    }
+
+
+
     return (
-        <Container classNameName='container'>
-            <Row classNameName='container-row'>
+        <Container className='container'>
+            <Row className='container-row'>
                 <Col md="9">
                     {shopItems}
                 </Col>
@@ -128,7 +126,7 @@ const PaginationComponent = () => {
     for (let i = 1; i <= 7 && i <= state.length; i++) {
         items.push(
             <Pagination.Item
-                classNameName="pagination-item"
+                className="pagination-item"
                 key={i}
                 active={i === active}
                 activeLabel={null}>
@@ -139,10 +137,10 @@ const PaginationComponent = () => {
 
     return (
 
-        <Pagination classNameName="pagination">
-            <Pagination.Prev classNameName="pagination-item pagination-nav" />
+        <Pagination className="pagination">
+            <Pagination.Prev className="pagination-item pagination-nav" />
             {items}
-            <Pagination.Next classNameName="pagination-item pagination-nav" />
+            <Pagination.Next className="pagination-item pagination-nav" />
         </Pagination>
 
     );
@@ -157,9 +155,9 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = {
-    menuLoaded,
-    menuRequested,
-    menuError
+    setMenu,
+    setLoading,
+    setError
 }
 
 

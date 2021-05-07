@@ -2,10 +2,10 @@ import React from 'react';
 
 const Header = () => {
     return (
-        <header classNameName='page-header'>
-            <div classNameName="page-header-content container">
+        <header className='page-header'>
+            <div className="page-header-content container">
 
-                <div id="nav-top" classNameName="nav-top">
+                <div id="nav-top" className="nav-top">
 
                     <ul>
                         <li><a href="./">Home</a></li>

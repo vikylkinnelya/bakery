@@ -11,13 +11,15 @@ import reportWebVitals from './reportWebVitals';
 import "bootstrap/dist/css/bootstrap.css"
 import './main.css'
 
+const restoService = new RestoService();
+
 ReactDOM.render(
   <React.StrictMode>
 
     <Provider store={store}>
-      <RestoServiceContext.Provider value={RestoService}>
+      <RestoServiceContext.Provider value={restoService}>
         <Router>
-          <App />
+          <App/>
         </Router>
       </RestoServiceContext.Provider>
     </Provider>

@@ -2,7 +2,7 @@ import React from 'react';
 
 const FullHeaderContainer = ({ title, descr }) => {
     return (
-        <section classNameName='top-section'>
+        <section className='top-section'>
             <div className="offset-borders">
                 <div className="full-header-container" id="header-menus">
                     <div className="full-header">
