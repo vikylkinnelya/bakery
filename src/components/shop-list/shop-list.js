@@ -1,129 +1,138 @@
-import React, { useEffect } from 'react';
+import React, { Component } from 'react';
 import ShopItem from '../shop-item';
 import { connect } from 'react-redux';
 import WithRestoService from '../hoc';
-import { setMenu, setLoading, setError } from '../../actions'
+import { setMenu, setLoading, setError, setMenuType, setMenuTotalItems } from '../../actions';
 import { Col, Container, Row, Pagination } from 'react-bootstrap'
 import { Link } from 'react-router-dom';
+import Spinner from '../spinner';
 
-const ShopListItems = ({ menuItems, setLoading, RestoService }) => {
+class ShopListItems extends Component {
 
-    const shopItems = menuItems.map(menuItem => {
-        return (
-            <ShopItem
-                menuItem={menuItem}
-                key={menuItem.id}
-            />
-        )
-    })
+    componentDidMount() {
+        this.props.setLoading()
+        const { RestoService, menuType } = this.props;
 
-    const getMenuItems = () => {
-        setLoading()
-        RestoService.getMenuItems()
-            .then(res => setMenu(res))
-            .then(res => console.log(res, '1'))
-            .catch(error => setError())
+        RestoService.getMenuItems(menuType)
+            .then(res => (Object.values(res)))
+            .then(res => this.props.setMenu(res))
+            .catch(error => this.props.setError())
+        
     }
 
+    componentDidUpdate(prevProps) {
 
+        const { RestoService, menuType } = this.props;
 
-    return (
-        <Container className='container'>
-            <Row className='container-row'>
-                <Col md="9">
-                    {shopItems}
-                </Col>
+        if (this.props.menuType !== prevProps.menuType) {
+            this.props.setLoading()
+            RestoService.getMenuItems(menuType)
+                .then(res => this.props.setMenu(res))
+                .catch(error => this.props.setError())
+        }
+    }
 
-                <Col md='3' className="col-md-3 sidebar">
-                    <div className="margin-40"></div>
-                    <form className="form-search onscroll-animate">
-                        <input name="s" type="text" placeholder="Type and hit enter" />
-                    </form>
-                    <div className="article-header-4">
-                        <h1>Categories</h1>
-                    </div>
-                    <ul className="list-arrows">
-                        <li>
-                            <Link to='/'>
-                                <div className="list-arrows-content">
-                                    All
-                                </div>
-                                <div className="list-arrows-value">11</div>
-                            </Link>
-                        </li>
+    render() {
 
-                        <li>
-                            <Link to='/'>
-                                <article>
+        const { menuItems, loading, error, menuType, setMenuType } = this.props
+        const items = []
+
+        return (
+            <Container className='container' >
+
+                { loading && <Spinner />}
+
+                <Row className='container-row'>
+
+                    <Col md="9">
+                        <div className="margin-60"></div>
+                        <Row >
+                            {menuItems != null && menuItems.length > 0 && menuItems.map(menuItem => {
+                                return (
+                                    <ShopItem
+                                        key={menuItem.item_id}
+                                        menuItem={menuItem}
+                                    />
+                                )
+                            })}
+                        </Row>
+                    </Col>
+
+                    <Col md='3' className="col-md-3 sidebar">
+                        <div className="margin-40"></div>
+                        <form className="form-search onscroll-animate">
+                            <input name="s" type="text" placeholder="Type and hit enter" />
+                        </form>
+
+                        <div className="article-header-4">
+                            <h1>Categories</h1>
+                        </div>
+                        <ul className="list-arrows">
+                            <li className={menuType === 'all' ? 'selected' : undefined}>
+
+                                <Link to='/shop/' onClick={() => setMenuType('all')}>
                                     <div className="list-arrows-content">
-                                        Breads
+                                        All
                                     </div>
-                                    <div className="list-arrows-value">11</div>
-                                </article>
-                            </Link>
-                        </li>
+                                    {menuType === 'all' && <div className="list-arrows-value">{menuItems.length}</div>}
+                                </Link>
+                            </li>
 
-                        <li>
-                            <Link to='/'>
-                                <article>
-                                    <div className="list-arrows-content">
-                                        Croissants
+                            <li className={menuType === 'Breakfast' ? 'selected' : undefined}>
+                                <Link to='Breakfast' onClick={() => setMenuType('Breakfast')}>
+                                    <article>
+                                        <div className="list-arrows-content">
+                                            Breakfast
+                                        </div>
+                                        {menuType === 'Breakfast' && <div className="list-arrows-value">{menuItems.length}</div>}
+                                    </article>
+                                </Link>
+                            </li>
+
+                            <li className={menuType === 'Coffee & Tea' ? 'selected' : undefined}>
+                                <Link to='coffee-and-tea' onClick={() => setMenuType('Coffee & Tea')}>
+                                    <article>
+                                        <div className="list-arrows-content">
+                                            Coffee & Tea
                                     </div>
-                                    <div className="list-arrows-value">15</div>
-                                </article>
-                            </Link>
-                        </li>
+                                        {menuType === 'Coffee & Tea' && <div className="list-arrows-value">{menuItems.length}</div>}
+                                    </article>
+                                </Link>
+                            </li>
 
-                        <li>
-                            <Link to='/'>
-                                <article>
-                                    <div className="list-arrows-content">
-                                        Cakes
+                            <li className={menuType === 'Bakery' ? 'selected' : undefined}>
+                                <Link to='bakery' onClick={() => setMenuType('Bakery')}>
+                                    <article>
+                                        <div className="list-arrows-content">
+                                            Cakes
                                     </div>
-                                    <div className="list-arrows-value">33</div>
-                                </article>
-                            </Link>
-                        </li>
+                                        {menuType === 'Bakery' && <div className="list-arrows-value">{menuItems.length}</div>}
+                                    </article>
+                                </Link>
+                            </li>
+                        </ul>
+                        <div className="margin-60"></div>
+                    </Col>
 
-                        <li>
-                            <Link to='/'>
-                                <article>
-                                    <div className="list-arrows-content">
-                                        Flour Products
-                                    </div>
-                                    <div className="list-arrows-value">02</div>
-                                </article>
-                            </Link>
-                        </li>
-
-                        <li>
-                            <Link to='/'>
-                                <article>
-                                    <div className="list-arrows-content">
-                                        Diabetes
-                                    </div>
-                                    <div className="list-arrows-value">25</div>
-                                </article>
-                            </Link>
-                        </li>
-                    </ul>
-                    <div className="margin-60"></div>
-                </Col>
-
-                <PaginationComponent />
+                    <Pagination className="pagination">
+                        <Pagination.Prev className="pagination-item pagination-nav" />
+                        {items}
+                        <Pagination.Next className="pagination-item pagination-nav" />
+                    </Pagination>
 
 
-            </Row>
-        </Container>
-    )
+                </Row>
+            </Container >
+        )
+    }
 }
 
-const PaginationComponent = () => {
-    const state = []
+/* const PaginationComponent = () => {
+    const statee = []
     let active = 1;
     let items = []
 
-    for (let i = 1; i <= 7 && i <= state.length; i++) {
+    for (let i = 1; i <= 7 && i <= statee.length; i++) {
         items.push(
             <Pagination.Item
                 className="pagination-item"
@@ -134,32 +143,25 @@ const PaginationComponent = () => {
             </Pagination.Item>
         )
     }
+} */
 
-    return (
-
-        <Pagination className="pagination">
-            <Pagination.Prev className="pagination-item pagination-nav" />
-            {items}
-            <Pagination.Next className="pagination-item pagination-nav" />
-        </Pagination>
-
-    );
-}
-
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
     return {
         menuItems: state.menu,
         loading: state.loading,
-        error: state.error
+        error: state.error,
+        menuType: state.menuType,
+        menuTotalItems: state.menuTotalItems
     }
 }
 
 const mapDispatchToProps = {
     setMenu,
     setLoading,
-    setError
+    setError,
+    setMenuType,
+    setMenuTotalItems
 }
 
-
-
 export default WithRestoService()(connect(mapStateToProps, mapDispatchToProps)(ShopListItems))
+

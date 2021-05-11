@@ -13,10 +13,9 @@ const WithRestoService = () => (Wrapped) => {
                     //применяем контекст на комп кот сюда пришёл
                     //добавл новое-свв, в кот передаем то, что пришл из провайдера
                     (RestoService) => {
-                        return <Wrapped {...props} RestoService={RestoService}/>
+                        return <Wrapped {...props} RestoService={RestoService} />
                     }
                 }
-
             </RestoServiceContext.Consumer>
         )
     }

@@ -14,10 +14,9 @@ const App = () => {
         <>
             <Header />
 
-            
                 <Switch>
 
-                    <Route exact path='/'>
+                    <Route path='/shop'>
                         <Shop className="container" />
                     </Route>
 
