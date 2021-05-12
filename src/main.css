@@ -15,7 +15,7 @@ This is compiled file, for the original file please see .less file
   color: #fdb822;
 }
 
-.selected a .list-arrows-value{
+.selected a .list-arrows-value {
   background-color: #fdb822;
   color: #FFF
 }
@@ -1172,7 +1172,7 @@ ul {
   position: absolute;
   right: 14px;
   top: 12px;
-  content:url(./images/icons/search.svg);
+  content: url(./images/icons/search.svg);
 }
 
 .form-search input {
@@ -2460,7 +2460,7 @@ ul {
 
 .product .product-detail-container .product-detail {
   background-color: #fdb822;
-  padding-bottom: 15px;
+
   overflow: auto;
 }
 
@@ -2495,17 +2495,21 @@ ul {
   transition: all 0.3s ease-out;
 }
 
+
 .product .product-icon-container a,
 .product .product-icon-container button {
   color: #fdb822;
   display: block;
+  position: absolute;
   -webkit-transition: all 0.3s ease-out;
   -moz-transition: all 0.3s ease-out;
   -o-transition: all 0.3s ease-out;
   transition: all 0.3s ease-out;
 }
 
-.product .product-icon-container:hover {
+.product .product-icon-container:hover,
+button.small-cup:hover,
+button.big-cup:hover {
   color: #FFF;
   background-color: #684f40;
   border-color: #684f40;
@@ -2514,6 +2518,37 @@ ul {
 .product .product-icon-container:hover a,
 .product .product-icon-container button {
   color: #FFF;
+}
+
+
+button.small-cup,
+button.big-cup {
+  display: flex;
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  margin: 0 6px;
+  color: #fdb822;
+  background-color: #FFF;
+  border: 2px #fdb822 solid;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  z-index: 100;
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+}
+
+.small-cup {
+  right: 50px;
+  top: -45px;
+}
+
+.big-cup {
+  right: 15px;
+  top: -15px;
 }
 
 .product .product-icons {

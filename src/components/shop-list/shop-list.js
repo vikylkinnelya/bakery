@@ -11,13 +11,13 @@ class ShopListItems extends Component {
 
     componentDidMount() {
         this.props.setLoading()
-        const { RestoService, menuType } = this.props;
+        const { RestoService } = this.props;
 
-        RestoService.getMenuItems(menuType)
+        RestoService.getMenuItems()
             .then(res => (Object.values(res)))
             .then(res => this.props.setMenu(res))
             .catch(error => this.props.setError())
-        
+
     }
 
     componentDidUpdate(prevProps) {
@@ -26,8 +26,10 @@ class ShopListItems extends Component {
 
         if (this.props.menuType !== prevProps.menuType) {
             this.props.setLoading()
+            
             RestoService.getMenuItems(menuType)
-                .then(res => this.props.setMenu(res))
+                .then(res => (console.log(res)))
+                .then(res => this.props.setMenu(res.menuType))
                 .catch(error => this.props.setError())
         }
     }
@@ -52,6 +54,7 @@ class ShopListItems extends Component {
                                     <ShopItem
                                         key={menuItem.item_id}
                                         menuItem={menuItem}
+                                        menuType={menuType}
                                     />
                                 )
                             })}
@@ -79,7 +82,7 @@ class ShopListItems extends Component {
                             </li>
 
                             <li className={menuType === 'Breakfast' ? 'selected' : undefined}>
-                                <Link to='Breakfast' onClick={() => setMenuType('Breakfast')}>
+                                <Link to='breakfast' onClick={() => setMenuType('Breakfast')}>
                                     <article>
                                         <div className="list-arrows-content">
                                             Breakfast
@@ -89,24 +92,13 @@ class ShopListItems extends Component {
                                 </Link>
                             </li>
 
-                            <li className={menuType === 'Coffee & Tea' ? 'selected' : undefined}>
-                                <Link to='coffee-and-tea' onClick={() => setMenuType('Coffee & Tea')}>
+                            <li className={menuType === 'Coffee&Tea' ? 'selected' : undefined}>
+                                <Link to='coffee-and-tea' onClick={() => setMenuType('Coffee&Tea')}>
                                     <article>
                                         <div className="list-arrows-content">
-                                            Coffee & Tea
+                                            Coffee&Tea
                                     </div>
-                                        {menuType === 'Coffee & Tea' && <div className="list-arrows-value">{menuItems.length}</div>}
-                                    </article>
-                                </Link>
-                            </li>
-
-                            <li className={menuType === 'Bakery' ? 'selected' : undefined}>
-                                <Link to='bakery' onClick={() => setMenuType('Bakery')}>
-                                    <article>
-                                        <div className="list-arrows-content">
-                                            Cakes
-                                    </div>
-                                        {menuType === 'Bakery' && <div className="list-arrows-value">{menuItems.length}</div>}
+                                        {menuType === 'Coffee&Tea' && <div className="list-arrows-value">{menuItems.length}</div>}
                                     </article>
                                 </Link>
                             </li>

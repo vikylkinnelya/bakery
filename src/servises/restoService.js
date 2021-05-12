@@ -8,11 +8,13 @@ export default class RestoService {
 
     async getResourse(url, type = '') {
 
-        const expType = `/?type=${type}`
+        const expType = `?menu=${type}`
 
         const typeOf = type === 'all' ? '' : expType
 
         const res = await fetch(`${this._apiBase}${url}${typeOf}`)
+
+        console.log(`${this._apiBase}${url}${typeOf}`)
 
         if (!res.ok) {
             throw new Error(`Could not fetch ${url}, reseived ${res.status}`)
@@ -22,7 +24,7 @@ export default class RestoService {
 
     async getMenuItems(menuType = '') {
 
-        return await this.getResourse(`/menus/`, menuType)
+        return await this.getResourse(`/menus`, menuType)
     }
 
 }
