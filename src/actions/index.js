@@ -1,7 +1,10 @@
-const setMenu = (newMenu) => ({
-    type: 'SET_MENU',
-    payload: newMenu
-})
+const setMenu = (newMenu) => {
+    console.log(newMenu, 'action')
+    return {
+        type: 'SET_MENU',
+        payload: newMenu
+    }
+}
 
 const setLoading = () => ({
     type: 'SET_LOADING'
@@ -21,10 +24,6 @@ const setMenuPage = (page) => ({
     payload: page
 })
 
-const setMenuTotalItems= (count) => ({
-    type: 'SET_MENU_TOTAL_ITEMS',
-    payload: count.totalResults
-})
 
 const setLocation = (loc) => ({
     type: 'SET_LOCATION',
@@ -33,7 +32,7 @@ const setLocation = (loc) => ({
 
 export {
     setMenu, setLoading, setError,
-    setMenuType, setMenuPage, setMenuTotalItems,
+    setMenuType, setMenuPage, 
     setLocation,
 
 }

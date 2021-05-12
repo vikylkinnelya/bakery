@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import ShopItem from '../shop-item';
 import { connect } from 'react-redux';
 import WithRestoService from '../hoc';
-import { setMenu, setLoading, setError, setMenuType, setMenuTotalItems } from '../../actions';
+import { setMenu, setLoading, setError, setMenuType } from '../../actions';
 import { Col, Container, Row, Pagination } from 'react-bootstrap'
 import { Link } from 'react-router-dom';
 import Spinner from '../spinner';
@@ -14,9 +14,9 @@ class ShopListItems extends Component {
         const { RestoService } = this.props;
 
         RestoService.getMenuItems()
-            .then(res => (Object.values(res)))
             .then(res => this.props.setMenu(res))
             .catch(error => this.props.setError())
+
 
     }
 
@@ -26,10 +26,10 @@ class ShopListItems extends Component {
 
         if (this.props.menuType !== prevProps.menuType) {
             this.props.setLoading()
-            
+
             RestoService.getMenuItems(menuType)
-                .then(res => (console.log(res)))
-                .then(res => this.props.setMenu(res.menuType))
+                .then(res => this.props.setMenu(res))
+                .then(res => console.log(res))
                 .catch(error => this.props.setError())
         }
     }
@@ -37,7 +37,23 @@ class ShopListItems extends Component {
     render() {
 
         const { menuItems, loading, error, menuType, setMenuType } = this.props
-        const items = []
+
+        const paginationItems = []
+        let active = 1;
+
+        for (let i = 1; i <= Math.ceil(menuItems.length / 9); i++) {
+            paginationItems.push(
+                <Pagination.Item
+                    className="pagination-item"
+                    key={i}
+                    active={i === active}
+                    activeLabel={null}>
+                    {i}
+                </Pagination.Item>
+            )
+        }
+
+        console.log(paginationItems)
 
         return (
             <Container className='container' >
@@ -91,6 +107,17 @@ class ShopListItems extends Component {
                                     </article>
                                 </Link>
                             </li>
+                            <li className={menuType === 'Bakery' ? 'selected' : undefined}>
+                                <Link to='bakery' onClick={() => setMenuType('Bakery')}>
+                                    <article>
+                                        <div className="list-arrows-content">
+                                            Bakery
+                                        </div>
+                                        {menuType === 'Bakery' && <div className="list-arrows-value">{menuItems.length}</div>}
+                                    </article>
+                                </Link>
+                            </li>
+
 
                             <li className={menuType === 'Coffee&Tea' ? 'selected' : undefined}>
                                 <Link to='coffee-and-tea' onClick={() => setMenuType('Coffee&Tea')}>
@@ -108,7 +135,7 @@ class ShopListItems extends Component {
 
                     <Pagination className="pagination">
                         <Pagination.Prev className="pagination-item pagination-nav" />
-                        {items}
+                        {paginationItems}
                         <Pagination.Next className="pagination-item pagination-nav" />
                     </Pagination>
 
@@ -119,11 +146,12 @@ class ShopListItems extends Component {
     }
 }
 
+
 /* const PaginationComponent = () => {
     const statee = []
     let active = 1;
     let items = []
-
+ 
     for (let i = 1; i <= 7 && i <= statee.length; i++) {
         items.push(
             <Pagination.Item
@@ -143,7 +171,6 @@ const mapStateToProps = state => {
         loading: state.loading,
         error: state.error,
         menuType: state.menuType,
-        menuTotalItems: state.menuTotalItems
     }
 }
 
@@ -152,7 +179,6 @@ const mapDispatchToProps = {
     setLoading,
     setError,
     setMenuType,
-    setMenuTotalItems
 }
 
 export default WithRestoService()(connect(mapStateToProps, mapDispatchToProps)(ShopListItems))

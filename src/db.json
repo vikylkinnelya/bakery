@@ -22,272 +22,281 @@
             "lon": -80.132464
         }
     },
-    "menus": {
-        "Breakfast": [
-            {
-                "name": "Ham & Cheese Croissant",
-                "description": "Ham, Swiss cheese, lettuce, tomato and a butter spread on a croissant.",
-                "price": 4.95,
-                "type": "Breakfast"
-            },
-            {
-                "name": "Ham, Egg & Swiss Cheese Croissant",
-                "description": "Ham, scrambled egg and Swiss cheese on a croissant.",
-                "price": 5.65,
-                "type": "Breakfast"
-            },
-            {
-                "name": "Smoked Salmon Croissant",
-                "description": "Smoked salmon, lettuce, tomato and lemon spread on a croissant.",
-                "price": 5.45,
-                "type": "Breakfast"
-            },
-            {
-                "name": "Ham, Egg & Cheese Baguette",
-                "description": "Ham, scrambled egg and Swiss cheese on a baguettine.",
-                "price": 6.65,
-                "type": "Breakfast"
-            },
-            {
-                "name": "Quiche Lomaine",
-                "description": "Ham, bacon, Swiss cheese and savory custard in a flaky pastry shell.",
-                "price": 10.45,
-                "type": "Breakfast"
-            },
-            {
-                "name": "Quiche Roasted Salmon & Spinach",
-                "description": "Salmon, spinach and savory custard in a flaky pastry shell.",
-                "price": 10.45,
-                "type": "Breakfast"
-            },
-            {
-                "name": "Quiche Leek",
-                "description": "Leeks and savory custard in a flaky pastry shell.",
-                "price": 10.45,
-                "type": "Breakfast"
-            },
-            {
-                "name": "Quiche Vegetable",
-                "description": "Seasonal vegetable, Swiss cheese and savory custard in a flaky pastry sheel.",
-                "price": 10.45,
-                "type": "Breakfast"
-            },
-            {
-                "name": "Fresh Fruit Salad Cup",
-                "description": "",
-                "price": 4.95,
-                "type": "Breakfast"
-            },
-            {
-                "name": "Yogurt, Granola & Honey Cup",
-                "description": "",
-                "price": 4.95,
-                "type": "Breakfast"
-            },
-            {
-                "name": "Yogurt, Granola & Fruit Cup",
-                "description": "",
-                "price": 4.95,
-                "type": "Breakfast"
-            },
-            {
-                "name": "Half Flute, Butter & Jam",
-                "description": "",
-                "price": 2.95,
-                "type": "Breakfast"
-            }
-        ],
-        "Bakery": [
-            {
-                "name": "Croissant",
-                "description": "",
-                "price": 2.55,
-                "type": "Bakery"
-            },
-            {
-                "name": "Chocolate Croissant",
-                "description": "",
-                "price": 2.95,
-                "type": "Bakery"
-            },
-            {
-                "name": "Almond Croissant",
-                "description": "",
-                "price": 3.65,
-                "type": "Bakery"
-            },
-            {
-                "name": "Chocolate Almond Croissant",
-                "description": "",
-                "price": 3.65,
-                "type": "Bakery"
-            },
-            {
-                "name": "Cream & Chocolate Danish",
-                "description": "",
-                "price": 3.25,
-                "type": "Bakery"
-            },
-            {
-                "name": "Apple Turnover",
-                "description": "",
-                "price": 3.45,
-                "type": "Bakery"
-            },
-            {
-                "name": "Caramelized Apple Tart",
-                "description": "",
-                "price": 5.45,
-                "type": "Bakery"
-            },
-            {
-                "name": "Elephant Ear",
-                "description": "",
-                "price": 2.95,
-                "type": "Bakery"
-            },
-            {
-                "name": "Raisin Danish",
-                "description": "",
-                "price": 3.3,
-                "type": "Bakery"
-            },
-            {
-                "name": "Donut",
-                "description": "Chocolate hazelnut, red fruit, apple.",
-                "price": 3.25,
-                "type": "Bakery"
-            },
-            {
-                "name": "Muffin",
-                "description": "Chocolate hazelnut, white chocolate cranberry.",
-                "price": 3.75,
-                "type": "Bakery"
-            },
-            {
-                "name": "Cookie",
-                "description": "Chocolate hazelnut, chocolate chunk.",
-                "price": 3.75,
-                "type": "Bakery"
-            },
-            {
-                "name": "Pretzel",
-                "description": "",
-                "price": 2.45,
-                "type": "Bakery"
-            }
-        ],
-        "Coffee&Tea": [
-            {
-                "name": "Cafe",
-                "description": "Regular coffee.",
-                "pricing": [
-                    1.99,
-                    2.9
-                ]
-            },
-            {
-                "name": "Cafe Au Lait",
-                "description": "Coffee, hot milk.",
-                "pricing": [
-                    2,
-                    2.55
-                ],
-                "type": "Coffee & Tea"
-            },
-            {
-                "name": "Espresso",
-                "description": "",
-                "pricing": [
-                    2.45,
-                    2.95
-                ],
-                "type": "Coffee & Tea"
-            },
-            {
-                "name": "Macchiato",
-                "description": "Espresso topped with froth.",
-                "pricing": [
-                    2.75,
-                    3.25
-                ],
-                "type": "Coffee & Tea"
-            },
-            {
-                "name": "Americano",
-                "description": "Espresso, hot water.",
-                "pricing": [
-                    2.45,
-                    2.95
-                ],
-                "type": "Coffee & Tea"
-            },
-            {
-                "name": "Cappuccino",
-                "description": "Espresso, hot milk, froth.",
-                "pricing": [
-                    2.95,
-                    3.95
-                ],
-                "type": "Coffee & Tea"
-            },
-            {
-                "name": "Late",
-                "description": "Espresso, hot milk.",
-                "pricing": [
-                    2.95,
-                    3.95
-                ],
-                "type": "Coffee & Tea"
-            },
-            {
-                "name": "Mochaccino",
-                "description": "Cappuccino with chocolate.",
-                "pricing": [
-                    4.45,
-                    5.95
-                ],
-                "type": "Coffee & Tea"
-            },
-            {
-                "name": "Hot Chocolate",
-                "description": "",
-                "pricing": [
-                    4.45,
-                    5.95
-                ],
-                "type": "Coffee & Tea"
-            },
-            {
-                "name": "Iced Coffee",
-                "description": "",
-                "price": 2.65,
-                "type": "Coffee & Tea"
-            },
-            {
-                "name": "Iced Cappuccino",
-                "description": "",
-                "price": 4.45,
-                "type": "Coffee & Tea"
-            },
-            {
-                "name": "Iced Latte",
-                "description": "",
-                "price": 4.45,
-                "type": "Coffee & Tea"
-            },
-            {
-                "name": "Iced Mochaccino",
-                "description": "",
-                "price": 4.95,
-                "type": "Coffee & Tea"
-            },
-            {
-                "name": "Organic Tea",
-                "description": "By the sorbet. We offer whole milk, soy milk, half and half.",
-                "price": 3.45,
-                "type": "Coffee & Tea"
-            }
-        ]
-    }
+    "menus": [
+        {
+            "id": "Breakfast",
+            "menu": [
+                {
+                    "name": "Ham & Cheese Croissant",
+                    "description": "Ham, Swiss cheese, lettuce, tomato and a butter spread on a croissant.",
+                    "price": 4.95,
+                    "type": "Breakfast"
+                },
+                {
+                    "name": "Ham, Egg & Swiss Cheese Croissant",
+                    "description": "Ham, scrambled egg and Swiss cheese on a croissant.",
+                    "price": 5.65,
+                    "type": "Breakfast"
+                },
+                {
+                    "name": "Smoked Salmon Croissant",
+                    "description": "Smoked salmon, lettuce, tomato and lemon spread on a croissant.",
+                    "price": 5.45,
+                    "type": "Breakfast"
+                },
+                {
+                    "name": "Ham, Egg & Cheese Baguette",
+                    "description": "Ham, scrambled egg and Swiss cheese on a baguettine.",
+                    "price": 6.65,
+                    "type": "Breakfast"
+                },
+                {
+                    "name": "Quiche Lomaine",
+                    "description": "Ham, bacon, Swiss cheese and savory custard in a flaky pastry shell.",
+                    "price": 10.45,
+                    "type": "Breakfast"
+                },
+                {
+                    "name": "Quiche Roasted Salmon & Spinach",
+                    "description": "Salmon, spinach and savory custard in a flaky pastry shell.",
+                    "price": 10.45,
+                    "type": "Breakfast"
+                },
+                {
+                    "name": "Quiche Leek",
+                    "description": "Leeks and savory custard in a flaky pastry shell.",
+                    "price": 10.45,
+                    "type": "Breakfast"
+                },
+                {
+                    "name": "Quiche Vegetable",
+                    "description": "Seasonal vegetable, Swiss cheese and savory custard in a flaky pastry sheel.",
+                    "price": 10.45,
+                    "type": "Breakfast"
+                },
+                {
+                    "name": "Fresh Fruit Salad Cup",
+                    "description": "",
+                    "price": 4.95,
+                    "type": "Breakfast"
+                },
+                {
+                    "name": "Yogurt, Granola & Honey Cup",
+                    "description": "",
+                    "price": 4.95,
+                    "type": "Breakfast"
+                },
+                {
+                    "name": "Yogurt, Granola & Fruit Cup",
+                    "description": "",
+                    "price": 4.95,
+                    "type": "Breakfast"
+                },
+                {
+                    "name": "Half Flute, Butter & Jam",
+                    "description": "",
+                    "price": 2.95,
+                    "type": "Breakfast"
+                }
+            ]
+        },
+        {
+            "id": "Bakery",
+            "menu": [
+                {
+                    "name": "Croissant",
+                    "description": "",
+                    "price": 2.55,
+                    "type": "Bakery"
+                },
+                {
+                    "name": "Chocolate Croissant",
+                    "description": "",
+                    "price": 2.95,
+                    "type": "Bakery"
+                },
+                {
+                    "name": "Almond Croissant",
+                    "description": "",
+                    "price": 3.65,
+                    "type": "Bakery"
+                },
+                {
+                    "name": "Chocolate Almond Croissant",
+                    "description": "",
+                    "price": 3.65,
+                    "type": "Bakery"
+                },
+                {
+                    "name": "Cream & Chocolate Danish",
+                    "description": "",
+                    "price": 3.25,
+                    "type": "Bakery"
+                },
+                {
+                    "name": "Apple Turnover",
+                    "description": "",
+                    "price": 3.45,
+                    "type": "Bakery"
+                },
+                {
+                    "name": "Caramelized Apple Tart",
+                    "description": "",
+                    "price": 5.45,
+                    "type": "Bakery"
+                },
+                {
+                    "name": "Elephant Ear",
+                    "description": "",
+                    "price": 2.95,
+                    "type": "Bakery"
+                },
+                {
+                    "name": "Raisin Danish",
+                    "description": "",
+                    "price": 3.3,
+                    "type": "Bakery"
+                },
+                {
+                    "name": "Donut",
+                    "description": "Chocolate hazelnut, red fruit, apple.",
+                    "price": 3.25,
+                    "type": "Bakery"
+                },
+                {
+                    "name": "Muffin",
+                    "description": "Chocolate hazelnut, white chocolate cranberry.",
+                    "price": 3.75,
+                    "type": "Bakery"
+                },
+                {
+                    "name": "Cookie",
+                    "description": "Chocolate hazelnut, chocolate chunk.",
+                    "price": 3.75,
+                    "type": "Bakery"
+                },
+                {
+                    "name": "Pretzel",
+                    "description": "",
+                    "price": 2.45,
+                    "type": "Bakery"
+                }
+            ]
+        },
+        {
+            "id": "Coffee&Tea",
+            "menu": [
+                {
+                    "name": "Cafe",
+                    "description": "Regular coffee.",
+                    "pricing": [
+                        1.99,
+                        2.9
+                    ]
+                },
+                {
+                    "name": "Cafe Au Lait",
+                    "description": "Coffee, hot milk.",
+                    "pricing": [
+                        2,
+                        2.55
+                    ],
+                    "type": "Coffee & Tea"
+                },
+                {
+                    "name": "Espresso",
+                    "description": "",
+                    "pricing": [
+                        2.45,
+                        2.95
+                    ],
+                    "type": "Coffee & Tea"
+                },
+                {
+                    "name": "Macchiato",
+                    "description": "Espresso topped with froth.",
+                    "pricing": [
+                        2.75,
+                        3.25
+                    ],
+                    "type": "Coffee & Tea"
+                },
+                {
+                    "name": "Americano",
+                    "description": "Espresso, hot water.",
+                    "pricing": [
+                        2.45,
+                        2.95
+                    ],
+                    "type": "Coffee & Tea"
+                },
+                {
+                    "name": "Cappuccino",
+                    "description": "Espresso, hot milk, froth.",
+                    "pricing": [
+                        2.95,
+                        3.95
+                    ],
+                    "type": "Coffee & Tea"
+                },
+                {
+                    "name": "Late",
+                    "description": "Espresso, hot milk.",
+                    "pricing": [
+                        2.95,
+                        3.95
+                    ],
+                    "type": "Coffee & Tea"
+                },
+                {
+                    "name": "Mochaccino",
+                    "description": "Cappuccino with chocolate.",
+                    "pricing": [
+                        4.45,
+                        5.95
+                    ],
+                    "type": "Coffee & Tea"
+                },
+                {
+                    "name": "Hot Chocolate",
+                    "description": "",
+                    "pricing": [
+                        4.45,
+                        5.95
+                    ],
+                    "type": "Coffee & Tea"
+                },
+                {
+                    "name": "Iced Coffee",
+                    "description": "",
+                    "price": 2.65,
+                    "type": "Coffee & Tea"
+                },
+                {
+                    "name": "Iced Cappuccino",
+                    "description": "",
+                    "price": 4.45,
+                    "type": "Coffee & Tea"
+                },
+                {
+                    "name": "Iced Latte",
+                    "description": "",
+                    "price": 4.45,
+                    "type": "Coffee & Tea"
+                },
+                {
+                    "name": "Iced Mochaccino",
+                    "description": "",
+                    "price": 4.95,
+                    "type": "Coffee & Tea"
+                },
+                {
+                    "name": "Organic Tea",
+                    "description": "By the sorbet. We offer whole milk, soy milk, half and half.",
+                    "price": 3.45,
+                    "type": "Coffee & Tea"
+                }
+            ]
+        }
+    ]
 }

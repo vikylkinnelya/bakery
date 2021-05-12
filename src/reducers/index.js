@@ -17,9 +17,18 @@ const reducer = (state = initialState, action) => {
     switch (action.type) {
 
         case 'SET_MENU':
+
+            const newMenu = state.menuType === 'all' ?
+                action.payload.map(el => el.menu) :
+                action.payload.menu
+
+            const resultMenu = state.menuType === 'all' ?
+                newMenu[0].concat(newMenu[1], newMenu[2]) :
+                newMenu
+
             return {
                 ...state,
-                menu: action.payload[0].concat(action.payload[1], action.payload[2]),
+                menu: resultMenu,
                 loading: false
             };
 
@@ -48,11 +57,8 @@ const reducer = (state = initialState, action) => {
                 menuPage: action.payload
             }
 
-        case 'SET_MENU_TOTAL_ITEMS':
-            return {
-                ...state,
-                menuTotalItems: action.payload
-            }
+
+
 
         case 'SET_LOCATION':
             return {
