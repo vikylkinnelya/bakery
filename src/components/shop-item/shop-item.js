@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
-import { Col, Container, Row, Pagination } from 'react-bootstrap'
+import { Col} from 'react-bootstrap'
 
 const ShopItem = ({ menuItem, menuType, onAddToCart }) => {
 
@@ -54,7 +54,8 @@ const ShopItem = ({ menuItem, menuType, onAddToCart }) => {
                 </div>
                 <div className="product-detail">
                     <h2>{name}</h2>
-                    {menuType === 'all' && <p>{type}</p>}
+                    <p>{description}</p>
+                    {menuType === 'all' && <h3>{type}</h3>}
                     {price && <p className="product-price">${price}</p>}
                     {pricing && <p className="product-price">$ {pricing.join(' - ')} </p>}
 

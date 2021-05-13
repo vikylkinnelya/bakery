@@ -49,7 +49,7 @@
                 },
                 {
                     "name": "Sandwich Dieppois",
-                    "description": "A generous filling of tuna mayonnaise with tomato, cucumber and lettuce in a sandwich bread, freshly made with our Ancien style of dough.",
+                    "description": "A generous filling of tuna mayonnaise with tomato, cucumber and lettuce in a freshly made bread.",
                     "price": 4.45,
                     "type": "Breakfast",
                     "id": "b4sd"
@@ -63,7 +63,7 @@
                 },
                 {
                     "name": "Sandwich Montagnard",
-                    "description": "Packed with flavour, this features dry-cured Coppa ham, Comté cheese, tomatoes, olive tapenade and salad leaves in a freshly baked PAUL poppy seed bread.",
+                    "description": "Dry-cured Coppa ham, Comté cheese, tomatoes, olive tapenade and salad leaves in a freshly baked poppy seed bread.",
                     "price": 4.45,
                     "type": "Breakfast",
                     "id": "b5sm"
@@ -77,7 +77,7 @@
                 },
                 {
                     "name": "Quiche Lorraine",
-                    "description": "Paris ham, bacon, Swiss cheese & egg filling in a puff pastry shell, served with a garden salad",
+                    "description": "Paris ham, bacon, Swiss cheese & egg filling in a puff pastry shell, served with a garden salad.",
                     "price": 10.45,
                     "type": "Breakfast",
                     "id": "b6ql"
@@ -117,7 +117,7 @@
                 },
                 {
                     "name": "Chocolate Croissant x 4",
-                    "description": "Ideal for sharing for breakfast, elevenses or afternoon tea, our Pain au Chocolat is a best seller for a reason, made with pure butter and a heart of .rich, dark chocolate.",
+                    "description": "Our Pain au Chocolat is a best seller for a reason, made with pure butter and a heart of rich, dark chocolate.",
                     "price": 15,
                     "type": "Bakery",
                     "id": "ba2pac"
@@ -138,42 +138,42 @@
                 },
                 {
                     "name": "Escargot Raisins x 4",
-                    "description": "Most often eaten for breakfast in France, these delicious pastries are made with a rich buttery dough filled with vanilla custard and plump raisins. D.elicious with tea or coffee at any time of day.",
+                    "description": "These delicious pastries are made with a rich buttery dough filled with vanilla custard and plump raisins.",
                     "price": 5.65,
                     "type": "Bakery",
                     "id": "ba4er"
                 },
                 {
                     "name": "Lemon Tartlet Duo",
-                    "description": "A pair of individual tartlets – crisp shortcrust pastry filled with a refreshing lemon cream. A classic French dessert or treat with tea or coffee.",
+                    "description": "A pair of individual tartlets – crisp shortcrust pastry filled with a refreshing lemon cream.",
                     "price": 3.25,
                     "type": "Bakery",
                     "id": "ba5ltd"
                 },
                 {
                     "name": "Tartelette Fine Aux Pommes",
-                    "description": "This new Apple Tartlet makes a great light dessert, as it has no pastry cream. Simple, and with excellent flavour.",
+                    "description": "This new Apple Tartlet makes a great light dessert, as it has no pastry cream.",
                     "price": 3.45,
                     "type": "Bakery",
                     "id": "ba6tfap"
                 },
                 {
                     "name": "4 Strawberry Tartlets",
-                    "description": "4 individual strawberry tartlets – crisp, sweet shortcrust pastry filled with a smooth vanilla custard cream and topped with fresh strawberries.",
+                    "description": "Crisp, sweet shortcrust pastry filled with a smooth vanilla custard cream and topped with fresh strawberries.",
                     "price": 15.45,
                     "type": "Bakery",
                     "id": "ba7st"
                 },
                 {
                     "name": "Elephant Ear",
-                    "description": "A crisp, butter puff pastry biscuit. The puff pastry is rolled up with sugar, sliced and baked so that the sugar caramelises",
+                    "description": "A crisp, butter puff pastry biscuit. The puff pastry is rolled up with sugar, sliced and baked so that the sugar caramelises.",
                     "price": 2.95,
                     "type": "Bakery",
                     "id": "ba8ee"
                 },
                 {
                     "name": "Mini Chocolat Beignet",
-                    "description": "A delicious soft mini doughnut with a chocolate hazelnut filling, this is known in France as a beignet.",
+                    "description": "A delicious soft mini doughnut with a chocolate hazelnut filling.",
                     "price": 3.3,
                     "type": "Bakery",
                     "id": "ba9mcb"
@@ -187,14 +187,14 @@
                 },
                 {
                     "name": "Croissant Box (10)",
-                    "description": "10 Fresh Baked Croissants to Share",
+                    "description": "10 Fresh Baked Croissants to Share.",
                     "price": 30,
                     "type": "Bakery",
                     "id": "ba12m"
                 },
                 {
                     "name": "Mini Beignets Box (30)",
-                    "description": "30 Fresh Mini French Donuts to Share. A Mix of Sugar Donuts and Chocolate Hazelnut Donuts",
+                    "description": "A Mix of Sugar Donuts and Chocolate Hazelnut Donuts.",
                     "price": 25,
                     "type": "Bakery",
                     "id": "ba13c"
@@ -324,7 +324,7 @@
                 },
                 {
                     "name": "Organic Tea",
-                    "description": "By the sorbet. We offer whole milk, soy milk, half and half.",
+                    "description": "",
                     "price": 3.45,
                     "type": "Coffee & Tea",
                     "id": "ct14ot"

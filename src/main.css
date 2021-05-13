@@ -2460,8 +2460,15 @@ ul {
 
 .product .product-detail-container .product-detail {
   background-color: #fdb822;
-
   overflow: auto;
+}
+
+.product-detail p {
+  margin: 0 7px 10px 7px;
+}
+
+.product-detail .product-price {
+  margin: 5px 0 10px 0
 }
 
 .product .product-detail-container h2 {
@@ -2580,7 +2587,6 @@ button.big-cup {
   transform: translateX(-10px);
   height: 230px;
   object-fit: cover;
-  margin-bottom: 20px;
 }
 
 .product .product-preview:after {
