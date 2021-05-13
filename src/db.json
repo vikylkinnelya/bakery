@@ -30,73 +30,78 @@
                     "name": "Ham & Cheese Croissant",
                     "description": "Ham, Swiss cheese, lettuce, tomato and a butter spread on a croissant.",
                     "price": 4.95,
-                    "type": "Breakfast"
-                },
-                {
-                    "name": "Ham, Egg & Swiss Cheese Croissant",
-                    "description": "Ham, scrambled egg and Swiss cheese on a croissant.",
-                    "price": 5.65,
-                    "type": "Breakfast"
+                    "type": "Breakfast",
+                    "id": "b1hcc"
                 },
                 {
                     "name": "Smoked Salmon Croissant",
                     "description": "Smoked salmon, lettuce, tomato and lemon spread on a croissant.",
                     "price": 5.45,
-                    "type": "Breakfast"
+                    "type": "Breakfast",
+                    "id": "b3ssc"
+                },
+                {
+                    "name": "Ham, Egg & Swiss Cheese Croissant",
+                    "description": "Ham, scrambled egg and Swiss cheese on a croissant.",
+                    "price": 5.65,
+                    "type": "Breakfast",
+                    "id": "b2hescc"
+                },
+                {
+                    "name": "Sandwich Dieppois",
+                    "description": "A generous filling of tuna mayonnaise with tomato, cucumber and lettuce in a sandwich bread, freshly made with our Ancien style of dough.",
+                    "price": 4.45,
+                    "type": "Breakfast",
+                    "id": "b4sd"
                 },
                 {
                     "name": "Ham, Egg & Cheese Baguette",
                     "description": "Ham, scrambled egg and Swiss cheese on a baguettine.",
                     "price": 6.65,
-                    "type": "Breakfast"
+                    "type": "Breakfast",
+                    "id": "b3hecb"
                 },
                 {
-                    "name": "Quiche Lomaine",
-                    "description": "Ham, bacon, Swiss cheese and savory custard in a flaky pastry shell.",
-                    "price": 10.45,
-                    "type": "Breakfast"
+                    "name": "Sandwich Montagnard",
+                    "description": "Packed with flavour, this features dry-cured Coppa ham, Comté cheese, tomatoes, olive tapenade and salad leaves in a freshly baked PAUL poppy seed bread.",
+                    "price": 4.45,
+                    "type": "Breakfast",
+                    "id": "b5sm"
                 },
                 {
-                    "name": "Quiche Roasted Salmon & Spinach",
-                    "description": "Salmon, spinach and savory custard in a flaky pastry shell.",
-                    "price": 10.45,
-                    "type": "Breakfast"
+                    "name": "Half Flute, Butter & Jam",
+                    "description": "Half Baguette served with butter and Jam",
+                    "price": 2.95,
+                    "type": "Breakfast",
+                    "id": "b11hfbj"
                 },
                 {
-                    "name": "Quiche Leek",
-                    "description": "Leeks and savory custard in a flaky pastry shell.",
+                    "name": "Quiche Lorraine",
+                    "description": "Paris ham, bacon, Swiss cheese & egg filling in a puff pastry shell, served with a garden salad",
                     "price": 10.45,
-                    "type": "Breakfast"
-                },
-                {
-                    "name": "Quiche Vegetable",
-                    "description": "Seasonal vegetable, Swiss cheese and savory custard in a flaky pastry sheel.",
-                    "price": 10.45,
-                    "type": "Breakfast"
+                    "type": "Breakfast",
+                    "id": "b6ql"
                 },
                 {
                     "name": "Fresh Fruit Salad Cup",
                     "description": "",
                     "price": 4.95,
-                    "type": "Breakfast"
+                    "type": "Breakfast",
+                    "id": "b8ffsc"
                 },
                 {
-                    "name": "Yogurt, Granola & Honey Cup",
+                    "name": "Yogurt La Fermiere Orange Blossom",
                     "description": "",
                     "price": 4.95,
-                    "type": "Breakfast"
+                    "type": "Breakfast",
+                    "id": "b9yghc"
                 },
                 {
-                    "name": "Yogurt, Granola & Fruit Cup",
+                    "name": "Yogurt La Fermiere Mango Passionfruit",
                     "description": "",
-                    "price": 4.95,
-                    "type": "Breakfast"
-                },
-                {
-                    "name": "Half Flute, Butter & Jam",
-                    "description": "",
-                    "price": 2.95,
-                    "type": "Breakfast"
+                    "price": 5.6,
+                    "type": "Breakfast",
+                    "id": "b10ygfc"
                 }
             ]
         },
@@ -105,81 +110,94 @@
             "menu": [
                 {
                     "name": "Croissant",
-                    "description": "",
+                    "description": "Croissant – rich and tasty with a crisp crust and a deliciously soft centre.",
                     "price": 2.55,
-                    "type": "Bakery"
+                    "type": "Bakery",
+                    "id": "ba1c"
                 },
                 {
-                    "name": "Chocolate Croissant",
-                    "description": "",
-                    "price": 2.95,
-                    "type": "Bakery"
+                    "name": "Chocolate Croissant x 4",
+                    "description": "Ideal for sharing for breakfast, elevenses or afternoon tea, our Pain au Chocolat is a best seller for a reason, made with pure butter and a heart of .rich, dark chocolate.",
+                    "price": 15,
+                    "type": "Bakery",
+                    "id": "ba2pac"
                 },
                 {
                     "name": "Almond Croissant",
                     "description": "",
                     "price": 3.65,
-                    "type": "Bakery"
+                    "type": "Bakery",
+                    "id": "ba3ac"
                 },
                 {
                     "name": "Chocolate Almond Croissant",
                     "description": "",
-                    "price": 3.65,
-                    "type": "Bakery"
+                    "price": 4.59,
+                    "type": "Bakery",
+                    "id": "ba3cac"
                 },
                 {
-                    "name": "Cream & Chocolate Danish",
-                    "description": "",
+                    "name": "Escargot Raisins x 4",
+                    "description": "Most often eaten for breakfast in France, these delicious pastries are made with a rich buttery dough filled with vanilla custard and plump raisins. D.elicious with tea or coffee at any time of day.",
+                    "price": 5.65,
+                    "type": "Bakery",
+                    "id": "ba4er"
+                },
+                {
+                    "name": "Lemon Tartlet Duo",
+                    "description": "A pair of individual tartlets – crisp shortcrust pastry filled with a refreshing lemon cream. A classic French dessert or treat with tea or coffee.",
                     "price": 3.25,
-                    "type": "Bakery"
+                    "type": "Bakery",
+                    "id": "ba5ltd"
                 },
                 {
-                    "name": "Apple Turnover",
-                    "description": "",
+                    "name": "Tartelette Fine Aux Pommes",
+                    "description": "This new Apple Tartlet makes a great light dessert, as it has no pastry cream. Simple, and with excellent flavour.",
                     "price": 3.45,
-                    "type": "Bakery"
+                    "type": "Bakery",
+                    "id": "ba6tfap"
                 },
                 {
-                    "name": "Caramelized Apple Tart",
-                    "description": "",
-                    "price": 5.45,
-                    "type": "Bakery"
+                    "name": "4 Strawberry Tartlets",
+                    "description": "4 individual strawberry tartlets – crisp, sweet shortcrust pastry filled with a smooth vanilla custard cream and topped with fresh strawberries.",
+                    "price": 15.45,
+                    "type": "Bakery",
+                    "id": "ba7st"
                 },
                 {
                     "name": "Elephant Ear",
-                    "description": "",
+                    "description": "A crisp, butter puff pastry biscuit. The puff pastry is rolled up with sugar, sliced and baked so that the sugar caramelises",
                     "price": 2.95,
-                    "type": "Bakery"
+                    "type": "Bakery",
+                    "id": "ba8ee"
                 },
                 {
-                    "name": "Raisin Danish",
-                    "description": "",
+                    "name": "Mini Chocolat Beignet",
+                    "description": "A delicious soft mini doughnut with a chocolate hazelnut filling, this is known in France as a beignet.",
                     "price": 3.3,
-                    "type": "Bakery"
+                    "type": "Bakery",
+                    "id": "ba9mcb"
                 },
                 {
-                    "name": "Donut",
+                    "name": "Chocolate Éclair",
                     "description": "Chocolate hazelnut, red fruit, apple.",
-                    "price": 3.25,
-                    "type": "Bakery"
+                    "price": 3.55,
+                    "type": "Bakery",
+                    "id": "ba11ce"
                 },
                 {
-                    "name": "Muffin",
-                    "description": "Chocolate hazelnut, white chocolate cranberry.",
-                    "price": 3.75,
-                    "type": "Bakery"
+                    "name": "Croissant Box (10)",
+                    "description": "10 Fresh Baked Croissants to Share",
+                    "price": 30,
+                    "type": "Bakery",
+                    "id": "ba12m"
                 },
                 {
-                    "name": "Cookie",
-                    "description": "Chocolate hazelnut, chocolate chunk.",
-                    "price": 3.75,
-                    "type": "Bakery"
-                },
-                {
-                    "name": "Pretzel",
-                    "description": "",
-                    "price": 2.45,
-                    "type": "Bakery"
+                    "name": "Mini Beignets Box (30)",
+                    "description": "30 Fresh Mini French Donuts to Share. A Mix of Sugar Donuts and Chocolate Hazelnut Donuts",
+                    "price": 25,
+                    "type": "Bakery",
+                    "id": "ba13c"
                 }
             ]
         },
@@ -187,12 +205,14 @@
             "id": "Coffee&Tea",
             "menu": [
                 {
-                    "name": "Cafe",
-                    "description": "Regular coffee.",
+                    "name": "Coffe",
+                    "description": "",
                     "pricing": [
                         1.99,
                         2.9
-                    ]
+                    ],
+                    "type": "Coffee & Tea",
+                    "id": "ct1rc"
                 },
                 {
                     "name": "Cafe Au Lait",
@@ -201,7 +221,8 @@
                         2,
                         2.55
                     ],
-                    "type": "Coffee & Tea"
+                    "type": "Coffee & Tea",
+                    "id": "ct2cal"
                 },
                 {
                     "name": "Espresso",
@@ -210,7 +231,8 @@
                         2.45,
                         2.95
                     ],
-                    "type": "Coffee & Tea"
+                    "type": "Coffee & Tea",
+                    "id": "ct3e"
                 },
                 {
                     "name": "Macchiato",
@@ -219,7 +241,8 @@
                         2.75,
                         3.25
                     ],
-                    "type": "Coffee & Tea"
+                    "type": "Coffee & Tea",
+                    "id": "ct4m"
                 },
                 {
                     "name": "Americano",
@@ -228,7 +251,8 @@
                         2.45,
                         2.95
                     ],
-                    "type": "Coffee & Tea"
+                    "type": "Coffee & Tea",
+                    "id": "ct5a"
                 },
                 {
                     "name": "Cappuccino",
@@ -237,7 +261,8 @@
                         2.95,
                         3.95
                     ],
-                    "type": "Coffee & Tea"
+                    "type": "Coffee & Tea",
+                    "id": "ct6c"
                 },
                 {
                     "name": "Late",
@@ -246,7 +271,8 @@
                         2.95,
                         3.95
                     ],
-                    "type": "Coffee & Tea"
+                    "type": "Coffee & Tea",
+                    "id": "ct7l"
                 },
                 {
                     "name": "Mochaccino",
@@ -255,7 +281,8 @@
                         4.45,
                         5.95
                     ],
-                    "type": "Coffee & Tea"
+                    "type": "Coffee & Tea",
+                    "id": "ct8m"
                 },
                 {
                     "name": "Hot Chocolate",
@@ -264,37 +291,43 @@
                         4.45,
                         5.95
                     ],
-                    "type": "Coffee & Tea"
+                    "type": "Coffee & Tea",
+                    "id": "ct9hc"
                 },
                 {
                     "name": "Iced Coffee",
                     "description": "",
                     "price": 2.65,
-                    "type": "Coffee & Tea"
+                    "type": "Coffee & Tea",
+                    "id": "ct10ic"
                 },
                 {
                     "name": "Iced Cappuccino",
                     "description": "",
                     "price": 4.45,
-                    "type": "Coffee & Tea"
+                    "type": "Coffee & Tea",
+                    "id": "ct11ic"
                 },
                 {
                     "name": "Iced Latte",
                     "description": "",
                     "price": 4.45,
-                    "type": "Coffee & Tea"
+                    "type": "Coffee & Tea",
+                    "id": "ct12il"
                 },
                 {
                     "name": "Iced Mochaccino",
                     "description": "",
                     "price": 4.95,
-                    "type": "Coffee & Tea"
+                    "type": "Coffee & Tea",
+                    "id": "ct13im"
                 },
                 {
                     "name": "Organic Tea",
                     "description": "By the sorbet. We offer whole milk, soy milk, half and half.",
                     "price": 3.45,
-                    "type": "Coffee & Tea"
+                    "type": "Coffee & Tea",
+                    "id": "ct14ot"
                 }
             ]
         }

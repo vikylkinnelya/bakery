@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import ShopItem from '../shop-item';
 import { connect } from 'react-redux';
 import WithRestoService from '../hoc';
-import { setMenu, setLoading, setError, setMenuType } from '../../actions';
+import { setMenu, setLoading, setError, setMenuType, addToCart } from '../../actions';
 import { Col, Container, Row, Pagination } from 'react-bootstrap'
 import { Link } from 'react-router-dom';
 import Spinner from '../spinner';
@@ -16,8 +16,6 @@ class ShopListItems extends Component {
         RestoService.getMenuItems()
             .then(res => this.props.setMenu(res))
             .catch(error => this.props.setError())
-
-
     }
 
     componentDidUpdate(prevProps) {
@@ -29,14 +27,13 @@ class ShopListItems extends Component {
 
             RestoService.getMenuItems(menuType)
                 .then(res => this.props.setMenu(res))
-                .then(res => console.log(res))
                 .catch(error => this.props.setError())
         }
     }
 
     render() {
 
-        const { menuItems, loading, error, menuType, setMenuType } = this.props
+        const { menuItems, loading, error, menuType, setMenuType, addToCart } = this.props
 
         const paginationItems = []
         let active = 1;
@@ -53,8 +50,6 @@ class ShopListItems extends Component {
             )
         }
 
-        console.log(paginationItems)
-
         return (
             <Container className='container' >
 
@@ -68,9 +63,10 @@ class ShopListItems extends Component {
                             {menuItems != null && menuItems.length > 0 && menuItems.map(menuItem => {
                                 return (
                                     <ShopItem
-                                        key={menuItem.item_id}
+                                        key={menuItem.id}
                                         menuItem={menuItem}
                                         menuType={menuType}
+                                        onAddToCart={addToCart}
                                     />
                                 )
                             })}
@@ -179,6 +175,7 @@ const mapDispatchToProps = {
     setLoading,
     setError,
     setMenuType,
+    addToCart
 }
 
 export default WithRestoService()(connect(mapStateToProps, mapDispatchToProps)(ShopListItems))

@@ -57,13 +57,16 @@ const reducer = (state = initialState, action) => {
                 menuPage: action.payload
             }
 
-
-
-
         case 'SET_LOCATION':
             return {
                 ...state,
                 location: action.loc
+            }
+
+        case 'ADD_TO_CART':
+            return{
+                ...state,
+                cart: [...state.cart, action.payload]
             }
 
         default:

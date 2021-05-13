@@ -12,8 +12,6 @@ export default class RestoService {
 
         const res = await fetch(`${this._apiBase}${url}${typeOf}`)
 
-        console.log(`${this._apiBase}${url}${typeOf}`)
-
         if (!res.ok) {
             throw new Error(`Could not fetch ${url}, reseived ${res.status}`)
         }

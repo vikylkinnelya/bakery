@@ -1,10 +1,7 @@
-const setMenu = (newMenu) => {
-    console.log(newMenu, 'action')
-    return {
-        type: 'SET_MENU',
-        payload: newMenu
-    }
-}
+const setMenu = (newMenu) => ({
+    type: 'SET_MENU',
+    payload: newMenu
+})
 
 const setLoading = () => ({
     type: 'SET_LOADING'
@@ -24,15 +21,23 @@ const setMenuPage = (page) => ({
     payload: page
 })
 
-
 const setLocation = (loc) => ({
     type: 'SET_LOCATION',
     payload: loc
 })
 
+const addToCart = (id) => {
+    console.log(id)
+    return {
+        type: 'ADD_TO_CART',
+        payload: id
+    }
+}
+
 export {
     setMenu, setLoading, setError,
-    setMenuType, setMenuPage, 
+    setMenuType, setMenuPage,
     setLocation,
+    addToCart
 
 }

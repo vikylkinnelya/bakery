@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
 import { Col, Container, Row, Pagination } from 'react-bootstrap'
 
-const ShopItem = ({ menuItem, menuType }) => {
+const ShopItem = ({ menuItem, menuType, onAddToCart }) => {
 
-    const { name, description, price, pricing, type } = menuItem
+    const { name, description, price, pricing, type, id } = menuItem
 
     const productLabel = <div className="product-label-container-alt">
         <div className="product-label">
@@ -12,12 +13,28 @@ const ShopItem = ({ menuItem, menuType }) => {
         <div className="product-label-bottom"></div>
     </div>
 
+    const [priceMenu, setShowPriceMenu] = useState(false)
+
+    const smallCup = <button className='small-cup' onClick={() => onAddToCart(`${id}-m`)}> M </button>
+    const bigCup = <button className='big-cup' onClick={() => onAddToCart(`${id}-l`)}> L </button>
+
+    const defCartClick = (id) => {
+        if (pricing && !priceMenu) {
+            return setShowPriceMenu(!priceMenu)
+        }
+        if (pricing && priceMenu) {
+            return setShowPriceMenu(!priceMenu)
+        }
+        if (!pricing) {
+            return  onAddToCart(id)
+        }
+    }
 
     return (
 
         < Col className="product" >
             <div className="product-preview">
-                <img alt={name} src={menuItem.image} />
+                <LazyLoadImage alt={name} src={`../../images/shop/${id}-min.jpg`} />
             </div>
 
             <div className="product-detail-container">
@@ -26,7 +43,13 @@ const ShopItem = ({ menuItem, menuType }) => {
                     <button className="product-icon-container">
                         <i className="fa fa-heart"></i>
                     </button>
-                    <CartBtn />
+
+                    <button className="product-icon-container" onClick={() => defCartClick(id)}>
+                        {!priceMenu && <i className="fa fa-shopping-cart" />}
+                        {priceMenu && pricing && <i className="fas fa-times"></i>}
+                    </button>
+                    { priceMenu && pricing && smallCup}
+                    { priceMenu && pricing && bigCup}
 
                 </div>
                 <div className="product-detail">
@@ -47,7 +70,7 @@ const ShopItem = ({ menuItem, menuType }) => {
 
 export default ShopItem
 
-const CartBtn = () => {
+/* const CartBtn = () => {
 
     const [priceMenu, setShowPriceMenu] = useState(false)
 
@@ -61,11 +84,11 @@ const CartBtn = () => {
                 {!priceMenu && <i className="fa fa-shopping-cart" />}
                 {priceMenu && <i className="fas fa-times"></i>}
             </button>
-            {priceMenu && smallCup}
-            {priceMenu && bigCup}
+            {this.pricing && smallCup}
+            {this.pricing && bigCup}
 
         </>
     )
 
 
-}
+} */
