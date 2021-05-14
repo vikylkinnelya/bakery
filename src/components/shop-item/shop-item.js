@@ -15,8 +15,8 @@ const ShopItem = ({ menuItem, menuType, onAddToCart }) => {
 
     const [priceMenu, setShowPriceMenu] = useState(false)
 
-    const smallCup = <button className='small-cup' onClick={() => onAddToCart(`${id}-m`)}> M </button>
-    const bigCup = <button className='big-cup' onClick={() => onAddToCart(`${id}-l`)}> L </button>
+    const smallCup = <button className='small-cup' onClick={() => onAddToCart(`${id}-M`)}> M </button>
+    const bigCup = <button className='big-cup' onClick={() => onAddToCart(`${id}-L`)}> L </button>
 
     const defCartClick = (id) => {
         if (pricing && !priceMenu) {

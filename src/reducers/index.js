@@ -1,8 +1,5 @@
 const initialState = {
     menu: [],
-    menuBreakfast: [],
-    menuBakery: [],
-    menuDrinks: [],
     error: false,
     loading: false,
     menuType: 'all',
@@ -64,6 +61,23 @@ const reducer = (state = initialState, action) => {
             }
 
         case 'ADD_TO_CART':
+
+            const idSizeParam = action.payload
+            const id = idSizeParam.split('-')[0]
+            const size = idSizeParam.split('-')[1]
+
+
+            const itemIdxToAdd = state.cart.findIndex(el => el.id === idSizeParam)
+            if (itemIdxToAdd === -1) {
+                const item = state.menu.find(el => el.id === id)
+                const newItem = {
+                    count: 1,
+                    name: item.name,
+                    
+
+                }
+            }
+
             return{
                 ...state,
                 cart: [...state.cart, action.payload]
