@@ -26,7 +26,14 @@ const setLocation = (loc) => ({
     payload: loc
 })
 
+<<<<<<< HEAD
 const addToCart = (id, size = '') => {
+=======
+const addToCart = (id) => {
+    console.log(id, 'id with param')
+    console.log(id.split('-')[0], 'id without param')
+    console.log(id.split('-')[1], 'id with param')
+>>>>>>> d57726d5e9ca4495e16a476522e1ebfa4cf65805
     return {
         type: 'ADD_TO_CART',
         payload: id

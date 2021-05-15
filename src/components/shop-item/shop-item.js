@@ -32,7 +32,7 @@ const ShopItem = ({ menuItem, menuType, onAddToCart }) => {
 
     return (
 
-        < Col className="product" >
+        < Col className="product" lg='auto'>
             <div className="product-preview">
                 <LazyLoadImage alt={name} src={`../../images/shop/${id}-min.jpg`} />
             </div>
@@ -70,26 +70,3 @@ const ShopItem = ({ menuItem, menuType, onAddToCart }) => {
 }
 
 export default ShopItem
-
-/* const CartBtn = () => {
-
-    const [priceMenu, setShowPriceMenu] = useState(false)
-
-    const smallCup = <button className='small-cup'> M </button>
-    const bigCup = <button className='big-cup'> L </button>
-
-
-    return (
-        <>
-            <button className="product-icon-container" onClick={() => setShowPriceMenu(!priceMenu)}>
-                {!priceMenu && <i className="fa fa-shopping-cart" />}
-                {priceMenu && <i className="fas fa-times"></i>}
-            </button>
-            {this.pricing && smallCup}
-            {this.pricing && bigCup}
-
-        </>
-    )
-
-
-} */

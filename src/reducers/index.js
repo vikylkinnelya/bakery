@@ -6,6 +6,7 @@ const initialState = {
     menuTotalItems: '',
     menuPage: 1,
     cart: [],
+    totalPrice: 0
 
 }
 
@@ -62,26 +63,46 @@ const reducer = (state = initialState, action) => {
 
         case 'ADD_TO_CART':
 
-            const idSizeParam = action.payload
-            const id = idSizeParam.split('-')[0]
-            const size = idSizeParam.split('-')[1]
+            const idWithParam = action.payload
+            const id = idWithParam.split('-')[0]
+            const param = idWithParam.split('-')[1]
+            const priceIdxByParam = param === 'M' ? 0 : 1
 
+            const itemIdxinCart = state.cart.findIndex(el => el.id === idWithParam)
+            
+            if (itemIdxinCart === -1) {
+                const item = state.menu.find(item => item.id === id)
 
-            const itemIdxToAdd = state.cart.findIndex(el => el.id === idSizeParam)
-            if (itemIdxToAdd === -1) {
-                const item = state.menu.find(el => el.id === id)
                 const newItem = {
-                    count: 1,
                     name: item.name,
-                    
-
+                    id: idWithParam,
+                    param: param,
+                    price: param ? item.pricing[priceIdxByParam] : item.price,
+                    count: 1
+                }
+                return {
+                    ...state,
+                    cart: [...state.cart, newItem],
+                    totalPrice: state.totalPrice + newItem.price
+                };
+            }
+            else {
+                const itemInCart = state.cart.find(el => el.id === idWithParam)
+                const newItem = {
+                    ...itemInCart,
+                    count: ++itemInCart.count
+                }
+                return {
+                    ...state,
+                    cart: [
+                        ...state.cart.slice(0, itemIdxinCart),
+                        newItem,
+                        ...state.cart.slice(itemIdxinCart+1)
+                    ],
+                    totalPrice: state.totalPrice + newItem.price
                 }
             }
 
-            return{
-                ...state,
-                cart: [...state.cart, action.payload]
-            }
 
         default:
             return state;
