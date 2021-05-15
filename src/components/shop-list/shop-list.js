@@ -51,15 +51,15 @@ class ShopListItems extends Component {
         }
 
         return (
-            <Container className='container' >
+            <Container fluid>
 
                 { loading && <Spinner />}
 
-                <Row className='container-row'>
+                <Row >
 
-                    <Col md="9">
+                    <Col sm={{ span: 12, order: 11 }} md={{ span: 12, order: 2 }} lg={{ span: 10, order: 1 }}  className='product-col'>
                         <div className="margin-60"></div>
-                        <Row >
+                        <Row className='product-row'>
                             {menuItems != null && menuItems.length > 0 && menuItems.map(menuItem => {
                                 return (
                                     <ShopItem
@@ -73,8 +73,7 @@ class ShopListItems extends Component {
                         </Row>
                     </Col>
 
-                    <Col md='3' className="col-md-3 sidebar">
-                        <div className="margin-40"></div>
+                    <Col sm={{ span: 12, order: 1 }} md={{ span: 12, order: 1 }} lg ={{ span: 2, order: 1 }}className="sidebar">
                         <form className="form-search onscroll-animate">
                             <input name="s" type="text" placeholder="Type and hit enter" />
                         </form>
@@ -126,15 +125,15 @@ class ShopListItems extends Component {
                                 </Link>
                             </li>
                         </ul>
-                        <div className="margin-60"></div>
                     </Col>
 
-                    <Pagination className="pagination">
+                    <Col sm={{ order: 12 }} >
+                        <Pagination className="pagination">
                         <Pagination.Prev className="pagination-item pagination-nav" />
                         {paginationItems}
                         <Pagination.Next className="pagination-item pagination-nav" />
                     </Pagination>
-
+                    </Col>
 
                 </Row>
             </Container >
@@ -142,31 +141,13 @@ class ShopListItems extends Component {
     }
 }
 
-
-/* const PaginationComponent = () => {
-    const statee = []
-    let active = 1;
-    let items = []
- 
-    for (let i = 1; i <= 7 && i <= statee.length; i++) {
-        items.push(
-            <Pagination.Item
-                className="pagination-item"
-                key={i}
-                active={i === active}
-                activeLabel={null}>
-                {i}
-            </Pagination.Item>
-        )
-    }
-} */
-
 const mapStateToProps = state => {
     return {
         menuItems: state.menu,
         loading: state.loading,
         error: state.error,
         menuType: state.menuType,
+        cart: state.cart
     }
 }
 

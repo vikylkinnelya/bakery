@@ -29,8 +29,6 @@ This is compiled file, for the original file please see .less file
 }
 
 .product {
-  min-width: 200px;
-  height: 250px;
   margin: 10px;
 }
 
@@ -926,6 +924,10 @@ ul {
   padding: 30px;
   border: 2px #684f40 solid;
   margin: 60px 0 20px 0;
+}
+
+.container-fluid {
+  padding: 0 50px 0 50px
 }
 
 .delimiter-inline {
@@ -2434,6 +2436,8 @@ ul {
 }
 
 .product {
+  max-width: 270px;
+  max-height: 300px;
   position: relative;
   border: 2px #684f40 solid;
   margin-bottom: 30px;
@@ -2441,6 +2445,14 @@ ul {
   -moz-transition: all 0.4s ease-out;
   -o-transition: all 0.4s ease-out;
   transition: all 0.4s ease-out;
+}
+
+.product-col{
+  padding-left: 0;
+}
+
+.product-row {
+  justify-content: space-around;
 }
 
 .product .product-detail-container {
@@ -2585,7 +2597,7 @@ button.big-cup {
 .product .product-preview img {
   width: calc(100% + 20px);
   transform: translateX(-10px);
-  height: 230px;
+  height: 270px;
   object-fit: cover;
 }
 

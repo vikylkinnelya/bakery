@@ -4,8 +4,8 @@ import {
     Route,
 } from "react-router-dom";
 import Header from '../header'
-import ShopListItems from '../shop-list'
 import { Shop } from '../pages/index'
+import { Container} from 'react-bootstrap'
 
 const App = () => {
 
@@ -17,7 +17,7 @@ const App = () => {
                 <Switch>
 
                     <Route path='/shop'>
-                        <Shop className="container" />
+                        <Shop/>
                     </Route>
 
                 </Switch>
