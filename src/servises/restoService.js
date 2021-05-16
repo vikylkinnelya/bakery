@@ -22,4 +22,10 @@ export default class RestoService {
         return await this.getResourse(`/menus`, menuType)
     }
 
+    async getOrderNumber() {
+        const res = await this.getResourse('/orders/');
+        const orderNumber = res.length + 1
+        return orderNumber
+    }
+
 }

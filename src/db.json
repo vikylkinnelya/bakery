@@ -24,7 +24,7 @@
     },
     "menus": [
         {
-            "id": "Breakfast",
+            "id": "breakfast",
             "menu": [
                 {
                     "name": "Ham & Cheese Croissant",
@@ -106,7 +106,7 @@
             ]
         },
         {
-            "id": "Bakery",
+            "id": "bakery",
             "menu": [
                 {
                     "name": "Croissant",
@@ -202,7 +202,7 @@
             ]
         },
         {
-            "id": "Coffee&Tea",
+            "id": "drinks",
             "menu": [
                 {
                     "name": "Coffe",

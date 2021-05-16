@@ -14,7 +14,7 @@ const Header = () => {
                     </ul>
                     <img className="logo-primary" src='./logo.png' id="logo-1" alt="Bakery" />
                     <ul>
-                        <li><Link to='/shop/'>Shop</Link></li>
+                        <li><Link to='/shop/all'>Shop</Link></li>
                         <li><Link to='/contact'>Contact</Link></li>
                     </ul>
 

@@ -1,19 +1,22 @@
 import React, { Component } from 'react';
+import Spinner from '../spinner';
+import { Col, Container, Row, Pagination } from 'react-bootstrap';
 import ShopItem from '../shop-item';
 import { connect } from 'react-redux';
+import { withRouter } from "react-router";
+import { Link } from 'react-router-dom';
 import WithRestoService from '../hoc';
 import { setMenu, setLoading, setError, setMenuType, addToCart } from '../../actions';
-import { Col, Container, Row, Pagination } from 'react-bootstrap'
-import { Link } from 'react-router-dom';
-import Spinner from '../spinner';
 
 class ShopListItems extends Component {
 
     componentDidMount() {
         this.props.setLoading()
-        const { RestoService } = this.props;
+        const { RestoService, location } = this.props;
+        const pathMenuType = location.pathname.split('/')[2]
+        this.props.setMenuType(pathMenuType)
 
-        RestoService.getMenuItems()
+        RestoService.getMenuItems(pathMenuType)
             .then(res => this.props.setMenu(res))
             .catch(error => this.props.setError())
     }
@@ -57,9 +60,10 @@ class ShopListItems extends Component {
 
                 <Row >
 
-                    <Col sm={{ span: 12, order: 11 }} md={{ span: 12, order: 2 }} lg={{ span: 10, order: 1 }}  className='product-col'>
+                    <Col sm={{ span: 12, order: 11 }} md={{ span: 12, order: 2 }} lg={{ span: 10, order: 1 }} className='product-col'>
                         <div className="margin-60"></div>
                         <Row className='product-row'>
+
                             {menuItems != null && menuItems.length > 0 && menuItems.map(menuItem => {
                                 return (
                                     <ShopItem
@@ -73,7 +77,7 @@ class ShopListItems extends Component {
                         </Row>
                     </Col>
 
-                    <Col sm={{ span: 12, order: 1 }} md={{ span: 12, order: 1 }} lg ={{ span: 2, order: 1 }}className="sidebar">
+                    <Col sm={{ span: 12, order: 1 }} md={{ span: 12, order: 1 }} lg={{ span: 2, order: 1 }} className="sidebar">
                         <form className="form-search onscroll-animate">
                             <input name="s" type="text" placeholder="Type and hit enter" />
                         </form>
@@ -84,7 +88,7 @@ class ShopListItems extends Component {
                         <ul className="list-arrows">
                             <li className={menuType === 'all' ? 'selected' : undefined}>
 
-                                <Link to='/shop/' onClick={() => setMenuType('all')}>
+                                <Link to='all' onClick={() => setMenuType('all')}>
                                     <div className="list-arrows-content">
                                         All
                                     </div>
@@ -92,35 +96,35 @@ class ShopListItems extends Component {
                                 </Link>
                             </li>
 
-                            <li className={menuType === 'Breakfast' ? 'selected' : undefined}>
-                                <Link to='breakfast' onClick={() => setMenuType('Breakfast')}>
+                            <li className={menuType === 'breakfast' ? 'selected' : undefined}>
+                                <Link to='breakfast' onClick={() => setMenuType('breakfast')}>
                                     <article>
                                         <div className="list-arrows-content">
                                             Breakfast
                                         </div>
-                                        {menuType === 'Breakfast' && <div className="list-arrows-value">{menuItems.length}</div>}
+                                        {menuType === 'breakfast' && <div className="list-arrows-value">{menuItems.length}</div>}
                                     </article>
                                 </Link>
                             </li>
-                            <li className={menuType === 'Bakery' ? 'selected' : undefined}>
-                                <Link to='bakery' onClick={() => setMenuType('Bakery')}>
+                            <li className={menuType === 'bakery' ? 'selected' : undefined}>
+                                <Link to='bakery' onClick={() => setMenuType('bakery')}>
                                     <article>
                                         <div className="list-arrows-content">
                                             Bakery
                                         </div>
-                                        {menuType === 'Bakery' && <div className="list-arrows-value">{menuItems.length}</div>}
+                                        {menuType === 'bakery' && <div className="list-arrows-value">{menuItems.length}</div>}
                                     </article>
                                 </Link>
                             </li>
 
 
-                            <li className={menuType === 'Coffee&Tea' ? 'selected' : undefined}>
-                                <Link to='coffee-and-tea' onClick={() => setMenuType('Coffee&Tea')}>
+                            <li className={menuType === 'drinks' ? 'selected' : undefined}>
+                                <Link to='drinks' onClick={() => setMenuType('drinks')}>
                                     <article>
                                         <div className="list-arrows-content">
-                                            Coffee&Tea
+                                            Drinks
                                     </div>
-                                        {menuType === 'Coffee&Tea' && <div className="list-arrows-value">{menuItems.length}</div>}
+                                        {menuType === 'drinks' && <div className="list-arrows-value">{menuItems.length}</div>}
                                     </article>
                                 </Link>
                             </li>
@@ -129,10 +133,10 @@ class ShopListItems extends Component {
 
                     <Col sm={{ order: 12 }} >
                         <Pagination className="pagination">
-                        <Pagination.Prev className="pagination-item pagination-nav" />
-                        {paginationItems}
-                        <Pagination.Next className="pagination-item pagination-nav" />
-                    </Pagination>
+                            <Pagination.Prev className="pagination-item pagination-nav" />
+                            {paginationItems}
+                            <Pagination.Next className="pagination-item pagination-nav" />
+                        </Pagination>
                     </Col>
 
                 </Row>
@@ -159,5 +163,5 @@ const mapDispatchToProps = {
     addToCart
 }
 
-export default WithRestoService()(connect(mapStateToProps, mapDispatchToProps)(ShopListItems))
+export default WithRestoService()(connect(mapStateToProps, mapDispatchToProps)(withRouter(ShopListItems)))
 
