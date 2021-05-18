@@ -10,7 +10,6 @@ const Shop = () => {
             <FullHeaderContainer title={'Menu'} descr={'See our menus and what we offer'} />
             <ShopListItems/>
         </>
-
     )
 }
 

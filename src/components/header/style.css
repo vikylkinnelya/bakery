@@ -1,0 +1,126 @@
+.page-header {
+    font-family: 'Montserrat', sans-serif;
+    position: absolute;
+    top: 0;
+    width: 100vw;
+    color: #684f40;
+    text-align: center;
+    margin: 0;
+    border: none;
+    padding: 15px 0 23px 0;
+    -webkit-transition: all 0.4s ease-out;
+    -moz-transition: all 0.4s ease-out;
+    -o-transition: all 0.4s ease-out;
+    transition: all 0.4s ease-out;
+}
+
+.logo-primary{
+    display: inline-block;
+    vertical-align: top;
+    padding: 0;
+}
+
+.logo-primary {
+    max-width: 100%;
+    height: auto;
+}
+
+.page-header.fixed-header {
+    position: fixed;
+    background-color: rgba(255, 255, 255, 0.95);
+    padding-top: 12px;
+    padding-bottom: 12px;
+    z-index: 500;
+}
+
+.page-header.fixed-header .logo-primary {
+    display: none;
+}
+
+.page-header.fixed-header .nav-top>ul>li {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.nav-top {
+    width:100%;
+    font-size: 14px;
+    font-weight: 700;
+    align-items: center;
+    text-align: center;
+    justify-content: center;
+    padding-left: 30px;
+}
+
+.nav-top>.col {
+    overflow:auto;
+}
+
+.nav-top>.col a {
+    margin: 34px 0;
+    text-transform: uppercase;
+    -webkit-transition: all 0.2s ease-out;
+    -moz-transition: all 0.2s ease-out;
+    -o-transition: all 0.2s ease-out;
+    transition: all 0.2s ease-out;
+}
+
+.nav-top>.col>a {
+    color: inherit;
+    padding: 12px 10px;
+    display: block;
+    -webkit-transition: all 0.3s ease-out;
+    -moz-transition: all 0.3s ease-out;
+    -o-transition: all 0.3s ease-out;
+    transition: all 0.3s ease-out;
+}
+
+.nav-top>.col>a:hover {
+    color: #fdb822;
+    text-decoration: none;
+}
+
+.nav-top>ul>li>ul {
+    position: absolute;
+    background-color: #f1f1f1;
+    font-size: 13px;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 1000;
+    -webkit-transition: all 0.2s ease-out;
+    -moz-transition: all 0.2s ease-out;
+    -o-transition: all 0.2s ease-out;
+    transition: all 0.2s ease-out;
+}
+
+.nav-top>ul>li>ul>li {
+    color: #343434;
+    text-transform: none;
+    font-weight: normal;
+    text-align: left;
+    -webkit-transition: all 0.2s ease-out;
+    -moz-transition: all 0.2s ease-out;
+    -o-transition: all 0.2s ease-out;
+    transition: all 0.2s ease-out;
+}
+
+.nav-top>ul>li>ul>li a {
+    padding: 8px 20px;
+}
+
+.nav-top>ul>li>ul>li:hover {
+    background-color: rgba(104, 79, 64, 0.95);
+}
+
+.nav-top>ul>li:first-of-type {
+    border-left: none;
+}
+
+.nav-top>ul>li:hover>ul {
+    visibility: visible;
+    opacity: 1;
+}
+
+.nav-top>ul>li.active a {
+    color: #fdb822;
+}
