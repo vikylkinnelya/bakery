@@ -19,7 +19,7 @@ class CartList extends Component {
             <Container fluid>
                 { loading && <Spinner />}
 
-                <Col lg={{ span: 1, offset: 1 }}>
+                <Col lg={{ span: 2, offset: 1 }}>
                     <h1>Your order:</h1>
                 </Col>
 
@@ -41,7 +41,7 @@ class CartList extends Component {
                     <Col lg={2}>
                         <h2>total order price:</h2>
                     </Col>
-                    <Col lg={1}>
+                    <Col lg={2}>
                         {totalPrice}
                     </Col>
                 </Col>
