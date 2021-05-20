@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom';
 import WithRestoService from '../hoc';
 import { setMenu, setLoading, setError, setMenuType, addToCart } from '../../actions';
 
+
 class ShopListItems extends Component {
 
     componentDidMount() {
@@ -66,12 +67,14 @@ class ShopListItems extends Component {
 
                             {menuItems != null && menuItems.length > 0 && menuItems.map(menuItem => {
                                 return (
+
                                     <ShopItem
                                         key={menuItem.id}
                                         menuItem={menuItem}
                                         menuType={menuType}
                                         onAddToCart={addToCart}
                                     />
+
                                 )
                             })}
                         </Row>

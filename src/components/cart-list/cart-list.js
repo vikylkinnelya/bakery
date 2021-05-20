@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import Spinner from '../spinner';
-import { Col, Container, Row, Pagination } from 'react-bootstrap';
-import ShopItem from '../shop-item';
+import { Col, Container, Row } from 'react-bootstrap';
+import CartItem from '../cart-item';
 import { connect } from 'react-redux';
 import { withRouter } from "react-router";
-import { Link } from 'react-router-dom';
 import WithRestoService from '../hoc';
-import { setMenu, setLoading, setError, setMenuType, addToCart } from '../../actions';
+import { setMenu, setLoading, setError, addToCart } from '../../actions';
 import './styles.css'
 
 class CartList extends Component {
@@ -20,52 +19,36 @@ class CartList extends Component {
             <Container fluid>
                 { loading && <Spinner />}
 
-
-
-                {/* {cart != null && cart.length> 0 && cart.map(item => {
-                    return (
-                        
-                    )
-                })} */}
-
-                <Col lg={12}>
+                <Col lg={{ span: 1, offset: 1 }}>
                     <h1>Your order:</h1>
-
-                    <Row className='cart-item-row'>
-                        <Col lg={2}>
-                            photo
-                    </Col>
-                        <Col>
-                            title
-                    </Col>
-                        <Col>
-                            param
-                    </Col>
-                        <Col lg={2} className='count-col'>
-                            <button>-</button>
-                        count
-                    <button>+</button>
-                        </Col>
-                        <Col lg={2}>
-                            total price
-                    </Col>
-                    </Row>
-
-                    <Row className='row total-order-price'>
-                        <Col lg={2}>
-                            <h2>total order price:</h2>
-                        </Col>
-                        <Col lg={1}>
-                            total order price
-                        </Col>
-                    </Row>
-
-                    <Row className='row btn-order'>
-                        <button>order</button>
-                    </Row>
-
                 </Col>
 
+
+                <Col lg={{ span: 10, offset: 1 }} className='cart-items-list'>
+
+                    {cart != null && cart.length > 0 && cart.map(cartItem => {
+
+                        return (
+                            <CartItem
+                                key={cartItem.id}
+                                cartItem={cartItem}
+                            />
+                        )
+                    })}
+
+                </Col>
+                <Col className='row total-order-price' lg={{ span: 10, offset: 1 }}>
+                    <Col lg={2}>
+                        <h2>total order price:</h2>
+                    </Col>
+                    <Col lg={1}>
+                        {totalPrice}
+                    </Col>
+                </Col>
+
+                <Row className='row btn-order'>
+                    <button>order</button>
+                </Row>
 
 
             </Container>

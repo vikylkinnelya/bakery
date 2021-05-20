@@ -2,8 +2,8 @@
     justify-content: center
 }
 
-.cart-item-row {
-    justify-content: space-around;
+.cart-items-list{
+    justify-self: center;
 }
 
 .total-order-price {
