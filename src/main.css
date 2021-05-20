@@ -3413,8 +3413,8 @@ button.big-cup {
 }
 
 .top-section {
-  position: relative;
-  margin-top: 155px;
+  position: static;
+
   z-index: 750;
   background-color: #FFF;
 }
@@ -3501,7 +3501,6 @@ button.big-cup {
   }
 
   .page-header {
-    position: fixed;
     z-index: 999;
   }
 
@@ -3519,9 +3518,7 @@ button.big-cup {
     margin-bottom: 15px;
   }
 
-  .top-section {
-    margin-top: 130px;
-  }
+
 }
 
 @media (max-width: 991px) {
