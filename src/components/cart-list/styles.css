@@ -1,3 +1,7 @@
+.cart-list.container-fluid{
+    padding-top: 50px;
+}
+
 .cart-list h1 {
     font-size: 20px;
     text-transform: uppercase;

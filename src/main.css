@@ -2893,48 +2893,6 @@ button.big-cup {
   vertical-align: middle;
 }
 
-.sidebar {
-  margin-top: 20px;
-}
-
-.sidebar hr {
-  height: 1px;
-  border: none;
-  margin: 30px 0;
-  background-color: #ededed;
-}
-
-.sidebar-img {
-  width: 200px;
-  height: 200px;
-  margin: 35px auto 30px auto;
-  position: relative;
-  -webkit-border-radius: 50%;
-  -moz-border-radius: 50%;
-  border-radius: 50%;
-}
-
-.sidebar-img:after {
-  position: absolute;
-  width: 210px;
-  height: 210px;
-  top: -5px;
-  left: -5px;
-  background-color: #ddd;
-  content: '';
-  -webkit-border-radius: 50%;
-  -moz-border-radius: 50%;
-  border-radius: 50%;
-}
-
-.sidebar-img img {
-  width: 100%;
-  position: relative;
-  z-index: 1;
-  -webkit-border-radius: 50%;
-  -moz-border-radius: 50%;
-  border-radius: 50%;
-}
 
 .simple-delimiter:after {
   padding: 0 5px;

@@ -16,47 +16,46 @@ class CartList extends Component {
 
         return (
 
-            <Container fluid className= 'cart-list'>
-                { loading && <Spinner />}
+            <Container fluid className='cart-list'>
 
-                <Col lg={{ span: 2, offset: 2 }}>
-                    <h1>Your order:</h1>
-                </Col>
+                {loading && <Spinner />}
 
+                {cart.length > 0 &&
+                    <Col lg={{ span: 8, offset: 2 }} className='cart-items-list'>
 
-                <Col lg={{ span: 8, offset: 2 }} className='cart-items-list'>
+                        <Col lg={3}>
+                            <h1>Your order:</h1>
+                        </Col>
 
-                    {cart != null && cart.length > 0 && cart.map(cartItem => {
+                        {cart != null && cart.length > 0 && cart.map(cartItem => {
 
-                        return (
-                            <CartItem
-                                key={cartItem.id}
-                                cartItem={cartItem}
-                            />
-                        )
-                    })}
+                            return (
+                                <CartItem
+                                    key={cartItem.id}
+                                    cartItem={cartItem}
+                                />
+                            )
+                        })}
 
-                </Col>
-                <Col className='row total-order-price' lg={{ span: 8, offset: 2 }}>
-                    <Col lg={3}>
-                        <h3>total order price:</h3>
+                        <Col className='row total-order-price' lg={{ span: 8, offset: 2 }}>
+                            <Col lg={3}>
+                                <h3>total order price:</h3>
+                            </Col>
+                            <Col lg={2}>
+                                <h2>${totalPrice}</h2>
+                            </Col>
+                        </Col>
+
+                        <Row className='row btn-order'>
+                            <button><h3>order</h3></button>
+                        </Row>
+
                     </Col>
-                    <Col lg={2}>
-                        <h2>${totalPrice}</h2>
-                    </Col>
-                </Col>
-
-                <Row className='row btn-order'>
-                    <button><h3>order</h3></button>
-                </Row>
-
-
+                }
             </Container>
-
         )
     }
 }
-
 
 const mapStateToProps = state => {
     return {

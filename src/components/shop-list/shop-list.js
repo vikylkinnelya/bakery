@@ -7,7 +7,7 @@ import { withRouter } from "react-router";
 import { Link } from 'react-router-dom';
 import WithRestoService from '../hoc';
 import { setMenu, setLoading, setError, setMenuType, addToCart } from '../../actions';
-
+import './styles.css'
 
 class ShopListItems extends Component {
 
@@ -56,30 +56,24 @@ class ShopListItems extends Component {
 
         return (
             <Container fluid>
-
-                { loading && <Spinner />}
-
-                <Row >
-
+                <Row className='shop-row'>
                     <Col sm={{ span: 12, order: 11 }} md={{ span: 12, order: 2 }} lg={{ span: 10, order: 1 }} className='product-col'>
-                        <div className="margin-60"></div>
+                        {loading && <Spinner type={'coffee'} />}
                         <Row className='product-row'>
-
-                            {menuItems != null && menuItems.length > 0 && menuItems.map(menuItem => {
+                            {!loading && menuItems != null && menuItems.length > 0 && menuItems.map(menuItem => {
                                 return (
-
                                     <ShopItem
                                         key={menuItem.id}
                                         menuItem={menuItem}
                                         menuType={menuType}
                                         onAddToCart={addToCart}
                                     />
-
                                 )
                             })}
-                        </Row>
-                    </Col>
 
+                        </Row>
+
+                    </Col>
                     <Col sm={{ span: 12, order: 1 }} md={{ span: 12, order: 1 }} lg={{ span: 2, order: 1 }} className="sidebar">
                         <form className="form-search onscroll-animate">
                             <input name="s" type="text" placeholder="Type and hit enter" />
