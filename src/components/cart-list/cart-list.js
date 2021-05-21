@@ -16,15 +16,15 @@ class CartList extends Component {
 
         return (
 
-            <Container fluid>
+            <Container fluid className= 'cart-list'>
                 { loading && <Spinner />}
 
-                <Col lg={{ span: 2, offset: 1 }}>
+                <Col lg={{ span: 2, offset: 2 }}>
                     <h1>Your order:</h1>
                 </Col>
 
 
-                <Col lg={{ span: 10, offset: 1 }} className='cart-items-list'>
+                <Col lg={{ span: 8, offset: 2 }} className='cart-items-list'>
 
                     {cart != null && cart.length > 0 && cart.map(cartItem => {
 
@@ -37,17 +37,17 @@ class CartList extends Component {
                     })}
 
                 </Col>
-                <Col className='row total-order-price' lg={{ span: 10, offset: 1 }}>
-                    <Col lg={2}>
-                        <h2>total order price:</h2>
+                <Col className='row total-order-price' lg={{ span: 8, offset: 2 }}>
+                    <Col lg={3}>
+                        <h3>total order price:</h3>
                     </Col>
                     <Col lg={2}>
-                        {totalPrice}
+                        <h2>${totalPrice}</h2>
                     </Col>
                 </Col>
 
                 <Row className='row btn-order'>
-                    <button>order</button>
+                    <button><h3>order</h3></button>
                 </Row>
 
 

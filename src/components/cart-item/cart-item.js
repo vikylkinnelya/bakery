@@ -9,20 +9,20 @@ const CartItem = ({cartItem, totalPrice}) => {
     const { id, name, count, param, price } = cartItem
 
     return (
-            <Row className='cart-item-row'>
+            <Row className='cart-item'>
                 <Col lg={2} className='cart-item-previev'>
                     <img alt={name} src={`../../images/shop/${id.split('-')[0]}-min.jpg`}/>
                 </Col>
                 <Col>
-                    {name} { param ? `, ${param}` : null}
+                    <h3>{name} { param ? `, ${param}` : null}</h3>
                 </Col>
                 <Col lg={2} className='count-col'>
-                    <button>-</button>
+                    <h4><button>-</button>
                     {count}
-                    <button>+</button>
+                    <button>+</button></h4>
                 </Col>
                 <Col lg={2}>
-                    ${price * count}
+                    <h4>${price * count}</h4>
                 </Col>
             </Row>
 
