@@ -4,15 +4,18 @@ import { Col, Container, Row } from 'react-bootstrap';
 import CartItem from '../cart-item';
 import { connect } from 'react-redux';
 import { withRouter } from "react-router";
+import scrollToComponent from 'react-scroll-to-component';
+import { Link } from 'react-scroll';
 import WithRestoService from '../hoc';
-import { setMenu, setLoading, setError, addToCart } from '../../actions';
+import { setMenu, setLoading, setError, addToCart, setFormVisibility, deleteFromCart, decCount } from '../../actions';
+import Form from '../form';
 import './styles.css'
 
 class CartList extends Component {
 
     render() {
 
-        const { loading, error, cart, totalPrice, addToCart } = this.props
+        const { loading, error, cart, totalPrice, addToCart, deleteFromCart, decCount, setFormVisibility, formIsOpen} = this.props
 
         return (
 
@@ -33,25 +36,39 @@ class CartList extends Component {
                                 <CartItem
                                     key={cartItem.id}
                                     cartItem={cartItem}
+                                    addToCart={addToCart}
+                                    decCount={decCount}
+                                    deleteFromCart={deleteFromCart}
                                 />
                             )
                         })}
 
-                        <Col className='row total-order-price' lg={{ span: 8, offset: 2 }}>
-                            <Col lg={3}>
+                        <Col className='row total-order-price' lg={{ span: 10, offset: 1 }}>
+                            <Col lg={4}>
                                 <h3>total order price:</h3>
                             </Col>
-                            <Col lg={2}>
-                                <h2>${totalPrice}</h2>
+                            <Col lg={1}>
+                                <h2>${totalPrice.toFixed(2)}</h2>
                             </Col>
                         </Col>
 
-                        <Row className='row btn-order'>
-                            <button><h3>order</h3></button>
+                        {!formIsOpen && <Row className='btn-order'>
+                            <button onClick={() => { setFormVisibility() }}>
+                                <h3>order</h3>
+                            </button>
                         </Row>
-
+                        }
                     </Col>
                 }
+
+                <Row>
+                    {formIsOpen && <Form />}
+                </Row>
+
+
+
+
+
             </Container>
         )
     }
@@ -62,7 +79,8 @@ const mapStateToProps = state => {
         loading: state.loading,
         error: state.error,
         cart: state.cart,
-        totalPrice: state.totalPrice
+        totalPrice: state.totalPrice,
+        formIsOpen: state.formIsOpen
     }
 }
 
@@ -70,7 +88,8 @@ const mapDispatchToProps = {
     setMenu,
     setLoading,
     setError,
-    addToCart
+    addToCart, deleteFromCart, decCount,
+    setFormVisibility
 }
 
 

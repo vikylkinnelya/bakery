@@ -1,0 +1,32 @@
+.error-form {
+    border: 2px solid #FF6565;
+}
+
+.error-form-message {
+    color: #FF6565;
+    padding: 0em .2em;
+    height: 1em;
+    position: absolute;
+    font-size: .8em;
+}
+
+.row .form-group{
+    margin-bottom: 20px;
+}
+
+.form-group .form-control{
+    margin-bottom: 0px;
+    border: 1px #684f40 solid;
+    border-radius: 35px;
+    background-color: rgba(230, 230, 230, 0.171);
+    
+}
+
+.form-group .form-label{
+    margin-bottom: 0;
+}
+
+
+.bakery-form{
+    margin-bottom: 30px;
+}

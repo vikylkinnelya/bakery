@@ -6,7 +6,8 @@ const initialState = {
     menuTotalItems: '',
     menuPage: 1,
     cart: [],
-    totalPrice: 0
+    totalPrice: 0,
+    formIsOpen: false
 
 }
 
@@ -63,19 +64,19 @@ const reducer = (state = initialState, action) => {
 
         case 'ADD_TO_CART':
 
-            const idWithParam = action.payload
-            const id = idWithParam.split('-')[0]
-            const param = idWithParam.split('-')[1]
+            const idToAddWithParam = action.payload
+            const idToAddWithoutParam = idToAddWithParam.split('-')[0]
+            const param = idToAddWithParam.split('-')[1]
             const priceIdxByParam = param === 'M' ? 0 : 1
 
-            const itemIdxinCart = state.cart.findIndex(el => el.id === idWithParam)
-            
+            const itemIdxinCart = state.cart.findIndex(el => el.id === idToAddWithParam)
+
             if (itemIdxinCart === -1) {
-                const item = state.menu.find(item => item.id === id)
+                const item = state.menu.find(item => item.id === idToAddWithoutParam)
 
                 const newItem = {
                     name: item.name,
-                    id: idWithParam,
+                    id: idToAddWithParam,
                     param: param,
                     price: param ? item.pricing[priceIdxByParam] : item.price,
                     count: 1
@@ -87,7 +88,7 @@ const reducer = (state = initialState, action) => {
                 };
             }
             else {
-                const itemInCart = state.cart.find(el => el.id === idWithParam)
+                const itemInCart = state.cart.find(el => el.id === idToAddWithParam)
                 const newItem = {
                     ...itemInCart,
                     count: ++itemInCart.count
@@ -97,10 +98,50 @@ const reducer = (state = initialState, action) => {
                     cart: [
                         ...state.cart.slice(0, itemIdxinCart),
                         newItem,
-                        ...state.cart.slice(itemIdxinCart+1)
+                        ...state.cart.slice(itemIdxinCart + 1)
                     ],
                     totalPrice: state.totalPrice + newItem.price
                 }
+            }
+
+        case 'DELETE_FROM_CART':
+
+            const idToDelWithParam = action.payload
+            const itemIdxToDelinCart = state.cart.findIndex(el => el.id === idToDelWithParam)
+            const itemToDel = state.cart[itemIdxToDelinCart]
+            return {
+                ...state,
+                cart: [
+                    ...state.cart.slice(0, itemIdxToDelinCart),
+                    ...state.cart.slice(itemIdxToDelinCart + 1)
+                ],
+                totalPrice: state.totalPrice + itemToDel.price
+            }
+
+        case 'DEC_COUNT':
+            const idToDecCount = action.payload
+            const itemIdxToDecCount = state.cart.findIndex(el => el.id === idToDecCount)
+            const itemToDecCount = state.cart[itemIdxToDecCount]
+            const newDecItem = {
+                ...itemToDecCount,
+                count: --itemToDecCount.count
+            }
+            return {
+                ...state,
+                cart: [
+                    ...state.cart.slice(0, itemIdxToDecCount),
+                    newDecItem,
+                    ...state.cart.slice(itemIdxToDecCount + 1)
+                ],
+                totalPrice: state.totalPrice - newDecItem.price
+            }
+
+
+
+        case 'SET_FORM_VISIBILITY':
+            return {
+                ...state,
+                formIsOpen: !state.formIsOpen
             }
 
 

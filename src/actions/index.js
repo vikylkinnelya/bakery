@@ -33,10 +33,32 @@ const addToCart = (id) => {
     }
 }
 
+const setFormVisibility = () => ({
+    type: 'SET_FORM_VISIBILITY'
+})
+
+
+const deleteFromCart = (id) => {
+    return {
+        payload: id, 
+        type: 'DELETE_FROM_CART'
+    }
+}
+
+const decCount = (id) => {
+    return {
+        payload: id, 
+        type: 'DEC_COUNT'
+    }
+}
+
+
+
 export {
     setMenu, setLoading, setError,
     setMenuType, setMenuPage,
     setLocation,
-    addToCart
+    addToCart, deleteFromCart,  decCount,
+    setFormVisibility
 
 }

@@ -1,8 +1,8 @@
 import React from 'react';
 import { Switch, Route, } from "react-router-dom";
-import Header from '../header'
-import { Shop, Cart } from '../pages/index'
-import { Container} from 'react-bootstrap'
+import Header from '../header';
+import Footer from '../footer';
+import { Shop, Cart } from '../pages/index';
 
 const App = () => {
 
@@ -22,6 +22,8 @@ const App = () => {
                     </Route>
 
                 </Switch>
+            
+            <Footer/>
             
 
         </>

@@ -15,6 +15,10 @@ This is compiled file, for the original file please see .less file
   color: #fdb822;
 }
 
+.container-fluid{
+  height: 100%;
+}
+
 .selected a .list-arrows-value {
   background-color: #fdb822;
   color: #FFF
