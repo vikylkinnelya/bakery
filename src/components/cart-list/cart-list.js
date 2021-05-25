@@ -4,8 +4,6 @@ import { Col, Container, Row } from 'react-bootstrap';
 import CartItem from '../cart-item';
 import { connect } from 'react-redux';
 import { withRouter } from "react-router";
-import scrollToComponent from 'react-scroll-to-component';
-import { Link } from 'react-scroll';
 import WithRestoService from '../hoc';
 import { setMenu, setLoading, setError, addToCart, setFormVisibility, deleteFromCart, decCount } from '../../actions';
 import Form from '../form';
@@ -19,7 +17,7 @@ class CartList extends Component {
 
         return (
 
-            <Container fluid className='cart-list'>
+            <div className='cart-list'>
 
                 {loading && <Spinner />}
 
@@ -69,7 +67,7 @@ class CartList extends Component {
 
 
 
-            </Container>
+            </div>
         )
     }
 }

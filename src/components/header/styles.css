@@ -7,7 +7,6 @@ header {
     font-family: 'Montserrat', sans-serif;
     position: static;
     top: 0;
-    width: 100vw;
     color: #684f40;
     text-align: center;
     margin: 0;
@@ -18,7 +17,6 @@ header {
     -o-transition: all 0.4s ease-out;
     transition: all 0.4s ease-out;
 }
-
 
 .logo-primary {
     display: inline-block;
@@ -38,7 +36,7 @@ header {
     align-items: center;
     text-align: center;
     justify-content: center;
-    padding-left: 45px;
+    padding-left: 55px;
 }
 
 .nav-top>.col {

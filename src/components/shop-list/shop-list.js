@@ -128,8 +128,9 @@ class ShopListItems extends Component {
                         </ul>
                     </Col>
 
-                    <Col sm={{ order: 12 }} >
-                        <Pagination className="pagination">
+
+                    <Col sm={{ order: 12 }} className='pagination-col'>
+                        <Pagination >
                             <Pagination.Prev className="pagination-item pagination-nav" />
                             {paginationItems}
                             <Pagination.Next className="pagination-item pagination-nav" />
@@ -137,7 +138,7 @@ class ShopListItems extends Component {
                     </Col>
 
                 </Row>
-            </Container >
+            </ Container>
         )
     }
 }
