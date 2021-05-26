@@ -67,10 +67,11 @@ header {
     text-decoration: none;
 }
 
-
-.nav-top>.col>a:hover {
-    background-color: rgba(104, 79, 64, 0.95);
+.nav-top>a>.row svg:hover {
+    fill: #fdb822;
 }
+
+
 
 .nav-top>.col>a:first-of-type {
     border-left: none;

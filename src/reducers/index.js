@@ -1,10 +1,10 @@
 const initialState = {
     menu: [],
+    menuTotalItems: 0,
     error: false,
     loading: false,
     menuType: 'all',
-    menuTotalItems: '',
-    menuPage: 1,
+    menuCurrPage: 1,
     cart: [],
     totalPrice: 0,
     formIsOpen: false
@@ -17,17 +17,9 @@ const reducer = (state = initialState, action) => {
 
         case 'SET_MENU':
 
-            const newMenu = state.menuType === 'all' ?
-                action.payload.map(el => el.menu) :
-                action.payload.menu
-
-            const resultMenu = state.menuType === 'all' ?
-                newMenu[0].concat(newMenu[1], newMenu[2]) :
-                newMenu
-
             return {
                 ...state,
-                menu: resultMenu,
+                menu: action.payload,
                 loading: false
             };
 
@@ -48,6 +40,12 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 menuType: action.payload
+            }
+
+        case 'SET_MENU_TOTAL_ITEMS':
+            return{
+                ...state, 
+                menuTotalItems: action.payload
             }
 
         case 'SET_MENU_PAGE':

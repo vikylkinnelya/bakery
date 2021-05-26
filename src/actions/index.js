@@ -16,6 +16,11 @@ const setMenuType = (type) => ({
     payload: type
 })
 
+const setMenuTotalItems = (count) => ({
+    type: 'SET_MENU_TOTAL_ITEMS',
+    payload: count
+})
+
 const setMenuPage = (page) => ({
     type: 'SET_MENU_PAGE',
     payload: page
@@ -56,7 +61,7 @@ const decCount = (id) => {
 
 export {
     setMenu, setLoading, setError,
-    setMenuType, setMenuPage,
+    setMenuType, setMenuPage, setMenuTotalItems,
     setLocation,
     addToCart, deleteFromCart,  decCount,
     setFormVisibility

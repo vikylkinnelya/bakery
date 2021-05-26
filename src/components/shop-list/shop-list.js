@@ -6,30 +6,40 @@ import { connect } from 'react-redux';
 import { withRouter } from "react-router";
 import { Link } from 'react-router-dom';
 import WithRestoService from '../hoc';
-import { setMenu, setLoading, setError, setMenuType, addToCart } from '../../actions';
+import { setMenu, setLoading, setError, setMenuType, addToCart, setMenuPage, setMenuTotalItems } from '../../actions';
 import './styles.css'
 
 class ShopListItems extends Component {
 
     componentDidMount() {
         this.props.setLoading()
-        const { RestoService, location } = this.props;
+
+        const { RestoService, location, setMenuTotalItems } = this.props;
+
         const pathMenuType = location.pathname.split('/')[2]
         this.props.setMenuType(pathMenuType)
 
-        RestoService.getMenuItems(pathMenuType)
+        RestoService.getMenuItems(pathMenuType, '')
+            .then(result => setMenuTotalItems(result.length))
+
+        RestoService.getMenuItems(pathMenuType, 1)
             .then(res => this.props.setMenu(res))
             .catch(error => this.props.setError())
+
+
     }
 
     componentDidUpdate(prevProps) {
 
-        const { RestoService, menuType } = this.props;
+        const { RestoService, menuType, setMenuTotalItems, menuCurrPage } = this.props;
 
-        if (this.props.menuType !== prevProps.menuType) {
+        if ((this.props.menuType !== prevProps.menuType) || (this.props.menuCurrPage !== prevProps.menuCurrPage)) {
             this.props.setLoading()
 
-            RestoService.getMenuItems(menuType)
+            RestoService.getMenuItems(menuType, '')
+                .then(result => setMenuTotalItems(result.length))
+
+            RestoService.getMenuItems(menuType, menuCurrPage)
                 .then(res => this.props.setMenu(res))
                 .catch(error => this.props.setError())
         }
@@ -37,17 +47,16 @@ class ShopListItems extends Component {
 
     render() {
 
-        const { menuItems, loading, error, menuType, setMenuType, addToCart } = this.props
+        const { menuItems, loading, error, menuType, setMenuType, addToCart, menuCurrPage, menuTotalItems } = this.props
 
         const paginationItems = []
-        let active = 1;
 
         for (let i = 1; i <= Math.ceil(menuItems.length / 9); i++) {
             paginationItems.push(
                 <Pagination.Item
                     className="pagination-item"
                     key={i}
-                    active={i === active}
+                    active={i === menuCurrPage}
                     activeLabel={null}>
                     {i}
                 </Pagination.Item>
@@ -89,7 +98,7 @@ class ShopListItems extends Component {
                                     <div className="list-arrows-content">
                                         All
                                     </div>
-                                    {menuType === 'all' && <div className="list-arrows-value">{menuItems.length}</div>}
+                                    {menuType === 'all' && <div className="list-arrows-value">{menuTotalItems}</div>}
                                 </Link>
                             </li>
 
@@ -99,7 +108,7 @@ class ShopListItems extends Component {
                                         <div className="list-arrows-content">
                                             Breakfast
                                         </div>
-                                        {menuType === 'breakfast' && <div className="list-arrows-value">{menuItems.length}</div>}
+                                        {menuType === 'breakfast' && <div className="list-arrows-value">{menuTotalItems}</div>}
                                     </article>
                                 </Link>
                             </li>
@@ -109,7 +118,7 @@ class ShopListItems extends Component {
                                         <div className="list-arrows-content">
                                             Bakery
                                         </div>
-                                        {menuType === 'bakery' && <div className="list-arrows-value">{menuItems.length}</div>}
+                                        {menuType === 'bakery' && <div className="list-arrows-value">{menuTotalItems}</div>}
                                     </article>
                                 </Link>
                             </li>
@@ -121,7 +130,7 @@ class ShopListItems extends Component {
                                         <div className="list-arrows-content">
                                             Drinks
                                     </div>
-                                        {menuType === 'drinks' && <div className="list-arrows-value">{menuItems.length}</div>}
+                                        {menuType === 'drinks' && <div className="list-arrows-value">{menuTotalItems}</div>}
                                     </article>
                                 </Link>
                             </li>
@@ -149,6 +158,8 @@ const mapStateToProps = state => {
         loading: state.loading,
         error: state.error,
         menuType: state.menuType,
+        menuCurrPage: state.menuCurrPage,
+        menuTotalItems: state.menuTotalItems,
         cart: state.cart
     }
 }
@@ -158,6 +169,8 @@ const mapDispatchToProps = {
     setLoading,
     setError,
     setMenuType,
+    setMenuPage,
+    setMenuTotalItems,
     addToCart
 }
 
