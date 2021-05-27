@@ -57,8 +57,8 @@
 
 
 .product-row .product {
-    max-width: 250px;
-    max-height: 330px;
+    width: 250px;
+    height: 290px;
     position: relative;
     border: 2px #684f40 solid;
     margin-bottom: 30px;
