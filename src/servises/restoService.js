@@ -8,9 +8,8 @@ export default class RestoService {
 
     async getResourse(url, type = '', page = 1,) {
 
-
-        const typeOf = type === 'all' ? '' : `?type=${type}&`
-        const pageOf = page === '' ? '' : `page=${page}&_limit=8`
+        const typeOf = type === 'all' ? '' : `type=${type}&`
+        const pageOf = page === '' ? '' : `_page=${page}&_limit=8`
         const joiner = type === '' ? '' : '?'
 
         const res = await fetch(`${this._apiBase}${url}${joiner}${typeOf}${pageOf}`)

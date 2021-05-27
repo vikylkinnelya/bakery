@@ -51,7 +51,7 @@ const reducer = (state = initialState, action) => {
         case 'SET_MENU_PAGE':
             return {
                 ...state,
-                menuPage: action.payload
+                menuCurrPage: action.payload
             }
 
         case 'SET_LOCATION':

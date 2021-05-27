@@ -12,54 +12,60 @@ import './styles.css'
 class ShopListItems extends Component {
 
     componentDidMount() {
-        this.props.setLoading()
+        const { RestoService, location, setMenuTotalItems, setMenu, setError, setLoading } = this.props;
 
-        const { RestoService, location, setMenuTotalItems } = this.props;
+        setLoading()
 
         const pathMenuType = location.pathname.split('/')[2]
-        this.props.setMenuType(pathMenuType)
+        console.log(pathMenuType)
+        setMenuType(pathMenuType)
 
         RestoService.getMenuItems(pathMenuType, '')
             .then(result => setMenuTotalItems(result.length))
 
         RestoService.getMenuItems(pathMenuType, 1)
-            .then(res => this.props.setMenu(res))
-            .catch(error => this.props.setError())
-
+            .then(res => setMenu(res))
+            .catch(error => setError())
 
     }
 
     componentDidUpdate(prevProps) {
 
-        const { RestoService, menuType, setMenuTotalItems, menuCurrPage } = this.props;
+        const { RestoService, menuType, menuCurrPage, setMenuTotalItems, setMenu, setError, setLoading } = this.props;
 
-        if ((this.props.menuType !== prevProps.menuType) || (this.props.menuCurrPage !== prevProps.menuCurrPage)) {
-            this.props.setLoading()
+        if ((menuType !== prevProps.menuType) || (menuCurrPage !== prevProps.menuCurrPage)) {
+            setLoading()
 
-            RestoService.getMenuItems(menuType, '')
+            RestoService.getMenuItems(menuType)
                 .then(result => setMenuTotalItems(result.length))
 
             RestoService.getMenuItems(menuType, menuCurrPage)
-                .then(res => this.props.setMenu(res))
-                .catch(error => this.props.setError())
+                .then(res => setMenu(res, menuCurrPage))
+                .catch(error => setError())
         }
     }
 
     render() {
 
-        const { menuItems, loading, error, menuType, setMenuType, addToCart, menuCurrPage, menuTotalItems } = this.props
+        const { menuItems, loading, error, menuType, setMenuType, setMenuPage, addToCart, menuCurrPage, menuTotalItems } = this.props
 
         const paginationItems = []
 
-        for (let i = 1; i <= Math.ceil(menuItems.length / 9); i++) {
+        for (let i = 1; i <= Math.ceil(menuTotalItems / 9); i++) {
             paginationItems.push(
+
                 <Pagination.Item
                     className="pagination-item"
                     key={i}
                     active={i === menuCurrPage}
-                    activeLabel={null}>
-                    {i}
+                    activeLabel={null}
+                    onClick={() => setMenuPage(i)}
+                >
+                    <Link to={`${i}`}>
+                        {i}
+                    </Link>
                 </Pagination.Item>
+
             )
         }
 
