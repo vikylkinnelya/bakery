@@ -5,6 +5,7 @@ import ShopItem from '../shop-item';
 import { connect } from 'react-redux';
 import { withRouter } from "react-router";
 import { Link } from 'react-router-dom';
+import { LazyLoadComponent, trackWindowScroll } from 'react-lazy-load-image-component';
 import WithRestoService from '../hoc';
 import { setMenu, setLoading, setError, setMenuType, addToCart, setMenuPage, setMenuTotalItems } from '../../actions';
 import './styles.css'
@@ -47,7 +48,7 @@ class ShopListItems extends Component {
 
     render() {
 
-        const { menuItems, loading, error, menuType, setMenuType, setMenuPage, addToCart, menuCurrPage, menuTotalItems } = this.props
+        const { scrollPosition, menuItems, loading, error, menuType, setMenuType, setMenuPage, addToCart, menuCurrPage, menuTotalItems } = this.props
 
         const paginationItems = []
 
@@ -75,16 +76,17 @@ class ShopListItems extends Component {
                     <Col sm={{ span: 12, order: 11 }} md={{ span: 12, order: 2 }} lg={{ span: 10, order: 1 }} className='product-col'>
                         {loading && <Spinner type={'coffee'} />}
                         <Row className='product-row'>
-                            {!loading && menuItems != null && menuItems.length > 0 && menuItems.map(menuItem => {
-                                return (
+                            {!loading && menuItems != null && menuItems.length > 0 && menuItems.map(menuItem => (
+                                <LazyLoadComponent key={menuItem.id} scrollPosition={scrollPosition}>
                                     <ShopItem
-                                        key={menuItem.id}
+                                        
                                         menuItem={menuItem}
                                         menuType={menuType}
                                         onAddToCart={addToCart}
                                     />
-                                )
-                            })}
+                                </LazyLoadComponent>
+                            ))
+                            }
 
                         </Row>
 
@@ -180,5 +182,5 @@ const mapDispatchToProps = {
     addToCart
 }
 
-export default WithRestoService()(connect(mapStateToProps, mapDispatchToProps)(withRouter(ShopListItems)))
+export default WithRestoService()(connect(mapStateToProps, mapDispatchToProps)(withRouter(trackWindowScroll(ShopListItems))))
 
