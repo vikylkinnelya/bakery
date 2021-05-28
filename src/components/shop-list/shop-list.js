@@ -5,6 +5,7 @@ import ShopItem from '../shop-item';
 import { connect } from 'react-redux';
 import { withRouter } from "react-router";
 import { Link } from 'react-router-dom';
+import scrollToComponent from 'react-scroll-to-component';
 import { LazyLoadComponent, trackWindowScroll } from 'react-lazy-load-image-component';
 import WithRestoService from '../hoc';
 import { setMenu, setLoading, setError, setMenuType, addToCart, setMenuPage, setMenuTotalItems } from '../../actions';
@@ -27,7 +28,6 @@ class ShopListItems extends Component {
         RestoService.getMenuItems(pathMenuType, 1)
             .then(res => setMenu(res))
             .catch(error => setError())
-
     }
 
     componentDidUpdate(prevProps) {
@@ -60,7 +60,7 @@ class ShopListItems extends Component {
                     key={i}
                     active={i === menuCurrPage}
                     activeLabel={null}
-                    onClick={() => setMenuPage(i)}
+                    onClick={() => { setMenuPage(i); scrollToComponent(this.Shop, { offset: 0, align: 'top', duration: 1000, ease:'inExpo'} ) }}
                 >
                     <Link to={`${i}`}>
                         {i}
@@ -71,23 +71,21 @@ class ShopListItems extends Component {
         }
 
         return (
-            <Container fluid>
-                <Row className='shop-row'>
+            <Container fluid ref={(div) => { this.Shop = div }}>
+                <Row className='shop-row' >
                     <Col sm={{ span: 12, order: 11 }} md={{ span: 12, order: 2 }} lg={{ span: 10, order: 1 }} className='product-col'>
                         {loading && <Spinner type={'coffee'} />}
                         <Row className='product-row'>
                             {!loading && menuItems != null && menuItems.length > 0 && menuItems.map(menuItem => (
                                 <LazyLoadComponent key={menuItem.id} scrollPosition={scrollPosition}>
                                     <ShopItem
-                                        
+
                                         menuItem={menuItem}
                                         menuType={menuType}
                                         onAddToCart={addToCart}
                                     />
-                                </LazyLoadComponent>
-                            ))
+                                </LazyLoadComponent>))
                             }
-
                         </Row>
 
                     </Col>
