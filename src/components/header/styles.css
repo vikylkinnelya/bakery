@@ -1,50 +1,31 @@
-header {
-    height: auto;
-
-}
 
 .page-header {
     font-family: 'Montserrat', sans-serif;
-    position: static;
-    top: 0;
     color: #684f40;
-    text-align: center;
-    margin: 0;
-    border: none;
-    padding: 15px 0 23px 0;
-    -webkit-transition: all 0.4s ease-out;
-    -moz-transition: all 0.4s ease-out;
-    -o-transition: all 0.4s ease-out;
-    transition: all 0.4s ease-out;
 }
 
 .logo-primary {
-    display: inline-block;
-    vertical-align: top;
     padding: 0;
 }
 
 .logo-primary {
-    max-width: 100%;
-    height: auto;
+    max-height: 100%;
+    width: auto;
 }
 
 .nav-top {
-    width: 100%;
     font-size: 14px;
     font-weight: 700;
-    align-items: center;
     text-align: center;
+    padding-left: 10px;
     justify-content: center;
-    padding-left: 55px;
 }
 
-.nav-top>.col {
-    overflow: auto;
+.nav-top>.col{
+    max-width: 150px;
 }
 
 .nav-top>.col>a {
-    min-width: 47px !important;
     margin: 34px 0;
     text-transform: uppercase;
     -webkit-transition: all 0.2s ease-out;
@@ -55,7 +36,6 @@ header {
 
 .nav-top>.col>a {
     color: inherit;
-    display: block;
     -webkit-transition: all 0.3s ease-out;
     -moz-transition: all 0.3s ease-out;
     -o-transition: all 0.3s ease-out;
@@ -67,17 +47,15 @@ header {
     text-decoration: none;
 }
 
-.nav-top>a>.row svg:hover {
+.basket-link *:hover {
     fill: #fdb822;
 }
 
-
-
-.nav-top>.col>a:first-of-type {
-    border-left: none;
+.basket-link{
+    display: flex;
+    justify-content:center 
 }
 
-
-.nav-top>.col>a.active a {
+.nav-top>.col>a.selected {
     color: #fdb822;
 }

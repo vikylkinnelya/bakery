@@ -32,7 +32,7 @@ const ShopItem = ({ menuItem, menuType, onAddToCart }) => {
 
     return (
 
-        < Col className="product" lg='auto'>
+        < Col className="product" sm={2} lg={2}>
             <div className="product-preview">
                 <LazyLoadImage alt={name} src={`../../images/shop/${id}-min.jpg`} />
             </div>
