@@ -7,6 +7,7 @@ import { withRouter } from "react-router";
 import { Link } from 'react-router-dom';
 import scrollToComponent from 'react-scroll-to-component';
 import { LazyLoadComponent, trackWindowScroll } from 'react-lazy-load-image-component';
+import scrollToComponent from 'react-scroll-to-component';
 import WithRestoService from '../hoc';
 import { setMenu, setLoading, setError, setMenuType, addToCart, setMenuPage, setMenuTotalItems } from '../../actions';
 import './styles.css'
@@ -60,7 +61,14 @@ class ShopListItems extends Component {
                     key={i}
                     active={i === menuCurrPage}
                     activeLabel={null}
+<<<<<<< HEAD
                     onClick={() => { setMenuPage(i); scrollToComponent(this.Shop, { offset: 0, align: 'top', duration: 1000, ease:'inExpo'} ) }}
+=======
+                    onClick={() => {
+                        setMenuPage(i);
+                        scrollToComponent(this.Shop, { offset: -150, align: 'top', duration: 500 })
+                    }}
+>>>>>>> c75b63c0375f90b68be5bd351ca265cea9bcd6a9
                 >
                     <Link to={`${i}`}>
                         {i}
@@ -71,6 +79,7 @@ class ShopListItems extends Component {
         }
 
         return (
+<<<<<<< HEAD
             <Container fluid ref={(div) => { this.Shop = div }}>
                 <Row className='shop-row' >
                     <Col sm={{ span: 12, order: 11 }} md={{ span: 12, order: 2 }} lg={{ span: 10, order: 1 }} className='product-col'>
@@ -90,6 +99,11 @@ class ShopListItems extends Component {
 
                     </Col>
                     <Col sm={{ span: 12, order: 1 }} md={{ span: 12, order: 1 }} lg={{ span: 2, order: 1 }} className="sidebar">
+=======
+            <Container fluid ref={(section) => { this.Shop = section; }}>
+                <Row className='shop-row'>
+                    <Col sm={{ span: 12, order: 1 }} md={{ span: 12, order: 1 }} lg={{ span: 2, order: 2 }} className="sidebar">
+>>>>>>> c75b63c0375f90b68be5bd351ca265cea9bcd6a9
                         <form className="form-search onscroll-animate">
                             <input name="s" type="text" placeholder="Type and hit enter" />
                         </form>
@@ -142,6 +156,25 @@ class ShopListItems extends Component {
                             </li>
                         </ul>
                     </Col>
+
+                    <Col sm={{ span: 12, order: 2 }} md={{ span: 12, order: 2 }} lg={{ span: 10, order: 1 }} className='product-col'>
+                        {loading && <Spinner type={'coffee'} />}
+                        <Row className='product-row'>
+                            {!loading && menuItems != null && menuItems.length > 0 && menuItems.map(menuItem => (
+                                <LazyLoadComponent
+                                    key={menuItem.id}
+                                    scrollPosition={scrollPosition}>
+                                    <ShopItem
+                                        menuItem={menuItem}
+                                        menuType={menuType}
+                                        onAddToCart={addToCart}
+                                    />
+                                </LazyLoadComponent>
+                            ))}
+                        </Row>
+                    </Col>
+
+
 
 
                     <Col sm={{ order: 12 }} className='pagination-col'>

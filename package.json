@@ -52,7 +52,6 @@
     "formik": "^2.2.7",
     "react-bootstrap": "^1.5.2",
     "react-lazy-load-image-component": "^1.5.1",
-    "react-scroll": "^1.8.2",
     "react-scroll-to-component": "^1.0.2",
     "yup": "^0.32.9"
   }
