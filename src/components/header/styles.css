@@ -59,3 +59,8 @@
 .nav-top>.col>a.selected {
     color: #fdb822;
 }
+
+.nav-top>.col>a.selected svg {
+    fill: #fdb822;
+
+}

@@ -7,7 +7,8 @@ const initialState = {
     menuCurrPage: 1,
     cart: [],
     totalPrice: 0,
-    formIsOpen: false
+    formIsOpen: false,
+    modalIsShown: false,
 
 }
 
@@ -134,14 +135,17 @@ const reducer = (state = initialState, action) => {
                 totalPrice: state.totalPrice - newDecItem.price
             }
 
-
-
         case 'SET_FORM_VISIBILITY':
             return {
                 ...state,
                 formIsOpen: !state.formIsOpen
             }
 
+        case 'SET_MODAL_VISIBILITY':
+            return {
+                ...state, 
+                modalIsShown: !state.modalIsShown
+            }
 
         default:
             return state;

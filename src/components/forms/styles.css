@@ -1,0 +1,83 @@
+.error-form {
+    border: 2px solid #FF6565;
+}
+
+.error-form-message {
+    color: #FF6565;
+    padding: 0em .2em;
+    height: 1em;
+    position: absolute;
+    font-size: .8em;
+}
+
+.form-group>.form-control:focus {
+    color: #495057;
+    background-color: rgba(255, 255, 255, 0.404);
+    box-shadow: 0 0 0 0.2rem rgb(253 184 34 / 25%);
+    border-color: #fdb822;
+}
+
+.error-form.form-control,
+.error-form.form-control:focus {
+    box-shadow: 0 0 0 0.2rem rgb(253 34 34 / 25%);
+    border-color: #fd2222;
+}
+
+.row .form-group {
+    margin-bottom: 20px;
+}
+
+.form-group .form-control {
+    margin-bottom: 0px;
+    border: 1px #684f40 solid;
+    border-radius: 35px;
+    background-color: rgba(230, 230, 230, 0.171);
+}
+
+.form-group .form-label {
+    margin-bottom: 0;
+}
+
+
+.bakery-form {
+    margin-bottom: 30px;
+}
+
+
+.form-subscribe.row {
+    align-items: center;
+}
+
+.form-subscribe>.col-md-8 {
+    padding-right: 0;
+}
+
+.form-subscribe>.col-md-8>.email-container input {
+    color: #d6d8db;
+    background-color: #3b3c3d;
+    border: 2px #a1a3a5 solid;
+    outline: none;
+    width: 100%;
+    padding: 8px;
+    font-size: 18px;
+    border-radius: 0px;
+    margin: 0;
+}
+
+.form-subscribe>.col-md-8>.email-container {
+    margin: 0;
+}
+
+.form-subscribe>.submit-container button {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    width: 100%;
+    font-size: 18px;
+    color: #303133;
+    text-align: center;
+    background-color: #a1a3a5;
+    border: none;
+    outline: none;
+    padding: 10px 0;
+}

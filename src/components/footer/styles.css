@@ -37,5 +37,100 @@
     color: #66686a;
     font-weight: 300;
     margin-bottom: 0;
-  }
-  
+}
+
+.social-icon-container {
+    background-color: #7c7c7c;
+    height: 35px;
+    width: 35px;
+    font-size: 14px;
+    text-align: center;
+    line-height: 31px;
+    border: 2px #7c7c7c solid;
+    display: inline-block;
+    margin-right: 3px;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    -webkit-transition: all 0.2s ease-out;
+    -moz-transition: all 0.2s ease-out;
+    -o-transition: all 0.2s ease-out;
+    transition: all 0.2s ease-out;
+}
+
+.social-icon-container>a>img {
+    color: #28292b;
+    background-color: #7c7c7c;
+}
+
+.social-icon-container a {
+    display: block;
+    -webkit-transition: all 0.2s ease-out;
+    -moz-transition: all 0.2s ease-out;
+    -o-transition: all 0.2s ease-out;
+    transition: all 0.2s ease-out;
+}
+
+.social-icon-container:hover,
+.social-icon-container>a>img:hover {
+    color: #28292b;
+    background-color: #FFF;
+    border: 2px #FFF solid;
+
+}
+
+.social-icon-container:hover a,
+.social-icon-container:hover a>svg {
+    color: #28292b;
+}
+
+.social-icon-container-alt,
+.social-icon-container-alt-big,
+.social-icon-container-alt-small {
+    height: 40px;
+    width: 40px;
+    text-align: center;
+    line-height: 38px;
+    font-size: 16px;
+    margin: 0 8px 10px 0;
+    background-color: #684f40;
+    display: inline-block;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+    -webkit-transition: all 0.2s ease-out;
+    -moz-transition: all 0.2s ease-out;
+    -o-transition: all 0.2s ease-out;
+    transition: all 0.2s ease-out;
+}
+
+.social-icon-container-alt a,
+.social-icon-container-alt-big a,
+.social-icon-container-alt-small a {
+    color: #FFF;
+    display: block;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+    border-radius: 50%;
+}
+
+.social-icon-container-alt:hover,
+.social-icon-container-alt-big:hover,
+.social-icon-container-alt-small:hover {
+    background-color: #fdb822;
+}
+
+.social-icon-container-alt-big {
+    width: 50px;
+    height: 50px;
+    font-size: 20px;
+    line-height: 50px;
+    margin-right: 10px;
+}
+
+.social-icon-container-alt-small {
+    width: 30px;
+    height: 30px;
+    font-size: 12px;
+    line-height: 30px;
+}

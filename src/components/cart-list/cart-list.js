@@ -1,23 +1,47 @@
 import React, { Component } from 'react';
 import Spinner from '../spinner';
-import { Col, Container, Row } from 'react-bootstrap';
+import { Col, Row } from 'react-bootstrap';
 import CartItem from '../cart-item';
+import ModalAfterForm from '../modal-after-form';
+import { FormForOrder } from '../forms';
 import { connect } from 'react-redux';
 import { withRouter } from "react-router";
 import WithRestoService from '../hoc';
-import { setMenu, setLoading, setError, addToCart, setFormVisibility, deleteFromCart, decCount } from '../../actions';
-import Form from '../form';
+import { setMenu, setLoading, setError, addToCart, setFormVisibility, setModalVisibility, deleteFromCart, decCount } from '../../actions';
+
+
 import './styles.css'
 
 class CartList extends Component {
 
+    state = { customer: '' }
+
+    setCustomer = (data) => {
+        this.setState({ customer: data })
+    }
+
+    componentDidUpdate(prevProps, prevState, snapshot) {
+        const { RestoService, cart, setModalVisibility } = this.props
+
+        if (this.state.customer !== prevState.customer) {
+            console.log(this.state.customer)
+            RestoService.setOrder(generateOrder(cart, this.state.customer))
+            setModalVisibility()
+        }
+    }
+
     render() {
 
-        const { loading, error, cart, totalPrice, addToCart, deleteFromCart, decCount, setFormVisibility, formIsOpen} = this.props
+        const { loading, error, cart, modalIsShown, setModalVisibility, totalPrice, addToCart, deleteFromCart, decCount, setFormVisibility, formIsOpen } = this.props
 
         return (
 
             <div className='cart-list'>
+
+                <ModalAfterForm
+                    modalIsShown={modalIsShown}
+                    setModalVisibility={setModalVisibility}
+                />
 
                 {loading && <Spinner />}
 
@@ -60,10 +84,12 @@ class CartList extends Component {
                 }
 
                 <Row>
-                    {formIsOpen && <Form />}
+                    {formIsOpen &&
+                        <FormForOrder
+                            setCustomer={this.setCustomer}
+                        />
+                    }
                 </Row>
-
-
 
 
 
@@ -72,13 +98,24 @@ class CartList extends Component {
     }
 }
 
+const generateOrder = (items) => {
+    const newOrder = items.map(item => {
+        return {
+            id: item.id,
+            count: item.count
+        }
+    })
+    return newOrder
+}
+
 const mapStateToProps = state => {
     return {
         loading: state.loading,
         error: state.error,
         cart: state.cart,
         totalPrice: state.totalPrice,
-        formIsOpen: state.formIsOpen
+        formIsOpen: state.formIsOpen,
+        modalIsShown: state.modalIsShown
     }
 }
 
@@ -87,7 +124,7 @@ const mapDispatchToProps = {
     setLoading,
     setError,
     addToCart, deleteFromCart, decCount,
-    setFormVisibility
+    setFormVisibility, setModalVisibility
 }
 
 

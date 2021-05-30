@@ -1,11 +1,11 @@
 import React from 'react';
 import './styles.css';
 import { Col, Row, Container } from 'react-bootstrap';
+import { FormForSubscribe } from '../forms';
 
 const Footer = () => {
 
     return (
-
         <footer className="page-footer">
             <div className="footer-light">
                 <Container>
@@ -16,25 +16,18 @@ const Footer = () => {
                             <div className="margin-50"></div>
                         </Col>
                         <Col md={2} className="image-container">
-                            <img alt="logo" src="images/logo2.png" />
+                            <img alt="logo" src="../logo2.png" />
                             <div className="margin-50"></div>
                         </Col>
+
                         <Col md={5} className="slim-left onscroll-animate" data-delay="400">
                             <h4>Newsletter</h4>
                             <p>Give us your email, and we shall send regular updates for new stuff and events.</p>
-
-                            <form className="form-subscribe" id="rss-subscribe" action="save_rss.php" method="post" data-email-not-set-msg="Email must be set" data-ajax-fail-msg="Ajax could not set the request" data-success-msg="Email successfully added">
-                                <div className="email-container">
-                                    <input type="text" name="email" />
-                                </div>
-                                <div className="submit-container">
-                                    <input type="submit" value="Subscribe" />
-                                </div>
-                                <p className="return-msg"></p>
-                            </form>
+                            <FormForSubscribe />
                             <div className="margin-50"></div>
                         </Col>
                     </Row>
+
                 </Container>
             </div>
 
@@ -46,8 +39,8 @@ const Footer = () => {
                                 <Col sm={6} className="footer-column onscroll-animate">
                                     <h4>Working Time</h4>
                                     <p>
-                                        Monday Friday: <span className="highlight">08:00 am - 08:30 pm</span><br />
-                                                        Saturday Sunday: <span className="highlight">10:00 am - 16:30 pm</span>
+                                        Monday Friday: <span className="highlight">07:00 am - 10:00 pm</span><br />
+                                                        Saturday Sunday: <span className="highlight">07:30 am - 10:00 pm</span>
                                     </p>
                                     <div className="margin-40"></div>
                                 </Col>
@@ -56,7 +49,7 @@ const Footer = () => {
                                     <p>
                                         Join us for Happy Hour!<br />
                                                             Enjoy discount baked goods.<br />
-                                        <span className="highlight">8:00 pm-5:00 pm Daily</span>
+                                        <span className="highlight">9:00 pm - 10:00 pm Daily</span>
                                     </p>
                                     <div className="margin-40"></div>
                                 </Col>
@@ -67,19 +60,29 @@ const Footer = () => {
                                 <Col sm={6} className="footer-column onscroll-animate" data-delay="400">
                                     <h4>Follow Us</h4>
                                     <div className="social-icon-container">
-                                        <a href="#"><i className="fa fa-facebook"></i></a>
+                                        <a href="https://www.facebook.com/">
+                                            <img src='../images/icons/facebook.svg' alt='facebook' />
+                                        </a>
                                     </div>
                                     <div className="social-icon-container">
-                                        <a href="#"><i className="fa fa-twitter"></i></a>
+                                        <a href="https://twitter.com/">
+                                            <img src='../images/icons/twitter.svg' alt='twitter' />
+                                        </a>
                                     </div>
                                     <div className="social-icon-container">
-                                        <a href="#"><i className="fa fa-rss"></i></a>
+                                        <a href="https://www.instagram.com/">
+                                            <img src='../images/icons/instagram.svg' alt='instagram' />
+                                        </a>
                                     </div>
                                     <div className="social-icon-container">
-                                        <a href="#"><i className="fa fa-pinterest"></i></a>
+                                        <a href="https://www.youtube.com/">
+                                            <img src='../images/icons/youtube.svg' alt='youtube' />
+                                        </a>
                                     </div>
                                     <div className="social-icon-container">
-                                        <a href="#"><i className="fa fa-linkedin"></i></a>
+                                        <a href="https://www.linkedin.com/">
+                                            <img src='../images/icons/linkedin.svg' alt='linkedin' />
+                                        </a>
                                     </div>
                                     <div className="margin-40"></div>
                                 </Col>
@@ -88,26 +91,26 @@ const Footer = () => {
                                     <div className="icon-opening-wrapper">
                                         <div className="icon-opening-container">
                                             <p className="icon-opening"><i className="fa fa-phone"></i></p>
-                                            <p className="icon-opening-content">0 800 123 456 88</p>
+                                            <p className="icon-opening-content">+1 305-531-1200</p>
                                         </div>
                                     </div>
                                     <div className="icon-opening-wrapper">
                                         <div className="icon-opening-container">
                                             <p className="icon-opening"><i className="fa fa-location-arrow"></i></p>
-                                            <p className="icon-opening-content">257 Charlington Gates<br />
-                                                                        Road Morrison, Nr. 568</p>
+                                            <p className="icon-opening-content">450 Lincoln Rd<br />
+                                            Miami Beach, FL 33139 </p>
                                         </div>
                                     </div>
                                     <div className="icon-opening-wrapper">
                                         <div className="icon-opening-container">
                                             <p className="icon-opening"><i className="fa fa-envelope"></i></p>
-                                            <p className="icon-opening-content">info@bakeytemplate.com</p>
+                                            <p className="icon-opening-content">info@paulusa.com</p>
                                         </div>
                                     </div>
                                     <div className="icon-opening-wrapper">
                                         <div className="icon-opening-container">
                                             <p className="icon-opening"><i className="fa fa-globe"></i></p>
-                                            <p className="icon-opening-content">www.bakeytemplate.com</p>
+                                            <p className="icon-opening-content">www.pauldmv.com</p>
                                         </div>
                                     </div>
                                     <div className="margin-40"></div>

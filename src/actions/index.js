@@ -42,6 +42,10 @@ const setFormVisibility = () => ({
     type: 'SET_FORM_VISIBILITY'
 })
 
+const setModalVisibility = () => ({
+    type: 'SET_MODAL_VISIBILITY'
+})
+
 
 const deleteFromCart = (id) => {
     return {
@@ -64,6 +68,6 @@ export {
     setMenuType, setMenuPage, setMenuTotalItems,
     setLocation,
     addToCart, deleteFromCart,  decCount,
-    setFormVisibility
+    setFormVisibility, setModalVisibility
 
 }

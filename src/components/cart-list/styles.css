@@ -59,14 +59,16 @@
     border: 2px #ebebeb solid;
 }
  */
-.btn-order button:hover {
+.btn-order button:hover,
+.modal-order-footer.modal-footer .btn-order:hover {
     background-color: #684f40;
     border-color: #684f40;
     color: #FFF;
     z-index: 4;
 }
 
-.btn-order button {
+.btn-order button, 
+.modal-order-footer.modal-footer .btn-order {
     background-color: #ebebeb;
     color: #684f40;
     text-align: center;
