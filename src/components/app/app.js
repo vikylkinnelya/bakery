@@ -2,7 +2,7 @@ import React from 'react';
 import { Switch, Route, } from "react-router-dom";
 import Header from '../header';
 import Footer from '../footer';
-import { Shop, Cart } from '../pages/index';
+import { Shop, Cart, About } from '../pages/index';
 import { Col, Container, Row } from 'react-bootstrap';
 
 const App = () => {
@@ -14,6 +14,9 @@ const App = () => {
 
             <>
                 <Switch>
+                    <Route path='/about/'>
+                        <About />
+                    </Route>
 
                     <Route path='/shop/'>
                         <Shop />
@@ -26,7 +29,7 @@ const App = () => {
                 </Switch>
             </>
 
-            
+
             <Footer />
 
 

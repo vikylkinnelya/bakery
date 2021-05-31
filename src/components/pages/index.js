@@ -1,5 +1,5 @@
 import Shop from './shop';
-import AboutUs from './aboutUs';
+import About from './about';
 import MainPage from './main';
 import Cart from './cart';
-export {Shop, AboutUs, MainPage, Cart};
+export {Shop, About, MainPage, Cart};

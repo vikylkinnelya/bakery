@@ -9,7 +9,6 @@ import { withRouter } from "react-router";
 import WithRestoService from '../hoc';
 import { setMenu, setLoading, setError, addToCart, setFormVisibility, setModalVisibility, deleteFromCart, decCount } from '../../actions';
 
-
 import './styles.css'
 
 class CartList extends Component {
