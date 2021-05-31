@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
-import { Col} from 'react-bootstrap'
+import { Col} from 'react-bootstrap';
+import './styles.css';
 
 const ShopItem = ({ menuItem, menuType, onAddToCart }) => {
 

@@ -39,8 +39,10 @@ const Footer = () => {
                                 <Col sm={6} className="footer-column onscroll-animate">
                                     <h4>Working Time</h4>
                                     <p>
-                                        Monday Friday: <span className="highlight">07:00 am - 10:00 pm</span><br />
-                                                        Saturday Sunday: <span className="highlight">07:30 am - 10:00 pm</span>
+                                        Monday Friday:
+                                        <span className="highlight"><time>07:00 am - 10:00 pm</time></span><br />
+                                        Saturday Sunday:
+                                        <span className="highlight"><time>07:30 am - 10:00 pm</time></span>
                                     </p>
                                     <div className="margin-40"></div>
                                 </Col>
@@ -48,8 +50,8 @@ const Footer = () => {
                                     <h4>Happy Hours</h4>
                                     <p>
                                         Join us for Happy Hour!<br />
-                                                            Enjoy discount baked goods.<br />
-                                        <span className="highlight">9:00 pm - 10:00 pm Daily</span>
+                                        Enjoy discount baked goods.<br />
+                                        <span className="highlight"><time>9:00 pm - 10:00 pm</time> Daily</span>
                                     </p>
                                     <div className="margin-40"></div>
                                 </Col>
@@ -91,26 +93,26 @@ const Footer = () => {
                                     <div className="icon-opening-wrapper">
                                         <div className="icon-opening-container">
                                             <p className="icon-opening"><i className="fa fa-phone"></i></p>
-                                            <p className="icon-opening-content">+1 305-531-1200</p>
+                                            <p className="icon-opening-content"><a href='tel:+13055311200'>+1 305-531-1200</a> </p>
                                         </div>
                                     </div>
                                     <div className="icon-opening-wrapper">
                                         <div className="icon-opening-container">
                                             <p className="icon-opening"><i className="fa fa-location-arrow"></i></p>
-                                            <p className="icon-opening-content">450 Lincoln Rd<br />
-                                            Miami Beach, FL 33139 </p>
+                                            <p className="icon-opening-content"><address>450 Lincoln Rd<br />
+                                            Miami Beach, FL 33139</address></p>
                                         </div>
                                     </div>
                                     <div className="icon-opening-wrapper">
                                         <div className="icon-opening-container">
                                             <p className="icon-opening"><i className="fa fa-envelope"></i></p>
-                                            <p className="icon-opening-content">info@paulusa.com</p>
+                                            <p className="icon-opening-content"><a href='mailto:info@paulusa.com'>info@paulusa.com</a></p>
                                         </div>
                                     </div>
                                     <div className="icon-opening-wrapper">
                                         <div className="icon-opening-container">
                                             <p className="icon-opening"><i className="fa fa-globe"></i></p>
-                                            <p className="icon-opening-content">www.pauldmv.com</p>
+                                            <p className="icon-opening-content"><a href='https://www.pauldmv.com/'>www.pauldmv.com</a></p>
                                         </div>
                                     </div>
                                     <div className="margin-40"></div>
