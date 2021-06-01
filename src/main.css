@@ -15,6 +15,12 @@ This is compiled file, for the original file please see .less file
   color: #fdb822;
 }
 
+
+#video-section{
+  display: flex;
+  justify-content: center;
+}
+
 .selected a .list-arrows-value {
   background-color: #fdb822;
   color: #FFF

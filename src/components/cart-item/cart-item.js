@@ -1,8 +1,7 @@
 import React from 'react';
-import Spinner from '../spinner';
+//import Spinner from '../spinner';
 import { Col, Row } from 'react-bootstrap';
 import './styles.css'
-import { counter } from '@fortawesome/fontawesome-svg-core';
 
 const CartItem = ({ cartItem, totalPrice, addToCart, deleteFromCart, decCount }) => {
 

@@ -1,5 +1,5 @@
 import React from 'react';
-import { Modal} from 'react-bootstrap'
+import { Modal } from 'react-bootstrap'
 
 import './styles.css'
 
@@ -24,7 +24,8 @@ const ModalAfterForm = ({ modalIsShown, setModalVisibility }) => {
                 <button
                     className='btn-order'
                     onClick={() => setModalVisibility()}
-                >Ok, I'm waiting
+                >
+                    Ok, I'm waiting
                 </button>
             </Modal.Footer>
         </Modal>

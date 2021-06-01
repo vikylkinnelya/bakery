@@ -99,8 +99,8 @@ const Footer = () => {
                                     <div className="icon-opening-wrapper">
                                         <div className="icon-opening-container">
                                             <p className="icon-opening"><i className="fa fa-location-arrow"></i></p>
-                                            <p className="icon-opening-content"><address>450 Lincoln Rd<br />
-                                            Miami Beach, FL 33139</address></p>
+                                            <address className="icon-opening-content">450 Lincoln Rd<br />
+                                            Miami Beach, FL 33139</address>
                                         </div>
                                     </div>
                                     <div className="icon-opening-wrapper">

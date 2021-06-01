@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { Link, NavLink } from 'react-router-dom';
-import { Row, Col, Navbar } from 'react-bootstrap';
+import { NavLink } from 'react-router-dom';
+import { Col, Navbar } from 'react-bootstrap';
 import './styles.css'
 
 const Header = ({ cart, totalPrice }) => {
