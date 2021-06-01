@@ -11,15 +11,13 @@ This is compiled file, for the original file please see .less file
 6. Less Elements (in .less file only)
 */
 
+
+
+
 .selected {
   color: #fdb822;
 }
 
-
-#video-section{
-  display: flex;
-  justify-content: center;
-}
 
 .selected a .list-arrows-value {
   background-color: #fdb822;
@@ -279,10 +277,6 @@ ul {
 
 #testimonials-section {
   background-image: url('./images/bg_testimonials.jpg');
-}
-
-#video-section {
-  background-image: url('./images/bg_video.jpg');
 }
 
 
@@ -1259,18 +1253,6 @@ ul {
   height: 100px;
 }
 
-.google-map {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-}
-
-.google-map-big-container {
-  position: relative;
-  height: 580px;
-}
 
 .has-label {
   position: relative;
@@ -1393,7 +1375,7 @@ ul {
   line-height: 1;
   font-size: 20px;
   color: #fdb822;
-  content: '\f00c';
+  content: '\2714';
 }
 
 .list-arrows {

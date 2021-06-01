@@ -1,7 +1,7 @@
 import React from 'react';
 import { FullHeaderContainer } from '../details/index';
 import { Col, Container, Row, Pagination } from 'react-bootstrap';
-
+import './styles.css'
 
 const About = () => {
 
@@ -26,15 +26,16 @@ const About = () => {
                                     see what fits you and give us a call</p>
                         </header>
 
-                        <Row>
 
-                            <Col md={6} className="onscroll-animate">
-                                <img className="img-responsive" alt="cup and logo" src="./images/cup_and_logo.png" />
+                        <Row className='sucsess-row'>
+
+                            <Col sm={12} md={6} >
+                                <img className="img-responsive sucsess-page-img" alt="pastries" src="./images/about-page.jpg" />
                             </Col>
 
-                            <Col md={6} className=" onscroll-animate" data-delay="400">
+                            <Col sm={12} md={6}>
                                 <article>
-                                    <div className="article-header-2">
+                                    <div className="article-header-2 sucsess">
                                         <h1>The Story Of Our Success</h1>
                                     </div>
                                     <p>
@@ -46,41 +47,43 @@ const About = () => {
                                	        </p>
                                 </article>
 
-                                <div className="margin-20"></div>
+                                <Row className='checks'>
 
-                                <Row>
-                                    <Col xs={6}>
-                                        <div className="item-check">Quality at Heart</div>
-                                        <div className="item-check">Passion for Bread</div>
-                                    </Col>
-                                    <Col xs={6}>
-                                        <div className="item-check">French Tradition</div>
-                                        <div className="item-check">Family-Owned Company</div>
-                                    </Col>
+                                    <Col sm={{ span: 5, offset: 1 }} className="item-check">Quality at Heart</Col>
+                                    <Col sm={{ span: 5, offset: 1 }} className="item-check">Passion for Bread</Col>
+                                    <Col sm={{ span: 5, offset: 1 }} className="item-check">French Tradition</Col>
+                                    <Col sm={{ span: 5, offset: 1 }} className="item-check">Family-Owned Company</Col>
                                 </Row>
 
-                                <div className="margin-70"></div>
+
                             </Col>
+                        </Row>
 
-                            <Col id="video-section" className="section-white-cover parallax-background">
+                        <Row id="video-section" className="section-content container">
+                            <Col lg={12}> <h2 className="heading-huge">Video presentation</h2></Col>
 
-                                <div className="section-content">
-                                    <div className="onscroll-animate">
-                                        <div className="margin-40"></div>
-                                        <h2 className="heading-huge">Video presentation</h2>
-                                        <div className="margin-20"></div>
-
-                                        <div className="embed-responsive embed-responsive-4by3">
-                                            <iframe title='video' className="embed-responsive-item bakery-video" src="http://www.youtube.com/embed/OhtG_XahQco" frameBorder="0" allowFullScreen="allowfullscreen"></iframe>
-                                        </div>
-                                        <div className="margin-30"></div>
-                                    </div>
+                            <Col lg={6} className='video-col'>
+                                <div className="embed-responsive embed-responsive-4by3">
+                                    <iframe title='video' src="http://www.youtube.com/embed/Xit0QEeE7H8" frameBorder="0"></iframe>
                                 </div>
 
+
                             </Col>
+
+                            <Col lg={6} className='video-col'>
+                                <div class="embed-responsive embed-responsive-4by3">
+                                    <iframe title='video' src="http://www.youtube.com/embed/EGbNI26PPYg" frameBorder="0"></iframe>
+                                </div>
+                            </Col>
+
+
+
 
 
                         </Row>
+
+
+
 
                     </div>
                 </section>
