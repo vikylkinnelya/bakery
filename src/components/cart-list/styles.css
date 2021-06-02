@@ -1,4 +1,3 @@
-
 .cart-list h1 {
     font-size: 20px;
     text-transform: uppercase;
@@ -7,6 +6,11 @@
 
 .cart-list h3 {
     font-size: 16px;
+
+}
+
+.total-order-price>.col-lg-4>h3{
+    border-bottom: 1px #684f40 solid;
 }
 
 .cart-list h2 {
@@ -34,6 +38,7 @@
     font-weight: 600;
     text-transform: uppercase;
 }
+
 /* 
 .btn-order button {
     background-color: #684f40;
@@ -67,16 +72,16 @@
     z-index: 4;
 }
 
-.btn-order button, 
+.btn-order button,
 .modal-order-footer.modal-footer .btn-order {
     background-color: #ebebeb;
     color: #684f40;
+    border: 2px #684f40 solid;
     text-align: center;
     text-transform: uppercase;
-    border: 2px #ebebeb solid;
-    
     line-height: 31px;
-    height: 35px;
+    min-height: 40px;
+    min-width: 90px;
     margin: 3px 5px;
     border-radius: 35px;
     transition: all 0.2s ease-out;

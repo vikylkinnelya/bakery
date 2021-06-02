@@ -30,14 +30,13 @@
 .form-group .form-control {
     margin-bottom: 0px;
     border: 1px #684f40 solid;
-    border-radius: 35px;
+    border-radius: 0px;
     background-color: rgba(230, 230, 230, 0.171);
 }
 
 .form-group .form-label {
     margin-bottom: 0;
 }
-
 
 .bakery-form {
     margin-bottom: 30px;

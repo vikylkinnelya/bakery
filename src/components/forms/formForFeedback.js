@@ -49,41 +49,39 @@ const FormForFeedback = () => {
                     </div>
 
                     <form onSubmit={handleSubmit} class="form-contact-alt">
-                        <Row>
-                            <Form.Group controlId="formName">
-                                <Row>
-                                    <Col sm={7}>
-                                        <Form.Control
-                                            type='text'
-                                            name='name'
-                                            placeholder='Name'
-                                            onChange={handleChange}
-                                            onBlur={handleBlur}
-                                            value={values.name}
-                                            className={touched.name && errors.name ? 'error-form' : null}
-                                        />
-                                    </Col>
-                                    <Col sm={5} className="input-description">
-                                        <Form.Label>
-                                            <i class="fa fa-user"></i>
+
+                        <Form.Group controlId="formName">
+                            <Row>
+                                <Col sm={7}>
+                                    <Form.Control
+                                        type='text'
+                                        name='name'
+                                        onChange={handleChange}
+                                        onBlur={handleBlur}
+                                        value={values.name}
+                                        className={touched.name && errors.name ? 'error-form' : null}
+                                    />
+                                </Col>
+                                <Col sm={5} className="input-description">
+                                    <Form.Label>
+                                        <i class="fa fa-user"></i>
                                         Name:
                                         </Form.Label>
-                                    </Col>
-                                    {touched.name && errors.name ? (
-                                        <div className="error-form-message">{errors.name}</div>
-                                    ) : null}
-                                </Row>
-                            </Form.Group>
-                        </Row>
+                                </Col>
+                                {touched.name && errors.name ? (
+                                    <div className="error-form-message">{errors.name}</div>
+                                ) : null}
+                            </Row>
+                        </Form.Group>
 
-                        <Row>
+
+                        
                             <Form.Group controlId="formEmail">
                                 <Row>
                                     <Col sm={7}>
                                         <Form.Control
                                             type='text'
                                             name='email'
-                                            placeholder='Email'
                                             onChange={handleChange}
                                             onBlur={handleBlur}
                                             value={values.email}
@@ -101,16 +99,15 @@ const FormForFeedback = () => {
                                     ) : null}
                                 </Row>
                             </Form.Group>
-                        </Row>
+                        
 
-                        <Row>
+                        
                             <Form.Group controlId="formSubject">
                                 <Row>
                                     <Col sm={7}>
                                         <Form.Control
                                             type='text'
-                                            name='email'
-                                            placeholder='Subject'
+                                            name='subject'
                                             onChange={handleChange}
                                             onBlur={handleBlur}
                                             value={values.subject}
@@ -128,7 +125,28 @@ const FormForFeedback = () => {
                                     ) : null}
                                 </Row>
                             </Form.Group>
-                        </Row>
+                        
+
+
+                        
+                            <Form.Group controlId="formFeedback">
+
+
+                                <Form.Control
+                                    type='text'
+                                    name='feedback'
+                                    onChange={handleChange}
+                                    onBlur={handleBlur}
+                                    value={values.feedback}
+                                    className={touched.feedback && errors.feedback ? 'error-form' : null}
+                                />
+
+                                {touched.feedback && errors.feedback ? (
+                                    <div className="error-form-message">{errors.feedback}</div>
+                                ) : null}
+
+                            </Form.Group>
+                        
 
                         <Row className='btn-order'>
                             <button type='submit'

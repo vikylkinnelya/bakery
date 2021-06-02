@@ -24,7 +24,7 @@ const Contact = () => {
 
                     <Row >
                         <Col md={8}>
-                            <article>
+                            
                                 <div class="article-header">
                                     <h1>Leave us a message</h1>
                                 </div>
@@ -57,7 +57,6 @@ const Contact = () => {
                                     </div>
                                     <p class="return-msg"></p>
                                 </form>
-                            </article>
                         </Col>
                         <Col md={4}>
                             <article>
