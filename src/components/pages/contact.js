@@ -1,6 +1,7 @@
 import React from 'react';
 import { FullHeaderContainer } from '../details/index';
 import { Col, Container, Row, Pagination } from 'react-bootstrap';
+import { FormForFeedback } from '../forms';
 import './styles.css'
 
 const Contact = () => {
@@ -105,6 +106,8 @@ const Contact = () => {
                         </Col>
                     </Row>
                 </div>
+
+                <FormForFeedback />
 
             </Container>
         </>

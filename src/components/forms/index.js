@@ -1,3 +1,5 @@
 import FormForOrder from './formForOrder';
 import FormForSubscribe from './formForSubscribe';
-export {FormForOrder, FormForSubscribe};
+import FormForFeedback from './formForFeedback';
+
+export {FormForOrder, FormForSubscribe, FormForFeedback};

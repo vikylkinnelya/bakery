@@ -16,10 +16,11 @@ const validationSchema = yup.object().shape({
     phone: yup.string()
         .min(5, "Must be longer than 5 characters")
         .required("Phone is required"),
-    email: yup.string(),
+    email: yup.string()
+        .matches(/^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i, 'Invalid email')
 })
 
-const FormForOrder = ({setCustomer}) => {
+const FormForOrder = ({ setCustomer }) => {
 
     return (
 
@@ -30,7 +31,7 @@ const FormForOrder = ({setCustomer}) => {
                 setSubmitting(true);
                 setTimeout(() => {
                     //console.log(JSON.stringify(values, null, 2))
-                    resetForm() 
+                    resetForm()
                     setSubmitting(false)
                 }, 500)
                 setCustomer(values)

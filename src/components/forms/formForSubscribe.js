@@ -5,15 +5,16 @@ import * as yup from 'yup';
 import WithRestoService from '../hoc';
 import './styles.css';
 
-const FormForSubscribe = ({RestoService}) => {
+const FormForSubscribe = ({ RestoService }) => {
 
     const validationSchema = yup.object().shape({
-        email: yup.string(),
-    })
+        email: yup.string()
+            .matches(/^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i, 'Invalid email')
+        })
 
     return (
         <Formik
-            initialValues={{ email: ""}}
+            initialValues={{ email: "" }}
             validationSchema={validationSchema}
             onSubmit={(values, { setSubmitting, resetForm }) => {
                 setSubmitting(true);

@@ -76,14 +76,7 @@ const About = () => {
                                 </div>
                             </Col>
 
-
-
-
-
                         </Row>
-
-
-
 
                     </div>
                 </section>
