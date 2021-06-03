@@ -71,7 +71,7 @@ const About = () => {
                             </Col>
 
                             <Col lg={6} className='video-col'>
-                                <div class="embed-responsive embed-responsive-4by3">
+                                <div className="embed-responsive embed-responsive-4by3">
                                     <iframe title='video' src="http://www.youtube.com/embed/EGbNI26PPYg" frameBorder="0"></iframe>
                                 </div>
                             </Col>

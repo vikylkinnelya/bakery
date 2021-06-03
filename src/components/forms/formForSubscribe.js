@@ -33,7 +33,7 @@ const FormForSubscribe = ({ RestoService }) => {
                         className='form-subscribe'
                     >
                         <Col md={8}>
-                            <Form.Group controlId="formEmail" className="email-container">
+                            <Form.Group controlId="formEmailSubscribe" className="email-container">
                                 <Form.Control
                                     type='text'
                                     name='email'

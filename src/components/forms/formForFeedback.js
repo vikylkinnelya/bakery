@@ -42,13 +42,13 @@ const FormForFeedback = () => {
             {({ values, errors, touched, handleChange, handleBlur, handleSubmit, isSubmitting }) => (
 
                 <>
-                    <div class="article-header">
+                    <div className="article-header">
                         <h1>Leave us a message</h1>
                     </div>
 
-                    <form onSubmit={handleSubmit} class="form-contact-alt">
+                    <form onSubmit={handleSubmit} className="form-contact-alt">
 
-                        <Form.Group controlId="formName">
+                        <Form.Group controlId="formNameFeedback">
                             <Row>
                                 <Col sm={7}>
                                     <Form.Control
@@ -62,7 +62,7 @@ const FormForFeedback = () => {
                                 </Col>
                                 <Col sm={5} className="input-description">
                                     <Form.Label>
-                                        <i class="fa fa-user"></i>
+                                        <i className="fa fa-user"></i>
                                         Name:
                                         </Form.Label>
                                 </Col>
@@ -72,7 +72,7 @@ const FormForFeedback = () => {
                             ) : null}
                         </Form.Group>
 
-                        <Form.Group controlId="formEmail">
+                        <Form.Group controlId="formEmailFeedback">
                             <Row>
                                 <Col sm={7}>
                                     <Form.Control
@@ -86,7 +86,7 @@ const FormForFeedback = () => {
                                 </Col>
                                 <Col sm={5} className="input-description">
                                     <Form.Label>
-                                        <i class="fa fa-envelope"></i>
+                                        <i className="fa fa-envelope"></i>
                                         Email:
                                         </Form.Label>
                                 </Col>
@@ -97,7 +97,7 @@ const FormForFeedback = () => {
 
                         </Form.Group>
 
-                        <Form.Group controlId="formSubject">
+                        <Form.Group controlId="formSubjectFeedback">
                             <Row>
                                 <Col sm={7}>
                                     <Form.Control
@@ -111,7 +111,7 @@ const FormForFeedback = () => {
                                 </Col>
                                 <Col sm={5} className="input-description">
                                     <Form.Label>
-                                        <i class="fa fa-file"></i>
+                                        <i className="fa fa-file"></i>
                                         Subject:
                                         </Form.Label>
                                 </Col>
