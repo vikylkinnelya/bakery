@@ -41,9 +41,7 @@ const FormForFeedback = () => {
         >
             {({ values, errors, touched, handleChange, handleBlur, handleSubmit, isSubmitting }) => (
 
-                <Col lg={{ span: 8, offset: 2 }}
-                    className='bakery-form'
-                >
+                <>
                     <div class="article-header">
                         <h1>Leave us a message</h1>
                     </div>
@@ -68,97 +66,90 @@ const FormForFeedback = () => {
                                         Name:
                                         </Form.Label>
                                 </Col>
-                                {touched.name && errors.name ? (
-                                    <div className="error-form-message">{errors.name}</div>
-                                ) : null}
                             </Row>
+                            {touched.name && errors.name ? (
+                                <div className="error-form-message">{errors.name}</div>
+                            ) : null}
+                        </Form.Group>
+
+                        <Form.Group controlId="formEmail">
+                            <Row>
+                                <Col sm={7}>
+                                    <Form.Control
+                                        type='text'
+                                        name='email'
+                                        onChange={handleChange}
+                                        onBlur={handleBlur}
+                                        value={values.email}
+                                        className={touched.email && errors.email ? 'error-form' : null}
+                                    />
+                                </Col>
+                                <Col sm={5} className="input-description">
+                                    <Form.Label>
+                                        <i class="fa fa-envelope"></i>
+                                        Email:
+                                        </Form.Label>
+                                </Col>
+                            </Row>
+                            {touched.email && errors.email ? (
+                                <div className="error-form-message">{errors.email}</div>
+                            ) : null}
+
+                        </Form.Group>
+
+                        <Form.Group controlId="formSubject">
+                            <Row>
+                                <Col sm={7}>
+                                    <Form.Control
+                                        type='text'
+                                        name='subject'
+                                        onChange={handleChange}
+                                        onBlur={handleBlur}
+                                        value={values.subject}
+                                        className={touched.subject && errors.subject ? 'error-form' : null}
+                                    />
+                                </Col>
+                                <Col sm={5} className="input-description">
+                                    <Form.Label>
+                                        <i class="fa fa-file"></i>
+                                        Subject:
+                                        </Form.Label>
+                                </Col>
+                            </Row>
+                            {touched.subject && errors.subject ? (
+                                <div className="error-form-message">{errors.subject}</div>
+                            ) : null}
+
                         </Form.Group>
 
 
-                        
-                            <Form.Group controlId="formEmail">
-                                <Row>
-                                    <Col sm={7}>
-                                        <Form.Control
-                                            type='text'
-                                            name='email'
-                                            onChange={handleChange}
-                                            onBlur={handleBlur}
-                                            value={values.email}
-                                            className={touched.email && errors.email ? 'error-form' : null}
-                                        />
-                                    </Col>
-                                    <Col sm={5} className="input-description">
-                                        <Form.Label>
-                                            <i class="fa fa-envelope"></i>
-                                        Email:
-                                        </Form.Label>
-                                    </Col>
-                                    {touched.email && errors.email ? (
-                                        <div className="error-form-message">{errors.email}</div>
-                                    ) : null}
-                                </Row>
-                            </Form.Group>
-                        
+                        <Form.Group controlId="formFeedback">
+                            <Form.Control
+                                type='text'
+                                name='feedback'
+                                onChange={handleChange}
+                                onBlur={handleBlur}
+                                value={values.feedback}
+                                className={touched.feedback && errors.feedback ? 'error-form' : null}
+                            />
+                            {touched.feedback && errors.feedback ? (
+                                <div className="error-form-message">{errors.feedback}</div>
+                            ) : null}
 
-                        
-                            <Form.Group controlId="formSubject">
-                                <Row>
-                                    <Col sm={7}>
-                                        <Form.Control
-                                            type='text'
-                                            name='subject'
-                                            onChange={handleChange}
-                                            onBlur={handleBlur}
-                                            value={values.subject}
-                                            className={touched.subject && errors.subject ? 'error-form' : null}
-                                        />
-                                    </Col>
-                                    <Col sm={5} className="input-description">
-                                        <Form.Label>
-                                            <i class="fa fa-file"></i>
-                                        Subject:
-                                        </Form.Label>
-                                    </Col>
-                                    {touched.subject && errors.subject ? (
-                                        <div className="error-form-message">{errors.subject}</div>
-                                    ) : null}
-                                </Row>
-                            </Form.Group>
-                        
+                        </Form.Group>
 
-
-                        
-                            <Form.Group controlId="formFeedback">
-
-
-                                <Form.Control
-                                    type='text'
-                                    name='feedback'
-                                    onChange={handleChange}
-                                    onBlur={handleBlur}
-                                    value={values.feedback}
-                                    className={touched.feedback && errors.feedback ? 'error-form' : null}
-                                />
-
-                                {touched.feedback && errors.feedback ? (
-                                    <div className="error-form-message">{errors.feedback}</div>
-                                ) : null}
-
-                            </Form.Group>
-                        
 
                         <Row className='btn-order'>
                             <button type='submit'
                                 disabled={isSubmitting}
                                 className='btn-order'
                             >
-                                <h3>Sent message</h3>
+                                <h4>Sent message</h4>
                             </button>
                         </Row>
 
                     </form>
-                </Col>
+                </>
             )}
         </Formik>
     )

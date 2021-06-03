@@ -1083,78 +1083,6 @@ ul {
   display: none;
 }
 
-.form-contact {
-  position: relative;
-  width: 100%;
-  max-width: 370px;
-  color: #FFF;
-  background-color: rgba(104, 79, 64, 0.9);
-  overflow: auto;
-  padding: 15px 30px;
-  z-index: 99;
-}
-
-.form-contact h2 {
-  font-size: 20px;
-  text-align: center;
-  color: #FFF;
-  text-transform: uppercase;
-  margin-bottom: 20px;
-}
-
-.form-contact-alt input,
-.form-contact-alt textarea {
-  border-color: #e1e2e1;
-  padding: 10px 10px;
-  margin: 5px 0;
-}
-
-.form-contact-alt input[type=submit] {
-  font-size: 16px;
-  color: #FFF;
-  background-color: #684f40;
-  border-color: #684f40;
-  font-weight: normal;
-  padding: 20px 30px;
-}
-
-.form-contact-alt input:focus,
-.form-contact-alt input[type=submit]:hover,
-.form-contact-alt textarea:focus {
-  border-color: #684f40;
-}
-
-.form-contact-alt textarea {
-  height: 140px;
-}
-
-.form-contact-alt .input-description {
-  font-size: 16px;
-  padding-top: 15px;
-  padding-bottom: 15px;
-}
-
-.form-contact-alt .input-description i {
-  width: 20px;
-  display: inline-block;
-}
-
-.form-contact-alt .submit-container {
-  float: right;
-  position: relative;
-  color: #FFF;
-  margin: 15px 0;
-}
-
-.form-contact-alt .submit-container:after {
-  font-family: 'FontAwesome';
-  font-size: 16px;
-  position: absolute;
-  left: 30px;
-  top: 0;
-  padding: 20px 0;
-  content: '\f003';
-}
 
 .form-contact-alt .submit-container input[type=submit] {
   margin: 0;
@@ -2987,10 +2915,7 @@ ul {
     display: none;
   }
 
-  .form-contact-alt .input-description {
-    padding-top: 0;
-    padding-bottom: 30px;
-  }
+  
 
   .quote {
     font-size: 30px;

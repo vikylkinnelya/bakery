@@ -10,7 +10,8 @@
     font-size: .8em;
 }
 
-.form-group>.form-control:focus {
+.form-group>.form-control:focus,
+.form-group>.row>.col-sm-7>.form-control:focus {
     color: #495057;
     background-color: rgba(255, 255, 255, 0.404);
     box-shadow: 0 0 0 0.2rem rgb(253 184 34 / 25%);
@@ -79,4 +80,69 @@
     border: none;
     outline: none;
     padding: 10px 0;
+}
+
+.form-contact-alt>.btn-order {
+    justify-content: flex-end;
+}
+
+.form-contact-alt>.btn-order>button {
+    height: 60px;
+    width: 240px;
+    border-radius: 0px;
+    border: 1.5px #684f40 solid;
+}
+
+.btn-order h4 {
+    margin-bottom: 0;
+}
+
+.form-contact {
+    position: relative;
+    color: #FFF;
+    overflow: auto;
+    z-index: 99;
+}
+
+
+.form-contact-alt input[type=submit] {
+    font-size: 16px;
+    color: #FFF;
+    background-color: #684f40;
+    border-color: #684f40;
+    font-weight: normal;
+    padding: 20px 30px;
+}
+
+.form-contact-alt .input-description {
+    font-size: 16px;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.form-contact-alt .input-description i {
+    width: 20px;
+    display: inline-block;
+}
+
+.form-contact-alt .submit-container {
+    float: right;
+    position: relative;
+    color: #FFF;
+    margin: 15px 0;
+}
+
+.form-contact-alt .submit-container:after {
+    font-family: 'FontAwesome';
+    font-size: 16px;
+    position: absolute;
+    left: 30px;
+    top: 0;
+    padding: 20px 0;
+    content: '\f003';
+}
+
+.form-group>.form-control#formFeedback {
+    overflow: scroll !important;
+    height: auto;
 }
