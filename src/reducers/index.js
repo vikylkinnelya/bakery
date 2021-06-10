@@ -9,7 +9,6 @@ const initialState = {
     totalPrice: 0,
     formIsOpen: false,
     modalIsShown: false,
-
 }
 
 const reducer = (state = initialState, action) => {
@@ -28,7 +27,7 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 menu: state.menu,
-                loading: true
+                loading: action.payload
             };
 
         case 'SET_ERROR':

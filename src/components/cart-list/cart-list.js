@@ -20,12 +20,15 @@ class CartList extends Component {
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
-        const { RestoService, cart, setModalVisibility } = this.props
+        const { RestoService, cart, setModalVisibility, setError } = this.props
+
+        setLoading(true)
 
         if (this.state.customer !== prevState.customer) {
-            console.log(this.state.customer)
             RestoService.setOrder(generateOrder(cart, this.state.customer))
+                .catch(error => setError())
             setModalVisibility()
+            setLoading(false)
         }
     }
 
@@ -45,14 +48,13 @@ class CartList extends Component {
                 {loading && <Spinner />}
 
                 {cart.length > 0 &&
-                    <Col lg={{ span: 8, offset: 2 }} className='cart-items-list'>
+                    <Col lg={{ span: 8, offset: 2 }} className='cart-items-list onscroll-animate'>
 
                         <Col lg={3}>
                             <h1>Your order:</h1>
                         </Col>
 
                         {cart != null && cart.length > 0 && cart.map(cartItem => {
-
                             return (
                                 <CartItem
                                     key={cartItem.id}
@@ -119,12 +121,9 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = {
-    setMenu,
     setLoading,
-    setError,
-    addToCart, deleteFromCart, decCount,
-    setFormVisibility, setModalVisibility
+    setError
 }
 
 
-export default WithRestoService()(connect(mapStateToProps, mapDispatchToProps)(withRouter(CartList)))
+export default WithRestoService()(connect(mapStateToProps, mapDispatchToProps)(CartList)) //убрала withrouter возможно не будет работать 

@@ -16,17 +16,16 @@ class ShopListItems extends Component {
     componentDidMount() {
         const { RestoService, location, setMenuTotalItems, setMenu, setError, setLoading } = this.props;
 
-        setLoading()
+        setLoading(true)
 
         const pathMenuType = location.pathname.split('/')[2]
-        console.log(pathMenuType)
         setMenuType(pathMenuType)
 
         RestoService.getMenuItems(pathMenuType, '')
             .then(result => setMenuTotalItems(result.length))
 
         RestoService.getMenuItems(pathMenuType, 1)
-            .then(res => setMenu(res))
+            .then(res => setMenu(res)) //в этом экшене изменяется так же и ожидание
             .catch(error => setError())
     }
 
@@ -37,7 +36,7 @@ class ShopListItems extends Component {
         if ((menuType !== prevProps.menuType) || (menuCurrPage !== prevProps.menuCurrPage)) {
             setLoading()
 
-            RestoService.getMenuItems(menuType)
+            RestoService.getMenuItems(menuType, '')
                 .then(result => setMenuTotalItems(result.length))
 
             RestoService.getMenuItems(menuType, menuCurrPage)
@@ -150,16 +149,17 @@ class ShopListItems extends Component {
                         </Row>
                     </Col>
 
-
-                    {!loading &&
-                        <Col sm={{ order: 12 }} className='pagination-col'>
-                            <Pagination >
-                                <Pagination.Prev className="pagination-item pagination-nav" />
-                                {paginationItems}
-                                <Pagination.Next className="pagination-item pagination-nav" />
-                            </Pagination>
-                        </Col>
-                    }
+                    <LazyLoadComponent>
+                        {!loading &&
+                            <Col sm={{ order: 12 }} className='pagination-col'>
+                                <Pagination >
+                                    <Pagination.Prev className="pagination-item pagination-nav" />
+                                    {paginationItems}
+                                    <Pagination.Next className="pagination-item pagination-nav" />
+                                </Pagination>
+                            </Col>
+                        }
+                    </LazyLoadComponent>
                 </Row>
             </ Container>
         )

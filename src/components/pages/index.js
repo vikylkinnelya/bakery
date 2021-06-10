@@ -1,6 +1,6 @@
 import Shop from './shop';
 import About from './about';
-import MainPage from './main';
+import Home from './home';
 import Cart from './cart';
 import Contact from './contact';
-export {Shop, About, MainPage, Cart, Contact};
+export {Shop, About, Home, Cart, Contact};

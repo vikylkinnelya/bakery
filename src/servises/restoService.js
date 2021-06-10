@@ -25,16 +25,16 @@ export default class RestoService {
         return await this.getResourse(`/menus/${joiner}${typeOf}${pageOf}`)
     }
 
-    async getOrderNumber() {
-        const res = await this.getResourse('/orders/');
+    async getOrderNumber(resourse) {
+        const res = await this.getResourse(`/${resourse}/`);
         const orderNumber = res.length + 1
         return orderNumber
     }
 
     async setOrder(order, data) {
-        const number = await this.getOrderNumber(); //узнаем номер заказа по порядку
+        const numberOfOrder = await this.getOrderNumber('orders'); //узнаем номер заказа по порядку
         const newOrder = { //заказ состоит из
-            id: number, //номера по порядку
+            id: numberOfOrder, //номера по порядку
             order: order, //данных, получ из items
             customer: data
         }
@@ -56,11 +56,25 @@ export default class RestoService {
             headers: {
                 'Content-Type': 'application/json;charset=utf-8'
             },
-            body: JSON.stringify(subscriber)
+            body: JSON.stringify(subscriber) //в массив просто записывается емэйл подписчика, айди добавляется автоматически
         });
         if (!response.ok) {
             throw new Error('json error');
-        } 
+        }
+    }
+
+    async setFeedback(feedback) {
+        const numberOfFeedback = await this.getOrderNumber('feedback'); //узнаем номер заказа по порядку
+        const response = await fetch(`${this._apiBase}/feedback`, { //запрос к orders в json файле
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json;charset=utf-8'
+            },
+            body: JSON.stringify(feedback)
+        });
+        if (!response.ok) {
+            throw new Error('json error');
+        }
     }
 
 }

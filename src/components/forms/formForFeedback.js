@@ -1,6 +1,8 @@
 import React from 'react';
 import { Formik, form } from 'formik';
 import { Row, Col, Form } from 'react-bootstrap';
+import ResponseMessage from '../response-message';
+
 import * as yup from 'yup';
 import './styles.css';
 
@@ -13,8 +15,7 @@ const validationSchema = yup.object().shape({
         .min(5, "Must be longer than 5 characters")
         .matches(/^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i),
     subject: yup.string()
-        .min(3, 'Too short')
-        .required("Subject is required"),
+        .min(3, 'Too short'),
     feedback: yup.string()
         .min(10, "Must be longer than 10 characters")
         .max(500, 'Wow, its too long')
@@ -22,7 +23,11 @@ const validationSchema = yup.object().shape({
 })
 
 
-const FormForFeedback = () => {
+const FormForFeedback = ({ feedback, setFeedbackData, setResponseMessage, page, reason }) => {
+
+    const className = page === 'main' ? 'contact-form' : 'form-contact-alt'
+    const title = page === 'main' ? <h2>CONTACT US</h2> : <h1>LEAVE US A MESSAGE</h1>
+    const subtitle = page === 'main' ? <p>Our Company is the best, meet the creative team that never sleeps. Say something to us we will answer to you.</p> : null
 
     return (
 
@@ -30,126 +35,146 @@ const FormForFeedback = () => {
             initialValues={{ name: "", email: "", subject: "", feedback: "" }}
             validationSchema={validationSchema}
             onSubmit={(values, { setSubmitting, resetForm }) => {
-                setSubmitting(true);
+                setSubmitting(true); //нужно придумать что-нибудь для этого
                 setTimeout(() => {
                     //console.log(JSON.stringify(values, null, 2))
                     resetForm()
                     setSubmitting(false)
                 }, 500)
-                console.log(values)
+                setFeedbackData(values)
+                setResponseMessage(true)
             }}
         >
             {({ values, errors, touched, handleChange, handleBlur, handleSubmit, isSubmitting }) => (
-
                 <>
+
                     <div className="article-header">
-                        <h1>Leave us a message</h1>
+                        {title}
+                        {subtitle}
                     </div>
 
-                    <form onSubmit={handleSubmit} className="form-contact-alt">
+                    {feedback && <ResponseMessage
+                        reason={reason}
+                    />}
 
-                        <Form.Group controlId="formNameFeedback">
-                            <Row>
-                                <Col sm={7}>
-                                    <Form.Control
-                                        type='text'
-                                        name='name'
-                                        onChange={handleChange}
-                                        onBlur={handleBlur}
-                                        value={values.name}
-                                        className={touched.name && errors.name ? 'error-form' : null}
-                                    />
-                                </Col>
-                                <Col sm={5} className="input-description">
-                                    <Form.Label>
-                                        <i className="fa fa-user"></i>
+                    { !feedback && <>
+
+
+                        <form onSubmit={handleSubmit} className={className}>
+
+                            <Form.Group controlId="formNameFeedback">
+                                <Row>
+                                    <Col>
+                                        <Form.Control
+                                            type='text'
+                                            name='name'
+                                            placeholder={page === 'main' && 'Your name here'}
+                                            onChange={handleChange}
+                                            onBlur={handleBlur}
+                                            value={values.name}
+                                            className={touched.name && errors.name ? 'error-form' : null}
+                                        />
+                                    </Col>
+                                    {page !== 'main' &&
+                                        <Col sm={5} className="input-description">
+                                            <Form.Label>
+                                                <i className="fa fa-user"></i>
                                         Name:
                                         </Form.Label>
-                                </Col>
-                            </Row>
-                            {touched.name && errors.name ? (
-                                <div className="error-form-message">{errors.name}</div>
-                            ) : null}
-                        </Form.Group>
+                                        </Col>
+                                    }
+                                </Row>
+                                {touched.name && errors.name ? (
+                                    <div className="error-form-message">{errors.name}</div>
+                                ) : null}
+                            </Form.Group>
 
-                        <Form.Group controlId="formEmailFeedback">
-                            <Row>
-                                <Col sm={7}>
-                                    <Form.Control
-                                        type='text'
-                                        name='email'
-                                        onChange={handleChange}
-                                        onBlur={handleBlur}
-                                        value={values.email}
-                                        className={touched.email && errors.email ? 'error-form' : null}
-                                    />
-                                </Col>
-                                <Col sm={5} className="input-description">
-                                    <Form.Label>
-                                        <i className="fa fa-envelope"></i>
+                            <Form.Group controlId="formEmailFeedback">
+                                <Row>
+                                    <Col>
+                                        <Form.Control
+                                            type='text'
+                                            name='email'
+                                            placeholder={page === 'main' && 'Your email here'}
+                                            onChange={handleChange}
+                                            onBlur={handleBlur}
+                                            value={values.email}
+                                            className={touched.email && errors.email ? 'error-form' : null}
+                                        />
+                                    </Col>
+                                    {page !== 'main' &&
+                                        <Col sm={5} className="input-description">
+                                            <Form.Label>
+                                                <i className="fa fa-envelope"></i>
                                         Email:
                                         </Form.Label>
-                                </Col>
-                            </Row>
-                            {touched.email && errors.email ? (
-                                <div className="error-form-message">{errors.email}</div>
-                            ) : null}
+                                        </Col>
+                                    }
+                                </Row>
+                                {touched.email && errors.email ? (
+                                    <div className="error-form-message">{errors.email}</div>
+                                ) : null}
 
-                        </Form.Group>
+                            </Form.Group>
 
-                        <Form.Group controlId="formSubjectFeedback">
-                            <Row>
-                                <Col sm={7}>
-                                    <Form.Control
-                                        type='text'
-                                        name='subject'
-                                        onChange={handleChange}
-                                        onBlur={handleBlur}
-                                        value={values.subject}
-                                        className={touched.subject && errors.subject ? 'error-form' : null}
-                                    />
-                                </Col>
-                                <Col sm={5} className="input-description">
-                                    <Form.Label>
-                                        <i className="fa fa-file"></i>
+                            {page === 'contact' &&
+                                <Form.Group controlId="formSubjectFeedback">
+                                    <Row>
+                                        <Col sm={7}>
+                                            <Form.Control
+                                                type='text'
+                                                name='subject'
+                                                onChange={handleChange}
+                                                onBlur={handleBlur}
+                                                value={values.subject}
+                                                className={touched.subject && errors.subject ? 'error-form' : null}
+                                            />
+                                        </Col>
+                                        <Col sm={5} className="input-description">
+                                            <Form.Label>
+                                                <i className="fa fa-file"></i>
                                         Subject:
                                         </Form.Label>
-                                </Col>
+                                        </Col>
+                                    </Row>
+                                    {touched.subject && errors.subject ? (
+                                        <div className="error-form-message">{errors.subject}</div>
+                                    ) : null}
+
+                                </Form.Group>
+                            }
+
+                            <Form.Group controlId="formFeedback">
+                                <Form.Control as="textarea" rows={3}
+                                    type='text'
+                                    name='feedback'
+                                    placeholder={page === 'main' && 'Your message here'}
+                                    onChange={handleChange}
+                                    onBlur={handleBlur}
+                                    value={values.feedback}
+                                    className={touched.feedback && errors.feedback ? 'error-form' : null}
+                                />
+                                {touched.feedback && errors.feedback ? (
+                                    <div className="error-form-message">{errors.feedback}</div>
+                                ) : null}
+
+                            </Form.Group>
+
+
+                            <Row className='btn-order'>
+                                <button type='submit'
+                                    disabled={isSubmitting}
+                                    className='btn-order'
+                                >
+                                    <h4>Sent message</h4>
+                                </button>
                             </Row>
-                            {touched.subject && errors.subject ? (
-                                <div className="error-form-message">{errors.subject}</div>
-                            ) : null}
 
-                        </Form.Group>
-
-
-                        <Form.Group controlId="formFeedback">
-                            <Form.Control
-                                type='text'
-                                name='feedback'
-                                onChange={handleChange}
-                                onBlur={handleBlur}
-                                value={values.feedback}
-                                className={touched.feedback && errors.feedback ? 'error-form' : null}
-                            />
-                            {touched.feedback && errors.feedback ? (
-                                <div className="error-form-message">{errors.feedback}</div>
-                            ) : null}
-
-                        </Form.Group>
-
-
-                        <Row className='btn-order'>
-                            <button type='submit'
-                                disabled={isSubmitting}
-                                className='btn-order'
-                            >
-                                <h4>Sent message</h4>
-                            </button>
-                        </Row>
-
-                    </form>
+                        </form>
+                    </>}
                 </>
+
+
             )}
         </Formik>
     )

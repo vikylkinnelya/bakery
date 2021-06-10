@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
-import { Col} from 'react-bootstrap';
+import 'react-lazy-load-image-component/src/effects/blur.css';
+import { Col } from 'react-bootstrap';
 import './styles.css';
 
 const ShopItem = ({ menuItem, menuType, onAddToCart }) => {
@@ -27,15 +28,20 @@ const ShopItem = ({ menuItem, menuType, onAddToCart }) => {
             return setShowPriceMenu(!priceMenu)
         }
         if (!pricing) {
-            return  onAddToCart(id)
+            return onAddToCart(id)
         }
     }
 
     return (
 
         < Col className="product" sm={2} lg={2}>
+            
             <div className="product-preview">
-                <LazyLoadImage alt={name} src={`../../images/shop/${id}-min.jpg`} />
+                <LazyLoadImage
+                    effect="blur"
+                    alt={name}
+                    src={`../../images/shop/${id}-min.jpg`}
+                />
             </div>
 
             <div className="product-detail-container">
@@ -49,8 +55,8 @@ const ShopItem = ({ menuItem, menuType, onAddToCart }) => {
                         {!priceMenu && <i className="fa fa-shopping-cart" />}
                         {priceMenu && pricing && <i className="fas fa-times"></i>}
                     </button>
-                    { priceMenu && pricing && smallCup}
-                    { priceMenu && pricing && bigCup}
+                    {priceMenu && pricing && smallCup}
+                    {priceMenu && pricing && bigCup}
 
                 </div>
                 <div className="product-detail">

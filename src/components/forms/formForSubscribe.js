@@ -5,12 +5,12 @@ import * as yup from 'yup';
 import WithRestoService from '../hoc';
 import './styles.css';
 
-const FormForSubscribe = ({ RestoService }) => {
+const FormForSubscribe = ({ setSubscriberData }) => {
 
     const validationSchema = yup.object().shape({
         email: yup.string()
             .matches(/^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i, 'Invalid email')
-        })
+    })
 
     return (
         <Formik
@@ -23,7 +23,7 @@ const FormForSubscribe = ({ RestoService }) => {
                     resetForm()
                     setSubmitting(false)
                 }, 500)
-                RestoService.setSubscriber(values)
+                setSubscriberData(values)
             }}
         >
             {({ values, errors, touched, handleChange, handleBlur, handleSubmit, isSubmitting }) => (

@@ -1,6 +1,7 @@
 import React from 'react';
+import { LazyLoadComponent } from 'react-lazy-load-image-component';
 import { FullHeaderContainer } from '../details/index';
-import { Col, Container, Row, Pagination } from 'react-bootstrap';
+import { Col, Container, Row } from 'react-bootstrap';
 import './styles.css'
 
 const About = () => {
@@ -54,28 +55,23 @@ const About = () => {
                                     <Col sm={{ span: 5, offset: 1 }} className="item-check">French Tradition</Col>
                                     <Col sm={{ span: 5, offset: 1 }} className="item-check">Family-Owned Company</Col>
                                 </Row>
-
-
                             </Col>
                         </Row>
 
                         <Row id="video-section" className="section-content container">
                             <Col lg={12}> <h2 className="heading-huge">Video presentation</h2></Col>
-
-                            <Col lg={6} className='video-col'>
-                                <div className="embed-responsive embed-responsive-4by3">
-                                    <iframe title='video' src="http://www.youtube.com/embed/Xit0QEeE7H8" frameBorder="0"></iframe>
-                                </div>
-
-
-                            </Col>
-
-                            <Col lg={6} className='video-col'>
-                                <div className="embed-responsive embed-responsive-4by3">
-                                    <iframe title='video' src="http://www.youtube.com/embed/EGbNI26PPYg" frameBorder="0"></iframe>
-                                </div>
-                            </Col>
-
+                            <LazyLoadComponent>
+                                <Col lg={6} className='video-col'>
+                                    <div className="embed-responsive embed-responsive-4by3">
+                                        <iframe title='video' src="http://www.youtube.com/embed/Xit0QEeE7H8" frameBorder="0"></iframe>
+                                    </div>
+                                </Col>
+                                <Col lg={6} className='video-col'>
+                                    <div className="embed-responsive embed-responsive-4by3">
+                                        <iframe title='video' src="http://www.youtube.com/embed/EGbNI26PPYg" frameBorder="0"></iframe>
+                                    </div>
+                                </Col>
+                            </LazyLoadComponent>
                         </Row>
 
                     </div>

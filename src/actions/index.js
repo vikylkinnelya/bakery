@@ -3,7 +3,8 @@ const setMenu = (newMenu) => ({
     payload: newMenu
 })
 
-const setLoading = () => ({
+const setLoading = (bool) => ({
+    payload: bool,
     type: 'SET_LOADING'
 })
 
@@ -45,7 +46,6 @@ const setFormVisibility = () => ({
 const setModalVisibility = () => ({
     type: 'SET_MODAL_VISIBILITY'
 })
-
 
 const deleteFromCart = (id) => {
     return {
