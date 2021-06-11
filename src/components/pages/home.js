@@ -55,8 +55,34 @@ class Home extends Component {
     }
 
 
+
+
+
     render() {
         const { menuItems, loading, error, menuType, setMenuType, setMenuPage, addToCart, menuCurrPage, menuTotalItems } = this.props
+
+
+        const CarouselItem = <Carousel.Item>
+            <Row className='product-row'>
+                {!loading && menuItems != null && menuItems.length > 0 && menuItems.map(menuItem => (
+                    <ShopItem
+                        key={menuItem.id}
+                        menuItem={menuItem}
+                        menuType={menuType}
+                        onAddToCart={addToCart}
+                    />
+                ))}
+            </Row>
+        </Carousel.Item>
+
+        const callCarouselItem = (page) => {
+
+            
+            return (
+
+
+            )
+        }
 
         return (
             <>
@@ -102,17 +128,11 @@ class Home extends Component {
                                     <p>Check some of our best products and feel the great passion for food</p>
                                 </header>
 
-                                <Carousel className='shop-slide'>
-                                    <Row className='product-row'>
-                                        {!loading && menuItems != null && menuItems.length > 0 && menuItems.map(menuItem => (
-                                            <ShopItem
-                                                key={menuItem.id}
-                                                menuItem={menuItem}
-                                                menuType={menuType}
-                                                onAddToCart={addToCart}
-                                            />
-                                        ))}
-                                    </Row>
+                                <Carousel
+                                    className='shop-slide'
+                                    controls={false}
+                                >
+
                                 </Carousel>
 
                                 <p className="text-center onscroll-animate">
@@ -145,7 +165,10 @@ class Home extends Component {
                                         <h2>Chef’s Hat</h2>
                                         <div className="horizontal-delimiter"></div>
                                         <p>Whether the flitting attendance of the one still and solitary jet had gradually worked upon Ahab.</p>
-                                        <Link Link to='breakfast' onClick={() => setMenuType('breakfast')}> more </Link>
+                                        <Link
+                                            Link to='shop/breakfast'
+                                            onClick={() => setMenuType('breakfast')}
+                                        > more </Link>
                                     </div>
                                 </Col>
                                 <Col sm={3} >
