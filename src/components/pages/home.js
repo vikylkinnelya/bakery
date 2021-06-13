@@ -11,7 +11,6 @@ import { setMenu, setLoading, setError, setMenuType, addToCart, setMenuPage, set
 import ShopItem from '../shop-item';
 import { FormForFeedback } from '../forms';
 import './styles.css'
-import { FirestoreCollection } from "@react-firebase/firestore";
 
 class Home extends Component {
 
@@ -326,7 +325,7 @@ class Home extends Component {
                                     <h1>This week offers</h1>
                                     <p>
                                         See our big range of departaments, whe offer a lot of attention to our patients<br /> see what fits you and give us a call
-                                </p>
+                                    </p>
                                 </header>
                                 <Tab.Container id='left-tabs' defaultActiveKey="first" >
                                     <Row className='tabs-big-container'>
@@ -381,7 +380,7 @@ class Home extends Component {
                                                                 <div className="product-label-container big-label">
                                                                     <div className="product-label">
                                                                         Week’s best seller
-                                                            </div>
+                                                                    </div>
                                                                     <div className="product-label-bottom"></div>
                                                                 </div>
                                                             </Col>
@@ -484,13 +483,8 @@ class Home extends Component {
                                     />
                                 </Col>
                             </Row>
-                        </LazyLoadComponent></section>
-                    
-                    <FirestoreCollection path="/menu/" limit={5}>
-                        {d => {
-                            return d.isLoading ? "Loading" : <pre>{d.value}</pre>;
-                        }}
-                    </FirestoreCollection>
+                        </LazyLoadComponent>
+                    </section>
 
                 </Container >
             </>
