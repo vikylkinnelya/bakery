@@ -43,8 +43,8 @@ const reducer = (state = initialState, action) => {
             }
 
         case 'SET_MENU_TOTAL_ITEMS':
-            return{
-                ...state, 
+            return {
+                ...state,
                 menuTotalItems: action.payload
             }
 
@@ -142,7 +142,7 @@ const reducer = (state = initialState, action) => {
 
         case 'SET_MODAL_VISIBILITY':
             return {
-                ...state, 
+                ...state,
                 modalIsShown: !state.modalIsShown
             }
 

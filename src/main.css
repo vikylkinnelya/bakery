@@ -1344,7 +1344,7 @@ ul {
 
 .carousel-caption h2 {
   font-family: 'Montserrat', sans-serif;
-  font-size: 40px;
+  font-size: 4vw;
   font-weight: 400;
   color: #FFF;
   background-color: rgba(104, 79, 64, 0.9);
@@ -1362,7 +1362,7 @@ ul {
 
 .carousel-caption h3 {
   font-family: 'Lato', sans-serif;
-  font-size: 26px;
+  font-size: 3vw;
   font-weight: 400;
   background-color: rgba(253, 192, 60, 0.9);
   color: #684f40;
@@ -2431,8 +2431,6 @@ ul {
 }
 
 .top-section {
-  position: static;
-
   z-index: 750;
   background-color: #FFF;
 }

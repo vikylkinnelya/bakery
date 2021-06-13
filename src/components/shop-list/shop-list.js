@@ -2,12 +2,12 @@ import React, { Component } from 'react';
 import Spinner from '../spinner';
 import { Col, Container, Row, Pagination } from 'react-bootstrap';
 import ShopItem from '../shop-item';
+import WithRestoService from '../hoc';
 import { connect } from 'react-redux';
 import { withRouter } from "react-router";
 import { Link } from 'react-router-dom';
 import scrollToComponent from 'react-scroll-to-component';
 import { LazyLoadComponent, trackWindowScroll } from 'react-lazy-load-image-component';
-import WithRestoService from '../hoc';
 import { setMenu, setLoading, setError, setMenuType, addToCart, setMenuPage, setMenuTotalItems } from '../../actions';
 import './styles.css'
 

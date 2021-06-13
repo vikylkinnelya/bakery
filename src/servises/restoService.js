@@ -16,10 +16,10 @@ export default class RestoService {
         return res.json()
     }
 
-    async getMenuItems(menuType = '', menuPage = 1) {
+    async getMenuItems(menuType = '', menuPage = 1, limit = 8) {
 
         const typeOf = menuType === 'all' ? '' : `type=${menuType}&`
-        const pageOf = menuPage === '' ? '' : `_page=${menuPage}&_limit=8`
+        const pageOf = menuPage === '' ? '' : `_page=${menuPage}&_limit=${limit}`
         const joiner = menuType === '' ? '' : '?'
 
         return await this.getResourse(`/menus/${joiner}${typeOf}${pageOf}`)

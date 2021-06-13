@@ -63,6 +63,7 @@
 
 .product-row {
     justify-content: space-around;
+    min-height: 500px;
 }
 
 html.cssanimations .onscroll-animate {

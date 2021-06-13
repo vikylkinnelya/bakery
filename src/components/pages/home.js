@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
-import { FormForFeedback } from '../forms';
 import { Col, Container, Row, Tab, Nav, Image, Carousel } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { withRouter } from "react-router";
-import { LazyLoadImage, LazyLoadComponent } from 'react-lazy-load-image-component';
 import WithRestoService from '../hoc';
-import { setMenu, setLoading, setError, setMenuType, addToCart, setMenuPage, setMenuTotalItems } from '../../actions';
+import { LazyLoadImage, LazyLoadComponent } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
+import scrollToComponent from 'react-scroll-to-component';
+import { setMenu, setLoading, setError, setMenuType, addToCart, setMenuPage, setMenuTotalItems } from '../../actions';
 import ShopItem from '../shop-item';
+import { FormForFeedback } from '../forms';
 import './styles.css'
+import { FirestoreCollection } from "@react-firebase/firestore";
 
 class Home extends Component {
 
@@ -30,13 +32,13 @@ class Home extends Component {
 
         setLoading(true)
 
-        RestoService.getMenuItems('all', 1)
+        RestoService.getMenuItems('all', 1, 4)
             .then(res => setMenu(res)) //в этом экшене изменяется так же и ожидание
             .catch(error => setError())
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
-        const { RestoService, setLoading, setError, menuCurrPage } = this.props
+        const { RestoService, setLoading, setError, menuCurrPage, setMenu } = this.props
 
         if (this.state.feedback !== prevState.feedback) {
             setLoading(true)
@@ -45,10 +47,10 @@ class Home extends Component {
             setLoading(false)
         }
 
-        if ((menuCurrPage !== prevProps.menuCurrPage)) {
-            setLoading()
+        if (menuCurrPage !== prevProps.menuCurrPage) {
+            setLoading(true)
 
-            RestoService.getMenuItems('all', menuCurrPage)
+            RestoService.getMenuItems('all', menuCurrPage, 4)
                 .then(res => setMenu(res, menuCurrPage))
                 .catch(error => setError())
         }
@@ -56,13 +58,10 @@ class Home extends Component {
 
 
 
-
-
     render() {
         const { menuItems, loading, error, menuType, setMenuType, setMenuPage, addToCart, menuCurrPage, menuTotalItems } = this.props
 
-
-        const CarouselItem = <Carousel.Item>
+        const CarouselItem =
             <Row className='product-row'>
                 {!loading && menuItems != null && menuItems.length > 0 && menuItems.map(menuItem => (
                     <ShopItem
@@ -73,54 +72,40 @@ class Home extends Component {
                     />
                 ))}
             </Row>
-        </Carousel.Item>
 
-        const callCarouselItem = (page) => {
-
-            
-            return (
-
-
-            )
-        }
 
         return (
             <>
+                <section id="slider-container" className="top-section">
+                    <Carousel fade className='img-carousel offset-borders' interval={7500}>
+                        <Carousel.Item>
+                            <Image fluid src="images/slider/1.jpg" alt="header img" />
+                            <Carousel.Caption className="ms-layer">
+                                <h2 className="ms-layer">Coffe and Croissant</h2>
+                                <h3 className="ms-layer">Pleasure and Taste in one Place</h3>
+                            </Carousel.Caption>
+                        </Carousel.Item>
+                        <Carousel.Item>
+                            <Image fluid src="images/slider/2.jpg" alt="header img" />
+                            <Carousel.Caption className="ms-layer">
+                                <h2 className="ms-layer">Coffe and Croissant</h2>
+                                <h3 className="ms-layer">Pleasure and Taste in one Place</h3>
+                            </Carousel.Caption>
+                        </Carousel.Item>
+                        <Carousel.Item>
+                            <Image fluid src="images/slider/3.jpg" alt="header img" />
+                            <Carousel.Caption className="ms-layer">
+                                <h2 className="ms-layer">Coffe and Croissant</h2>
+                                <h3 className="ms-layer">Pleasure and Taste in one Place</h3>
+                            </Carousel.Caption>
+                        </Carousel.Item>
+                    </Carousel>
+
+                </section>
+
                 <Container>
 
-                    <section id="slider-container" className="top-section">
-                        <LazyLoadComponent>
-                            <div className="ms-fullscreen-template">
-                                <Carousel className='img-carousel' interval={7500}>
-                                    <Carousel.Item>
-                                        <Image fluid src="images/slider/1.jpg" alt="header img" />
-                                        <Carousel.Caption className="ms-layer">
-                                            <h2 className="ms-layer">Coffe and Croissant</h2>
-                                            <h3 className="ms-layer">Pleasure and Taste in one Place</h3>
-                                        </Carousel.Caption>
-                                    </Carousel.Item>
-                                    <Carousel.Item>
-                                        <Image fluid src="images/slider/1.jpg" alt="header img" />
-                                        <Carousel.Caption className="ms-layer">
-                                            <h2 className="ms-layer">Coffe and Croissant</h2>
-                                            <h3 className="ms-layer">Pleasure and Taste in one Place</h3>
-                                        </Carousel.Caption>
-                                    </Carousel.Item>
-                                    <Carousel.Item>
-                                        <Image fluid src="images/slider/1.jpg" alt="header img" />
-                                        <Carousel.Caption className="ms-layer">
-                                            <h2 className="ms-layer">Coffe and Croissant</h2>
-                                            <h3 className="ms-layer">Pleasure and Taste in one Place</h3>
-                                        </Carousel.Caption>
-                                    </Carousel.Item>
-                                </Carousel>
-
-                            </div>
-
-                        </LazyLoadComponent>
-                    </section>
-
-                    <section id="products-section">
+                    <section id="products-section" ref={(section) => { this.ShopCarousel = section }}>
                         <div className="section-content">
                             <LazyLoadComponent>
                                 <header className="section-header">
@@ -128,16 +113,30 @@ class Home extends Component {
                                     <p>Check some of our best products and feel the great passion for food</p>
                                 </header>
 
-                                <Carousel
+                                <Carousel fade
                                     className='shop-slide'
                                     controls={false}
+                                    interval={7500}
+                                    onSelect={(activeIndex) => {
+                                        setMenuPage(activeIndex + 1);
+                                        //scrollToComponent(this.ShopCarousel, { offset: -40, align: 'top', duration: 500 })
+                                    }}
                                 >
+                                    <Carousel.Item>
+                                        {CarouselItem}
+                                    </Carousel.Item>
+                                    <Carousel.Item>
+                                        {CarouselItem}
+                                    </Carousel.Item>
+                                    <Carousel.Item>
+                                        {CarouselItem}
+                                    </Carousel.Item>
 
                                 </Carousel>
 
-                                <p className="text-center onscroll-animate">
+                                <div className="text-center onscroll-animate">
                                     <Link className="button-void" to='/shop/all'>See all our products</Link>
-                                </p>
+                                </div>
                                 <div className="margin-60"></div>
                             </LazyLoadComponent>
                         </div>
@@ -486,7 +485,12 @@ class Home extends Component {
                                 </Col>
                             </Row>
                         </LazyLoadComponent></section>
-
+                    
+                    <FirestoreCollection path="/menu/" limit={5}>
+                        {d => {
+                            return d.isLoading ? "Loading" : <pre>{d.value}</pre>;
+                        }}
+                    </FirestoreCollection>
 
                 </Container >
             </>

@@ -366,7 +366,8 @@ input[type=submit] {
 }
 
 
-.img-carousel .carousel-indicators li:before {
+.img-carousel .carousel-indicators li:before,
+.shop-slide>.carousel-indicators li:before {
     position: absolute;
     width: 8px;
     height: 8px;
@@ -385,7 +386,8 @@ input[type=submit] {
     border-radius: 50%;
 }
 
-.img-carousel .carousel-indicators>li {
+.img-carousel .carousel-indicators>li,
+.shop-slide>.carousel-indicators>li {
     position: relative;
     display: inline-block;
     width: 18px;
@@ -398,13 +400,15 @@ input[type=submit] {
     border-radius: 50%;
 }
 
-.img-carousel .carousel-indicators li.active:before {
-    background-color: #FFF;
+.img-carousel .carousel-indicators li.active:before,
+.shop-slide>.carousel-indicators li.active:before {
+    background-color: #684f40;
     width: 8px;
     height: 8px;
 }
 
-.img-carousel>.carousel-indicators li:after {
+.img-carousel>.carousel-indicators li:after,
+.shop-slide>.carousel-indicators li:after {
     position: absolute;
     width: 16px;
     height: 16px;
@@ -413,12 +417,27 @@ input[type=submit] {
     margin-top: -9px;
     margin-left: -9px;
     content: '';
-    border: 2px #FFF solid;
+    border: 2px #684f40 solid;
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
     border-radius: 50%;
 }
 
-.shop-slide>.carousel-indicators{
+.shop-slide>.carousel-indicators {
     margin-top: 0px;
+    bottom: -15px;
+}
+
+.carousel-item .product-row {
+    min-height: 330px;
+}
+
+.carousel-item {
+    max-height: 450px;
+}
+
+.carousel-item img {
+    object-fit: cover;
+    overflow: hidden;
+
 }
