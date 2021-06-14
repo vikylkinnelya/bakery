@@ -6,7 +6,10 @@ import './styles.css';
 
 const ShopItem = ({ menuItem, menuType, onAddToCart, id }) => {
 
-    const { name, description, price, pricing, type} = menuItem
+    const { name, description, pricing, type } = menuItem
+
+    const productPrice = pricing !== undefined && pricing
+    const productPricing = pricing !== undefined && pricing.length > 1 && `${pricing[0]}-${pricing[1]}`
 
     const productLabel = <div className="product-label-container-alt">
         <div className="product-label">
@@ -32,10 +35,12 @@ const ShopItem = ({ menuItem, menuType, onAddToCart, id }) => {
         }
     }
 
+    console.log(pricing !== undefined && pricing.length)
+
     return (
 
         < Col className="product" sm={2} lg={2}>
-            
+
             <div className="product-preview">
                 <LazyLoadImage
                     effect="blur"
@@ -63,15 +68,20 @@ const ShopItem = ({ menuItem, menuType, onAddToCart, id }) => {
                     <h2>{name}</h2>
                     <p>{description}</p>
                     {menuType === 'all' && <h3>{type}</h3>}
-                    {price && <p className="product-price">${price}</p>}
-                    {pricing && <p className="product-price">$ {pricing.join(' - ')} </p>}
 
+                    <p className="product-price">
+                        {productPrice}
+                        {productPricing}
+                    </p>
+                    {/* {pricing !== undefined && pricing.length === 1 && ${pricing[0]}</p>}
+                    {pricing !== undefined && pricing.length > 1 && <p className="product-price">$ {pricing.join(' - ')} </p>}
+ */}
                 </div>
             </div>
 
             { menuItem.label && productLabel}
 
-        </ Col>
+        </ Col >
 
     )
 }
