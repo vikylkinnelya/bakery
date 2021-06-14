@@ -1,6 +1,8 @@
+import db from '../components/firebase'
+
 export default class RestoService {
-    //_apiBase = 'http://localhost:3000';
-    _apiBase = 'http://my-json-server.typicode.com/vikylkinnelya/bakery';
+    _apiBase = 'http://localhost:3000';
+    //_apiBase = 'https://my-json-server.typicode.com/vikylkinnelya/bakery';
     _apiID = '1bae761a'
     _apiKey = 'd82fe35dc33c4ae1401d2e01d376b7ea'
 
@@ -76,6 +78,12 @@ export default class RestoService {
         if (!response.ok) {
             throw new Error('json error');
         }
+    }
+
+    async fetchMenu(){
+        const response = db.collection('products');
+        const data = await response.get()
+        return data.docs
     }
 
 }

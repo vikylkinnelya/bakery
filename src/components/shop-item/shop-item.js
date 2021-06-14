@@ -4,9 +4,9 @@ import 'react-lazy-load-image-component/src/effects/blur.css';
 import { Col } from 'react-bootstrap';
 import './styles.css';
 
-const ShopItem = ({ menuItem, menuType, onAddToCart }) => {
+const ShopItem = ({ menuItem, menuType, onAddToCart, id }) => {
 
-    const { name, description, price, pricing, type, id } = menuItem
+    const { name, description, price, pricing, type} = menuItem
 
     const productLabel = <div className="product-label-container-alt">
         <div className="product-label">

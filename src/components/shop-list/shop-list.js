@@ -9,7 +9,8 @@ import { Link } from 'react-router-dom';
 import scrollToComponent from 'react-scroll-to-component';
 import { LazyLoadComponent, trackWindowScroll } from 'react-lazy-load-image-component';
 import { setMenu, setLoading, setError, setMenuType, addToCart, setMenuPage, setMenuTotalItems } from '../../actions';
-import './styles.css'
+import './styles.css';
+import db from '../firebase';
 
 class ShopListItems extends Component {
 
@@ -21,11 +22,17 @@ class ShopListItems extends Component {
         const pathMenuType = location.pathname.split('/')[2]
         setMenuType(pathMenuType)
 
-        RestoService.getMenuItems(pathMenuType, '')
+        /* RestoService.getMenuItems(pathMenuType, '')
             .then(result => setMenuTotalItems(result.length))
-
-        RestoService.getMenuItems(pathMenuType, 1)
+ */
+        /* RestoService.getMenuItems(pathMenuType, 1)
             .then(res => setMenu(res)) //в этом экшене изменяется так же и ожидание
+            .catch(error => setError())
+ */
+
+        RestoService.fetchMenu()
+            .then(res => setMenu(res)) //в этом экшене изменяется так же и ожидание
+            .then(result => setMenuTotalItems(result.length))
             .catch(error => setError())
     }
 
@@ -122,7 +129,7 @@ class ShopListItems extends Component {
                                     <article>
                                         <div className="list-arrows-content">
                                             Drinks
-                                    </div>
+                                        </div>
                                         {menuType === 'drinks' && <div className="list-arrows-value">{menuTotalItems}</div>}
                                     </article>
                                 </Link>
@@ -140,7 +147,8 @@ class ShopListItems extends Component {
                                     key={menuItem.id}
                                     scrollPosition={scrollPosition}>
                                     <ShopItem
-                                        menuItem={menuItem}
+                                        menuItem={menuItem.data()}
+                                        id={menuItem.id}
                                         menuType={menuType}
                                         onAddToCart={addToCart}
                                     />
