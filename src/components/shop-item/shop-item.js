@@ -4,9 +4,12 @@ import 'react-lazy-load-image-component/src/effects/blur.css';
 import { Col } from 'react-bootstrap';
 import './styles.css';
 
-const ShopItem = ({ menuItem, menuType, onAddToCart, id }) => {
+const ShopItem = ({ menuItem, menuType, onAddToCart }) => {
 
-    const { name, description, price, pricing, type} = menuItem
+    const { name, description, pricing, type, id } = menuItem
+
+    const productPrice = pricing.length === 1 && pricing[0]
+    const productPricing = pricing.length > 1 && pricing.join(' - ')
 
     const productLabel = <div className="product-label-container-alt">
         <div className="product-label">
@@ -35,7 +38,7 @@ const ShopItem = ({ menuItem, menuType, onAddToCart, id }) => {
     return (
 
         < Col className="product" sm={2} lg={2}>
-            
+
             <div className="product-preview">
                 <LazyLoadImage
                     effect="blur"
@@ -63,8 +66,8 @@ const ShopItem = ({ menuItem, menuType, onAddToCart, id }) => {
                     <h2>{name}</h2>
                     <p>{description}</p>
                     {menuType === 'all' && <h3>{type}</h3>}
-                    {price && <p className="product-price">${price}</p>}
-                    {pricing && <p className="product-price">$ {pricing.join(' - ')} </p>}
+                    {productPrice && <p className="product-price">${productPrice}</p>}
+                    {productPricing && <p className="product-price"> ${productPricing} </p>}
 
                 </div>
             </div>

@@ -7,7 +7,7 @@ import WithRestoService from '../hoc';
 import { LazyLoadImage, LazyLoadComponent } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 import scrollToComponent from 'react-scroll-to-component';
-import { setMenu, setLoading, setError, setMenuType, addToCart, setMenuPage, setMenuTotalItems } from '../../actions';
+import { setMenu, setLoading, setError, setMenuType, addToCart, setLastVisible, setMenuTotalItems } from '../../actions';
 import ShopItem from '../shop-item';
 import { FormForFeedback } from '../forms';
 import './styles.css'
@@ -37,7 +37,7 @@ class Home extends Component {
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
-        const { RestoService, setLoading, setError, menuCurrPage, setMenu } = this.props
+        const { RestoService, setLoading, setError, lastVisible, setMenu } = this.props
 
         if (this.state.feedback !== prevState.feedback) {
             setLoading(true)
@@ -46,11 +46,11 @@ class Home extends Component {
             setLoading(false)
         }
 
-        if (menuCurrPage !== prevProps.menuCurrPage) {
+        if (lastVisible !== prevProps.lastVisible) {
             setLoading(true)
 
-            RestoService.getMenuItems('all', menuCurrPage, 4)
-                .then(res => setMenu(res, menuCurrPage))
+            RestoService.getMenuItems('all', lastVisible, 4)
+                .then(res => setMenu(res, lastVisible))
                 .catch(error => setError())
         }
     }
@@ -58,7 +58,7 @@ class Home extends Component {
 
 
     render() {
-        const { menuItems, loading, error, menuType, setMenuType, setMenuPage, addToCart, menuCurrPage, menuTotalItems } = this.props
+        const { menuItems, loading, error, menuType, setMenuType, setLastVisible, addToCart, lastVisible, menuTotalItems } = this.props
 
         const CarouselItem =
             <Row className='product-row'>
@@ -117,7 +117,7 @@ class Home extends Component {
                                     controls={false}
                                     interval={7500}
                                     onSelect={(activeIndex) => {
-                                        setMenuPage(activeIndex + 1);
+                                        setLastVisible(activeIndex + 1);
                                         //scrollToComponent(this.ShopCarousel, { offset: -40, align: 'top', duration: 500 })
                                     }}
                                 >
@@ -500,7 +500,7 @@ const mapStateToProps = state => {
         loading: state.loading,
         error: state.error,
         menuType: state.menuType,
-        menuCurrPage: state.menuCurrPage,
+        lastVisible: state.lastVisible,
         menuTotalItems: state.menuTotalItems,
         cart: state.cart
     }
@@ -511,7 +511,7 @@ const mapDispatchToProps = {
     setLoading,
     setError,
     setMenuType,
-    setMenuPage,
+    setLastVisible,
     setMenuTotalItems,
     addToCart
 }

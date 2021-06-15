@@ -9,7 +9,7 @@ export default class RestoService {
     _restaurantID = '2579043580132464'
 
 
-    async getResourse(url, type = '', page = 1,) {
+    /* async getResourse(url, type = '', page = 1,) {
 
         const res = await fetch(`${this._apiBase}${url}`)
 
@@ -17,7 +17,7 @@ export default class RestoService {
             throw new Error(`Could not fetch ${url}, reseived ${res.status}`)
         }
         return res.json()
-    }
+    } */
 
     async getMenuItems(menuType = '', menuPage = 1, limit = 8) {
 
@@ -80,10 +80,32 @@ export default class RestoService {
         }
     }
 
-    async fetchMenu(){
-        const response = db.collection('products');
+    async getResourse(url, type = '', page = 1,) {
+
+        const res = await fetch(`${this._apiBase}${url}`)
+
+        if (!res.ok) {
+            throw new Error(`Could not fetch ${url}, reseived ${res.status}`)
+        }
+        return res.json()
+    }
+
+    async fetchMenuAll(menuType, lastVisible = 0) {
+        const response = db.collection('products')
+            .where('type', 'in', ['breakfast', 'bakery', 'drinks'])
+            .orderBy('type')
+            .startAfter(lastVisible)
+            .limit(12)
         const data = await response.get()
         return data.docs
     }
+
+    async fetchMenuType(menuType) {
+        const response = db.collection('products').where("type", "==", menuType);
+        const data = await response.get()
+        return data.docs
+    }
+
+
 
 }

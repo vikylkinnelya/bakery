@@ -22,7 +22,7 @@ const setMenuTotalItems = (count) => ({
     payload: count
 })
 
-const setMenuPage = (page) => ({
+const setLastVisible = (page) => ({
     type: 'SET_MENU_PAGE',
     payload: page
 })
@@ -65,7 +65,7 @@ const decCount = (id) => {
 
 export {
     setMenu, setLoading, setError,
-    setMenuType, setMenuPage, setMenuTotalItems,
+    setMenuType, setLastVisible, setMenuTotalItems,
     setLocation,
     addToCart, deleteFromCart,  decCount,
     setFormVisibility, setModalVisibility

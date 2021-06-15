@@ -4,7 +4,7 @@ const initialState = {
     error: false,
     loading: false,
     menuType: 'all',
-    menuCurrPage: 1,
+    lastVisible: 0,
     cart: [],
     totalPrice: 0,
     formIsOpen: false,
@@ -17,9 +17,20 @@ const reducer = (state = initialState, action) => {
 
         case 'SET_MENU':
 
+            const menu = action.payload
+            const normalMenu = []
+
+            menu.forEach(data => {
+                const dataItem = {
+                    id: data.id,
+                    ...data.data()
+                }
+                normalMenu.push(dataItem)
+            })
+
             return {
                 ...state,
-                menu: action.payload,
+                menu: normalMenu,
                 loading: false
             };
 
@@ -51,7 +62,7 @@ const reducer = (state = initialState, action) => {
         case 'SET_MENU_PAGE':
             return {
                 ...state,
-                menuCurrPage: action.payload
+                lastVisible: action.payload
             }
 
         case 'SET_LOCATION':

@@ -8,53 +8,45 @@ import { withRouter } from "react-router";
 import { Link } from 'react-router-dom';
 import scrollToComponent from 'react-scroll-to-component';
 import { LazyLoadComponent, trackWindowScroll } from 'react-lazy-load-image-component';
-import { setMenu, setLoading, setError, setMenuType, addToCart, setMenuPage, setMenuTotalItems } from '../../actions';
+import { setMenu, setLoading, setError, setMenuType, addToCart, setLastVisible, setMenuTotalItems } from '../../actions';
 import './styles.css';
 import db from '../firebase';
 
 class ShopListItems extends Component {
 
     componentDidMount() {
-        const { RestoService, location, setMenuTotalItems, setMenu, setError, setLoading } = this.props;
+        const { RestoService, location, setMenuTotalItems, setMenuType, menuType, setMenu, menuItems, setError, setLoading } = this.props;
 
         setLoading(true)
 
         const pathMenuType = location.pathname.split('/')[2]
         setMenuType(pathMenuType)
 
-        /* RestoService.getMenuItems(pathMenuType, '')
-            .then(result => setMenuTotalItems(result.length))
- */
-        /* RestoService.getMenuItems(pathMenuType, 1)
+        RestoService.fetchMenuAll()
             .then(res => setMenu(res)) //в этом экшене изменяется так же и ожидание
-            .catch(error => setError())
- */
-
-        RestoService.fetchMenu()
-            .then(res => setMenu(res)) //в этом экшене изменяется так же и ожидание
-            .then(result => setMenuTotalItems(result.length))
+            .then(res => setMenuTotalItems(menuItems.length))
             .catch(error => setError())
     }
 
     componentDidUpdate(prevProps) {
 
-        const { RestoService, menuType, menuCurrPage, setMenuTotalItems, setMenu, setError, setLoading } = this.props;
+        const { RestoService, menuType, lastVisible, setMenuTotalItems, setMenu, setError, setLoading } = this.props;
 
-        if ((menuType !== prevProps.menuType) || (menuCurrPage !== prevProps.menuCurrPage)) {
+        if ((menuType !== prevProps.menuType) || (lastVisible !== prevProps.lastVisible)) {
             setLoading()
 
-            RestoService.getMenuItems(menuType, '')
-                .then(result => setMenuTotalItems(result.length))
+/*             RestoService.getMenuItems(menuType, '')
+                .then(result => setMenuTotalItems(result.length)) */
 
-            RestoService.getMenuItems(menuType, menuCurrPage)
-                .then(res => setMenu(res, menuCurrPage))
+            RestoService.getMenuItems(menuType, lastVisible)
+                .then(res => setMenu(res, lastVisible))
                 .catch(error => setError())
         }
     }
 
     render() {
 
-        const { scrollPosition, menuItems, loading, error, menuType, setMenuType, setMenuPage, addToCart, menuCurrPage, menuTotalItems } = this.props
+        const { scrollPosition, menuItems, loading, error, menuType, setMenuType, setLastVisible, addToCart, lastVisible, menuTotalItems } = this.props
 
         const paginationItems = []
 
@@ -65,10 +57,10 @@ class ShopListItems extends Component {
                     to={`${i}`}
                     className="pagination-item"
                     key={i}
-                    active={i === menuCurrPage}
+                    active={i === lastVisible}
                     activeLabel={null}
                     onClick={() => {
-                        setMenuPage(i);
+                        setLastVisible(i);
                         scrollToComponent(this.Shop, { offset: -150, align: 'top', duration: 500 })
                     }}
                 >
@@ -147,8 +139,7 @@ class ShopListItems extends Component {
                                     key={menuItem.id}
                                     scrollPosition={scrollPosition}>
                                     <ShopItem
-                                        menuItem={menuItem.data()}
-                                        id={menuItem.id}
+                                        menuItem={menuItem}
                                         menuType={menuType}
                                         onAddToCart={addToCart}
                                     />
@@ -180,7 +171,7 @@ const mapStateToProps = state => {
         loading: state.loading,
         error: state.error,
         menuType: state.menuType,
-        menuCurrPage: state.menuCurrPage,
+        lastVisible: state.lastVisible,
         menuTotalItems: state.menuTotalItems,
         cart: state.cart
     }
@@ -191,7 +182,7 @@ const mapDispatchToProps = {
     setLoading,
     setError,
     setMenuType,
-    setMenuPage,
+    setLastVisible,
     setMenuTotalItems,
     addToCart
 }
