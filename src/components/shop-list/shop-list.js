@@ -24,8 +24,8 @@ class ShopListItems extends Component {
 
         RestoService.fetchMenuAll()
             .then(res => setMenu(res)) //в этом экшене изменяется так же и ожидание
-            .then(res => setMenuTotalItems(menuItems.length))
-            .catch(error => setError())
+            .then(setMenuTotalItems(menuItems.length))
+            .catch(error => setError(error))
     }
 
     componentDidUpdate(prevProps) {
@@ -35,8 +35,8 @@ class ShopListItems extends Component {
         if ((menuType !== prevProps.menuType) || (lastVisible !== prevProps.lastVisible)) {
             setLoading()
 
-/*             RestoService.getMenuItems(menuType, '')
-                .then(result => setMenuTotalItems(result.length)) */
+            /*             RestoService.getMenuItems(menuType, '')
+                            .then(result => setMenuTotalItems(result.length)) */
 
             RestoService.getMenuItems(menuType, lastVisible)
                 .then(res => setMenu(res, lastVisible))
