@@ -15,16 +15,19 @@ import db from '../firebase';
 class ShopListItems extends Component {
 
     componentDidMount() {
-        const { RestoService, location, setMenuTotalItems, setMenuType, menuType, setMenu, menuItems, setError, setLoading } = this.props;
+        const { RestoService, location, setMenuTotalItems, setMenuType, setMenu, menuItems, setError, setLoading } = this.props;
 
         setLoading(true)
 
         const pathMenuType = location.pathname.split('/')[2]
         setMenuType(pathMenuType)
 
-        RestoService.fetchMenuAll()
+        RestoService.fetchMenuSize(pathMenuType)
+            .then(res => setMenuTotalItems(res))
+            .catch(error => setError(error))
+
+        RestoService.fetchMenu()
             .then(res => setMenu(res)) //в этом экшене изменяется так же и ожидание
-            .then(setMenuTotalItems(menuItems.length))
             .catch(error => setError(error))
     }
 
@@ -38,9 +41,13 @@ class ShopListItems extends Component {
             /*             RestoService.getMenuItems(menuType, '')
                             .then(result => setMenuTotalItems(result.length)) */
 
-            RestoService.getMenuItems(menuType, lastVisible)
-                .then(res => setMenu(res, lastVisible))
-                .catch(error => setError())
+            RestoService.fetchMenuSize(menuType)
+                .then(res => setMenuTotalItems(res))
+                .catch(error => setError(error))
+
+            RestoService.fetchMenu(menuType)
+                .then(res => setMenu(res))
+                .catch(error => setError(error))
         }
     }
 

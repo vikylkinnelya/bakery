@@ -3,11 +3,6 @@ import db from '../components/firebase'
 export default class RestoService {
     _apiBase = 'http://localhost:3000';
     //_apiBase = 'https://my-json-server.typicode.com/vikylkinnelya/bakery';
-    _apiID = '1bae761a'
-    _apiKey = 'd82fe35dc33c4ae1401d2e01d376b7ea'
-
-    _restaurantID = '2579043580132464'
-
 
     async getResourse(url, type = '', page = 1,) {
 
@@ -17,7 +12,7 @@ export default class RestoService {
             throw new Error(`Could not fetch ${url}, reseived ${res.status}`)
         }
         return res.json()
-    } 
+    }
 
     async getMenuItems(menuType = '', menuPage = 1, limit = 8) {
 
@@ -54,7 +49,7 @@ export default class RestoService {
     }
 
     async setSubscriber(subscriber) {
-        const response = await fetch(`${this._apiBase}/subscribers`, { //запрос к orders в json файле
+        /* const response = await fetch(`${this._apiBase}/subscribers`, { //запрос к orders в json файле
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json;charset=utf-8'
@@ -63,11 +58,19 @@ export default class RestoService {
         });
         if (!response.ok) {
             throw new Error('json error');
-        }
+        } */
+
+        const date = new Date()
+        const subscribersRef = db.collection('subscribers')
+        await subscribersRef.doc(`${date}`).set({
+            ...subscriber,
+            date: new Date()
+        })
+
     }
 
     async setFeedback(feedback) {
-        const numberOfFeedback = await this.getOrderNumber('feedback'); //узнаем номер заказа по порядку
+        /* const numberOfFeedback = await this.getOrderNumber('feedback'); //узнаем номер заказа по порядку
         const response = await fetch(`${this._apiBase}/feedback`, { //запрос к orders в json файле
             method: 'POST',
             headers: {
@@ -77,28 +80,59 @@ export default class RestoService {
         });
         if (!response.ok) {
             throw new Error('json error');
-        }
+        } */
+
+        const date = Date.now()
+        const feedbackRef = db.collection('feedback')
+        await feedbackRef.doc(`${date}`).set({
+            ...feedback,
+            date: new Date()
+        })
     }
 
+    async fetchMenu(type = 'all', lastVisible = 0) {
 
-    async fetchMenuAll(menuType, lastVisible = 0) {
-        const response = db.collection('products')
+        let data
+        let response
+
+        if (type !== 'all') {
+            response = await this.fetchMenuType(type)
+        } else {
+            response = await this.fetchMenuAll()
+        }
+
         /* .where('type', 'in', ['breakfast', 'bakery', 'drinks'])
         .orderBy('type')
         .startAfter(lastVisible)
-        .limit(12) */
-        const data = await response.get()
+         */
+        data = await response.get()
         return data.docs
+    }
+
+    async fetchMenuAll() {
+        const response = db.collection('products')
+            .limit(8)
+        return response
     }
 
     async fetchMenuType(menuType) {
-        const productRef = db.collection('products')
-        const response = productRef.where("type", "==", menuType);
-        const data = await response.get()
-        return data.docs
+        const response = db.collection('products')
+            .where("type", "==", menuType)
+            .limit(8)
+        return response
     }
 
-
+    async fetchMenuSize(type) {
+        let response
+        if (type === 'all') {
+            response = db.collection('products')
+        } else {
+            response = db.collection('products')
+                .where("type", "==", type);
+        }
+        response = await response.get()
+        return response.size
+    }
 
 
 
