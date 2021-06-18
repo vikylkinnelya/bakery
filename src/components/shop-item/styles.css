@@ -79,8 +79,9 @@
 }
 
 .product .product-icon-container:hover,
-button.small-cup:hover,
-button.big-cup:hover {
+button.medium-size:hover,
+button.big-size:hover,
+button.small-size:hover {
     color: #FFF;
     background-color: #684f40;
     border-color: #684f40;
@@ -92,8 +93,9 @@ button.big-cup:hover {
 }
 
 
-button.small-cup,
-button.big-cup {
+button.medium-size,
+button.big-size,
+button.small-size {
     display: flex;
     position: absolute;
     width: 40px;
@@ -112,12 +114,17 @@ button.big-cup {
     border-radius: 50%;
 }
 
-.small-cup {
+.small-size {
+    right: 95px;
+    top: -35px;
+}
+
+.medium-size {
     right: 50px;
     top: -45px;
 }
 
-.big-cup {
+.big-size {
     right: 15px;
     top: -15px;
 }

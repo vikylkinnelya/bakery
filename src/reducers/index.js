@@ -4,7 +4,6 @@ const initialState = {
     error: false,
     loading: false,
     menuType: 'all',
-    lastVisible: 0,
     cart: [],
     totalPrice: 0,
     formIsOpen: false,
@@ -31,6 +30,7 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 menu: normalMenu,
+                menuTotalItems: normalMenu.length,
                 loading: false
             };
 

@@ -109,31 +109,22 @@ export default class RestoService {
         return data.docs
     }
 
-    async fetchMenuAll() {
+    async fetchMenuAll(limit = undefined) {
         const response = db.collection('products')
-            .limit(8)
+            .orderBy('type')
+            .limit(limit)
         return response
     }
 
     async fetchMenuType(menuType) {
 
-        const types = { breakfast: 1, bakery: 2, drinks: 3 }
-
-        const type = types[`${menuType}`]
-
         const response = db.collection('products')
-            .where("categhory", "<", type + 1)
-            .where("categhory", ">", type - 1)
-            .orderBy('categhory')
-            .startAt(type)
-            .endAt(type)
-
-        //.limit(2)
+            .where("type", "==", menuType)
 
         return response
     }
 
-    async fetchMenuSize(type) {
+    /* async fetchMenuSize(type) {
         let response
         if (type === 'all') {
             response = db.collection('products')
@@ -143,200 +134,204 @@ export default class RestoService {
         }
         response = await response.get()
         return response.size
-    }
+    } */
 
 
 
 
-    async addBreakfast() {
+    async addMenu() {
         const productRef = db.collection('products')
-        await productRef.doc('b1hcc').set({
-            name: "Ham & Cheese Croissant",
-            description: "Ham, Swiss cheese, lettuce, tomato and a butter spread on a croissant.",
-            categhory: 1,
-            type: 'breakfast',
-            pricing: [4.95],
-        }, { merge: true })
-        await productRef.doc('b3ssc').set({
-            name: "Smoked Salmon Croissant",
-            description: "Smoked salmon, lettuce, tomato and lemon spread on a croissant.",
-            categhory: 1,
-            type: 'breakfast',
-            pricing: [5.45]
-        }, { merge: true })
-        await productRef.doc('b2hescc').set({
-            name: "Ham, Egg & Swiss Cheese Croissant",
-            description: "Ham, scrambled egg and Swiss cheese on a croissant.",
-            categhory: 1,
-            type: 'breakfast',
-            pricing: [5.65]
+        await productRef.doc('safroro5').set({
+            name: "Sandwich Fromage Rosette",
+            description: "A flavourful filling of salami and gherkins in a sandwich bread which has been rolled in grated cheese before baking.",
+            type: 'lunch',
+            ingredients: ['sandwich', 'salami', 'cheese'],
+            pricing: [4.10]
         }, { merge: true })
         await productRef.doc('b4sd').set({
             name: "Sandwich Dieppois",
             description: "A generous filling of tuna mayonnaise with tomato, cucumber and lettuce in a freshly made bread.",
-            categhory: 1,
-            type: 'breakfast',
+            ingredients: ['tomato', 'tyna', 'cucumber'],
+            type: 'lunch',
             pricing: [4.45]
+        }, { merge: true })
+        await productRef.doc('saseca4').set({
+            name: "Sandwich Sesame Camembert",
+            description: "Freshly baked sesame seed bread, buttered and filled with creamy Camembert cheese and lettuce.",
+            ingredients: ['cheese'],
+            type: 'lunch',
+            pricing: [4.20]
         }, { merge: true })
         await productRef.doc('b3hecb').set({
             name: "Ham, Egg & Cheese Baguette",
             description: "Ham, scrambled egg and Swiss cheese on a baguettine.",
-            categhory: 1,
-            type: 'breakfast',
+            ingredients: ['cheese', 'egg', 'ham'],
+            type: 'lunch',
             pricing: [6.65]
         }, { merge: true })
         await productRef.doc('b5sm').set({
             name: "Sandwich Montagnard",
             description: "Dry-cured Coppa ham, Comté cheese, tomatoes, olive tapenade and salad leaves in a freshly baked poppy seed bread.",
-            categhory: 1,
-            type: 'breakfast',
+            ingredients: ['cheese', 'tomato', 'ham'],
+            type: 'lunch',
             pricing: [4.45]
-        }, { merge: true })
-        await productRef.doc('b11hfbj').set({
-            name: "Half Flute, Butter & Jam",
-            description: "Half Baguette served with butter and Jam",
-            categhory: 1,
-            type: 'breakfast',
-            pricing: [2.95]
         }, { merge: true })
         await productRef.doc('b6ql').set({
             name: "Quiche Lorraine",
             description: "Paris ham, bacon, Swiss cheese & egg filling in a puff pastry shell, served with a garden salad.",
-            categhory: 1,
-            type: 'breakfast',
+            ingredients: ['cheese', 'ham', 'bacon', 'egg'],
+            type: 'lunch',
             pricing: [10.45]
         }, { merge: true })
-        await productRef.doc('b8ffsc').set({
-
-            name: "Fresh Fruit Salad Cup",
-            description: "",
-            categhory: 1,
-            type: 'breakfast',
-            pricing: [4.95]
+        await productRef.doc('b1hcc').set({
+            name: "Ham & Cheese Croissant",
+            description: "Ham, Swiss cheese, lettuce, tomato and a butter spread on a croissant.",
+            ingredients: ['cheese', 'ham', 'tomato'],
+            type: 'lunch',
+            pricing: [4.95],
         }, { merge: true })
-        await productRef.doc('b9yghc').set({
-
-            name: "Yogurt La Fermiere Orange Blossom",
-            description: "",
-            categhory: 1,
-            type: 'breakfast',
-            pricing: [4.95]
+        await productRef.doc('b3ssc').set({
+            name: "Smoked Salmon Croissant",
+            description: "Smoked salmon, lettuce, tomato and lemon spread on a croissant.",
+            ingredients: ['salmon', 'lettuce', 'tomato'],
+            type: 'lunch',
+            pricing: [5.45]
         }, { merge: true })
-        await productRef.doc('b10ygfc').set({
-
-            name: "Yogurt La Fermiere Mango Passionfruit",
-            description: "",
-            categhory: 1,
-            type: 'breakfast',
-            pricing: [5.6]
+        await productRef.doc('b2hescc').set({
+            name: "Ham, Egg & Swiss Cheese Croissant",
+            description: "Ham, scrambled egg and Swiss cheese on a croissant.",
+            ingredients: ['ham', 'egg', 'cheese'],
+            type: 'lunch',
+            pricing: [5.65]
         }, { merge: true })
 
-    }
 
-    async addBakery() {
 
-        const productRef = db.collection('products')
+        await productRef.doc('b11hfbj').set({
+            name: "Half Flute, Butter & Jam",
+            description: "Half Baguette served with butter and Jam",
+            type: 'breakfast',
+            pricing: [2.95]
+        }, { merge: true })
 
         await productRef.doc('ba1c').set({
             name: "Croissant",
-            description: "Croissant – rich and tasty with a crisp crust and a deliciously soft centre.",
-            categhory: 2,
-            type: 'bakery',
-            pricing: [2.55]
+            description: "Croissant – rich and tasty with a crisp crust and a deliciously soft centre. 1|4",
+            type: 'breakfast',
+            pricing: [2.55, 5.95]
         }, { merge: true })
+
         await productRef.doc('ba2pac').set({
             name: "Chocolate Croissant x 4",
             description: "Our Pain au Chocolat is a best seller for a reason, made with pure butter and a heart of rich, dark chocolate.",
-            categhory: 2,
-            type: 'bakery',
+            ingredients: ['chocolate'],
+            type: 'breakfast',
             pricing: [15]
         }, { merge: true })
         await productRef.doc('ba3ac').set({
             name: "Almond Croissant",
             description: "",
-            categhory: 2,
-            type: 'bakery',
+            type: 'breakfast',
             pricing: [3.65]
         }, { merge: true })
         await productRef.doc('ba3cac').set({
             name: "Chocolate Almond Croissant",
             description: "",
-            categhory: 2,
-            type: 'bakery',
+            ingredients: ['chocolate'],
+            type: 'breakfast',
             pricing: [4.59]
         }, { merge: true })
         await productRef.doc('ba4er').set({
             name: "Escargot Raisins x 4",
             description: "These delicious pastries are made with a rich buttery dough filled with vanilla custard and plump raisins.",
-            categhory: 2,
-            type: 'bakery',
+            ingredients: ['vanilla'],
+            type: 'breakfast',
             pricing: [5.65]
-        }, { merge: true })
-        await productRef.doc('ba5ltd').set({
-            name: "Lemon Tartlet Duo",
-            description: "A pair of individual tartlets – crisp shortcrust pastry filled with a refreshing lemon cream.",
-            categhory: 2,
-            type: 'bakery',
-            pricing: [3.25]
-        }, { merge: true })
-        await productRef.doc('ba6tfap').set({
-            name: "Tartelette Fine Aux Pommes",
-            description: "This new Apple Tartlet makes a great light dessert, as it has no pastry cream.",
-            categhory: 2,
-            type: 'bakery',
-            pricing: [3.45]
-        }, { merge: true })
-        await productRef.doc('ba7st').set({
-            name: "4 Strawberry Tartlets",
-            description: "Crisp, sweet shortcrust pastry filled with a smooth vanilla custard cream and topped with fresh strawberries.",
-            categhory: 2,
-            type: 'bakery',
-            pricing: [15.45]
         }, { merge: true })
         await productRef.doc('ba8ee').set({
             name: "Elephant Ear",
             description: "A crisp, butter puff pastry biscuit. The puff pastry is rolled up with sugar, sliced and baked so that the sugar caramelises.",
-            categhory: 2,
-            type: 'bakery',
+            type: 'breakfast',
             pricing: [2.95]
         }, { merge: true })
         await productRef.doc('ba9mcb').set({
             name: "Mini Chocolat Beignet",
             description: "A delicious soft mini doughnut with a chocolate hazelnut filling.",
-            categhory: 2,
-            type: 'bakery',
+            ingredients: ['chocolate', 'hazelnut'],
+            type: 'breakfast',
             pricing: [3.3]
         }, { merge: true })
         await productRef.doc('ba11ce').set({
             name: "Chocolate Éclair",
             description: "Chocolate hazelnut, red fruit, apple.",
-            categhory: 2,
-            type: 'bakery',
+            ingredients: ['chocolate', 'hazelnut'],
+            type: 'breakfast',
             pricing: [3.55]
         }, { merge: true })
-        await productRef.doc('ba12m').set({
-            name: "Croissant Box (10)",
-            description: "10 Fresh Baked Croissants to Share.",
-            categhory: 2,
-            type: 'bakery',
-            pricing: [30]
-        }, { merge: true })
-        await productRef.doc('ba13c').set({
-            name: "Mini Beignets Box (30)",
-            description: "A Mix of Sugar Donuts and Chocolate Hazelnut Donuts.",
-            categhory: 2,
-            type: 'bakery',
-            pricing: [25]
-        }, { merge: true })
-    }
 
-    async addDrinks() {
-        const productRef = db.collection('products')
+
+        await productRef.doc('ba6tfap').set({
+            name: "Tartelette Fine Aux Pommes",
+            description: "This new Apple Tartlet makes a great light dessert, as it has no pastry cream.",
+            type: 'tarts',
+            pricing: [3.45]
+        }, { merge: true })
+        await productRef.doc('ba5ltd').set({
+            name: "Lemon Tartlet Duo",
+            description: "A pair of individual tartlets – crisp shortcrust pastry filled with a refreshing lemon cream.",
+            ingredients: ['lemon'],
+            type: 'tarts',
+            pricing: [5.25]
+        }, { merge: true })
+
+        await productRef.doc('strawtarts1').set({
+            name: "Strawberry Tartlets",
+            description: "Crisp, sweet shortcrust pastry filled with a smooth vanilla custard cream and topped with fresh strawberries. 2|4|6",
+            ingredients: ['strawberry'],
+            type: 'tarts',
+            pricing: [8, 15.45, 20]
+        }, { merge: true })
+        await productRef.doc('choctarts2').set({
+            name: "Chocolate Tartlets",
+            description: "Crisp sweet shortcrust pastry cases filled with rich, dark chocolate ganache. Delicious for dessert or as a treat with tea or coffee. 2|4|6",
+            ingredients: ['chocolate'],
+            type: 'tarts',
+            pricing: [8, 15.45, 20]
+        }, { merge: true })
+
+
+        await productRef.doc('breapatwol1').set({
+            name: "Pain Two Olives",
+            description: "Two Olive Bread. Crusty but light, with an intense flavour of the olives of Provence, scented with thyme, this is irresistible. 400|800",
+            type: 'bread',
+            pricing: [3.3, 6.6]
+        }, { merge: true })
+
+        await productRef.doc('breabag2').set({
+            name: "Classic Baguette Duo",
+            description: "A pair of our best-selling classic baguettes made the old-fashioned way with PAUL white flour, natural yeast, sea salt and water.",
+            type: 'bread',
+            pricing: [2.95]
+        }, { merge: true })
+
+        await productRef.doc('breapadeca3').set({
+            name: "Pain De Campagne",
+            description: "This is our rich, brown Farmhouse Bread made from a soft blend of natural yeast, rye flour, milled flour and sea salt. 400|800",
+            type: 'bread',
+            pricing: [2.75, 5.5]
+        }, { merge: true })
+
+        await productRef.doc('breapami4').set({
+            name: "Pain De Campagne",
+            description: "A large, round multigrain loaf made with a mix of wheat, barley, spelt, rye and buckwheat flour with added buckwheat and crushed soya seeds, topped with pumpkin, sunflower, millet, brown flax and sesame seeds.. 400|800",
+            type: 'bread',
+            pricing: [3.25, 5.95]
+        }, { merge: true })
+
 
         await productRef.doc('ct1rc').set({
             name: "Coffe",
             description: "",
-            categhory: 3,
             type: 'drinks',
             pricing: [
                 1.99,
@@ -346,7 +341,6 @@ export default class RestoService {
         await productRef.doc('ct2cal').set({
             name: "Cafe Au Lait",
             description: "Coffee, hot milk.",
-            categhory: 3,
             type: 'drinks',
             pricing: [
                 2,
@@ -356,7 +350,6 @@ export default class RestoService {
         await productRef.doc('ct3e').set({
             name: "Espresso",
             description: "",
-            categhory: 3,
             type: 'drinks',
             pricing: [
                 2.45,
@@ -366,7 +359,6 @@ export default class RestoService {
         await productRef.doc('ct4m').set({
             name: "Macchiato",
             description: "Espresso topped with froth.",
-            categhory: 3,
             type: 'drinks',
             pricing: [
                 2.75,
@@ -376,7 +368,6 @@ export default class RestoService {
         await productRef.doc('ct5a').set({
             name: "Americano",
             description: "Espresso, hot water.",
-            categhory: 3,
             type: 'drinks',
             pricing: [
                 2.45,
@@ -386,7 +377,6 @@ export default class RestoService {
         await productRef.doc('ct6c').set({
             name: "Cappuccino",
             description: "Espresso, hot milk, froth.",
-            categhory: 3,
             type: 'drinks',
             pricing: [
                 2.95,
@@ -396,7 +386,6 @@ export default class RestoService {
         await productRef.doc('ct7').set({
             name: "Late",
             description: "Espresso, hot milk.",
-            categhory: 3,
             type: 'drinks',
             pricing: [
                 2.95,
@@ -406,7 +395,6 @@ export default class RestoService {
         await productRef.doc('ct8m').set({
             name: "Mochaccino",
             description: "Cappuccino with chocolate.",
-            categhory: 3,
             type: 'drinks',
             pricing: [
                 4.45,
@@ -416,7 +404,6 @@ export default class RestoService {
         await productRef.doc('ct9hc').set({
             name: "Hot Chocolate",
             description: "",
-            categhory: 3,
             type: 'drinks',
             pricing: [
                 4.45,
@@ -426,7 +413,6 @@ export default class RestoService {
         await productRef.doc('ct10ic').set({
             name: "Iced Coffee",
             description: "",
-            categhory: 3,
             type: 'drinks',
             pricing: [2.65]
         }, { merge: true })
@@ -440,24 +426,36 @@ export default class RestoService {
         await productRef.doc('ct12il').set({
             name: "Iced Latte",
             description: "",
-            categhory: 3,
             type: 'drinks',
             pricing: [4.45]
         }, { merge: true })
         await productRef.doc('ct13im').set({
             name: "Iced Mochaccino",
             description: "",
-            categhory: 3,
             type: 'drinks',
             pricing: [4.95]
         }, { merge: true })
         await productRef.doc('ct14ot').set({
             name: "Organic Tea",
             description: "",
-            categhory: 3,
             type: 'drinks',
             pricing: [3.45]
         }, { merge: true })
+    }
+
+    async addBread() {
+
+        const productRef = db.collection('products')
+
+        await productRef.doc('ct1rc').set({
+            name: "Coffe",
+            description: "",
+            type: 'bread',
+            pricing: [
+                1.99
+            ]
+        }, { merge: true })
+
     }
 }
 

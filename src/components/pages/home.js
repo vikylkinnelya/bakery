@@ -31,9 +31,9 @@ class Home extends Component {
 
         setLoading(true)
 
-        RestoService.getMenuItems('all', 1, 4)
+        RestoService.fetchMenu(4)
             .then(res => setMenu(res)) //в этом экшене изменяется так же и ожидание
-            .catch(error => setError())
+            .catch(error => setError(error))
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {

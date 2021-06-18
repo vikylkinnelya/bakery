@@ -9,7 +9,8 @@ const ShopItem = ({ menuItem, menuType, onAddToCart }) => {
     const { name, description, pricing, type, id } = menuItem
 
     const productPrice = pricing.length === 1 && pricing[0]
-    const productPricing = pricing.length > 1 && pricing.join(' - ')
+    const productPricing = pricing.length > 1 && pricing.join(' | ')
+    const productPricingFrst = pricing.length === 2 ? 'M' : 'S'
 
     const productLabel = <div className="product-label-container-alt">
         <div className="product-label">
@@ -20,8 +21,9 @@ const ShopItem = ({ menuItem, menuType, onAddToCart }) => {
 
     const [priceMenu, setShowPriceMenu] = useState(false)
 
-    const smallCup = <button className='small-cup' onClick={() => onAddToCart(`${id}-M`)}> M </button>
-    const bigCup = <button className='big-cup' onClick={() => onAddToCart(`${id}-L`)}> L </button>
+    const smallSize = <button className='small-size' onClick={() => onAddToCart(`${id}-${productPricingFrst}`)}> {productPricingFrst} </button>
+    const mediumSize = <button className='medium-size' onClick={() => onAddToCart(`${id}-${productPricingFrst}`)}> {productPricingFrst} </button>
+    const bigSize = <button className='big-size' onClick={() => onAddToCart(`${id}-L`)}> L </button>
 
     const defCartClick = (id) => {
         if (pricing && !priceMenu) {
@@ -58,21 +60,22 @@ const ShopItem = ({ menuItem, menuType, onAddToCart }) => {
                         {!priceMenu && <i className="fa fa-shopping-cart" />}
                         {priceMenu && pricing && <i className="fas fa-times"></i>}
                     </button>
-                    {priceMenu && pricing && smallCup}
-                    {priceMenu && pricing && bigCup}
+                    {priceMenu && pricing.length === 3 && smallSize}
+                    {priceMenu && pricing && mediumSize}
+                    {priceMenu && pricing && bigSize}
 
                 </div>
                 <div className="product-detail">
                     <h2>{name}</h2>
                     <p>{description}</p>
                     {menuType === 'all' && <h3>{type}</h3>}
-                    {productPrice && <p className="product-price">${productPrice}</p>}
-                    {productPricing && <p className="product-price"> ${productPricing} </p>}
+                    {productPrice && <p className="product-price">$ {productPrice}</p>}
+                    {productPricing && <p className="product-price"> $ {productPricing} </p>}
 
                 </div>
             </div>
 
-            { menuItem.label && productLabel}
+            {menuItem.label && productLabel}
 
         </ Col>
 

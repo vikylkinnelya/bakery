@@ -22,10 +22,6 @@ class ShopListItems extends Component {
         const pathMenuType = location.pathname.split('/')[2]
         setMenuType(pathMenuType)
 
-        RestoService.fetchMenuSize(pathMenuType)
-            .then(res => setMenuTotalItems(res))
-            .catch(error => setError(error))
-
         RestoService.fetchMenu()
             .then(res => setMenu(res)) //в этом экшене изменяется так же и ожидание
             .catch(error => setError(error))
@@ -41,10 +37,6 @@ class ShopListItems extends Component {
             /*             RestoService.getMenuItems(menuType, '')
                             .then(result => setMenuTotalItems(result.length)) */
 
-            RestoService.fetchMenuSize(menuType)
-                .then(res => setMenuTotalItems(res))
-                .catch(error => setError(error))
-
             RestoService.fetchMenu(menuType)
                 .then(res => setMenu(res))
                 .catch(error => setError(error))
@@ -55,7 +47,7 @@ class ShopListItems extends Component {
 
         const { scrollPosition, menuItems, loading, error, menuType, setMenuType, setLastVisible, addToCart, lastVisible, menuTotalItems } = this.props
 
-        const paginationItems = []
+        /* const paginationItems = []
 
         for (let i = 1; i <= Math.ceil(menuTotalItems / 9); i++) {
             paginationItems.push(
@@ -75,7 +67,7 @@ class ShopListItems extends Component {
                 </Pagination.Item>
 
             )
-        }
+        } */
 
         return (
             <Container fluid ref={(section) => { this.Shop = section; }}>
@@ -101,6 +93,17 @@ class ShopListItems extends Component {
                                 </Link>
                             </li>
 
+                            <li className={menuType === 'bread' ? 'selected' : undefined}>
+                                <Link to='bread' onClick={() => setMenuType('bread')}>
+                                    <article>
+                                        <div className="list-arrows-content">
+                                            Bread
+                                        </div>
+                                        {menuType === 'bread' && <div className="list-arrows-value">{menuTotalItems}</div>}
+                                    </article>
+                                </Link>
+                            </li>
+
                             <li className={menuType === 'breakfast' ? 'selected' : undefined}>
                                 <Link to='breakfast' onClick={() => setMenuType('breakfast')}>
                                     <article>
@@ -111,17 +114,28 @@ class ShopListItems extends Component {
                                     </article>
                                 </Link>
                             </li>
-                            <li className={menuType === 'bakery' ? 'selected' : undefined}>
-                                <Link to='bakery' onClick={() => setMenuType('bakery')}>
+
+                            <li className={menuType === 'lunch' ? 'selected' : undefined}>
+                                <Link to='lunch' onClick={() => setMenuType('lunch')}>
                                     <article>
                                         <div className="list-arrows-content">
-                                            Bakery
+                                            Lunch
                                         </div>
-                                        {menuType === 'bakery' && <div className="list-arrows-value">{menuTotalItems}</div>}
+                                        {menuType === 'lunch' && <div className="list-arrows-value">{menuTotalItems}</div>}
                                     </article>
                                 </Link>
                             </li>
 
+                            <li className={menuType === 'tarts' ? 'selected' : undefined}>
+                                <Link to='tarts' onClick={() => setMenuType('tarts')}>
+                                    <article>
+                                        <div className="list-arrows-content">
+                                            Tarts
+                                        </div>
+                                        {menuType === 'tarts' && <div className="list-arrows-value">{menuTotalItems}</div>}
+                                    </article>
+                                </Link>
+                            </li>
 
                             <li className={menuType === 'drinks' ? 'selected' : undefined}>
                                 <Link to='drinks' onClick={() => setMenuType('drinks')}>
@@ -155,7 +169,7 @@ class ShopListItems extends Component {
                         </Row>
                     </Col>
 
-                    <LazyLoadComponent>
+                    {/* <LazyLoadComponent>
                         {!loading &&
                             <Col sm={{ order: 12 }} className='pagination-col'>
                                 <Pagination >
@@ -165,7 +179,7 @@ class ShopListItems extends Component {
                                 </Pagination>
                             </Col>
                         }
-                    </LazyLoadComponent>
+                    </LazyLoadComponent> */}
                 </Row>
             </ Container>
         )
