@@ -116,9 +116,20 @@ export default class RestoService {
     }
 
     async fetchMenuType(menuType) {
+
+        const types = { breakfast: 1, bakery: 2, drinks: 3 }
+
+        const type = types[`${menuType}`]
+
         const response = db.collection('products')
-            .where("type", "==", menuType)
-            .limit(8)
+            .where("categhory", "<", type + 1)
+            .where("categhory", ">", type - 1)
+            .orderBy('categhory')
+            .startAt(type)
+            .endAt(type)
+
+        //.limit(2)
+
         return response
     }
 
