@@ -3,7 +3,7 @@ import { LazyLoadComponent } from 'react-lazy-load-image-component';
 import { FullHeaderContainer } from '../details/index';
 import { Col, Container, Row } from 'react-bootstrap';
 import WithRestoService from '../hoc';
-import { FormForFeedback } from '../forms';
+import { FeedbackForm } from '../forms';
 
 import './styles.css'
 
@@ -58,7 +58,7 @@ class Contact extends Component {
 
                         <Row >
                             <Col md={8} className='bakery-form contact-form'>
-                                <FormForFeedback
+                                <FeedbackForm
                                     reason={'feedback'}
                                     page={'contact'}
                                     feedback={this.state.feedback}

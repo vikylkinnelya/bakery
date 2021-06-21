@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import Spinner from '../spinner';
 import { Col, Row } from 'react-bootstrap';
 import CartItem from '../cart-item';
-import ModalAfterForm from '../modal-after-form';
-import { FormForOrder } from '../forms';
+import ModalAfterOrder from '../modal';
+import { OrderForm } from '../forms';
 import { connect } from 'react-redux';
 import { withRouter } from "react-router";
 import WithRestoService from '../hoc';
@@ -40,7 +40,7 @@ class CartList extends Component {
 
             <div className='cart-list'>
 
-                <ModalAfterForm
+                <ModalAfterOrder
                     modalIsShown={modalIsShown}
                     setModalVisibility={setModalVisibility}
                 />
@@ -76,7 +76,7 @@ class CartList extends Component {
                         </Col>
 
                         {!formIsOpen && <Row className='btn-order'>
-                            <button onClick={() => { setFormVisibility() }}>
+                            <button onClick={() => setFormVisibility()}>
                                 <h3>order</h3>
                             </button>
                         </Row>
@@ -86,13 +86,11 @@ class CartList extends Component {
 
                 <Row>
                     {formIsOpen &&
-                        <FormForOrder
+                        <OrderForm
                             setCustomer={this.setCustomer}
                         />
                     }
                 </Row>
-
-
 
             </div>
         )
@@ -122,7 +120,12 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = {
     setLoading,
-    setError
+    setError,
+    addToCart,
+    deleteFromCart,
+    decCount,
+    setFormVisibility,
+    setModalVisibility
 }
 
 

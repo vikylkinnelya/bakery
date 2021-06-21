@@ -23,7 +23,7 @@ const validationSchema = yup.object().shape({
 })
 
 
-const FormForFeedback = ({ feedback, setFeedbackData, setResponseMessage, page, reason }) => {
+const FeedbackForm = ({ feedback, setFeedbackData, setResponseMessage, page, reason }) => {
 
     const className = page === 'main' ? 'contact-form' : 'form-contact-alt'
     const title = page === 'main' ? <h2>CONTACT US</h2> : <h1>LEAVE US A MESSAGE</h1>
@@ -180,4 +180,4 @@ const FormForFeedback = ({ feedback, setFeedbackData, setResponseMessage, page, 
     )
 }
 
-export default FormForFeedback;
+export default FeedbackForm;

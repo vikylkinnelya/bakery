@@ -4,7 +4,7 @@ import WithRestoService from '../hoc';
 //import { connect } from 'react-redux';
 import './styles.css';
 import { Col, Row, Container } from 'react-bootstrap';
-import { FormForSubscribe } from '../forms';
+import { SubscribeForm } from '../forms';
 import ResponseMessage from '../response-message';
 //import { setLoading, setError } from '../../actions';
 
@@ -58,7 +58,7 @@ class Footer extends Component {
                                 {!this.state.subscriber &&
                                     <>
                                         <p>Give us your email, and we shall send regular updates for new stuff and events.</p>
-                                        <FormForSubscribe
+                                        <SubscribeForm
                                             setResponseMessage={this.setResponseMessage}
                                             setSubscriberData={this.setSubscriberData} />
                                     </>}

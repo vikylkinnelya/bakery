@@ -20,7 +20,7 @@ const validationSchema = yup.object().shape({
         .matches(/^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i, 'Invalid email')
 })
 
-const FormForOrder = ({ setCustomer }) => {
+const OrderForm = ({ setCustomer }) => {
 
     return (
 
@@ -148,4 +148,4 @@ const FormForOrder = ({ setCustomer }) => {
     )
 }
 
-export default FormForOrder;
+export default OrderForm;

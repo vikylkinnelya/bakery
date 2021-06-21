@@ -14,6 +14,10 @@ import db from '../firebase';
 
 class ShopListItems extends Component {
 
+    state = {
+        endAt: 12
+    }
+
     componentDidMount() {
         const { RestoService, location, setMenuTotalItems, setMenuType, setMenu, menuItems, setError, setLoading } = this.props;
 
@@ -45,7 +49,7 @@ class ShopListItems extends Component {
 
     render() {
 
-        const { scrollPosition, menuItems, loading, error, menuType, setMenuType, setLastVisible, addToCart, lastVisible, menuTotalItems } = this.props
+        const { scrollPosition, menuItems, loading, error, menuType, setMenuType, addToCart, menuTotalItems } = this.props
 
         /* const paginationItems = []
 
@@ -68,6 +72,12 @@ class ShopListItems extends Component {
 
             )
         } */
+
+        const showMoreBtn = <button className='show-more-btn'> Show more </button>
+
+        const onShowMore = () => {
+            this.setState({ endAt: this.state.endAt + 8 })
+        }
 
         return (
             <Container fluid ref={(section) => { this.Shop = section; }}>
@@ -155,33 +165,35 @@ class ShopListItems extends Component {
                         {loading && <Spinner type={'coffee'} />}
 
                         <Row className='product-row'>
-                            {!loading && menuItems != null && menuItems.length > 0 && menuItems.map(menuItem => (
-                                <LazyLoadComponent
-                                    key={menuItem.id}
-                                    scrollPosition={scrollPosition}
-                                    threshold={50}
+                            {!loading && menuItems != null && menuItems.length > 0
+                                && menuItems.slice(0, this.state.endAt).map(menuItem => (
+                                    <LazyLoadComponent
+                                        key={menuItem.id}
+                                        scrollPosition={scrollPosition}
+                                        threshold={50}
                                     >
-                                    <ShopItem
-                                        menuItem={menuItem}
-                                        menuType={menuType}
-                                        onAddToCart={addToCart}
-                                    />
-                                </LazyLoadComponent>
-                            ))}
+                                        <ShopItem
+                                            menuItem={menuItem}
+                                            menuType={menuType}
+                                            onAddToCart={addToCart}
+                                        />
+                                    </LazyLoadComponent>
+                                ))}
                         </Row>
                     </Col>
 
-                    {/* <LazyLoadComponent>
+                    <LazyLoadComponent>
                         {!loading &&
                             <Col sm={{ order: 12 }} className='pagination-col'>
-                                <Pagination >
+                                {showMoreBtn}
+                                {/* <Pagination >
                                     <Pagination.Prev className="pagination-item pagination-nav" />
                                     {paginationItems}
                                     <Pagination.Next className="pagination-item pagination-nav" />
-                                </Pagination>
+                                </Pagination> */}
                             </Col>
                         }
-                    </LazyLoadComponent> */}
+                    </LazyLoadComponent>
                 </Row>
             </ Container>
         )

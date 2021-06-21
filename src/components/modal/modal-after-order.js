@@ -3,7 +3,7 @@ import { Modal } from 'react-bootstrap'
 
 import './styles.css'
 
-const ModalAfterForm = ({ modalIsShown, setModalVisibility }) => {
+const ModalAfterOrder = ({ modalIsShown, setModalVisibility }) => {
 
     return (
         <Modal
@@ -33,4 +33,4 @@ const ModalAfterForm = ({ modalIsShown, setModalVisibility }) => {
     )
 }
 
-export default ModalAfterForm
+export default ModalAfterOrder

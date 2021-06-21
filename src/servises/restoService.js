@@ -118,10 +118,6 @@ export default class RestoService {
 
     async fetchMenuHome() {
 
-        const getOptions = {
-            source: 'cache'
-        }
-
         const response = await db.collection('products')
             .limit(12)
             .get()

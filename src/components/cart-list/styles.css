@@ -65,7 +65,7 @@
 }
  */
 .btn-order button:hover,
-.modal-order-footer.modal-footer .btn-order:hover {
+.modal-order-footer.modal-footer .btn-order:hover, .show-more-btn:hover {
     background-color: #684f40;
     border-color: #684f40;
     color: #FFF;
@@ -73,7 +73,7 @@
 }
 
 .btn-order button,
-.modal-order-footer.modal-footer .btn-order {
+.modal-order-footer.modal-footer .btn-order, .show-more-btn {
     background-color: #ebebeb;
     color: #684f40;
     border: 2px #684f40 solid;

@@ -9,7 +9,7 @@ import 'react-lazy-load-image-component/src/effects/blur.css';
 import scrollToComponent from 'react-scroll-to-component';
 import { setMenu, setLoading, setError, setMenuType, addToCart, setLastVisible, setMenuTotalItems } from '../../actions';
 import ShopItem from '../shop-item';
-import { FormForFeedback } from '../forms';
+import { FeedbackForm } from '../forms';
 import './styles.css'
 
 class Home extends Component {
@@ -51,10 +51,6 @@ class Home extends Component {
 
     render() {
         const { menuItems, loading, menuType, setMenuType, addToCart } = this.props
-
-        console.log(this.state.startAt, 'start')
-        console.log(this.state.endAt, 'end')
-
 
         const CarouselItem =
             <Row className='product-row'>
@@ -214,7 +210,10 @@ class Home extends Component {
                                         <h2>Lots of bread</h2>
                                         <div className="horizontal-delimiter"></div>
                                         <p>Whether the flitting attendance of the one still and solitary jet had gradually worked upon Ahab.</p>
-                                        <Link to='#'> more</Link>
+                                        <Link
+                                            Link to='shop/bread'
+                                            onClick={() => setMenuType('bread')}
+                                        > more </Link>
                                     </div>
                                 </Col>
                                 <Col sm={3} >
@@ -412,7 +411,7 @@ class Home extends Component {
                         <div className="section-content">
                             <LazyLoadComponent>
                                 <Col md={4} className='main-contact-form' >
-                                    <FormForFeedback
+                                    <FeedbackForm
                                         className='form-contact'
                                         reason={'feedback'}
                                         page={'main'}

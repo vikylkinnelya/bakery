@@ -32,10 +32,11 @@ const setLocation = (loc) => ({
     payload: loc
 })
 
-const addToCart = (id) => {
+const addToCart = (id, param) => {
     return {
         type: 'ADD_TO_CART',
-        payload: id
+        payload: id,
+        param: param
     }
 }
 

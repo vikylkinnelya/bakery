@@ -1,5 +1,5 @@
-import FormForOrder from './formForOrder';
-import FormForSubscribe from './formForSubscribe';
-import FormForFeedback from './formForFeedback';
+import OrderForm from './order-form';
+import SubscribeForm from './subscribe-form';
+import FeedbackForm from './feedback-form';
 
-export {FormForOrder, FormForSubscribe, FormForFeedback};
+export {OrderForm, SubscribeForm, FeedbackForm};

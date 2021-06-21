@@ -73,23 +73,38 @@ const reducer = (state = initialState, action) => {
 
         case 'ADD_TO_CART':
 
-            const idToAddWithParam = action.payload
-            const idToAddWithoutParam = idToAddWithParam.split('-')[0]
-            const param = idToAddWithParam.split('-')[1]
-            const priceIdxByParam = param === 'M' ? 0 : 1
+            const id = action.payload
+            const param = action.param
+            let priceIdx
 
-            const itemIdxinCart = state.cart.findIndex(el => el.id === idToAddWithParam)
+            if (param === 'L') {
+                priceIdx = 1 || 2
+            }
+            else if (param === 'M') {
+                priceIdx = 0 || 1
+            }
+            else if (param === 'S') {
+                priceIdx = 0
+            }
+            else {
+                priceIdx = 0
+            }
+
+            console.log(priceIdx)
+
+            const itemIdxinCart = state.cart.findIndex(el => el.id === id)
 
             if (itemIdxinCart === -1) {
-                const item = state.menu.find(item => item.id === idToAddWithoutParam)
+                const item = state.menu.find(item => item.id === id)
 
                 const newItem = {
                     name: item.name,
-                    id: idToAddWithParam,
+                    id: id + '-' + param,
                     param: param,
-                    price: param ? item.pricing[priceIdxByParam] : item.price,
+                    price: item.pricing[priceIdx],
                     count: 1
                 }
+
                 return {
                     ...state,
                     cart: [...state.cart, newItem],
@@ -97,7 +112,7 @@ const reducer = (state = initialState, action) => {
                 };
             }
             else {
-                const itemInCart = state.cart.find(el => el.id === idToAddWithParam)
+                const itemInCart = state.cart.find(el => el.id === id)
                 const newItem = {
                     ...itemInCart,
                     count: ++itemInCart.count

@@ -5,7 +5,7 @@ import * as yup from 'yup';
 import WithRestoService from '../hoc';
 import './styles.css';
 
-const FormForSubscribe = ({ setSubscriberData }) => {
+const SubscribeForm = ({ setSubscriberData }) => {
 
     const validationSchema = yup.object().shape({
         email: yup.string()
@@ -65,4 +65,4 @@ const FormForSubscribe = ({ setSubscriberData }) => {
 }
 
 
-export default WithRestoService()(FormForSubscribe);
+export default WithRestoService()(SubscribeForm);
