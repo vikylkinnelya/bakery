@@ -1,7 +1,7 @@
 import db from '../components/firebase'
 
 export default class RestoService {
-    _apiBase = 'http://localhost:3000';
+    //_apiBase = 'http://localhost:3000';
     //_apiBase = 'https://my-json-server.typicode.com/vikylkinnelya/bakery';
 
     async getResourse(url, type = '', page = 1,) {
@@ -90,38 +90,42 @@ export default class RestoService {
         })
     }
 
-    async fetchMenu(type = 'all', lastVisible = 0) {
+    async fetchMenu(type = 'all', page = undefined) {
 
         let data
         let response
 
         if (type !== 'all') {
-            response = await this.fetchMenuType(type)
+            response = this.fetchMenuType(type)
         } else {
-            response = await this.fetchMenuAll()
+            response = this.fetchMenuAll()
         }
 
-        /* .where('type', 'in', ['breakfast', 'bakery', 'drinks'])
-        .orderBy('type')
-        .startAfter(lastVisible)
-         */
         data = await response.get()
         return data.docs
     }
 
-    async fetchMenuAll(limit = undefined) {
+    fetchMenuAll() {
         const response = db.collection('products')
-            .orderBy('type')
-            .limit(limit)
         return response
     }
 
-    async fetchMenuType(menuType) {
-
+    fetchMenuType(menuType) {
         const response = db.collection('products')
             .where("type", "==", menuType)
-
         return response
+    }
+
+    async fetchMenuHome() {
+
+        const getOptions = {
+            source: 'cache'
+        }
+
+        const response = await db.collection('products')
+            .limit(12)
+            .get()
+        return response.docs
     }
 
     /* async fetchMenuSize(type) {
@@ -135,8 +139,6 @@ export default class RestoService {
         response = await response.get()
         return response.size
     } */
-
-
 
 
     async addMenu() {

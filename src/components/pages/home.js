@@ -16,7 +16,9 @@ class Home extends Component {
 
     state = {
         feedback: false,
-        respMsgIsShown: false
+        respMsgIsShown: false,
+        startAt: 0,
+        endAt: 4
     }
 
     setFeedbackData = (data) => {
@@ -26,18 +28,18 @@ class Home extends Component {
         this.setState({ respMsgIsShown: true })
     }
 
+
     componentDidMount() {
-        const { RestoService, setMenuTotalItems, setMenu, setError, setLoading } = this.props;
+        this.props.setLoading(true)
+        const { RestoService, menuItems, setMenu, setError } = this.props;
 
-        setLoading(true)
-
-        RestoService.fetchMenu(4)
+        RestoService.fetchMenuHome()
             .then(res => setMenu(res)) //в этом экшене изменяется так же и ожидание
             .catch(error => setError(error))
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
-        const { RestoService, setLoading, setError, lastVisible, setMenu } = this.props
+        const { RestoService, setLoading, setError } = this.props
 
         if (this.state.feedback !== prevState.feedback) {
             setLoading(true)
@@ -45,38 +47,40 @@ class Home extends Component {
                 .catch(error => setError())
             setLoading(false)
         }
-
-        if (lastVisible !== prevProps.lastVisible) {
-            setLoading(true)
-
-            RestoService.getMenuItems('all', lastVisible, 4)
-                .then(res => setMenu(res, lastVisible))
-                .catch(error => setError())
-        }
     }
 
-
-
     render() {
-        const { menuItems, loading, error, menuType, setMenuType, setLastVisible, addToCart, lastVisible, menuTotalItems } = this.props
+        const { menuItems, loading, menuType, setMenuType, addToCart } = this.props
+
+        console.log(this.state.startAt, 'start')
+        console.log(this.state.endAt, 'end')
+
 
         const CarouselItem =
             <Row className='product-row'>
-                {!loading && menuItems != null && menuItems.length > 0 && menuItems.map(menuItem => (
-                    <ShopItem
-                        key={menuItem.id}
-                        menuItem={menuItem}
-                        menuType={menuType}
-                        onAddToCart={addToCart}
-                    />
-                ))}
+                {!loading && menuItems != null && menuItems.length > 0
+                    && menuItems.slice(this.state.startAt, this.state.endAt).map(menuItem => (
+                        <ShopItem
+                            key={menuItem.id}
+                            menuItem={menuItem}
+                            menuType={menuType}
+                            onAddToCart={addToCart}
+                        />
+                    ))}
             </Row>
+
+        const onChangeSliderPage = (activeIdx) => {
+            const idxPairs = [[0, 4], [4, 8], [8, 12]]
+            this.setState({ startAt: idxPairs[activeIdx][0], endAt: idxPairs[activeIdx][1] })
+        }
 
 
         return (
             <>
                 <section id="slider-container" className="top-section">
-                    <Carousel fade className='img-carousel offset-borders' interval={7500}>
+                    <Carousel fade
+                        className='img-carousel offset-borders'
+                        interval={7500}>
                         <Carousel.Item>
                             <Image fluid src="images/slider/1.jpg" alt="header img" />
                             <Carousel.Caption className="ms-layer">
@@ -116,8 +120,8 @@ class Home extends Component {
                                     className='shop-slide'
                                     controls={false}
                                     interval={7500}
-                                    onSelect={(activeIndex) => {
-                                        setLastVisible(activeIndex + 1);
+                                    onSelect={activeIndex => {
+                                        onChangeSliderPage(activeIndex)
                                         //scrollToComponent(this.ShopCarousel, { offset: -40, align: 'top', duration: 500 })
                                     }}
                                 >
@@ -130,7 +134,6 @@ class Home extends Component {
                                     <Carousel.Item>
                                         {CarouselItem}
                                     </Carousel.Item>
-
                                 </Carousel>
 
                                 <div className="text-center onscroll-animate">

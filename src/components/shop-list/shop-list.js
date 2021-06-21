@@ -22,7 +22,7 @@ class ShopListItems extends Component {
         const pathMenuType = location.pathname.split('/')[2]
         setMenuType(pathMenuType)
 
-        RestoService.fetchMenu()
+        RestoService.fetchMenu(pathMenuType)
             .then(res => setMenu(res)) //в этом экшене изменяется так же и ожидание
             .catch(error => setError(error))
     }
@@ -158,7 +158,9 @@ class ShopListItems extends Component {
                             {!loading && menuItems != null && menuItems.length > 0 && menuItems.map(menuItem => (
                                 <LazyLoadComponent
                                     key={menuItem.id}
-                                    scrollPosition={scrollPosition}>
+                                    scrollPosition={scrollPosition}
+                                    threshold={50}
+                                    >
                                     <ShopItem
                                         menuItem={menuItem}
                                         menuType={menuType}
