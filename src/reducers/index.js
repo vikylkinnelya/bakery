@@ -6,6 +6,8 @@ const initialState = {
     menuType: 'all',
     cart: [],
     totalPrice: 0,
+    latestProducts: [],
+    weekOffer: [],
     formIsOpen: false,
     modalIsShown: false,
 }
@@ -59,17 +61,17 @@ const reducer = (state = initialState, action) => {
                 menuTotalItems: action.payload
             }
 
-        case 'SET_MENU_PAGE':
+        /* case 'SET_MENU_PAGE':
             return {
                 ...state,
                 lastVisible: action.payload
-            }
+            } */
 
-        case 'SET_LOCATION':
+        /* case 'SET_LOCATION':
             return {
                 ...state,
                 location: action.loc
-            }
+            } */
 
         case 'ADD_TO_CART':
 
@@ -170,6 +172,19 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 modalIsShown: !state.modalIsShown
+            }
+
+        case 'SET_LATEST_PRODUCTS':
+            return {
+                ...state,
+                latestProducts: menu.slice(0, 12)
+            }
+
+        case 'SET_WEEK_OFFER':
+            const offer = menu.filter(el => el.offer === true)
+            return {
+                ...state,
+                weekOffer: offer
             }
 
         default:

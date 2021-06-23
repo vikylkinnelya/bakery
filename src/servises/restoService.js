@@ -117,9 +117,15 @@ export default class RestoService {
     }
 
     async fetchMenuHome() {
-
         const response = await db.collection('products')
             .limit(12)
+            .get()
+        return response.docs
+    }
+
+    async fetchOffer() {
+        const response = await db.collection('products')
+            .where("type", "==", 'offer')
             .get()
         return response.docs
     }

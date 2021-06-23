@@ -50,17 +50,25 @@ const setModalVisibility = () => ({
 
 const deleteFromCart = (id) => {
     return {
-        payload: id, 
+        payload: id,
         type: 'DELETE_FROM_CART'
     }
 }
 
 const decCount = (id) => {
     return {
-        payload: id, 
+        payload: id,
         type: 'DEC_COUNT'
     }
 }
+
+const setWeekOffer = () => ({
+    type: 'SET_WEEK_OFFER'
+})
+
+const setLatestProducts = () => ({
+    type: 'SET_LATEST_PRODUCTS'
+})
 
 
 
@@ -68,7 +76,7 @@ export {
     setMenu, setLoading, setError,
     setMenuType, setLastVisible, setMenuTotalItems,
     setLocation,
-    addToCart, deleteFromCart,  decCount,
-    setFormVisibility, setModalVisibility
-
+    addToCart, deleteFromCart, decCount,
+    setFormVisibility, setModalVisibility,
+    setWeekOffer, setLatestProducts
 }
