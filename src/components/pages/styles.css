@@ -146,6 +146,11 @@ input[type=submit] {
     justify-content: space-around;
 }
 
+.tabs-big-container .nav-item{
+    max-height: 174px;
+    margin-bottom: 10px;
+}
+
 .tabs-big-container .nav>.nav-item>.nav-link {
     display: block;
     padding: 7px;

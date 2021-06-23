@@ -145,6 +145,7 @@ export default class RestoService {
 
     async addMenu() {
         const productRef = db.collection('products')
+
         await productRef.doc('safroro5').set({
             name: "Sandwich Fromage Rosette",
             description: "A flavourful filling of salami and gherkins in a sandwich bread which has been rolled in grated cheese before baking.",
@@ -185,6 +186,7 @@ export default class RestoService {
             description: "Paris ham, bacon, Swiss cheese & egg filling in a puff pastry shell, served with a garden salad.",
             ingredients: ['cheese', 'ham', 'bacon', 'egg'],
             type: 'lunch',
+            label: 'New offer',
             pricing: [10.45]
         }, { merge: true })
         await productRef.doc('b1hcc').set({
@@ -199,6 +201,7 @@ export default class RestoService {
             description: "Smoked salmon, lettuce, tomato and lemon spread on a croissant.",
             ingredients: ['salmon', 'lettuce', 'tomato'],
             type: 'lunch',
+            label: 'Best seller',
             pricing: [5.45]
         }, { merge: true })
         await productRef.doc('b2hescc').set({
@@ -222,6 +225,7 @@ export default class RestoService {
             name: "Croissant",
             description: "Croissant – rich and tasty with a crisp crust and a deliciously soft centre. 1|4",
             type: 'breakfast',
+            label: 'Best seller',
             pricing: [2.55, 5.95]
         }, { merge: true })
 
@@ -278,6 +282,7 @@ export default class RestoService {
             name: "Tartelette Fine Aux Pommes",
             description: "This new Apple Tartlet makes a great light dessert, as it has no pastry cream.",
             type: 'tarts',
+            label: 'New offer',
             pricing: [3.45]
         }, { merge: true })
         await productRef.doc('ba5ltd').set({
@@ -293,6 +298,7 @@ export default class RestoService {
             description: "Crisp, sweet shortcrust pastry filled with a smooth vanilla custard cream and topped with fresh strawberries. 2|4|6",
             ingredients: ['strawberry'],
             type: 'tarts',
+            label: 'Best seller',
             pricing: [8, 15.45, 20]
         }, { merge: true })
         await productRef.doc('choctarts2').set({
@@ -322,6 +328,7 @@ export default class RestoService {
             name: "Pain De Campagne",
             description: "This is our rich, brown Farmhouse Bread made from a soft blend of natural yeast, rye flour, milled flour and sea salt. 400|800",
             type: 'bread',
+            label: 'Best seller',
             pricing: [2.75, 5.5]
         }, { merge: true })
 
@@ -439,27 +446,48 @@ export default class RestoService {
             type: 'drinks',
             pricing: [4.95]
         }, { merge: true })
-        await productRef.doc('ct14ot').set({
-            name: "Organic Tea",
-            description: "",
-            type: 'drinks',
-            pricing: [3.45]
+
+
+
+        await productRef.doc('wo1').set({
+            name: "Afternoon Tea Delivery",
+            description: "For those looking for a moment to savour, and a special treat delivered straight to your door, our new Afternoon Tea is for you. Perfect for 2 people, our box of indulgent treats feature sweet and savoury creations , all lovingly made in the PAUL kitchen",
+            type: 'offer',
+            ingredients: [
+                '2 x Tomato, Mozzarella & Pesto',
+                '2 x Chicken Salad',
+                '2 x Mini Strawberry Tartelettes',
+                '2 x Mini Caramel Tartelettes',
+                '2 x Frangipane Tartelettes',
+                '12 x Assorted Mini Macarons',
+                '4 x Scones with Clotted Cream & Jam',
+                'Fairtrade & Organic English Breakfast Tea',
+                'Afternoon Tea Menu Card'],
+            pricing: [30]
+        }, { merge: true })
+
+        await productRef.doc('wo2').set({
+            name: "Mini Macarons Assorted",
+            description: "A sharing selection of our adorable mini macaroons. 36 macaroons, 6 of each flavour:",
+            type: 'offer',
+            ingredients: [
+                'raspberry', 'chocolate', 'pistachio', 'vanilla', 'coffee', 'lime'],
+            pricing: [30]
+        }, { merge: true })
+
+        await productRef.doc('wo3').set({
+            name: "Hug in a Box",
+            description: "A box full of delicious treats, this is a very special hug to send to friends or family around the country to show them you love them.",
+            type: 'offer',
+            ingredients: [
+                'Chocolate croissant loaf',
+                '12 x mini macarons',
+                '250g bag of our ground coffee',
+                '1 litre carton of our rich, darkHot Chocolate',
+                '6 x buttery shortbread biscuits'],
+            pricing: [30]
         }, { merge: true })
     }
 
-    async addBread() {
-
-        const productRef = db.collection('products')
-
-        await productRef.doc('ct1rc').set({
-            name: "Coffe",
-            description: "",
-            type: 'bread',
-            pricing: [
-                1.99
-            ]
-        }, { merge: true })
-
-    }
 }
 

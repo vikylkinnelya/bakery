@@ -177,7 +177,7 @@ const reducer = (state = initialState, action) => {
         case 'SET_LATEST_PRODUCTS':
             return {
                 ...state,
-                latestProducts: menu.slice(0, 12)
+                latestProducts: state.menu.slice(0, 12)
             }
 
         case 'SET_WEEK_OFFER':
