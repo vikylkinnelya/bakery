@@ -181,10 +181,10 @@ const reducer = (state = initialState, action) => {
             }
 
         case 'SET_WEEK_OFFER':
-            const offer = menu.filter(el => el.offer === true)
+            const offer = state.menu.filter(el => el.type === 'offer')
             return {
                 ...state,
-                weekOffer: offer
+                weekOffer: offer.slice(0,3)
             }
 
         default:

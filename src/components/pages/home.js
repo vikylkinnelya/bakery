@@ -9,6 +9,7 @@ import 'react-lazy-load-image-component/src/effects/blur.css';
 import scrollToComponent from 'react-scroll-to-component';
 import { setMenu, setLoading, setError, setMenuType, addToCart, setLastVisible, setLatestProducts, setWeekOffer } from '../../actions';
 import ShopItem from '../shop-item';
+import ItemCard from '../item-card';
 import { FeedbackForm } from '../forms';
 import './styles.css'
 
@@ -33,11 +34,10 @@ class Home extends Component {
         const { RestoService, menuItems, setMenu, setError, latestProducts, setLatestProducts, setWeekOffer } = this.props;
 
         RestoService.fetchMenu()
-            .then(res => setMenu(res) ) //в этом экшене изменяется так же и ожидание
+            .then(res => setMenu(res)) //в этом экшене изменяется так же и ожидание
             .then(res => setLatestProducts())
             .then(res => setWeekOffer())
             .catch(error => setError(error))
-        
     }
 
 
@@ -53,7 +53,7 @@ class Home extends Component {
     }
 
     render() {
-        const { menuItems, loading, menuType, setMenuType, addToCart, latestProducts } = this.props
+        const { loading, menuType, setMenuType, addToCart, latestProducts, weekOffer } = this.props
 
         const CarouselItem =
             <Row className='product-row'>
@@ -257,7 +257,10 @@ class Home extends Component {
                                         <h2>Tarts</h2>
                                         <div className="horizontal-delimiter"></div>
                                         <p>Whether the flitting attendance of the one still and solitary jet had gradually worked upon Ahab.</p>
-                                        <Link to='#'> more</Link>
+                                        <Link
+                                            Link to='shop/tarts'
+                                            onClick={() => setMenuType('tarts')}
+                                        > more </Link>
                                     </div>
 
                                 </Col>
@@ -292,19 +295,19 @@ class Home extends Component {
                                         <Nav className="col-lg-2 col-sm-12">
 
                                             <Nav.Item>
-                                                <Nav.Link eventKey="first">
+                                                <Nav.Link eventKey="0">
                                                     <Image fluid alt="product 1" src="images/offer_nav_1.png" />
                                                 </Nav.Link>
                                             </Nav.Item>
 
                                             <Nav.Item>
-                                                <Nav.Link eventKey="second">
+                                                <Nav.Link eventKey="1">
                                                     <Image fluid alt="product 2 thumb" src="images/offer_nav_2.png" />
                                                 </Nav.Link>
                                             </Nav.Item>
 
                                             <Nav.Item>
-                                                <Nav.Link eventKey="third">
+                                                <Nav.Link eventKey="2">
                                                     <Image fluid alt="product 3 thumb" src="images/offer_nav_3.png" />
                                                 </Nav.Link>
                                             </Nav.Item>
@@ -314,50 +317,16 @@ class Home extends Component {
 
                                         <Col md={9}>
                                             <Tab.Content>
-                                                <Tab.Pane eventKey="first">
-                                                    <Col md={12} className="offer-box">
-                                                        <Row>
-                                                            <Col md={5} sm={12} className="offer-box-left">
-                                                                <div className="offer-info">
-                                                                    <h1>Cake a la forno</h1>
-                                                                    <p>A popular contemporary legend holds that the archetypal pizza, Pizza Margherita, was invented in 1889, when the Royal Palace of Capodimonte commissioned the Neapolitan pizzaiolo (pizza maker) Raffaele Esposito to create a pizza in honor of the visiting Queen Margherita. Of the three different pizzas he created.</p>
-                                                                    <h2>Ingredients:</h2>
-                                                                    <ul className="list-numbers">
-                                                                        <li>Croissants</li>
-                                                                        <li>CSS Butter</li>
-                                                                        <li>Code HTML</li>
-                                                                        <li>Ignite fire</li>
-                                                                        <li>jQuery Salt</li>
-                                                                        <li>Slide Cheese</li>
-                                                                    </ul>
-                                                                    <div className="margin-20"></div>
-                                                                    <button className='button tabs-button'>Order Now</button>
 
-                                                                    <div className="margin-20"></div>
-                                                                </div>
-                                                            </Col>
-                                                            <Col md={7} className="offer-box-right" >
-                                                                <Image fluid src='images/offer1.png' />
+                                                {!loading && weekOffer != null && weekOffer.length > 0
+                                                    && weekOffer.map((item, idx) => (
+                                                        <ItemCard
+                                                            key = {idx}
+                                                            item = {item}
+                                                            onAddToCart={addToCart}
+                                                        />
+                                                    ))}
 
-                                                                <div className="product-label-container big-label">
-                                                                    <div className="product-label">
-                                                                        Week’s best seller
-                                                                    </div>
-                                                                    <div className="product-label-bottom"></div>
-                                                                </div>
-                                                            </Col>
-                                                        </Row>
-                                                    </Col>
-                                                </Tab.Pane>
-
-
-                                                <Tab.Pane eventKey="second">
-
-                                                </Tab.Pane>
-
-                                                <Tab.Pane eventKey="third">
-
-                                                </Tab.Pane>
 
                                             </Tab.Content>
                                         </Col>
@@ -475,7 +444,7 @@ const mapDispatchToProps = {
     setMenuType,
     setLastVisible,
     addToCart,
-    setLatestProducts, 
+    setLatestProducts,
     setWeekOffer
 }
 
