@@ -9,7 +9,7 @@ import 'react-lazy-load-image-component/src/effects/blur.css';
 import scrollToComponent from 'react-scroll-to-component';
 import { setMenu, setLoading, setError, setMenuType, addToCart, setLastVisible, setLatestProducts, setWeekOffer } from '../../actions';
 import ShopItem from '../shop-item';
-import ItemCard from '../item-card';
+import ProductCard from '../product-card';
 import { FeedbackForm } from '../forms';
 import './styles.css'
 
@@ -55,6 +55,8 @@ class Home extends Component {
     render() {
         const { loading, menuType, setMenuType, addToCart, latestProducts, weekOffer } = this.props
 
+        const weekOfferKeys = ['first', 'second', 'third']
+
         const CarouselItem =
             <Row className='product-row'>
                 {!loading && latestProducts != null && latestProducts.length > 0
@@ -78,24 +80,25 @@ class Home extends Component {
             <>
                 <section id="slider-container" className="top-section">
                     <Carousel fade
+                        controls={false}
                         className='img-carousel offset-borders'
                         interval={7500}>
                         <Carousel.Item>
-                            <Image fluid src="images/slider/1.jpg" alt="header img" />
+                            <Image fluid src="images/slider/slider-1.jpg" alt="slider croisant" />
                             <Carousel.Caption className="ms-layer">
                                 <h2 className="ms-layer">Coffe and Croissant</h2>
                                 <h3 className="ms-layer">Pleasure and Taste in one Place</h3>
                             </Carousel.Caption>
                         </Carousel.Item>
                         <Carousel.Item>
-                            <Image fluid src="images/slider/2.jpg" alt="header img" />
+                            <Image fluid src="images/slider/slider-2.jpg" alt="slider tarts and coffee" />
                             <Carousel.Caption className="ms-layer">
                                 <h2 className="ms-layer">Coffe and Croissant</h2>
                                 <h3 className="ms-layer">Pleasure and Taste in one Place</h3>
                             </Carousel.Caption>
                         </Carousel.Item>
                         <Carousel.Item>
-                            <Image fluid src="images/slider/3.jpg" alt="header img" />
+                            <Image fluid src="images/slider/slider-3.jpg" alt="slider tarts" />
                             <Carousel.Caption className="ms-layer">
                                 <h2 className="ms-layer">Coffe and Croissant</h2>
                                 <h3 className="ms-layer">Pleasure and Taste in one Place</h3>
@@ -176,7 +179,6 @@ class Home extends Component {
                                         <div className="icon-big-container">
                                             <svg viewBox="0 0 61 47" version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
                                                 width="1000px" height="1000px" enableBackground="new 0 0 1000 1000" >
-
                                                 <g><path id="Shape" d="m55.635 13.445c.4673369-1.0070791.1219124-2.2045506-.81-2.808-1.7455193-1.08751569-3.6731362-1.85077066-5.69-2.253-.6283026-1.18602254-1.5756092-2.1728147-2.735-2.849-3.451-2.181-9.4-4.285-18.247-2.16-3.142-3.18-7.114-3.669-11.171-2.12-4.028 1.545-8.611 5.556-11.582 8.688-1.895 1.986-3.1 3.336-2.463 5.932-1.04177621 2.210386-1.72144703 
                                                     4.5738712-2.013 7-.80091502 6.2807961 1.54718983 12.5525108 6.276 16.763 2.168 4.69 7.432 6.409 12.612 6.409 1.0056099-.0153291 2.0094025-.0907972 3.006-.226.3219725.1509591.6631649.2569508 1.014.315 3.4.513 10.6-.324 11.249-3.775.329-1.759-1.016-3.634-4.09-5.708.1142498-1.754911-.4458982-3.4872206-1.566-4.843.6502787-.4696585 1.1443298-1.12398 1.418-1.878 1.6041169-.2263908 2.9793114-1.2612803 3.641-2.74 
                                                     3.068.862 5.506.516 6.886-2.357 2.682.953 5.94.409 8.562-.713 2.6834247 1.5435956 5.9071363 1.8383537 8.826.807 4.782-1.91.997-8.349-3.123-11.484zm-52.735 9.78c.26086894-2.2327646.87768159-4.4093334 1.827-6.447 3.64243682-1.8276025 7.8761071-2.0771098 11.708-.69 7.492 2.84 11.83 11.551 12.541 13.074-.1785534.5476036-.5604874 1.0057811-1.067 1.28-2.3724506-1.455646-4.9246492-2.5955966-7.592-3.391-8.2-2.732-14.24 
@@ -275,7 +277,7 @@ class Home extends Component {
                             <Row className="section-content">
                                 <h2 className="heading-huge">Different types of bread products</h2>
                                 <h3 className="heading-small">You will find them only the best products in our stores</h3>
-                                <Image fluid id="bread-image" alt="bread" className="img-responsive" src="images/bread.png" />
+                                <Image fluid id="bread-image" alt="bread" className="img-responsive" src="images/bread-types-min.jpg" />
                             </Row>
                         </LazyLoadComponent>
                     </section>
@@ -293,41 +295,37 @@ class Home extends Component {
                                     <Row className='tabs-big-container'>
 
                                         <Nav className="col-lg-2 col-sm-12">
-
                                             <Nav.Item>
-                                                <Nav.Link eventKey="0">
-                                                    <Image fluid alt="product 1" src="images/offer_nav_1.png" />
+                                                <Nav.Link eventKey="first">
+                                                    <Image fluid alt="product 1" src={`images/tabs/${weekOffer.length > 0 && weekOffer[0].id}-previev-min.jpg`} />
                                                 </Nav.Link>
                                             </Nav.Item>
 
                                             <Nav.Item>
-                                                <Nav.Link eventKey="1">
-                                                    <Image fluid alt="product 2 thumb" src="images/offer_nav_2.png" />
+                                                <Nav.Link eventKey="second">
+                                                    <Image fluid alt="product 2 thumb" src={`images/tabs/${weekOffer.length > 0 && weekOffer[1].id}-previev-min.jpg`} />
                                                 </Nav.Link>
                                             </Nav.Item>
 
                                             <Nav.Item>
-                                                <Nav.Link eventKey="2">
-                                                    <Image fluid alt="product 3 thumb" src="images/offer_nav_3.png" />
+                                                <Nav.Link eventKey="third">
+                                                    <Image fluid alt="product 3 thumb" src={`images/tabs/${weekOffer.length > 0 && weekOffer[2].id}-previev-min.jpg`} />
                                                 </Nav.Link>
                                             </Nav.Item>
-
                                         </Nav>
 
 
                                         <Col md={9}>
                                             <Tab.Content>
-
-                                                {!loading && weekOffer != null && weekOffer.length > 0
-                                                    && weekOffer.map((item, idx) => (
-                                                        <ItemCard
-                                                            key = {idx}
-                                                            item = {item}
-                                                            onAddToCart={addToCart}
-                                                        />
+                                                {weekOffer != null && weekOffer.length > 0 &&
+                                                    weekOffer.map((el, idx) => (
+                                                        <Tab.Pane eventKey={weekOfferKeys[idx]}>
+                                                            <ProductCard
+                                                                product={el}
+                                                                onAddToCart={addToCart}
+                                                            />
+                                                        </Tab.Pane>
                                                     ))}
-
-
                                             </Tab.Content>
                                         </Col>
                                     </Row>

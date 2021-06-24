@@ -11,6 +11,10 @@ This is compiled file, for the original file please see .less file
 6. Less Elements (in .less file only)
 */
 
+*{
+  font-family: 'Montserrat', sans-serif;
+}
+
 html.cssanimations .onscroll-animate {
   -webkit-animation-duration: 1.5s;
   -moz-animation-duration: 1.5s;
@@ -165,9 +169,7 @@ ul {
   max-width: 1290px;
 }
 
-#bread-image {
-  position: relative;
-}
+
 
 #devices-section {
   background-image: url('./images/bg_devices.png');
@@ -1293,17 +1295,6 @@ ul {
   transition: all 0.2s ease-out;
 }
 
-.list-numbers {
-  overflow: auto;
-}
-
-.list-numbers li {
-  margin-left: 20px;
-  list-style: decimal;
-  width: 45%;
-  float: left;
-}
-
 .list-values a {
   color: inherit;
   display: block;
@@ -1339,81 +1330,6 @@ ul {
 }
 
 
-
-
-
-.carousel-caption h2 {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 4vw;
-  font-weight: 400;
-  color: #FFF;
-  background-color: rgba(104, 79, 64, 0.9);
-  padding: 18px 30px;
-  margin: 0 0 1px 0;
-  display: inline-block;
-  left: 130px;
-  bottom: 160px;
-}
-
-.carousel-caption h2.ms-right {
-  left: auto;
-  right: 130px;
-}
-
-.carousel-caption h3 {
-  font-family: 'Lato', sans-serif;
-  font-size: 3vw;
-  font-weight: 400;
-  background-color: rgba(253, 192, 60, 0.9);
-  color: #684f40;
-  margin: 0;
-  padding: 16px 35px;
-  display: inline-block;
-  bottom: 100px;
-  left: 130px;
-}
-
-.carousel-caption h3.ms-right {
-  left: auto;
-  right: 130px;
-}
-
-.carousel-control-prev,
-.carousel-control-next {
-  position: absolute;
-  font-size: 20px;
-  top: 50%;
-  width: 55px;
-  height: 55px;
-  margin: 10px;
-  margin-top: -32px;
-  color: rgb(104, 79, 64);
-  border: 3px rgba(104, 79, 64, 0.7) solid;
-  background-color: rgba(255, 255, 255, 0.5);
-  cursor: pointer;
-  z-index: 50;
-  -webkit-transition: all 0.2s ease-out;
-  -moz-transition: all 0.2s ease-out;
-  -o-transition: all 0.2s ease-out;
-  transition: all 0.2s ease-out;
-  -webkit-border-radius: 50%;
-  -moz-border-radius: 50%;
-  border-radius: 50%;
-}
-
-.carousel-control-prev:after,
-.carousel-control-next:after {
-  position: absolute;
-  left: 0;
-  top: 0;
-  width: 100%;
-  height: 100%;
-  opacity: 0.5;
-  -webkit-transition: all 0.2s ease-out;
-  -moz-transition: all 0.2s ease-out;
-  -o-transition: all 0.2s ease-out;
-  transition: all 0.2s ease-out;
-}
 
 
 .master-slider .ms-nav-next {
@@ -2348,10 +2264,7 @@ ul {
   margin-left: auto;
 }
 
-.text-huge {
-  font-size: 40px;
-  line-height: 1.5;
-}
+
 
 .to-top {
   position: absolute;
