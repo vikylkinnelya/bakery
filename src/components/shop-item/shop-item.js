@@ -47,7 +47,7 @@ const ShopItem = ({ menuItem, menuType, onAddToCart }) => {
                 <LazyLoadImage
                     effect="blur"
                     alt={name}
-                    src={`../../images/shop/${id}-min.jpg`}
+                    src={`../images/${id}-min.jpg`}
                 />
             </div>
 

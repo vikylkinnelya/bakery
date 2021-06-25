@@ -84,21 +84,21 @@ class Home extends Component {
                         className='img-carousel offset-borders'
                         interval={7500}>
                         <Carousel.Item>
-                            <Image fluid src="images/slider/slider-1.jpg" alt="slider croisant" />
+                            <Image fluid src="images/slider-1.jpg" alt="slider croisant" />
                             <Carousel.Caption className="ms-layer">
                                 <h2 className="ms-layer">Coffe and Croissant</h2>
                                 <h3 className="ms-layer">Pleasure and Taste in one Place</h3>
                             </Carousel.Caption>
                         </Carousel.Item>
                         <Carousel.Item>
-                            <Image fluid src="images/slider/slider-2.jpg" alt="slider tarts and coffee" />
+                            <Image fluid src="images/slider-2.jpg" alt="slider tarts and coffee" />
                             <Carousel.Caption className="ms-layer">
                                 <h2 className="ms-layer">Coffe and Croissant</h2>
                                 <h3 className="ms-layer">Pleasure and Taste in one Place</h3>
                             </Carousel.Caption>
                         </Carousel.Item>
                         <Carousel.Item>
-                            <Image fluid src="images/slider/slider-3.jpg" alt="slider tarts" />
+                            <Image fluid src="images/slider-3.jpg" alt="slider tarts" />
                             <Carousel.Caption className="ms-layer">
                                 <h2 className="ms-layer">Coffe and Croissant</h2>
                                 <h3 className="ms-layer">Pleasure and Taste in one Place</h3>
@@ -297,19 +297,19 @@ class Home extends Component {
                                         <Nav className="col-lg-2 col-sm-12">
                                             <Nav.Item>
                                                 <Nav.Link eventKey="first">
-                                                    <Image fluid alt="product 1" src={`images/tabs/${weekOffer.length > 0 && weekOffer[0].id}-previev-min.jpg`} />
+                                                    <Image fluid alt="product 1" src={`images/${weekOffer.length > 0 && weekOffer[0].id}-img-min.jpg`} />
                                                 </Nav.Link>
                                             </Nav.Item>
 
                                             <Nav.Item>
                                                 <Nav.Link eventKey="second">
-                                                    <Image fluid alt="product 2 thumb" src={`images/tabs/${weekOffer.length > 0 && weekOffer[1].id}-previev-min.jpg`} />
+                                                    <Image fluid alt="product 2 thumb" src={`images/${weekOffer.length > 0 && weekOffer[1].id}-img-min.jpg`} />
                                                 </Nav.Link>
                                             </Nav.Item>
 
                                             <Nav.Item>
                                                 <Nav.Link eventKey="third">
-                                                    <Image fluid alt="product 3 thumb" src={`images/tabs/${weekOffer.length > 0 && weekOffer[2].id}-previev-min.jpg`} />
+                                                    <Image fluid alt="product 3 thumb" src={`images/${weekOffer.length > 0 && weekOffer[2].id}-img-min.jpg`} />
                                                 </Nav.Link>
                                             </Nav.Item>
                                         </Nav>
@@ -319,7 +319,9 @@ class Home extends Component {
                                             <Tab.Content>
                                                 {weekOffer != null && weekOffer.length > 0 &&
                                                     weekOffer.map((el, idx) => (
-                                                        <Tab.Pane eventKey={weekOfferKeys[idx]}>
+                                                        <Tab.Pane
+                                                            key={idx}
+                                                            eventKey={weekOfferKeys[idx]}>
                                                             <ProductCard
                                                                 product={el}
                                                                 onAddToCart={addToCart}

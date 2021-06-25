@@ -2,11 +2,9 @@ import React from 'react';
 import { Col, Row, Tab, Image } from 'react-bootstrap';
 import './styles.css'
 
-const ProductCard = ({ product, onAddToCart, key }) => {
+const ProductCard = ({ product, onAddToCart}) => {
 
-    const { name, description, pricing, ingredients, label, id } = product
-
-
+    const { name, description, pricing, ingredients, id } = product
 
     return (
 
@@ -16,7 +14,7 @@ const ProductCard = ({ product, onAddToCart, key }) => {
 
                     <h1>{name}</h1>
                     <p>{description}</p>
-                    
+
                     <h2>Ingredients:</h2>
                     <ul className="list-numbers">
                         {ingredients != null && ingredients.length > 0
@@ -29,13 +27,17 @@ const ProductCard = ({ product, onAddToCart, key }) => {
                         <h2 className='text-huge'>
                             ${pricing}
                         </h2>
-                        <button className='button tabs-button'>Order Now</button>
+                        <button
+                            onClick={() => onAddToCart(id)}
+                            className='button tabs-button'>
+                            Order Now
+                        </button>
                     </Row>
 
 
                 </Col>
                 <Col md={7} className="offer-box-right" >
-                    <Image fluid src={`images/tabs/${id}-min.jpg`} />
+                    <Image fluid src={`images/${id}-min.jpg`} />
 
                     <div className="product-label-container big-label">
                         <div className="product-label">

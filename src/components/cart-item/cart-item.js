@@ -18,7 +18,7 @@ const CartItem = ({ cartItem, totalPrice, addToCart, deleteFromCart, decCount })
     return (
         <Row className='cart-item'>
             <Col lg={2} className='cart-item-previev'>
-                <img alt={name} src={`../../images/shop/${id.split('-')[0]}-min.jpg`} />
+                <img alt={name} src={`images/${id.split('-')[0]}-min.jpg`} />
             </Col>
             <Col>
                 <h3>{name} {param ? `, ${param}` : null}</h3>
