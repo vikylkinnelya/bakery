@@ -33,7 +33,7 @@ const OrderForm = ({ setCustomer }) => {
                     //console.log(JSON.stringify(values, null, 2))
                     resetForm()
                     setSubmitting(false)
-                }, 500)
+                }, 1000)
                 setCustomer(values)
             }}
         >

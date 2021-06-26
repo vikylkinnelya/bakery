@@ -84,3 +84,15 @@ html.cssanimations .onscroll-animate {
 .show-more-btn {
     padding: 5px 10px 5px 10px;
 }
+
+.toast.added-toast {
+    max-width: 300px;
+    position: fixed;
+    bottom: 10;
+    right: 0;
+
+}
+
+.toast-body svg {
+    margin-right: 10px;
+}

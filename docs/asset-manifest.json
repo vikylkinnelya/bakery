@@ -1,0 +1,26 @@
+{
+  "files": {
+    "main.css": "/static/css/main.737cb4f7.chunk.css",
+    "main.js": "/static/js/main.d0a72b1c.chunk.js",
+    "main.js.map": "/static/js/main.d0a72b1c.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.5ca0db4c.js",
+    "runtime-main.js.map": "/static/js/runtime-main.5ca0db4c.js.map",
+    "static/css/2.ba050134.chunk.css": "/static/css/2.ba050134.chunk.css",
+    "static/js/2.62cb6573.chunk.js": "/static/js/2.62cb6573.chunk.js",
+    "static/js/2.62cb6573.chunk.js.map": "/static/js/2.62cb6573.chunk.js.map",
+    "index.html": "/index.html",
+    "static/css/2.ba050134.chunk.css.map": "/static/css/2.ba050134.chunk.css.map",
+    "static/css/main.737cb4f7.chunk.css.map": "/static/css/main.737cb4f7.chunk.css.map",
+    "static/js/2.62cb6573.chunk.js.LICENSE.txt": "/static/js/2.62cb6573.chunk.js.LICENSE.txt",
+    "static/media/main.css": "/static/media/tool_top.56bda21d.png",
+    "static/media/all.min.css": "/static/media/fa-solid-900.efbd5d20.eot",
+    "static/media/styles.css": "/static/media/logo-footer-background.5c96122c.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.5ca0db4c.js",
+    "static/css/2.ba050134.chunk.css",
+    "static/js/2.62cb6573.chunk.js",
+    "static/css/main.737cb4f7.chunk.css",
+    "static/js/main.d0a72b1c.chunk.js"
+  ]
+}

@@ -4,7 +4,7 @@ import 'react-lazy-load-image-component/src/effects/blur.css';
 import { Col } from 'react-bootstrap';
 import './styles.css';
 
-const ShopItem = ({ menuItem, menuType, onAddToCart }) => {
+const ShopItem = ({ menuItem, menuType, onAddToCart, cart, onShowTost }) => {
 
     const { name, description, pricing, type, id } = menuItem
 
@@ -14,6 +14,8 @@ const ShopItem = ({ menuItem, menuType, onAddToCart }) => {
         </div>
         <div className="product-label-bottom"></div>
     </div>
+
+    const addedItem = cart.findIndex(el => el.id === id) !== -1 ? 'added' : null
 
     const [priceMenu, setShowPriceMenu] = useState(false)
 
@@ -35,6 +37,7 @@ const ShopItem = ({ menuItem, menuType, onAddToCart }) => {
             return setShowPriceMenu(!priceMenu)
         }
         if (pricing.length === 1) {
+            onShowTost(true, name)
             return onAddToCart(id)
         }
     }
@@ -54,12 +57,9 @@ const ShopItem = ({ menuItem, menuType, onAddToCart }) => {
             <div className="product-detail-container">
 
                 <div className="product-icons">
-                    <button className="product-icon-container">
-                        <i className="fa fa-heart"></i>
-                    </button>
 
-                    <button className="product-icon-container" onClick={() => defCartClick(id)}>
-                        {!priceMenu && <i className="fa fa-shopping-cart" />}
+                    <button className={`product-icon-container ${addedItem}`} onClick={() => defCartClick(id)}>
+                        {!priceMenu && <i className='fa fa-shopping-cart' />}
                         {priceMenu && pricing && <i className="fas fa-times"></i>}
                     </button>
                     {smallSize}

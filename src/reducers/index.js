@@ -76,7 +76,7 @@ const reducer = (state = initialState, action) => {
         case 'ADD_TO_CART':
 
             const id = action.payload
-            const param = action.param
+            const param = action.param? `-${action.param}` : ''
             let priceIdx
 
             if (param === 'L') {
@@ -92,8 +92,6 @@ const reducer = (state = initialState, action) => {
                 priceIdx = 0
             }
 
-            console.log(priceIdx)
-
             const itemIdxinCart = state.cart.findIndex(el => el.id === id)
 
             if (itemIdxinCart === -1) {
@@ -101,7 +99,7 @@ const reducer = (state = initialState, action) => {
 
                 const newItem = {
                     name: item.name,
-                    id: id + '-' + param,
+                    id: id + param,
                     param: param,
                     price: item.pricing[priceIdx],
                     count: 1

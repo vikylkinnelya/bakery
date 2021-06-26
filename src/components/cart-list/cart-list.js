@@ -17,6 +17,7 @@ class CartList extends Component {
 
     setCustomer = (data) => {
         this.setState({ customer: data })
+        this.props.setFormVisibility()
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
@@ -75,7 +76,7 @@ class CartList extends Component {
                             </Col>
                         </Col>
 
-                        {!formIsOpen && <Row className='btn-order'>
+                        {!formIsOpen && !this.state.customer && <Row className='btn-order'>
                             <button onClick={() => setFormVisibility()}>
                                 <h3>order</h3>
                             </button>

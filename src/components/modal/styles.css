@@ -13,6 +13,14 @@
     text-align: center;
 }
 
+.modal-order-header.modal-header svg{
+    margin-left: 47%;
+}
+
+.modal-order-header.modal-header {
+    padding-bottom: 0;
+}
+
 .modal-order>.modal-dialog>.modal-content {
     padding: 15px;
     outline: 2px solid #684f40;
