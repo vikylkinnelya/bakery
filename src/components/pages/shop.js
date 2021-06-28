@@ -1,14 +1,11 @@
 import React from 'react';
-import { FullHeaderContainer } from '../details/index'
+import {PageHeader}  from '../small-comp';
 import ShopListItems from '../shop-list';
 
 const Shop = () => {
-
     return (
         <>
-            <FullHeaderContainer title={'Menu'} descr={'See our menus and what we offer'} />
-
-            
+            <PageHeader title={'Menu'} descr={'See our menus and what we offer'} />
             <ShopListItems/>
         </>
     )

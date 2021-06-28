@@ -25,8 +25,11 @@
     background-repeat: no-repeat;
 }
 
+
 .page-footer .footer-light {
     padding-top: 50px;
+    padding-bottom: 50px;
+
     color: #d6d8db;
     background-color: #303133;
 }

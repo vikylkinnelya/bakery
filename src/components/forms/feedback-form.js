@@ -26,8 +26,6 @@ const validationSchema = yup.object().shape({
 const FeedbackForm = ({ feedback, setFeedbackData, setResponseMessage, page, reason }) => {
 
     const className = page === 'main' ? 'contact-form' : 'form-contact-alt'
-    const title = page === 'main' ? <h2>CONTACT US</h2> : <h1>LEAVE US A MESSAGE</h1>
-    const subtitle = page === 'main' ? <p>Our Company is the best, meet the creative team that never sleeps. Say something to us we will answer to you.</p> : null
 
     return (
 
@@ -47,17 +45,11 @@ const FeedbackForm = ({ feedback, setFeedbackData, setResponseMessage, page, rea
         >
             {({ values, errors, touched, handleChange, handleBlur, handleSubmit, isSubmitting }) => (
                 <>
-
-                    <div className="article-header">
-                        {title}
-                        {subtitle}
-                    </div>
-
                     {feedback && <ResponseMessage
                         reason={reason}
                     />}
 
-                    { !feedback && <>
+                    {!feedback && <>
 
 
                         <form onSubmit={handleSubmit} className={className}>
@@ -79,8 +71,8 @@ const FeedbackForm = ({ feedback, setFeedbackData, setResponseMessage, page, rea
                                         <Col sm={5} className="input-description">
                                             <Form.Label>
                                                 <i className="fa fa-user"></i>
-                                        Name:
-                                        </Form.Label>
+                                                Name:
+                                            </Form.Label>
                                         </Col>
                                     }
                                 </Row>
@@ -106,8 +98,8 @@ const FeedbackForm = ({ feedback, setFeedbackData, setResponseMessage, page, rea
                                         <Col sm={5} className="input-description">
                                             <Form.Label>
                                                 <i className="fa fa-envelope"></i>
-                                        Email:
-                                        </Form.Label>
+                                                Email:
+                                            </Form.Label>
                                         </Col>
                                     }
                                 </Row>
@@ -133,8 +125,8 @@ const FeedbackForm = ({ feedback, setFeedbackData, setResponseMessage, page, rea
                                         <Col sm={5} className="input-description">
                                             <Form.Label>
                                                 <i className="fa fa-file"></i>
-                                        Subject:
-                                        </Form.Label>
+                                                Subject:
+                                            </Form.Label>
                                         </Col>
                                     </Row>
                                     {touched.subject && errors.subject ? (

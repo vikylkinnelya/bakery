@@ -2,7 +2,6 @@ import React from 'react';
 import './styles.css';
 
 const ResponseMessage = ({ reason }) => {
-
     const subscribing = 'We will send regular updates for new stuff and events.'
     const feedback = 'Your feedback is important for us.'
 
@@ -18,7 +17,6 @@ const ResponseMessage = ({ reason }) => {
                 Thank yor for {reason}!
             </h4>
             <p>{reason === 'feedback' ? feedback : subscribing}</p>
-
         </div>
     )
 }

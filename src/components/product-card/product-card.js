@@ -1,8 +1,8 @@
 import React from 'react';
-import { Col, Row, Tab, Image } from 'react-bootstrap';
+import { Col, Row, Image } from 'react-bootstrap';
 import './styles.css'
 
-const ProductCard = ({ product, onAddToCart}) => {
+const ProductCard = ({ product, onAddToCart }) => {
 
     const { name, description, pricing, ingredients, id } = product
 
@@ -15,26 +15,24 @@ const ProductCard = ({ product, onAddToCart}) => {
                     <h1>{name}</h1>
                     <p>{description}</p>
 
-                    <h2>Ingredients:</h2>
+                    <h2>Includes:</h2>
                     <ul className="list-numbers">
                         {ingredients != null && ingredients.length > 0
-                            && ingredients.map(ingr => (
-                                <li>{ingr}</li>
+                            && ingredients.map((ingr, idx) => (
+                                <li key={idx}>{ingr}</li>
                             ))}
-
                     </ul>
                     <Row className='price-order-row'>
                         <h2 className='text-huge'>
                             ${pricing}
                         </h2>
                         <button
+                            title='add to cart'
                             onClick={() => onAddToCart(id)}
                             className='button tabs-button'>
                             Order Now
                         </button>
                     </Row>
-
-
                 </Col>
                 <Col md={7} className="offer-box-right" >
                     <Image fluid src={`images/${id}-min.jpg`} />
@@ -48,7 +46,6 @@ const ProductCard = ({ product, onAddToCart}) => {
                 </Col>
             </Row>
         </Col>
-
     )
 }
 

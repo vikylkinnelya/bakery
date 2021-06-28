@@ -7,7 +7,7 @@ import { OrderForm } from '../forms';
 import { connect } from 'react-redux';
 import { withRouter } from "react-router";
 import WithRestoService from '../hoc';
-import { setMenu, setLoading, setError, addToCart, setFormVisibility, setModalVisibility, deleteFromCart, decCount } from '../../actions';
+import { setLoading, setError, addToCart, setFormVisibility, setModalVisibility, deleteFromCart, decCount } from '../../actions';
 
 import './styles.css'
 
@@ -27,7 +27,7 @@ class CartList extends Component {
 
         if (this.state.customer !== prevState.customer) {
             RestoService.setOrder(generateOrder(cart, this.state.customer))
-                .catch(error => setError())
+                .catch(error => setError(error))
             setModalVisibility()
             setLoading(false)
         }
@@ -40,11 +40,6 @@ class CartList extends Component {
         return (
 
             <div className='cart-list'>
-
-                <ModalAfterOrder
-                    modalIsShown={modalIsShown}
-                    setModalVisibility={setModalVisibility}
-                />
 
                 {loading && <Spinner />}
 
@@ -77,7 +72,9 @@ class CartList extends Component {
                         </Col>
 
                         {!formIsOpen && !this.state.customer && <Row className='btn-order'>
-                            <button onClick={() => setFormVisibility()}>
+                            <button
+                                title='order products'
+                                onClick={() => setFormVisibility()}>
                                 <h3>order</h3>
                             </button>
                         </Row>
@@ -92,6 +89,11 @@ class CartList extends Component {
                         />
                     }
                 </Row>
+
+                <ModalAfterOrder
+                    modalIsShown={modalIsShown}
+                    setModalVisibility={setModalVisibility}
+                />
 
             </div>
         )

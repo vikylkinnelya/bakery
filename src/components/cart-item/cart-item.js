@@ -25,16 +25,24 @@ const CartItem = ({ cartItem, totalPrice, addToCart, deleteFromCart, decCount })
             </Col>
             <Col lg={2} className='count-col'>
                 <h4>
-                    <button onClick={() => onDecOrDelCount(id)}>-</button>
+                    <button
+                        title='decrement'
+                        onClick={() => onDecOrDelCount(id)}>-</button>
                     {count}
-                    <button onClick={() => addToCart(id, param)}>+</button>
+                    <button
+                        title='increment'
+                        onClick={() => addToCart(id, param)}>
+                        +
+                    </button>
                 </h4>
             </Col>
             <Col lg={2}>
                 <h4>${(price * count).toFixed(2)}</h4>
             </Col>
             <Col lg={1} className='count-col'>
-                <button onClick={() => deleteFromCart(id)}>
+                <button
+                    title='delete product from cart'
+                    onClick={() => deleteFromCart(id)}>
                     x
                 </button>
             </Col>

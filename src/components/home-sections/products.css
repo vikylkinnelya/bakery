@@ -1,0 +1,18 @@
+.shop-slide>.carousel-indicators {
+    margin-top: 0px;
+    bottom: -15px;
+}
+
+.carousel-item .product-row {
+    min-height: 330px;
+}
+
+.carousel-item {
+    max-height: 450px;
+}
+
+.carousel-item img {
+    object-fit: cover;
+    overflow: hidden;
+
+}

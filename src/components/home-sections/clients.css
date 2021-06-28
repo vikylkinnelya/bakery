@@ -1,0 +1,7 @@
+.clients-row {
+    justify-content: space-around;
+}
+
+#clients-section>.section-header h1 {
+    font-size: 16px;
+}

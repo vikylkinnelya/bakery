@@ -1,6 +1,6 @@
 import React from 'react';
 import { LazyLoadComponent } from 'react-lazy-load-image-component';
-import { FullHeaderContainer } from '../details/index';
+import {PageHeader}  from '../small-comp';
 import { Col, Container, Row } from 'react-bootstrap';
 import './styles.css'
 
@@ -8,7 +8,7 @@ const About = () => {
 
     return (
         <>
-            <FullHeaderContainer title={'About'} descr={'What is our company worth for'} />
+            <PageHeader title={'About'} descr={'What is our company worth for'} />
 
             <Container>
 

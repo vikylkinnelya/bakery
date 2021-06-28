@@ -1,12 +1,11 @@
 import React, { Component } from 'react';
 import Spinner from '../spinner';
-import { Col, Container, Row, Pagination, Toast } from 'react-bootstrap';
+import { Col, Container, Row, Toast } from 'react-bootstrap';
 import ShopItem from '../shop-item';
 import WithRestoService from '../hoc';
 import { connect } from 'react-redux';
 import { withRouter } from "react-router";
 import { Link } from 'react-router-dom';
-import scrollToComponent from 'react-scroll-to-component';
 import { LazyLoadComponent, trackWindowScroll } from 'react-lazy-load-image-component';
 import { setMenu, setLoading, setError, setMenuType, addToCart, setLastVisible, setMenuTotalItems } from '../../actions';
 import './styles.css';
@@ -21,7 +20,7 @@ class ShopListItems extends Component {
     }
 
     componentDidMount() {
-        const { RestoService, location, setMenuTotalItems, setMenuType, setMenu, menuItems, setError, setLoading } = this.props;
+        const { RestoService, location, setMenuType, setMenu, setError, setLoading } = this.props;
 
         setLoading(true)
 
@@ -35,13 +34,10 @@ class ShopListItems extends Component {
 
     componentDidUpdate(prevProps) {
 
-        const { RestoService, menuType, lastVisible, setMenuTotalItems, setMenu, setError, setLoading } = this.props;
+        const { RestoService, menuType, setMenu, setError, setLoading } = this.props;
 
-        if ((menuType !== prevProps.menuType) || (lastVisible !== prevProps.lastVisible)) {
+        if (menuType !== prevProps.menuType)  {
             setLoading()
-
-            /*             RestoService.getMenuItems(menuType, '')
-                            .then(result => setMenuTotalItems(result.length)) */
 
             RestoService.fetchMenu(menuType)
                 .then(res => setMenu(res))
@@ -52,28 +48,6 @@ class ShopListItems extends Component {
     render() {
 
         const { scrollPosition, menuItems, loading, error, menuType, setMenuType, cart, addToCart, menuTotalItems } = this.props
-
-        /* const paginationItems = []
-
-        for (let i = 1; i <= Math.ceil(menuTotalItems / 9); i++) {
-            paginationItems.push(
-
-                <Pagination.Item
-                    to={`${i}`}
-                    className="pagination-item"
-                    key={i}
-                    active={i === lastVisible}
-                    activeLabel={null}
-                    onClick={() => {
-                        setLastVisible(i);
-                        scrollToComponent(this.Shop, { offset: -150, align: 'top', duration: 500 })
-                    }}
-                >
-                    {i}
-                </Pagination.Item>
-
-            )
-        } */
 
         const showMoreBtn = <button className='show-more-btn' onClick={() => onShowMore()}>
             Show more </button>
@@ -217,11 +191,6 @@ class ShopListItems extends Component {
                         {!loading &&
                             <Col sm={{ order: 12 }} className='pagination-col'>
                                 {this.state.endAt <= menuItems.length && showMoreBtn}
-                                {/* <Pagination >
-                                    <Pagination.Prev className="pagination-item pagination-nav" />
-                                    {paginationItems}
-                                    <Pagination.Next className="pagination-item pagination-nav" />
-                                </Pagination> */}
                             </Col>
                         }
                     </LazyLoadComponent>
