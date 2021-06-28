@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
-import { Col, Navbar } from 'react-bootstrap';
+import { Col, Navbar, Image } from 'react-bootstrap';
 import './styles.css'
 
 const Header = ({ cart, totalPrice }) => {
@@ -28,19 +28,19 @@ const Header = ({ cart, totalPrice }) => {
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav " className='nav-top'>
 
-                <Col><NavLink activeClassName="selected" to='/about'> About</NavLink></Col>
-                <Col><NavLink activeClassName="selected" to='/contact'>Contact</NavLink></Col>
+                <Col><NavLink activeClassName="selected" to='/about' aria-label='About'> About</NavLink></Col>
+                <Col><NavLink activeClassName="selected" to='/contact' aria-label='Contact'>Contact</NavLink></Col>
 
                 <Col className='col logo-col'>
                     <NavLink to='/home'>
-                        <img className="logo-primary" src='../logo.png' id="logo-1" alt="Bakery" />
+                        <Image fluid className="logo-primary" src='../logo.png' id="logo-1" alt="Bakery" />
                     </NavLink>
                 </Col>
 
-                <Col><NavLink activeClassName="selected" to='/shop/all'>Shop</NavLink></Col>
+                <Col><NavLink activeClassName="selected" to='/shop/all' aria-label='Menu'>Menu</NavLink></Col>
 
                 <Col>
-                    <NavLink activeClassName="selected" to='/cart' className='basket-link'>
+                    <NavLink activeClassName="selected" to='/cart' className='basket-link' aria-label='Cart'>
                         {basket}
                     </NavLink>
                 </Col>

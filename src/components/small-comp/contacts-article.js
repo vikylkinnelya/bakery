@@ -2,10 +2,7 @@ import React from 'react';
 
 const ContactsArticle = () => {
     return (
-        <article>
-            <div className="article-header">
-                <h1>Contact</h1>
-            </div>
+        <>
             <div className="icon-opening-wrapper">
                 <div className="icon-opening-container">
                     <p className="icon-opening"><i className="fa fa-phone"></i></p>
@@ -37,7 +34,7 @@ const ContactsArticle = () => {
                     </p>
                 </div>
             </div>
-        </article>
+        </>
     )
 }
 

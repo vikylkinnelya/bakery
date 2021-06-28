@@ -4,9 +4,13 @@ import 'react-lazy-load-image-component/src/effects/blur.css';
 import { Col } from 'react-bootstrap';
 import './styles.css';
 
-const ShopItem = ({ menuItem, menuType, onAddToCart, cart, onShowTost }) => {
+const ShopItem = ({ menuItem, menuType, onAddToCart, cart, showTost }) => {
 
     const { name, description, pricing, type, id } = menuItem
+    const [priceMenu, setShowPriceMenu] = useState(false)
+
+    const productPrice = pricing[0]
+    const productPricing = pricing.length > 1 && pricing.join(' | ')
 
     const productLabel = <div className="product-label-container-alt">
         <div className="product-label">
@@ -16,11 +20,6 @@ const ShopItem = ({ menuItem, menuType, onAddToCart, cart, onShowTost }) => {
     </div>
 
     const addedItem = cart.findIndex(el => el.id === id) !== -1 ? 'added' : null
-
-    const [priceMenu, setShowPriceMenu] = useState(false)
-
-    const productPrice = pricing[0]
-    const productPricing = pricing.length > 1 && pricing.join(' | ')
 
     const smallSize = priceMenu && pricing.length === 3
         && <button className='small-size' onClick={() => onAddToCart(id, 'S')}> S </button>
@@ -37,7 +36,7 @@ const ShopItem = ({ menuItem, menuType, onAddToCart, cart, onShowTost }) => {
             return setShowPriceMenu(!priceMenu)
         }
         if (pricing.length === 1) {
-            onShowTost(true, name)
+            showTost(true, name)
             return onAddToCart(id)
         }
     }
@@ -71,14 +70,10 @@ const ShopItem = ({ menuItem, menuType, onAddToCart, cart, onShowTost }) => {
                     <p>{description}</p>
                     {menuType === 'all' && <h3>{type}</h3>}
                     <p className="product-price"> $ {productPricing || productPrice} </p>
-
                 </div>
             </div>
-
             {menuItem.label && productLabel}
-
         </ Col>
-
     )
 }
 

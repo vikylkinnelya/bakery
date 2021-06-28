@@ -73,6 +73,7 @@ class CartList extends Component {
 
                         {!formIsOpen && !this.state.customer && <Row className='btn-order'>
                             <button
+                                aria-label='order products'
                                 title='order products'
                                 onClick={() => setFormVisibility()}>
                                 <h3>order</h3>
@@ -94,7 +95,6 @@ class CartList extends Component {
                     modalIsShown={modalIsShown}
                     setModalVisibility={setModalVisibility}
                 />
-
             </div>
         )
     }

@@ -10,6 +10,7 @@ const initialState = {
     weekOffer: [],
     formIsOpen: false,
     modalIsShown: false,
+    tostIsShown: false
 }
 
 const reducer = (state = initialState, action) => {
@@ -184,6 +185,15 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 weekOffer: offer.slice(0,3)
             }
+
+
+
+        case 'SHOW_TOST':
+            return {
+                ...state, 
+                tostIsShown: true
+            }
+
 
         default:
             return state;

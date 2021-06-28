@@ -26,10 +26,12 @@ const CartItem = ({ cartItem, totalPrice, addToCart, deleteFromCart, decCount })
             <Col lg={2} className='count-col'>
                 <h4>
                     <button
+                        aria-label='decrement'
                         title='decrement'
                         onClick={() => onDecOrDelCount(id)}>-</button>
                     {count}
                     <button
+                        aria-label='increment'
                         title='increment'
                         onClick={() => addToCart(id, param)}>
                         +
@@ -41,13 +43,13 @@ const CartItem = ({ cartItem, totalPrice, addToCart, deleteFromCart, decCount })
             </Col>
             <Col lg={1} className='count-col'>
                 <button
+                    aria-label='delete'
                     title='delete product from cart'
                     onClick={() => deleteFromCart(id)}>
                     x
                 </button>
             </Col>
         </Row>
-
     )
 }
 

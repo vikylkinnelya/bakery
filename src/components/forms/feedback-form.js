@@ -2,7 +2,6 @@ import React from 'react';
 import { Formik, form } from 'formik';
 import { Row, Col, Form } from 'react-bootstrap';
 import ResponseMessage from '../response-message';
-
 import * as yup from 'yup';
 import './styles.css';
 
@@ -38,7 +37,7 @@ const FeedbackForm = ({ feedback, setFeedbackData, setResponseMessage, page, rea
                     //console.log(JSON.stringify(values, null, 2))
                     resetForm()
                     setSubmitting(false)
-                }, 500)
+                }, 1500)
                 setFeedbackData(values)
                 setResponseMessage(true)
             }}
@@ -50,10 +49,7 @@ const FeedbackForm = ({ feedback, setFeedbackData, setResponseMessage, page, rea
                     />}
 
                     {!feedback && <>
-
-
                         <form onSubmit={handleSubmit} className={className}>
-
                             <Form.Group controlId="formNameFeedback">
                                 <Row>
                                     <Col>
@@ -151,10 +147,10 @@ const FeedbackForm = ({ feedback, setFeedbackData, setResponseMessage, page, rea
                                 ) : null}
 
                             </Form.Group>
-
-
                             <Row className='btn-order'>
-                                <button type='submit'
+                                <button
+                                    aria-label='sent-message'
+                                    type='submit'
                                     disabled={isSubmitting}
                                     className='btn-order'
                                 >
@@ -165,8 +161,6 @@ const FeedbackForm = ({ feedback, setFeedbackData, setResponseMessage, page, rea
                         </form>
                     </>}
                 </>
-
-
             )}
         </Formik>
     )

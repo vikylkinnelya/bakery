@@ -70,6 +70,10 @@ const setLatestProducts = () => ({
     type: 'SET_LATEST_PRODUCTS'
 })
 
+const showTost = () => ({
+    type: 'SHOW_TOST'
+})
+
 
 
 export {
@@ -78,5 +82,6 @@ export {
     setLocation,
     addToCart, deleteFromCart, decCount,
     setFormVisibility, setModalVisibility,
-    setWeekOffer, setLatestProducts
+    setWeekOffer, setLatestProducts,
+    showTost
 }

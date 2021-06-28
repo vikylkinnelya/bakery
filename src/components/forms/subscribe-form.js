@@ -50,7 +50,11 @@ const SubscribeForm = ({ setSubscriberData }) => {
                         </Col>
 
                         <Col md={4} className="submit-container">
-                            <button type='submit' disabled={isSubmitting} className='btn-order'>
+                            <button
+                                aria-label='submit subscribing'
+                                type='submit'
+                                disabled={isSubmitting}
+                                className='btn-order'>
                                 Subscribe
                             </button>
                         </Col>

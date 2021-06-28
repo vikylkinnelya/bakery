@@ -7,7 +7,9 @@ import './offer.css'
 
 const OfferSection = ({ weekOffer, addToCart }) => {
 
-    const weekOfferKeys = ['first', 'second', 'third']
+    const firstOffer = weekOffer.length > 0 && weekOffer[0]
+    const secondOffer = weekOffer.length > 0 && weekOffer[1]
+    const thirdOffer = weekOffer.length > 0 && weekOffer[2]
 
     return (
         <section id="offer-section">
@@ -24,36 +26,50 @@ const OfferSection = ({ weekOffer, addToCart }) => {
                         <Nav className="col-lg-2 col-sm-12">
                             <Nav.Item>
                                 <Nav.Link eventKey="first">
-                                    <Image fluid alt="product 1" src={`images/${weekOffer.length > 0 && weekOffer[0].id}-img-min.jpg`} />
+                                    <Image fluid alt={firstOffer.title} src={`images/${firstOffer.id}-img-min.jpg`} />
                                 </Nav.Link>
                             </Nav.Item>
 
                             <Nav.Item>
                                 <Nav.Link eventKey="second">
-                                    <Image fluid alt="product 2 thumb" src={`images/${weekOffer.length > 0 && weekOffer[1].id}-img-min.jpg`} />
+                                    <Image fluid alt={secondOffer.title} src={`images/${secondOffer.id}-img-min.jpg`} />
                                 </Nav.Link>
                             </Nav.Item>
 
                             <Nav.Item>
                                 <Nav.Link eventKey="third">
-                                    <Image fluid alt="product 3 thumb" src={`images/${weekOffer.length > 0 && weekOffer[2].id}-img-min.jpg`} />
+                                    <Image fluid alt={thirdOffer.title} src={`images/${thirdOffer.id}-img-min.jpg`} />
                                 </Nav.Link>
                             </Nav.Item>
                         </Nav>
 
                         <Col md={9}>
                             <Tab.Content>
-                                {weekOffer != null && weekOffer.length > 0 &&
-                                    weekOffer.map((el, idx) => (
-                                        <Tab.Pane
-                                            key={idx}
-                                            eventKey={weekOfferKeys[idx]}>
-                                            <ProductCard 
-                                                product={el}
-                                                onAddToCart={addToCart}
-                                            />
-                                        </Tab.Pane>
-                                    ))}
+
+                                <Tab.Pane
+                                    eventKey='first'>
+                                    <ProductCard
+                                        product={firstOffer}
+                                        onAddToCart={addToCart}
+                                    />
+                                </Tab.Pane>
+
+                                <Tab.Pane
+                                    eventKey='second'>
+                                    <ProductCard
+                                        product={secondOffer}
+                                        onAddToCart={addToCart}
+                                    />
+                                </Tab.Pane>
+
+                                <Tab.Pane
+                                    eventKey='third'>
+                                    <ProductCard
+                                        product={thirdOffer}
+                                        onAddToCart={addToCart}
+                                    />
+                                </Tab.Pane>
+
                             </Tab.Content>
                         </Col>
                     </Row>

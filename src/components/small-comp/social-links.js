@@ -1,13 +1,10 @@
 import React from 'react';
 
-const SocialLinks = ({ type, classN = '' }) => {
+const SocialLinks = ({ classN = '' }) => {
 
 
     return (
-        <article>
-            <div className="article-header">
-                <h1>Socialize</h1>
-            </div>
+        <>
             <div className={`social-icon-container${classN}`}>
                 <a href="https://www.facebook.com/" title='facebook'>
                     <img src='../images/icons/facebook.svg' alt='facebook' />
@@ -33,8 +30,7 @@ const SocialLinks = ({ type, classN = '' }) => {
                     <img src='../images/icons/linkedin.svg' alt='linkedin' />
                 </a>
             </div>
-        </article>
-
+        </>
     )
 }
 

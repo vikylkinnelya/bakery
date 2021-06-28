@@ -43,7 +43,6 @@ const OrderForm = ({ setCustomer }) => {
                     className='bakery-form'
                 >
                     <form onSubmit={handleSubmit}>
-
                         <Row>
                             <Col lg={6}>
                                 <Form.Group controlId="formfirstName">
@@ -133,7 +132,9 @@ const OrderForm = ({ setCustomer }) => {
                         </Row>
 
                         <Row className='btn-order'>
-                            <button type='submit'
+                            <button
+                                title='Submit order'
+                                ype='submit'
                                 disabled={isSubmitting}
                                 className='btn-order'
                             >

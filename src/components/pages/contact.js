@@ -38,7 +38,6 @@ class Contact extends Component {
                 <PageHeader title={'Contact'} descr={'Say something!'} />
 
                 <Container>
-
                     <div className="content-box">
                         <LazyLoadComponent>
                             <div className="google-map-big-container">
@@ -69,9 +68,29 @@ class Contact extends Component {
                                 />
                             </Col>
                             <Col md={4}>
-                                <ContactsArticle />
-                                <div className="margin-50"></div>
-                                <SocialLinks type='Socialize' classN='-alt' />
+                                <article>
+                                    <div className="article-header">
+                                        <h1>Working Time</h1>
+                                    </div>
+                                    <p>
+                                        Monday Friday:
+                                        <time> 07:00 am - 10:00 pm</time><br />
+                                        Saturday Sunday:
+                                        <time> 07:30 am - 10:00 pm</time>
+                                    </p>
+                                </article>
+                                <article>
+                                    <div className="article-header">
+                                        <h1>Contact</h1>
+                                    </div>
+                                    <ContactsArticle />
+                                </article>
+                                <article>
+                                    <div className="article-header">
+                                        <h1>Socialize</h1>
+                                    </div>
+                                    <SocialLinks classN='-alt' />
+                                </article>
                             </Col>
                         </Row>
                     </div>

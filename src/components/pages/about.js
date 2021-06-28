@@ -73,12 +73,9 @@ const About = () => {
                                 </Col>
                             </LazyLoadComponent>
                         </Row>
-
                     </div>
                 </section>
-
             </Container>
-
         </>
     )
 }

@@ -14,7 +14,7 @@ const ClientsSection = () => {
             <Row className='clients-row'>
                 <Col xs={6} md={2} className="client-logo">
                     <LazyLoadImage
-                        alt='client 1'
+                        alt='Salomon'
                         delayTime={300}
                         effect="blur"
                         src={`./images/clients/client1.png`}
@@ -22,7 +22,7 @@ const ClientsSection = () => {
                 </Col>
                 <Col xs={6} md={2} className="client-logo" >
                     <LazyLoadImage
-                        alt='client 5'
+                        alt='Acura'
                         delayTime={350}
                         effect="blur"
                         src={`./images/clients/client5.png`}
@@ -31,7 +31,7 @@ const ClientsSection = () => {
 
                 <Col xs={6} md={2} className="client-logo">
                     <LazyLoadImage
-                        alt='client 2'
+                        alt='Baldwin'
                         delayTime={400}
                         effect="blur"
                         src={`./images/clients/client2.png`}
@@ -39,7 +39,7 @@ const ClientsSection = () => {
                 </Col>
                 <Col xs={6} md={2} className="client-logo">
                     <LazyLoadImage
-                        alt='client 3'
+                        alt='Geico'
                         delayTime={450}
                         effect="blur"
                         src={`./images/clients/client3.png`}
@@ -47,7 +47,7 @@ const ClientsSection = () => {
                 </Col>
                 <Col xs={6} md={2} className="client-logo">
                     <LazyLoadImage
-                        alt='client 4'
+                        alt='Powerplay'
                         delayTime={500}
                         effect="blur"
                         src={`./images/clients/client4.png`}

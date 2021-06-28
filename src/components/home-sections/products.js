@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { Carousel, Row } from 'react-bootstrap';
 import ShopItem from '../shop-item';
+import { ToastComp } from '../small-comp';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { addToCart } from '../../actions';
+import { addToCart, showTost } from '../../actions';
 import './products.css'
 
-const ProductsSection = ({ latestProducts, loading, cart, menuType, addToCart }) => {
+const ProductsSection = ({ latestProducts, loading, cart, menuType, addToCart, showTost, tostIsShown }) => {
 
     const [startAt, setStart] = useState(0)
     const [endAt, setEnd] = useState(4)
@@ -25,11 +26,13 @@ const ProductsSection = ({ latestProducts, loading, cart, menuType, addToCart })
                         key={menuItem.id}
                         menuItem={menuItem}
                         menuType={menuType}
+                        showTost={showTost}
                         onAddToCart={addToCart}
                         cart={cart}
                     />
                 ))}
         </Row>
+
 
     return (
 
@@ -60,10 +63,17 @@ const ProductsSection = ({ latestProducts, loading, cart, menuType, addToCart })
                 </Carousel>
 
                 <div className="text-center onscroll-animate">
-                    <Link className="button-void" to='/shop/all'>See all our products</Link>
+                    <Link className="button-void" aria-label='see all products' to='/shop/all'>See all our products</Link>
                 </div>
                 <div className="margin-60"></div>
             </div>
+
+            <ToastComp
+                tostItem={this.state.tostItem}
+                tostIsShown={tostIsShown}
+                showTost={showTost}
+            />
+
         </section>
     )
 }
@@ -79,7 +89,7 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = {
-    addToCart,
+    addToCart, showTost
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProductsSection)

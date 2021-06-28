@@ -27,7 +27,7 @@ const ProductCard = ({ product, onAddToCart }) => {
                             ${pricing}
                         </h2>
                         <button
-                            title='add to cart'
+                            aria-label='add to cart'
                             onClick={() => onAddToCart(id)}
                             className='button tabs-button'>
                             Order Now

@@ -1,5 +1,6 @@
 .clients-row {
     justify-content: space-around;
+    width: 100vw;
 }
 
 #clients-section>.section-header h1 {

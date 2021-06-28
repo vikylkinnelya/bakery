@@ -5,7 +5,7 @@ import { connect } from 'react-redux';
 import WithRestoService from '../hoc';
 import { LazyLoadComponent } from 'react-lazy-load-image-component';
 import scrollToComponent from 'react-scroll-to-component';
-import { setMenu, setLoading, setError, setMenuType, addToCart, setLatestProducts, setWeekOffer } from '../../actions';
+import { setMenu, setLoading, setError, setMenuType, addToCart, setLatestProducts, setWeekOffer, showTost } from '../../actions';
 import './styles.css'
 
 class Home extends Component {
@@ -24,7 +24,7 @@ class Home extends Component {
 
     render() {
 
-        const {setMenuType} = this.props
+        const {setMenuType, tostIsShown, showTost} = this.props
 
         return (
             <>
@@ -82,7 +82,8 @@ const mapStateToProps = state => {
         menuType: state.menuType,
         cart: state.cart,
         latestProducts: state.latestProducts,
-        weekOffer: state.weekOffer
+        weekOffer: state.weekOffer,
+        tostIsShown: state.tostIsShown
     }
 }
 
@@ -93,7 +94,8 @@ const mapDispatchToProps = {
     setMenuType,
     addToCart,
     setLatestProducts,
-    setWeekOffer
+    setWeekOffer,
+    showTost
 }
 
 export default WithRestoService()(connect(mapStateToProps, mapDispatchToProps)(Home))

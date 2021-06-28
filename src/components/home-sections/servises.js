@@ -27,8 +27,9 @@ const ServisesSection = ({ setMenuType }) => {
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
                         </p>
                         <Link
+                            title='Lunch'
                             className='more-href'
-                            Link to='shop/lunch'
+                            to='shop/lunch'
                             onClick={() => setMenuType('lunch')}
                         > more </Link>
                     </div>
@@ -61,8 +62,9 @@ const ServisesSection = ({ setMenuType }) => {
 
                         </p>
                         <Link
+                            title='Breakfast'
                             className='more-href'
-                            Link to='shop/breakfast'
+                            to='shop/breakfast'
                             onClick={() => setMenuType('breakfast')}
                         > more </Link>
                     </div>
@@ -104,8 +106,9 @@ const ServisesSection = ({ setMenuType }) => {
                         <p>Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, arcu.
                         </p>
                         <Link
+                            title='Bread'
                             className='more-href'
-                            Link to='shop/bread'
+                            to='shop/bread'
                             onClick={() => setMenuType('bread')}
                         > more </Link>
                     </div>
@@ -123,10 +126,11 @@ const ServisesSection = ({ setMenuType }) => {
                         <p>
                             In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt.
                         </p>
-                        
+
                         <Link
+                            title='Tarts'
                             className='more-href'
-                            Link to='shop/tarts'
+                            to='shop/tarts'
                             onClick={() => setMenuType('tarts')}
                         > more </Link>
                     </div>
