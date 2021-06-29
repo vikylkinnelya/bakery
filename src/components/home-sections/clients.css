@@ -1,8 +1,16 @@
 .clients-row {
-    justify-content: space-around;
-    width: 100vw;
+    justify-content: center;
+    width: 99vw;
 }
 
 #clients-section>.section-header h1 {
     font-size: 16px;
+}
+
+#clients-section{
+    max-width: 99vw;
+}
+
+.client-logo span{
+    justify-content: center;
 }

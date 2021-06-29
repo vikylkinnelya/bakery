@@ -7,7 +7,7 @@ import { connect } from 'react-redux';
 import { addToCart, showTost } from '../../actions';
 import './products.css'
 
-const ProductsSection = ({ latestProducts, loading, cart, menuType, addToCart, showTost, tostIsShown }) => {
+const ProductsSection = ({ latestProducts, loading, cart, menuType, addToCart, tostIsShown, showTost, tostTitle }) => {
 
     const [startAt, setStart] = useState(0)
     const [endAt, setEnd] = useState(4)
@@ -69,7 +69,7 @@ const ProductsSection = ({ latestProducts, loading, cart, menuType, addToCart, s
             </div>
 
             <ToastComp
-                tostItem={this.state.tostItem}
+                tostTitle={tostTitle}
                 tostIsShown={tostIsShown}
                 showTost={showTost}
             />
@@ -85,6 +85,8 @@ const mapStateToProps = state => {
         menuType: state.menuType,
         cart: state.cart,
         latestProducts: state.latestProducts,
+        tostIsShown: state.tostIsShown,
+        tostTitle: state.tostTitle
     }
 }
 

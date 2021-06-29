@@ -10,7 +10,8 @@ const initialState = {
     weekOffer: [],
     formIsOpen: false,
     modalIsShown: false,
-    tostIsShown: false
+    tostIsShown: false,
+    tostTitle: null
 }
 
 const reducer = (state = initialState, action) => {
@@ -96,7 +97,8 @@ const reducer = (state = initialState, action) => {
                 return {
                     ...state,
                     cart: [...state.cart, newItem],
-                    totalPrice: state.totalPrice + newItem.price
+                    totalPrice: state.totalPrice + newItem.price,
+                    tostTitle: newItem.name
                 };
             }
             else {
@@ -112,7 +114,8 @@ const reducer = (state = initialState, action) => {
                         newItem,
                         ...state.cart.slice(itemIdxinCart + 1)
                     ],
-                    totalPrice: state.totalPrice + newItem.price
+                    totalPrice: state.totalPrice + newItem.price,
+                    tostTitle: newItem.name
                 }
             }
 

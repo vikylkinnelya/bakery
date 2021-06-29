@@ -37,7 +37,7 @@ class Footer extends Component {
     render() {
         return (
             <footer className="page-footer">
-                <footer className="footer-light">
+                <div className="footer-light">
                     <Container>
                         <Row className='first-footer-row'>
                             <Col md={5} className=" slim-right">
@@ -63,10 +63,10 @@ class Footer extends Component {
                             </Col>
                         </Row>
                     </Container>
-                </footer>
+                </div>
 
-                <footer className="footer-dark">
-                    <Container>
+                <div className="footer-dark">
+                    <Container >
                         <Row >
                             <Col sm={3} >
                                 <h4>Working Time</h4>
@@ -97,7 +97,7 @@ class Footer extends Component {
                             {/* <a href="#all" className="to-top scroll-to"></a> */}
                         </Row>
                     </Container>
-                </footer>
+                </div>
             </footer>
         )
     }
