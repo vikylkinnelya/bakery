@@ -8,7 +8,7 @@ import { connect } from 'react-redux';
 import { withRouter } from "react-router";
 import { Link } from 'react-router-dom';
 import { LazyLoadComponent, trackWindowScroll } from 'react-lazy-load-image-component';
-import { setMenu, setLoading, setError, setMenuType, addToCart, setLastVisible, setMenuTotalItems, showTost } from '../../actions';
+import { setMenu, setLoading, setError, setMenuType, addToCart, setMenuTotalItems, showTost } from '../../actions';
 import './styles.css';
 //import db from '../firebase';
 
@@ -55,11 +55,6 @@ class ShopListItems extends Component {
         const onShowMore = () => {
             this.setState({ endAt: this.state.endAt + 8 })
         }
-
-        const onShowTost = (boolean, item) => {
-            this.setState({ tostIsShown: boolean, tostItem: item })
-        }
-
 
 
         return (
@@ -206,7 +201,6 @@ const mapDispatchToProps = {
     setLoading,
     setError,
     setMenuType,
-    setLastVisible,
     setMenuTotalItems,
     addToCart,
     showTost

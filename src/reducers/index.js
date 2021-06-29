@@ -40,14 +40,13 @@ const reducer = (state = initialState, action) => {
         case 'SET_LOADING':
             return {
                 ...state,
-                menu: state.menu,
                 loading: action.payload
             };
 
         case 'SET_ERROR':
             return {
                 ...state,
-                error: true
+                error: action.payload
             };
 
         case 'SET_MENU_TYPE':
@@ -56,22 +55,10 @@ const reducer = (state = initialState, action) => {
                 menuType: action.payload
             }
 
-        case 'SET_MENU_TOTAL_ITEMS':
+        /* case 'SET_MENU_TOTAL_ITEMS':
             return {
                 ...state,
                 menuTotalItems: action.payload
-            }
-
-        /* case 'SET_MENU_PAGE':
-            return {
-                ...state,
-                lastVisible: action.payload
-            } */
-
-        /* case 'SET_LOCATION':
-            return {
-                ...state,
-                location: action.loc
             } */
 
         case 'ADD_TO_CART':
@@ -185,7 +172,6 @@ const reducer = (state = initialState, action) => {
                 ...state,
                 weekOffer: offer.slice(0,3)
             }
-
 
 
         case 'SHOW_TOST':

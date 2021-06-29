@@ -8,8 +8,9 @@ const setLoading = (bool) => ({
     type: 'SET_LOADING'
 })
 
-const setError = () => ({
-    type: 'SET_ERROR'
+const setError = (error) => ({
+    type: 'SET_ERROR',
+    payload: error
 })
 
 const setMenuType = (type) => ({
@@ -22,16 +23,6 @@ const setMenuTotalItems = (count) => ({
     payload: count
 })
 
-const setLastVisible = (page) => ({
-    type: 'SET_MENU_PAGE',
-    payload: page
-})
-
-const setLocation = (loc) => ({
-    type: 'SET_LOCATION',
-    payload: loc
-})
-
 const addToCart = (id, param) => {
     return {
         type: 'ADD_TO_CART',
@@ -39,14 +30,6 @@ const addToCart = (id, param) => {
         param: param
     }
 }
-
-const setFormVisibility = () => ({
-    type: 'SET_FORM_VISIBILITY'
-})
-
-const setModalVisibility = () => ({
-    type: 'SET_MODAL_VISIBILITY'
-})
 
 const deleteFromCart = (id) => {
     return {
@@ -62,12 +45,12 @@ const decCount = (id) => {
     }
 }
 
-const setWeekOffer = () => ({
-    type: 'SET_WEEK_OFFER'
+const setFormVisibility = () => ({
+    type: 'SET_FORM_VISIBILITY'
 })
 
-const setLatestProducts = () => ({
-    type: 'SET_LATEST_PRODUCTS'
+const setModalVisibility = () => ({
+    type: 'SET_MODAL_VISIBILITY'
 })
 
 const showTost = () => ({
@@ -76,10 +59,25 @@ const showTost = () => ({
 
 
 
+
+
+
+
+
+const setWeekOffer = () => ({
+    type: 'SET_WEEK_OFFER'
+})
+
+const setLatestProducts = () => ({
+    type: 'SET_LATEST_PRODUCTS'
+})
+
+
+
+
 export {
     setMenu, setLoading, setError,
-    setMenuType, setLastVisible, setMenuTotalItems,
-    setLocation,
+    setMenuType, setMenuTotalItems,
     addToCart, deleteFromCart, decCount,
     setFormVisibility, setModalVisibility,
     setWeekOffer, setLatestProducts,
