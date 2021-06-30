@@ -87,3 +87,8 @@
         transform: translateX(0);
     }
 }
+
+.spinner-group svg {
+    border-radius: 50%;
+    border: 3px #fdb822 solid;
+}
