@@ -3,7 +3,7 @@ import React from 'react';
 import { Col, Row } from 'react-bootstrap';
 import './styles.css'
 
-const CartItem = ({ cartItem, totalPrice, addToCart, deleteFromCart, decCount }) => {
+const CartItem = ({ cartItem, addToCart, deleteFromCart, decCount }) => {
 
     const { id, name, count, param, price } = cartItem
 

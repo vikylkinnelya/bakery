@@ -1,6 +1,6 @@
 import React from 'react';
 import { LazyLoadComponent } from 'react-lazy-load-image-component';
-import {PageHeader}  from '../small-comp';
+import {PageHeader}  from '../header';
 import { Col, Container, Row } from 'react-bootstrap';
 import './styles.css'
 

@@ -1,8 +1,6 @@
 import React from 'react';
 
 const SocialLinks = ({ classN = '' }) => {
-
-
     return (
         <>
             <div className={`social-icon-container${classN}`}>

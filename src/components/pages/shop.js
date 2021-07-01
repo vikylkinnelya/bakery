@@ -1,5 +1,5 @@
 import React from 'react';
-import {PageHeader}  from '../small-comp';
+import {PageHeader}  from '../header';
 import ShopListItems from '../shop-list';
 
 const Shop = () => {

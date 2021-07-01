@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { LazyLoadComponent } from 'react-lazy-load-image-component';
-import { PageHeader, ContactsArticle, SocialLinks } from '../small-comp';
+import { ContactsArticle, SocialLinks } from '../small-comp';
+import {PageHeader}  from '../header';
 import { Col, Container, Row } from 'react-bootstrap';
 import WithRestoService from '../hoc';
 import { FeedbackForm } from '../forms';

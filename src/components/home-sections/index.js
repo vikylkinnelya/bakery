@@ -1,8 +1,8 @@
-import ClientsSection from "./clients";
-import ContactSection from "./contact";
-import OfferSection from "./offer";
-import ProductsSection from "./products";
-import ServisesSection from "./servises";
-import SliderSection from "./slider";
+import ClientsSection from "./clients-section";
+import ContactSection from "./contact-section";
+import OfferSection from "./offer-section";
+import ProductsSection from "./products-section";
+import ServisesSection from "./servises-section";
+import SliderSection from "./slider-section";
 
 export { ClientsSection, ContactSection, OfferSection, ProductsSection, ServisesSection, SliderSection };

@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import { Carousel, Row } from 'react-bootstrap';
 import ShopItem from '../shop-item';
-import Spinner from '../spinner';
 import { ToastComp } from '../small-comp';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -21,9 +20,6 @@ const ProductsSection = ({ latestProducts, loading, cart, menuType, addToCart, t
 
     const CarouselItem =
         <Row className='product-row'>
-
-            {loading && <Spinner />}
-
             {!loading && latestProducts != null && latestProducts.length > 0
                 && latestProducts.slice(startAt, endAt).map(menuItem => (
                     <ShopItem

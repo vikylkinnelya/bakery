@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Spinner from '../spinner';
 import { Col, Row } from 'react-bootstrap';
 import CartItem from '../cart-item';
+import CartEmpty from '../cart-empty/cart-empty';
 import ModalAfterOrder from '../modal';
 import { OrderForm } from '../forms';
 import { connect } from 'react-redux';
@@ -41,10 +42,12 @@ class CartList extends Component {
 
             <div className='cart-list'>
 
+                {cart.length === 0 && <CartEmpty />}
+
                 {loading && <Spinner />}
 
                 {cart.length > 0 &&
-                    <Col lg={{ span: 8, offset: 2 }} className='cart-items-list onscroll-animate'>
+                    <Col lg={{ span: 8, offset: 2 }} className='cart-items-list '>
 
                         <Col lg={3}>
                             <h1>Your order:</h1>

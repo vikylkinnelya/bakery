@@ -1,0 +1,11 @@
+.cart-empty {
+    padding: 30px 0 30px 0;
+}
+
+.cart-empty svg {
+    margin-left: 1%;
+}
+
+.cart-empty .row {
+    justify-content: center;
+}

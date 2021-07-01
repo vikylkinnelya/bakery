@@ -1,6 +1,5 @@
 import { Toast } from 'react-bootstrap';
 
-
 const ToastComp = ({ tostIsShown, tostTitle, showTost }) => {
 
     return (
