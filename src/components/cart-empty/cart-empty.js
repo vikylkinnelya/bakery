@@ -1,4 +1,6 @@
 import { Col, Row } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+
 import './styles.css'
 const CartEmpty = () => {
 
@@ -42,7 +44,7 @@ const CartEmpty = () => {
             </Row>
 
             <Row>
-                <button className='button-void'> Go shop now!</button>
+                <Link to='/shop/all' className='button-void'> Go shop now!</Link>
             </Row>
         </Col>
     )

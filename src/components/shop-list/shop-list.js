@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Spinner from '../spinner';
+import ErrorComponent from '../error';
 import { Col, Container, Row } from 'react-bootstrap';
 import ShopItem from '../shop-item';
 import { ToastComp } from '../small-comp';
@@ -34,9 +35,12 @@ class ShopListItems extends Component {
 
     componentDidUpdate(prevProps) {
 
-        const { RestoService, menuType, setMenu, setError, setLoading } = this.props;
+        const { RestoService, location, menuType, setMenuType, setMenu, setError, setLoading } = this.props;
 
-        if (menuType !== prevProps.menuType) {
+        const pathMenuType = location.pathname.split('/')[2]
+
+        if (pathMenuType !== prevProps.menuType) {
+            setMenuType(pathMenuType)
             setLoading()
 
             RestoService.fetchMenu(menuType)
@@ -73,7 +77,7 @@ class ShopListItems extends Component {
                         <ul className="list-arrows">
                             <li className={menuType === 'all' ? 'selected' : undefined}>
 
-                                <Link to='all' onClick={() => setMenuType('all')}>
+                                <Link to='all' >
                                     <div className="list-arrows-content">
                                         All
                                     </div>
@@ -82,7 +86,7 @@ class ShopListItems extends Component {
                             </li>
 
                             <li className={menuType === 'bread' ? 'selected' : undefined}>
-                                <Link to='bread' onClick={() => setMenuType('bread')}>
+                                <Link to='bread' >
                                     <article>
                                         <div className="list-arrows-content">
                                             Bread
@@ -93,7 +97,7 @@ class ShopListItems extends Component {
                             </li>
 
                             <li className={menuType === 'breakfast' ? 'selected' : undefined}>
-                                <Link to='breakfast' onClick={() => setMenuType('breakfast')}>
+                                <Link to='breakfast' >
                                     <article>
                                         <div className="list-arrows-content">
                                             Breakfast
@@ -104,7 +108,7 @@ class ShopListItems extends Component {
                             </li>
 
                             <li className={menuType === 'lunch' ? 'selected' : undefined}>
-                                <Link to='lunch' onClick={() => setMenuType('lunch')}>
+                                <Link to='lunch' >
                                     <article>
                                         <div className="list-arrows-content">
                                             Lunch
@@ -115,7 +119,7 @@ class ShopListItems extends Component {
                             </li>
 
                             <li className={menuType === 'tarts' ? 'selected' : undefined}>
-                                <Link to='tarts' onClick={() => setMenuType('tarts')}>
+                                <Link to='tarts' >
                                     <article>
                                         <div className="list-arrows-content">
                                             Tarts
@@ -126,7 +130,7 @@ class ShopListItems extends Component {
                             </li>
 
                             <li className={menuType === 'drinks' ? 'selected' : undefined}>
-                                <Link to='drinks' onClick={() => setMenuType('drinks')}>
+                                <Link to='drinks' >
                                     <article>
                                         <div className="list-arrows-content">
                                             Drinks
@@ -140,10 +144,11 @@ class ShopListItems extends Component {
 
                     <Col sm={{ span: 12, order: 2 }} lg={{ span: 10, order: 1 }} className='product-col'>
 
-                        {loading && <Spinner type={'coffee'} />}
+                        {loading && <Spinner/> && !error}
+                        {error && <ErrorComponent/> && !loading}
 
                         <Row className='product-row'>
-                            {!loading && menuItems != null && menuItems.length > 0
+                            {!loading && !error && menuItems != null && menuItems.length > 0
                                 && menuItems.slice(0, this.state.endAt).map(menuItem => (
                                     <LazyLoadComponent
                                         key={menuItem.id}

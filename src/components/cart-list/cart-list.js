@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ErrorComponent from '../error';
 import Spinner from '../spinner';
 import { Col, Row } from 'react-bootstrap';
 import CartItem from '../cart-item';
@@ -44,9 +45,10 @@ class CartList extends Component {
 
                 {cart.length === 0 && <CartEmpty />}
 
-                {loading && <Spinner />}
+                {error && <ErrorComponent/> && !loading}
+                {loading && <Spinner /> && !error}
 
-                {cart.length > 0 &&
+                {cart.length > 0 && !error && !loading &&
                     <Col lg={{ span: 8, offset: 2 }} className='cart-items-list '>
 
                         <Col lg={3}>
