@@ -8,9 +8,14 @@
 }
 
 #clients-section{
+    padding: 0 10px 0 10px;
     max-width: 99vw;
 }
 
 .client-logo span{
     justify-content: center;
+}
+
+#clients-section .section-header{
+    
 }

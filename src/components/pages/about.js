@@ -48,13 +48,13 @@ const About = () => {
                                	        </p>
                                 </article>
 
-                                <Row className='checks'>
+                                <Col className='checks'>
 
-                                    <Col sm={{ span: 5, offset: 1 }} className="item-check">Quality at Heart</Col>
-                                    <Col sm={{ span: 5, offset: 1 }} className="item-check">Passion for Bread</Col>
-                                    <Col sm={{ span: 5, offset: 1 }} className="item-check">French Tradition</Col>
-                                    <Col sm={{ span: 5, offset: 1 }} className="item-check">Family-Owned Company</Col>
-                                </Row>
+                                    <Col sm={{ span: 5 }} className="item-check">Quality at Heart</Col>
+                                    <Col sm={{ span: 5 }} className="item-check">Passion for Bread</Col>
+                                    <Col sm={{ span: 5 }} className="item-check">French Tradition</Col>
+                                    <Col sm={{ span: 5 }} className="item-check">Family-Owned Company</Col>
+                                </Col>
                             </Col>
                         </Row>
 

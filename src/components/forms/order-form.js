@@ -134,7 +134,7 @@ const OrderForm = ({ setCustomer }) => {
                         <Row className='btn-order'>
                             <button
                                 title='Submit order'
-                                ype='submit'
+                                type='submit'
                                 disabled={isSubmitting}
                                 className='btn-order'
                             >
