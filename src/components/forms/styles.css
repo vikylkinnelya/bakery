@@ -43,6 +43,9 @@
     margin-bottom: 30px;
 }
 
+.bakery-form .row {
+    justify-content: center;
+}
 
 .form-subscribe.row {
     align-items: center;

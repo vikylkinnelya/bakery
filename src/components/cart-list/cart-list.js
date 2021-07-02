@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import ErrorComponent from '../error';
 import Spinner from '../spinner';
-import { Col, Row } from 'react-bootstrap';
+import { Col, Row, Container } from 'react-bootstrap';
 import CartItem from '../cart-item';
 import CartEmpty from '../cart-empty/cart-empty';
 import ModalAfterOrder from '../modal';
@@ -41,19 +41,19 @@ class CartList extends Component {
 
         return (
 
-            <div className='cart-list'>
+            <Container className='cart-list'>
 
                 {cart.length === 0 && <CartEmpty />}
 
-                {error && <ErrorComponent/> && !loading}
+                {error && <ErrorComponent /> && !loading}
                 {loading && <Spinner /> && !error}
 
                 {cart.length > 0 && !error && !loading &&
-                    <Col lg={{ span: 8, offset: 2 }} className='cart-items-list '>
+                    <Col className='cart-items-list '>
 
-                        <Col lg={3}>
+                        <Row >
                             <h1>Your order:</h1>
-                        </Col>
+                        </Row>
 
                         {cart != null && cart.length > 0 && cart.map(cartItem => {
                             return (
@@ -67,14 +67,14 @@ class CartList extends Component {
                             )
                         })}
 
-                        <Col className='row total-order-price' lg={{ span: 10, offset: 1 }}>
+                        <Row className='row total-order-price' lg={{ span: 10, offset: 1 }}>
                             <Col lg={4}>
                                 <h3>total order price:</h3>
                             </Col>
                             <Col lg={1}>
                                 <h2>${totalPrice.toFixed(2)}</h2>
                             </Col>
-                        </Col>
+                        </Row>
 
                         {!formIsOpen && !this.state.customer && <Row className='btn-order'>
                             <button
@@ -88,19 +88,19 @@ class CartList extends Component {
                     </Col>
                 }
 
-                <Row>
-                    {formIsOpen &&
-                        <OrderForm
-                            setCustomer={this.setCustomer}
-                        />
-                    }
-                </Row>
+
+                {formIsOpen &&
+                    <OrderForm
+                        setCustomer={this.setCustomer}
+                    />
+                }
+
 
                 <ModalAfterOrder
                     modalIsShown={modalIsShown}
                     setModalVisibility={setModalVisibility}
                 />
-            </div>
+            </Container>
         )
     }
 }

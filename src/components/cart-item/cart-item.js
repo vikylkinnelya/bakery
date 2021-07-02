@@ -17,13 +17,13 @@ const CartItem = ({ cartItem, addToCart, deleteFromCart, decCount }) => {
 
     return (
         <Row className='cart-item'>
-            <Col lg={2} className='cart-item-previev'>
+            <Col xs={12} lg={3} className='cart-item-previev'>
                 <img alt={name} src={`images/${id.split('-')[0]}-min.jpg`} />
             </Col>
-            <Col>
+            <Col xs={12} lg={4} className='cart-title-col'>
                 <h3>{name} {param ? `, ${param}` : null}</h3>
             </Col>
-            <Col lg={2} className='count-col'>
+            <Col xs={4} sm={2} className='count-col'>
                 <h4>
                     <button
                         aria-label='decrement'
@@ -38,10 +38,10 @@ const CartItem = ({ cartItem, addToCart, deleteFromCart, decCount }) => {
                     </button>
                 </h4>
             </Col>
-            <Col lg={2}>
+            <Col xs={3} sm={1}>
                 <h4>${(price * count).toFixed(2)}</h4>
             </Col>
-            <Col lg={1} className='count-col'>
+            <Col xs={2} sm={1} className='count-col'>
                 <button
                     aria-label='delete'
                     title='delete product from cart'

@@ -21,6 +21,15 @@
     font-size: 14px;
 }
 
+.cart-title-col{
+    text-align: center;
+}
+
+.count-col{
+    display: flex;
+    justify-content: end;
+}
+
 .count-col button{
     background-color: #ebebeb;
     text-align: center;

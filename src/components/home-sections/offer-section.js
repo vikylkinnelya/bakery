@@ -20,10 +20,11 @@ const OfferSection = ({ weekOffer, addToCart }) => {
                         See our big range of departaments, whe offer a lot of attention to our patients<br /> see what fits you and give us a call
                     </p>
                 </header>
-                <Tab.Container id='left-tabs' defaultActiveKey="first" >
-                    <Row className='tabs-big-container'>
 
-                        <Nav className="col-lg-2 col-sm-12">
+                <Row className='tabs-big-container'>
+                    <Tab.Container id='left-tabs' defaultActiveKey="first" >
+                        <Nav className="col-lg-2 col-xs-12">
+
                             <Nav.Item>
                                 <Nav.Link eventKey="first">
                                     <Image fluid alt={firstOffer.title} src={`images/${firstOffer.id}-img-min.jpg`} />
@@ -72,8 +73,9 @@ const OfferSection = ({ weekOffer, addToCart }) => {
 
                             </Tab.Content>
                         </Col>
-                    </Row>
-                </Tab.Container>
+
+                    </Tab.Container>
+                </Row>
             </div>
         </section>
 

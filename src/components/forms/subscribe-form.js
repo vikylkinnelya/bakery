@@ -28,11 +28,8 @@ const SubscribeForm = ({ setSubscriberData }) => {
         >
             {({ values, errors, touched, handleChange, handleBlur, handleSubmit, isSubmitting }) => (
 
-                <form onSubmit={handleSubmit}>
-                    <Row
-                        className='form-subscribe'
-                    >
-                        <Col md={8}>
+                <form onSubmit={handleSubmit}className='form-subscribe'>
+                        <Col sm={8}>
                             <Form.Group controlId="formEmailSubscribe" className="email-container">
                                 <Form.Control
                                     type='text'
@@ -49,7 +46,7 @@ const SubscribeForm = ({ setSubscriberData }) => {
                             </Form.Group>
                         </Col>
 
-                        <Col md={4} className="submit-container">
+                        <Col sm={4} className="submit-container">
                             <button
                                 aria-label='submit subscribing'
                                 type='submit'
@@ -58,7 +55,6 @@ const SubscribeForm = ({ setSubscriberData }) => {
                                 Subscribe
                             </button>
                         </Col>
-                    </Row>
                 </form>
             )}
 
