@@ -38,7 +38,9 @@ const ProductsSection = ({ latestProducts, loading, cart, menuType, addToCart, t
 
         <section id="products-section">
             <div className="section-content">
-                <header className="section-header">
+                <header className="section-header"
+
+                >
                     <h1>Our latest bakery products</h1>
                     <p>Check some of our best products and feel the great passion for food</p>
                 </header>
@@ -48,7 +50,6 @@ const ProductsSection = ({ latestProducts, loading, cart, menuType, addToCart, t
                     interval={7500}
                     onSelect={activeIndex => {
                         onChangeSliderPage(activeIndex)
-                        //scrollToComponent(this.ShopCarousel, { offset: -40, align: 'top', duration: 500 })
                     }}
                 >
                     <Carousel.Item>
@@ -62,10 +63,9 @@ const ProductsSection = ({ latestProducts, loading, cart, menuType, addToCart, t
                     </Carousel.Item>
                 </Carousel>
 
-                <div className="text-center onscroll-animate">
+                <div className="text-center">
                     <Link className="button-void" aria-label='see all products' to='/shop/all'>See all our products</Link>
                 </div>
-                <div className="margin-60"></div>
             </div>
 
             <ToastComp

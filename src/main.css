@@ -2578,24 +2578,6 @@ ul {
     width: 100%;
   }
 
-  .nav-top {
-    max-height: 400px;
-    overflow-y: scroll;
-  }
-
-  .nav-top>ul>li {
-    float: none;
-    border: none;
-  }
-
-  .nav-top>ul>li>ul {
-    position: relative;
-    display: none;
-  }
-
-  .nav-top>ul>li:hover>ul {
-    display: block;
-  }
 }
 
 @media (min-width: 768px) {

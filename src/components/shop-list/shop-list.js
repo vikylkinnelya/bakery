@@ -51,7 +51,7 @@ class ShopListItems extends Component {
 
     render() {
 
-        const { scrollPosition, menuItems, loading, error, menuType, setMenuType, cart, addToCart, menuTotalItems, tostTitle, tostIsShown, showTost } = this.props
+        const { scrollPosition, menuItems, loading, error, menuType, cart, addToCart, menuTotalItems, tostTitle, tostIsShown, showTost } = this.props
 
         const showMoreBtn = <button className='show-more-btn' onClick={() => onShowMore()}>
             Show more </button>

@@ -9,7 +9,6 @@ const OfferSection = ({ weekOffer, addToCart }) => {
 
     const firstOffer = weekOffer.length > 0 && weekOffer[0]
     const secondOffer = weekOffer.length > 0 && weekOffer[1]
-    const thirdOffer = weekOffer.length > 0 && weekOffer[2]
 
     return (
         <section id="offer-section">
@@ -21,30 +20,26 @@ const OfferSection = ({ weekOffer, addToCart }) => {
                     </p>
                 </header>
 
-                <Row className='tabs-big-container'>
+                <Row className='tabs-big-container' >
                     <Tab.Container id='left-tabs' defaultActiveKey="first" >
-                        <Nav className="col-lg-2 col-xs-12">
 
-                            <Nav.Item>
-                                <Nav.Link eventKey="first">
-                                    <Image fluid alt={firstOffer.title} src={`images/${firstOffer.id}-img-min.jpg`} />
-                                </Nav.Link>
-                            </Nav.Item>
+                        <Col xs={12} md={3} lg={2} className='nav-link-col'>
+                            <Nav>
+                                <Nav.Item>
+                                    <Nav.Link eventKey="first">
+                                        <Image fluid alt={firstOffer.title} src={`images/${firstOffer.id}-min.jpg`} />
+                                    </Nav.Link>
+                                </Nav.Item>
 
-                            <Nav.Item>
-                                <Nav.Link eventKey="second">
-                                    <Image fluid alt={secondOffer.title} src={`images/${secondOffer.id}-img-min.jpg`} />
-                                </Nav.Link>
-                            </Nav.Item>
+                                <Nav.Item>
+                                    <Nav.Link eventKey="second">
+                                        <Image fluid alt={secondOffer.title} src={`images/${secondOffer.id}-min.jpg`} />
+                                    </Nav.Link>
+                                </Nav.Item>
+                            </Nav>
+                        </Col>
 
-                            <Nav.Item>
-                                <Nav.Link eventKey="third">
-                                    <Image fluid alt={thirdOffer.title} src={`images/${thirdOffer.id}-img-min.jpg`} />
-                                </Nav.Link>
-                            </Nav.Item>
-                        </Nav>
-
-                        <Col md={9}>
+                        <Col md={8} lg={9}>
                             <Tab.Content>
 
                                 <Tab.Pane
@@ -59,14 +54,6 @@ const OfferSection = ({ weekOffer, addToCart }) => {
                                     eventKey='second'>
                                     <ProductCard
                                         product={secondOffer}
-                                        onAddToCart={addToCart}
-                                    />
-                                </Tab.Pane>
-
-                                <Tab.Pane
-                                    eventKey='third'>
-                                    <ProductCard
-                                        product={thirdOffer}
                                         onAddToCart={addToCart}
                                     />
                                 </Tab.Pane>

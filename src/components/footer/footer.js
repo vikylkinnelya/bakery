@@ -24,10 +24,10 @@ class Footer extends Component {
     }
 
     componentDidUpdate(prevProps, prevState, snapshot) {
-        const { RestoService, setError } = this.props
+        const { RestoService, setError, setLoading } = this.props
 
         if (this.state.subscriber !== prevState.subscriber) {
-            //setLoading(true)
+            setLoading(true)
             RestoService.setSubscriber(this.state.subscriber)
                 .catch(error => setError(error))
             //setLoading(false)
@@ -48,7 +48,7 @@ class Footer extends Component {
                                 </p>
                             </Col>
                             <Col md={2} className="image-container">
-                                <img alt="logo" src="../logo2.png" />
+                                <img alt="logo" src="images/footer-logo.svg" />
                             </Col>
                             <Col md={5} className="slim-left" >
                                 <h4>Newsletter</h4>
@@ -67,8 +67,8 @@ class Footer extends Component {
 
                 <div className="footer-dark">
                     <Container >
-                        <Row >
-                            <Col sm={3} >
+                        <Row className='footer-info-row'>
+                            <Col xs={12} sm={6} lg={3} >
                                 <h4>Working Time</h4>
                                 <p>
                                     Monday Friday:
@@ -77,7 +77,7 @@ class Footer extends Component {
                                     <span className="highlight"><time>07:30 am - 10:00 pm</time></span>
                                 </p>
                             </Col>
-                            <Col sm={3} >
+                            <Col xs={12} sm={6} lg={3} >
                                 <h4>Happy Hours</h4>
                                 <p>
                                     Join us for Happy Hour!<br />
@@ -85,11 +85,11 @@ class Footer extends Component {
                                     <span className="highlight"><time>9:00 pm - 10:00 pm</time> Daily</span>
                                 </p>
                             </Col>
-                            <Col sm={3} >
+                            <Col xs={12} sm={6} lg={3} >
                                 <h4>Follow Us</h4>
                                 <SocialLinks />
                             </Col>
-                            <Col sm={3}>
+                            <Col xs={12} sm={6} lg={3}>
                                 <h4>Contact Us</h4>
                                 <ContactsArticle />
                             </Col>
@@ -103,4 +103,8 @@ class Footer extends Component {
     }
 }
 
-export default WithRestoService()(Footer)
+const mapDispatchToProps = {
+    setLoading,
+    setError,
+}
+export default WithRestoService()(connect(null,mapDispatchToProps)(Footer))

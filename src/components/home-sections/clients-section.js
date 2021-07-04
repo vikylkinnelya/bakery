@@ -12,7 +12,7 @@ const ClientsSection = () => {
                 <p>The companies that trust us are the main key to our succes, check out our top clients</p>
             </header>
             <Row className='clients-row'>
-                <Col xs={6} md={2} className="client-logo">
+                <Col xs={6} sm={4} md={3} lg={2} className="client-logo">
                     <LazyLoadImage
                         alt='Salomon'
                         delayTime={300}
@@ -20,7 +20,7 @@ const ClientsSection = () => {
                         src={`./images/clients/client1.png`}
                     />
                 </Col>
-                <Col xs={6} md={2} className="client-logo" >
+                <Col xs={6} sm={4} md={3} lg={2} className="client-logo" >
                     <LazyLoadImage
                         alt='Acura'
                         delayTime={350}
@@ -29,7 +29,7 @@ const ClientsSection = () => {
                     />
                 </Col>
 
-                <Col xs={6} md={2} className="client-logo">
+                <Col xs={6} sm={4} md={3} lg={2} className="client-logo">
                     <LazyLoadImage
                         alt='Baldwin'
                         delayTime={400}
@@ -37,7 +37,7 @@ const ClientsSection = () => {
                         src={`./images/clients/client2.png`}
                     />
                 </Col>
-                <Col xs={6} md={2} className="client-logo">
+                <Col xs={6} sm={4} md={3} lg={2} className="client-logo">
                     <LazyLoadImage
                         alt='Geico'
                         delayTime={450}
@@ -45,7 +45,7 @@ const ClientsSection = () => {
                         src={`./images/clients/client3.png`}
                     />
                 </Col>
-                <Col xs={6} md={2} className="client-logo">
+                <Col xs={6} sm={4} md={3} lg={2} className="client-logo">
                     <LazyLoadImage
                         alt='Powerplay'
                         delayTime={500}

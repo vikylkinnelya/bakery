@@ -1,6 +1,6 @@
 import React from 'react';
 import { Formik } from 'formik';
-import { Row, Col, Form } from 'react-bootstrap';
+import { Col, Form } from 'react-bootstrap';
 import * as yup from 'yup';
 import WithRestoService from '../hoc';
 import './styles.css';
@@ -28,8 +28,8 @@ const SubscribeForm = ({ setSubscriberData }) => {
         >
             {({ values, errors, touched, handleChange, handleBlur, handleSubmit, isSubmitting }) => (
 
-                <form onSubmit={handleSubmit}className='form-subscribe'>
-                        <Col sm={8}>
+                <form onSubmit={handleSubmit}className='form-subscribe row'>
+                        <Col sm={12} lg={8}>
                             <Form.Group controlId="formEmailSubscribe" className="email-container">
                                 <Form.Control
                                     type='text'
@@ -46,7 +46,7 @@ const SubscribeForm = ({ setSubscriberData }) => {
                             </Form.Group>
                         </Col>
 
-                        <Col sm={4} className="submit-container">
+                        <Col sm={6} lg={4} className="submit-container">
                             <button
                                 aria-label='submit subscribing'
                                 type='submit'

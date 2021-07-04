@@ -7,7 +7,6 @@ import CartEmpty from '../cart-empty/cart-empty';
 import ModalAfterOrder from '../modal';
 import { OrderForm } from '../forms';
 import { connect } from 'react-redux';
-import { withRouter } from "react-router";
 import WithRestoService from '../hoc';
 import { setLoading, setError, addToCart, setFormVisibility, setModalVisibility, deleteFromCart, decCount } from '../../actions';
 

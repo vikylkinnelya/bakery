@@ -1,5 +1,5 @@
 import React from 'react';
-import { Switch, Route, } from "react-router-dom";
+import { Switch, Route, Redirect } from "react-router-dom";
 import Header from '../header';
 import Footer from '../footer';
 import ScrollToTop from '../scrollToTop';
@@ -18,6 +18,8 @@ const App = () => {
 
             <>
                 <Switch>
+
+                    <Redirect exact from="/" to="/home" />
                     <Route path='/about/'>
                         <About />
                     </Route>

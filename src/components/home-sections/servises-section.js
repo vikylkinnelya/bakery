@@ -10,8 +10,9 @@ const ServisesSection = ({ setMenuType }) => {
                 <h1>Main services we provide</h1>
                 <p>Our services are the best in town, we provide great quality baked products</p>
             </header>
+            
             <Row >
-                <Col xs={6} sm={3} >
+                <Col xs={6} lg={3} >
                     <div className="service-box">
                         <div className="icon-big-container">
                             <svg viewBox="0 -106 512 512" version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
@@ -34,7 +35,7 @@ const ServisesSection = ({ setMenuType }) => {
                         > more </Link>
                     </div>
                 </Col>
-                <Col xs={6} sm={3} >
+                <Col xs={6} lg={3} >
                     <div className="service-box">
                         <div className="icon-big-container">
                             <svg viewBox="0 0 61 47" version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
@@ -69,7 +70,7 @@ const ServisesSection = ({ setMenuType }) => {
                         > more </Link>
                     </div>
                 </Col>
-                <Col xs={6} sm={3} >
+                <Col xs={6} lg={3} >
                     <div className="service-box">
                         <div className="icon-big-container">
                             <svg viewBox="0 0 901 828" version="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"
@@ -113,7 +114,7 @@ const ServisesSection = ({ setMenuType }) => {
                         > more </Link>
                     </div>
                 </Col>
-                <Col xs={6} sm={3} >
+                <Col xs={6} lg={3} >
                     <div className="service-box">
                         <div className="icon-big-container">
                             <svg viewBox="0 0 433 350" ersion="1.1" xmlns="http://www.w3.org/2000/svg" x="0px" y="0px"

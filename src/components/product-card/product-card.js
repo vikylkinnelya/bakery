@@ -10,7 +10,7 @@ const ProductCard = ({ product, onAddToCart }) => {
 
         <Col md={12} className="offer-box">
             <Row>
-                <Col md={5} sm={12} className="offer-box-left offer-info">
+                <Col lg={{span:5, order: 1}} xs={{span: 12, order:2}} className="offer-box-left offer-info">
 
                     <h1>{name}</h1>
                     <p>{description}</p>
@@ -34,8 +34,8 @@ const ProductCard = ({ product, onAddToCart }) => {
                         </button>
                     </Row>
                 </Col>
-                <Col md={7} className="offer-box-right" >
-                    <Image fluid src={`images/${id}-min.jpg`} />
+                <Col xs={{span:12, order:1}} lg={{span:7, order:2}} className="offer-box-right" >
+                    <Image fluid src={`images/${id}-img-min.jpg`} />
 
                     <div className="product-label-container big-label">
                         <div className="product-label">

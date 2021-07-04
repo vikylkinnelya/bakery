@@ -1,20 +1,14 @@
-.page-header.navbar.navbar-expand-md.navbar-light {
-    font-family: 'Montserrat', sans-serif;
-    color: #684f40;
-    border: none;
-    padding: 25px 0 23px 0;
-    -webkit-transition: all 0.4s ease-out;
-    -moz-transition: all 0.4s ease-out;
-    -o-transition: all 0.4s ease-out;
-    transition: all 0.4s ease-out;
-}
-.logo-primary {
-    padding: 0;
+.page-header.row {
+    max-width: 99vw;
+    margin: 0;
 }
 
 .logo-primary {
+    padding: 0;
     max-height: 100%;
     width: auto;
+    min-height: 65px;
+    min-width: 65px;
 }
 
 .nav-top {
@@ -24,28 +18,13 @@
     justify-content: center;
 }
 
-.nav-top>.col{
-    max-width: 150px;
-}
-
-.nav-top>.col>a {
-    margin: 34px 0;
+.nav-top>div>a {
     text-transform: uppercase;
-    -webkit-transition: all 0.2s ease-out;
-    -moz-transition: all 0.2s ease-out;
-    -o-transition: all 0.2s ease-out;
-    transition: all 0.2s ease-out;
+    color: #696969;
+    padding: 10px;
 }
 
-.nav-top>.col>a {
-    color: inherit;
-    -webkit-transition: all 0.3s ease-out;
-    -moz-transition: all 0.3s ease-out;
-    -o-transition: all 0.3s ease-out;
-    transition: all 0.3s ease-out;
-}
-
-.nav-top>.col>a:hover {
+.nav-top>.col-4>a:hover {
     color: #fdb822;
     text-decoration: none;
 }
@@ -54,18 +33,17 @@
     fill: #fdb822;
 }
 
-.basket-link{
+.basket-link {
     display: flex;
-    justify-content:center 
+    justify-content: center
 }
 
-.nav-top>.col>a.selected {
+.nav-top>.col-4>a.selected {
     color: #fdb822;
 }
 
-.nav-top>.col>a.selected svg {
+.nav-top>.col-4>a.selected svg {
     fill: #fdb822;
-
 }
 
 .full-header {
@@ -121,4 +99,12 @@
     height: 100%;
     background-image: url('../../images/pattern_strips.png');
     content: '';
+}
+
+.navbar-collapse.collapse {
+    max-height: 300px;
+}
+
+.navbar-toggler {
+    position: relative;
 }

@@ -4,7 +4,6 @@ import { Container, Row, Image } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import WithRestoService from '../hoc';
 import { LazyLoadComponent } from 'react-lazy-load-image-component';
-import scrollToComponent from 'react-scroll-to-component';
 import { setMenu, setLoading, setError, setMenuType, addToCart, setLatestProducts, setWeekOffer } from '../../actions';
 import './styles.css'
 
