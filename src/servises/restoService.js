@@ -1,4 +1,4 @@
-import db from '../components/firebase'
+import {db} from '../components/firebase';
 
 export default class RestoService {
     //_apiBase = 'http://localhost:3000';

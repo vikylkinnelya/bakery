@@ -71,12 +71,11 @@ a:hover {
 }
 
 article {
-  font-family: 'Open Sans', sans-serif;
   line-height: 1.7;
 }
 
 body {
-  font-family: 'Open Sans', sans-serif;
+  font-family: 'Montserrat', sans-serif;
   font-size: 14px;
   font-weight: 400;
   color: #696969;
@@ -84,16 +83,9 @@ body {
 }
 
 body.bg-pattern {
-  background-image: url('./images/home_pattern.jpg');
+  background-image: url('./home_pattern.jpg');
 }
 
-body.bg-pattern2 {
-  background-image: url('./images/home_pattern2.jpg');
-}
-
-body.bg-pattern3 {
-  background-image: url('./images/home_pattern3.jpg');
-}
 
 h1,
 h2,
@@ -103,7 +95,6 @@ h4 {
 }
 
 h1 {
-  font-family: 'Montserrat', sans-serif;
   color: #684f40;
   padding-bottom: 26px;
   margin: 65px 0 25px 0;
@@ -170,90 +161,14 @@ ul {
 }
 
 
-
-#devices-section {
-  background-image: url('./images/bg_devices.png');
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  background-repeat: no-repeat;
-  background-position: center center;
-}
-
 #gallery-section {
   position: relative;
   overflow: hidden;
 }
 
-#header-about {
-  background-image: url('./images/bg_about.png');
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  background-position: center center;
-}
-
-#header-blog {
-  background-image: url('./images/bg_blog.png');
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  background-position: center center;
-}
-
-#header-contact {
-  background-image: url('./images/bg_contact.png');
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  background-position: center center;
-}
-
-#header-gallery {
-  background-image: url('./images/bg_gallery.png');
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  background-position: center center;
-}
-
-#header-menus {
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  background-position: center center;
-}
-
-#header-services {
-  background-image: url('./images/bg_services.png');
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  background-position: center center;
-}
-
-#header-shop {
-  background-image: url('./images/bg_shop.png');
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  background-position: center center;
-}
 
 #map-canvas {
   height: 100%;
-}
-
-#testimonials-section {
-  background-image: url('./images/bg_testimonials.jpg');
 }
 
 
@@ -1051,25 +966,6 @@ ul {
   padding-left: 53px;
 }
 
-.form-search {
-  position: relative;
-}
-
-.form-search:after {
-  font-family: 'FontAwesome';
-  font-size: 16px;
-  position: absolute;
-  right: 14px;
-  top: 12px;
-  content: url(./images/icons/search.svg);
-}
-
-.form-search input {
-  border: 2px #684f40 solid;
-  width: 100%;
-  padding: 12px 35px 12px 10px;
-  margin: 0;
-}
 
 
 .gallery-slider {
@@ -1329,32 +1225,6 @@ ul {
   display: none;
 }
 
-
-
-
-.master-slider .ms-nav-next {
-  right: 30px;
-  background-image: url('./images/arrow_thin_right.png');
-  background-position: center center;
-  background-repeat: no-repeat;
-}
-
-.master-slider .ms-nav-prev {
-  left: 30px;
-  background-image: url('./images/arrow_thin_left.png');
-  background-position: center center;
-  background-repeat: no-repeat;
-}
-
-.master-slider .ms-slide:after {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  left: 0;
-  top: 0;
-  background-image: url('./images/slider_pattern.png');
-  content: '';
-}
 
 .menu-button {
   cursor: pointer;
@@ -2323,12 +2193,6 @@ ul {
   background-repeat: no-repeat;
 }
 
-.tool-bottom {
-  bottom: 0;
-  left: -142px;
-  background-image: url('./images/tool_bottom.png');
-}
-
 .tool-container {
   position: relative;
 }
@@ -2337,11 +2201,6 @@ ul {
   overflow: hidden;
 }
 
-.tool-top {
-  top: 0;
-  right: -142px;
-  background-image: url('./images/tool_top.png');
-}
 
 .top-section {
   z-index: 750;

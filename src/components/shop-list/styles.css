@@ -96,3 +96,23 @@ html.cssanimations .onscroll-animate {
 .toast-body svg {
     margin-right: 10px;
 }
+
+.form-search {
+    position: relative;
+}
+
+.form-search:after {
+    font-family: 'FontAwesome';
+    font-size: 16px;
+    position: absolute;
+    right: 14px;
+    top: 12px;
+    content: url(./search.svg);
+}
+
+.form-search input {
+    border: 2px #684f40 solid;
+    width: 100%;
+    padding: 12px 35px 12px 10px;
+    margin: 0;
+}

@@ -1,11 +1,11 @@
 import React from 'react';
 import './styles.css'
 
-const PageHeader = ({ title, descr }) => {
+const PageHeader = ({ title, descr, id}) => {
     return (
         <section className='top-section'>
             <div className="offset-borders">
-                <div className="full-header-container" id="header-menus">
+                <div className="full-header-container" id={`${id}`}>
                     <div className="full-header">
                         <div className="container">
                             <h1>{title}</h1>

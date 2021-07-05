@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { storage } from '../firebase';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 import { Col } from 'react-bootstrap';
@@ -8,6 +9,7 @@ const ShopItem = ({ menuItem, menuType, onAddToCart, cart, showTost }) => {
 
     const { name, description, pricing, type, id } = menuItem
     const [priceMenu, setShowPriceMenu] = useState(false)
+    const [imgUrl, setURL] = useState()
 
     const productPrice = pricing[0]
     const productPricing = pricing.length > 1 && pricing.join(' | ')
@@ -40,6 +42,16 @@ const ShopItem = ({ menuItem, menuType, onAddToCart, cart, showTost }) => {
             return onAddToCart(id)
         }
     }
+
+    const getImg = (id) => {
+        storage.child(`menu/${id}-min.jpg`)
+        .getDownloadURL()
+        .then(url =>
+        setURL(url))
+    }
+
+    getImg()
+    console.log(imgUrl)
 
     return (
 

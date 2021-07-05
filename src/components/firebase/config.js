@@ -1,6 +1,7 @@
 import firebase from 'firebase/app';
 import 'firebase/firestore';
 import 'firebase/app-check';
+import 'firebase/storage';
 
 const firebaseConfig = {
     apiKey: "AIzaSyC5lbLmUY6ZRE66CAOP8Vs2GAzKk1DZIco",
@@ -23,5 +24,6 @@ appCheck.activate('6LduvnYbAAAAADTRU3xL0lszJFmWwtlapQaH-Y3s');
 
 const db = firebaseApp.firestore();
 
+const storage = firebaseApp.storage().ref();
 
-export default db;
+export {db, storage};

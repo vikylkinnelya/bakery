@@ -29,11 +29,7 @@ class Contact extends Component {
             RestoService.setFeedback(this.state.feedback)
         }
     }
-
-
     render() {
-        //const { loading, error } = this.props
-
         return (
             <>
                 <PageHeader title={'Contact'} descr={'Say something!'} />

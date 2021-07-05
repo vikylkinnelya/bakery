@@ -1,2 +1,2 @@
-import db from './config';
-export default db;
+import { storage, db } from './config';
+export {db, storage};
