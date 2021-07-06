@@ -6,7 +6,6 @@ import './styles.css'
 const CartItem = ({ cartItem, addToCart, deleteFromCart, decCount }) => {
 
     const { id, name, count, param, price } = cartItem
-    const [imgUrl, setImgUrl] = useState()
 
     const onDecOrDelCount = (id) => {
         if (count - 1 < 0) {
@@ -16,30 +15,14 @@ const CartItem = ({ cartItem, addToCart, deleteFromCart, decCount }) => {
         }
     }
 
-    const getImg = (id) => {
-        storage.child(`menu/${id.split('-')[0]}-min.jpg`)
-            .getDownloadURL()
-            .then(url => {
-                setImgUrl(url)
-            }).catch(error => {
-                console.log(error)
-            })
-    }
-
-    useEffect(() => {
-        auth.then(() => console.log('signed in'))
-            .catch(error => console.log(error))
-        getImg(id)
-    })
-
-
+    
 
 
 
     return (
         <Row className='cart-item'>
             <Col xs={12} lg={3} className='cart-item-previev'>
-                <img alt={name} src={imgUrl} />
+                <img alt={name} src={`../images/${id.split('-')[0]}-min.jpg`} />
             </Col>
             <Col xs={12} lg={4} className='cart-title-col'>
                 <h3>{name} {param ? `, ${param}` : null}</h3>
