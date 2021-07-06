@@ -43,16 +43,6 @@ const ShopItem = ({ menuItem, menuType, onAddToCart, cart, showTost }) => {
         }
     }
 
-    const getImg = (id) => {
-        storage.child(`menu/${id}-min.jpg`)
-        .getDownloadURL()
-        .then(url =>
-        setURL(url))
-    }
-
-    getImg()
-    console.log(imgUrl)
-
     return (
 
         < Col className="product" sm={2} lg={2}>

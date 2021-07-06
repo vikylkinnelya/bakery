@@ -1,2 +1,2 @@
-import { storage, db } from './config';
-export {db, storage};
+import { storage, db, auth } from './config';
+export {db, storage, auth};
