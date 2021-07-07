@@ -8,7 +8,7 @@ const ToastComp = ({ tostIsShown, tostTitle, showTost }) => {
             className='added-toast'
             onClose={() => showTost(false)}
             show={tostIsShown}
-            delay={3000}
+            delay={10000}
             autohide
             style={{
                 bottom: 10

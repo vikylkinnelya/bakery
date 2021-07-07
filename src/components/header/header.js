@@ -4,7 +4,7 @@ import { NavLink } from 'react-router-dom';
 import { Col, Navbar, Image } from 'react-bootstrap';
 import './styles.css'
 
-const Header = ({ cart, totalPrice, expanded }) => {
+const Header = ({ cart, cartTotalPrice, expanded }) => {
 
     const [collapsed, setCollapse] = useState(false)
 
@@ -19,7 +19,7 @@ const Header = ({ cart, totalPrice, expanded }) => {
     const basket =
         <>
             {cart.length > 0 ? filled : empty}
-            <h6>{totalPrice.toFixed(2)}$</h6>
+            <h6>{cartTotalPrice.toFixed(2)}$</h6>
         </>
 
     return (
@@ -55,7 +55,7 @@ const Header = ({ cart, totalPrice, expanded }) => {
 const mapStateToProps = state => {
     return {
         cart: state.cart,
-        totalPrice: state.totalPrice
+        cartTotalPrice: state.cartTotalPrice
     }
 }
 

@@ -53,8 +53,9 @@ const setModalVisibility = () => ({
     type: 'SET_MODAL_VISIBILITY'
 })
 
-const showTost = () => ({
-    type: 'SHOW_TOST'
+const showTost = (bool) => ({
+    type: 'SHOW_TOST',
+    payload: bool
 })
 
 

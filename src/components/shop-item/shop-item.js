@@ -3,13 +3,16 @@ import { storage } from '../firebase';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 import { Col } from 'react-bootstrap';
+import WithRestoService from '../hoc';
+import { connect } from 'react-redux';
+import { addToCart, showTost } from '../../actions';
 import './styles.css';
 
-const ShopItem = ({ menuItem, menuType, onAddToCart, cart, showTost }) => {
+const ShopItem = ({ menuItem, menuType, addToCart, cart, showTost }) => {
 
     const { name, description, pricing, type, id } = menuItem
     const [priceMenu, setShowPriceMenu] = useState(false)
-    const [imgUrl, setURL] = useState()
+    const [imgURL, setImgURL] = useState()
 
     const productPrice = pricing[0]
     const productPricing = pricing.length > 1 && pricing.join(' | ')
@@ -24,11 +27,11 @@ const ShopItem = ({ menuItem, menuType, onAddToCart, cart, showTost }) => {
     const addedItem = cart.findIndex(el => el.id === id) !== -1 ? 'added' : null
 
     const smallSize = priceMenu && pricing.length === 3
-        && <button className='small-size' onClick={() => onAddToCart(id, 'S')}> S </button>
+        && <button className='small-size' onClick={() => addToCart(id, 'S')}> S </button>
     const mediumSize = priceMenu &&
-        <button className='medium-size' onClick={() => onAddToCart(id, 'M')}> M </button>
+        <button className='medium-size' onClick={() => addToCart(id, 'M')}> M </button>
     const bigSize = priceMenu &&
-        <button className='big-size' onClick={() => onAddToCart(id, 'L')}> L </button>
+        <button className='big-size' onClick={() => addToCart(id, 'L')}> L </button>
 
     const defCartClick = (id) => {
         if (pricing.length > 1 && !priceMenu) {
@@ -39,9 +42,20 @@ const ShopItem = ({ menuItem, menuType, onAddToCart, cart, showTost }) => {
         }
         if (pricing.length === 1) {
             showTost(true, name)
-            return onAddToCart(id)
+            return addToCart(id)
         }
     }
+
+    const getImg = async (id) => {
+        await storage.child(`menu/${id.split('-')[0]}-min.jpg`)
+            .getDownloadURL()
+            .then(url => {
+                setImgURL(url)
+            }).catch(error => {
+                console.log(error)
+            })
+    }
+    getImg(id)
 
     return (
 
@@ -51,7 +65,7 @@ const ShopItem = ({ menuItem, menuType, onAddToCart, cart, showTost }) => {
                 <LazyLoadImage
                     effect="blur"
                     alt={name}
-                    src={`../images/${id}-min.jpg`}
+                    src={imgURL}
                 />
             </div>
 
@@ -79,4 +93,18 @@ const ShopItem = ({ menuItem, menuType, onAddToCart, cart, showTost }) => {
     )
 }
 
-export default ShopItem
+
+
+const mapStateToProps = state => {
+    return {
+        menuType: state.menuType,
+        cart: state.cart,
+    }
+}
+
+const mapDispatchToProps = {
+    addToCart,
+    showTost
+}
+
+export default WithRestoService()(connect(mapStateToProps, mapDispatchToProps)(ShopItem))

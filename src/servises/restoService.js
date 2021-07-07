@@ -25,7 +25,7 @@ export default class RestoService {
         return orderNumber
     } */
 
-    async setOrder(order, data) {
+    async setOrder(orderData, customerData) {
         /* const numberOfOrder = await this.getOrderNumber('orders'); //узнаем номер заказа по порядку
         const newOrder = { //заказ состоит из
             id: numberOfOrder, //номера по порядку
@@ -36,7 +36,8 @@ export default class RestoService {
         const date = new Date()
         const ordersRef = db.collection('orders')
         await ordersRef.doc(`${date}`).set({
-            ...order,
+            order: orderData,
+            customer: customerData,
             date: new Date()
         })
     }
@@ -62,19 +63,6 @@ export default class RestoService {
     async doAuth() {
         await auth.then(() => console.log('signed in'))
             .catch(error => console.log(error))
-    }
-
-    async getImg (folder, id) {
-        
-        let imgURL 
-        storage.child(`${folder}/${id.split('-')[0]}-min.jpg`)
-            .getDownloadURL()
-            .then(url => {
-                imgURL = url
-            }).catch(error => {
-                console.log(error)
-            })
-        return imgURL
     }
 
     async fetchMenu(type = 'all') {

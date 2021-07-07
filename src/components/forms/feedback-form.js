@@ -56,7 +56,7 @@ const FeedbackForm = ({ feedback, setFeedbackData, setResponseMessage, page, rea
                                         <Form.Control
                                             type='text'
                                             name='name'
-                                            placeholder={page === 'main' && 'Your name here'}
+                                            placeholder={page === 'main' ? 'Your name here' : undefined}
                                             onChange={handleChange}
                                             onBlur={handleBlur}
                                             value={values.name}
@@ -83,7 +83,7 @@ const FeedbackForm = ({ feedback, setFeedbackData, setResponseMessage, page, rea
                                         <Form.Control
                                             type='text'
                                             name='email'
-                                            placeholder={page === 'main' && 'Your email here'}
+                                            placeholder={page === 'main' ? 'Your email here' : undefined}
                                             onChange={handleChange}
                                             onBlur={handleBlur}
                                             value={values.email}
@@ -136,7 +136,7 @@ const FeedbackForm = ({ feedback, setFeedbackData, setResponseMessage, page, rea
                                 <Form.Control as="textarea" rows={3}
                                     type='text'
                                     name='feedback'
-                                    placeholder={page === 'main' && 'Your message here'}
+                                    placeholder={page === 'main' ? 'Your message here' : undefined}
                                     onChange={handleChange}
                                     onBlur={handleBlur}
                                     value={values.feedback}

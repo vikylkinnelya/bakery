@@ -5,10 +5,10 @@ import { connect } from 'react-redux';
 import { addToCart } from '../../actions';
 import './offer.css'
 
-const OfferSection = ({ weekOffer, addToCart }) => {
+const OfferSection = ({ weekOfferItems, addToCart }) => {
 
-    const firstOffer = weekOffer.length > 0 && weekOffer[0]
-    const secondOffer = weekOffer.length > 0 && weekOffer[1]
+    const firstOffer = weekOfferItems.length > 0 && weekOfferItems[0]
+    const secondOffer = weekOfferItems.length > 0 && weekOfferItems[1]
 
     return (
         <section id="offer-section">
@@ -71,7 +71,7 @@ const OfferSection = ({ weekOffer, addToCart }) => {
 
 const mapStateToProps = state => {
     return {
-        weekOffer: state.weekOffer
+        weekOfferItems: state.weekOfferItems
     }
 }
 

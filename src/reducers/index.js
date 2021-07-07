@@ -1,13 +1,13 @@
 const initialState = {
     menu: [],
-    menuTotalItems: 0,
+    menuTotalLength: 0,
     error: false,
     loading: false,
     menuType: 'all',
     cart: [],
-    totalPrice: 0,
+    cartTotalPrice: 0,
     latestProducts: [],
-    weekOffer: [],
+    weekOfferItems: [],
     formIsOpen: false,
     modalIsShown: false,
     tostIsShown: false,
@@ -34,7 +34,7 @@ const reducer = (state = initialState, action) => {
             return {
                 ...state,
                 menu: normalMenu,
-                menuTotalItems: normalMenu.length,
+                menuTotalLength: normalMenu.length,
                 loading: false
             };
 
@@ -59,7 +59,7 @@ const reducer = (state = initialState, action) => {
         /* case 'SET_MENU_TOTAL_ITEMS':
             return {
                 ...state,
-                menuTotalItems: action.payload
+                menuTotalLength: action.payload
             } */
 
         case 'ADD_TO_CART':
@@ -97,7 +97,7 @@ const reducer = (state = initialState, action) => {
                 return {
                     ...state,
                     cart: [...state.cart, newItem],
-                    totalPrice: state.totalPrice + newItem.price,
+                    cartTotalPrice: state.cartTotalPrice + newItem.price,
                     tostTitle: newItem.name
                 };
             }
@@ -114,7 +114,7 @@ const reducer = (state = initialState, action) => {
                         newItem,
                         ...state.cart.slice(itemIdxinCart + 1)
                     ],
-                    totalPrice: state.totalPrice + newItem.price,
+                    cartTotalPrice: state.cartTotalPrice + newItem.price,
                     tostTitle: newItem.name
                 }
             }
@@ -130,7 +130,7 @@ const reducer = (state = initialState, action) => {
                     ...state.cart.slice(0, itemIdxToDelinCart),
                     ...state.cart.slice(itemIdxToDelinCart + 1)
                 ],
-                totalPrice: state.totalPrice + itemToDel.price
+                cartTotalPrice: state.cartTotalPrice + itemToDel.price
             }
 
         case 'DEC_COUNT':
@@ -148,7 +148,7 @@ const reducer = (state = initialState, action) => {
                     newDecItem,
                     ...state.cart.slice(itemIdxToDecCount + 1)
                 ],
-                totalPrice: state.totalPrice - newDecItem.price
+                cartTotalPrice: state.cartTotalPrice - newDecItem.price
             }
 
         case 'SET_FORM_VISIBILITY':
@@ -173,14 +173,14 @@ const reducer = (state = initialState, action) => {
             const offer = state.menu.filter(el => el.type === 'offer')
             return {
                 ...state,
-                weekOffer: offer.slice(0,3)
+                weekOfferItems: offer.slice(0,3)
             }
 
 
         case 'SHOW_TOST':
             return {
                 ...state, 
-                tostIsShown: true
+                tostIsShown: action.payload
             }
 
 

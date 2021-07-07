@@ -81,7 +81,7 @@ const mapStateToProps = state => {
         menuType: state.menuType,
         cart: state.cart,
         latestProducts: state.latestProducts,
-        weekOffer: state.weekOffer,
+        weekOfferItems: state.weekOfferItems,
     }
 }
 

@@ -27,7 +27,7 @@ class CartList extends Component {
         setLoading(true)
 
         if (this.state.customer !== prevState.customer) {
-            RestoService.setOrder(generateOrder(cart, this.state.customer))
+            RestoService.setOrder(generateOrder(cart), this.state.customer)
                 .catch(error => setError(error))
             setModalVisibility()
             setLoading(false)
@@ -36,7 +36,7 @@ class CartList extends Component {
 
     render() {
 
-        const { loading, error, cart, modalIsShown, setModalVisibility, totalPrice, addToCart, deleteFromCart, decCount, setFormVisibility, formIsOpen } = this.props
+        const { loading, error, cart, modalIsShown, setModalVisibility, cartTotalPrice, addToCart, deleteFromCart, decCount, setFormVisibility, formIsOpen } = this.props
 
         return (
 
@@ -71,7 +71,7 @@ class CartList extends Component {
                                 <h3>total order price:</h3>
                             </Col>
                             <Col lg={1}>
-                                <h2>${totalPrice.toFixed(2)}</h2>
+                                <h2>${cartTotalPrice.toFixed(2)}</h2>
                             </Col>
                         </Row>
 
@@ -108,7 +108,7 @@ const generateOrder = (items) => {
     const newOrder = items.map(item => {
         return {
             id: item.id,
-            count: item.count
+            count: item.count,
         }
     })
     return newOrder
@@ -119,7 +119,7 @@ const mapStateToProps = state => {
         loading: state.loading,
         error: state.error,
         cart: state.cart,
-        totalPrice: state.totalPrice,
+        cartTotalPrice: state.cartTotalPrice,
         formIsOpen: state.formIsOpen,
         modalIsShown: state.modalIsShown
     }
