@@ -43,12 +43,8 @@ const Header = ({ cart, cartTotalPrice, expanded }) => {
                         {basket}
                     </NavLink>
                 </Col >
-
             </Navbar.Collapse >
-
-
         </Navbar >
-
     )
 }
 
@@ -58,6 +54,5 @@ const mapStateToProps = state => {
         cartTotalPrice: state.cartTotalPrice
     }
 }
-
 
 export default connect(mapStateToProps)(Header)

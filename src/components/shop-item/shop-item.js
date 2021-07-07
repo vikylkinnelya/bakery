@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { storage } from '../firebase';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
@@ -8,11 +8,10 @@ import { connect } from 'react-redux';
 import { addToCart, showTost } from '../../actions';
 import './styles.css';
 
-const ShopItem = ({ menuItem, menuType, addToCart, cart, showTost }) => {
+const ShopItem = ({ menuItem, menuType, addToCart, cart, showTost, RestoService }) => {
 
     const { name, description, pricing, type, id } = menuItem
     const [priceMenu, setShowPriceMenu] = useState(false)
-    const [imgURL, setImgURL] = useState()
 
     const productPrice = pricing[0]
     const productPricing = pricing.length > 1 && pricing.join(' | ')
@@ -46,16 +45,13 @@ const ShopItem = ({ menuItem, menuType, addToCart, cart, showTost }) => {
         }
     }
 
-    const getImg = async (id) => {
-        await storage.child(`menu/${id.split('-')[0]}-min.jpg`)
-            .getDownloadURL()
-            .then(url => {
-                setImgURL(url)
-            }).catch(error => {
-                console.log(error)
-            })
-    }
-    getImg(id)
+    const [imgURL, setImgURL] = useState()
+
+    useState(() => {
+        RestoService.getImg('menu', id, 'jpg')
+        .then(url => setImgURL(url))
+    })
+
 
     return (
 

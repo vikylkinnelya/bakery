@@ -1,12 +1,8 @@
 import { Col, Row } from 'react-bootstrap';
 import './styles.css';
 
-
 const ErrorComponent = () => {
-
-
     return (
-
         <Col className='error-component'>
             <Row>
                 <svg width="389"viewBox="0 0 389 290" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -53,7 +49,6 @@ const ErrorComponent = () => {
                 </svg>
             </Row>
         </Col>
-
     )
 }
 

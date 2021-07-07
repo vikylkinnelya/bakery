@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useState, useMemo, useEffect, useCallback } from 'react';
 import ErrorComponent from '../error';
 import Spinner from '../spinner';
 import { Col, Row, Container } from 'react-bootstrap';
@@ -12,96 +12,87 @@ import { setLoading, setError, addToCart, setFormVisibility, setModalVisibility,
 
 import './styles.css'
 
-class CartList extends Component {
+const CartList = ({ RestoService, cart, setModalVisibility, setError, loading, error, modalIsShown, cartTotalPrice, addToCart, deleteFromCart, decCount, setFormVisibility, formIsOpen }) => {
 
-    state = { customer: '' }
+    const [customersData, setCustomersData] = useState(null)
 
-    setCustomer = (data) => {
-        this.setState({ customer: data })
-        this.props.setFormVisibility()
+    const setCustomer = (data) => {
+        setCustomersData(data)
+        setFormVisibility()
+        sendOrder()
     }
 
-    componentDidUpdate(prevProps, prevState, snapshot) {
-        const { RestoService, cart, setModalVisibility, setError } = this.props
-
+    const sendOrder = useCallback(() => {
         setLoading(true)
+        RestoService.setOrder(generateOrder(cart), customersData)
+            .catch(error => setError(error))
+        setModalVisibility()
+        setLoading(false)
+    }, [customersData])
 
-        if (this.state.customer !== prevState.customer) {
-            RestoService.setOrder(generateOrder(cart), this.state.customer)
-                .catch(error => setError(error))
-            setModalVisibility()
-            setLoading(false)
-        }
-    }
 
-    render() {
+return (
 
-        const { loading, error, cart, modalIsShown, setModalVisibility, cartTotalPrice, addToCart, deleteFromCart, decCount, setFormVisibility, formIsOpen } = this.props
+    <Container className='cart-list'>
 
-        return (
+        {cart.length === 0 && <CartEmpty />}
 
-            <Container className='cart-list'>
+        {error && <ErrorComponent /> && !loading}
+        {loading && <Spinner /> && !error}
 
-                {cart.length === 0 && <CartEmpty />}
+        {cart.length > 0 && !error && !loading &&
+            <Col className='cart-items-list '>
 
-                {error && <ErrorComponent /> && !loading}
-                {loading && <Spinner /> && !error}
+                <Row >
+                    <h1>Your order:</h1>
+                </Row>
 
-                {cart.length > 0 && !error && !loading &&
-                    <Col className='cart-items-list '>
+                {cart != null && cart.length > 0 && cart.map(cartItem => {
+                    return (
+                        <CartItem
+                            key={cartItem.id}
+                            cartItem={cartItem}
+                            addToCart={addToCart}
+                            decCount={decCount}
+                            deleteFromCart={deleteFromCart}
+                        />
+                    )
+                })}
 
-                        <Row >
-                            <h1>Your order:</h1>
-                        </Row>
-
-                        {cart != null && cart.length > 0 && cart.map(cartItem => {
-                            return (
-                                <CartItem
-                                    key={cartItem.id}
-                                    cartItem={cartItem}
-                                    addToCart={addToCart}
-                                    decCount={decCount}
-                                    deleteFromCart={deleteFromCart}
-                                />
-                            )
-                        })}
-
-                        <Row className='row total-order-price' lg={{ span: 10, offset: 1 }}>
-                            <Col lg={4}>
-                                <h3>total order price:</h3>
-                            </Col>
-                            <Col lg={1}>
-                                <h2>${cartTotalPrice.toFixed(2)}</h2>
-                            </Col>
-                        </Row>
-
-                        {!formIsOpen && !this.state.customer && <Row className='btn-order'>
-                            <button
-                                aria-label='order products'
-                                title='order products'
-                                onClick={() => setFormVisibility()}>
-                                <h3>order</h3>
-                            </button>
-                        </Row>
-                        }
+                <Row className='row total-order-price' lg={{ span: 10, offset: 1 }}>
+                    <Col lg={4}>
+                        <h3>total order price:</h3>
                     </Col>
+                    <Col lg={1}>
+                        <h2>${cartTotalPrice.toFixed(2)}</h2>
+                    </Col>
+                </Row>
+
+                {!formIsOpen && !customersData && <Row className='btn-order'>
+                    <button
+                        aria-label='order products'
+                        title='order products'
+                        onClick={() => setFormVisibility()}>
+                        <h3>order</h3>
+                    </button>
+                </Row>
                 }
+            </Col>
+        }
 
+        {formIsOpen &&
+            <OrderForm
+                setCustomer={setCustomer}
+            />
+        }
 
-                {formIsOpen &&
-                    <OrderForm
-                        setCustomer={this.setCustomer}
-                    />
-                }
-
-
-                <ModalAfterOrder
-                    modalIsShown={modalIsShown}
-                    setModalVisibility={setModalVisibility}
-                />
-            </Container>
-        )
-    }
+        <ModalAfterOrder
+            modalIsShown={modalIsShown}
+            setModalVisibility={setModalVisibility}
+        />
+    </Container>
+)
+    
 }
 
 const generateOrder = (items) => {

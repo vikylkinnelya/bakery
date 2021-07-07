@@ -5,6 +5,7 @@ import 'react-lazy-load-image-component/src/effects/blur.css';
 import './clients.css'
 
 const ClientsSection = () => {
+
     return (
         <section id="clients-section">
             <header className="section-header">

@@ -65,6 +65,18 @@ export default class RestoService {
             .catch(error => console.log(error))
     }
 
+    async getImg (folder, id, type, param='-min' ) {
+        let imgURL
+        await storage.child(`${folder}/${id.split('-')[0]}${param}.${type}`)
+            .getDownloadURL()
+            .then(url => {
+                imgURL = url
+            }).catch(error => {
+                console.log(error)
+            })
+        return imgURL
+    }
+
     async fetchMenu(type = 'all') {
         let data
         let response

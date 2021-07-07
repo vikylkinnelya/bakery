@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { storage, auth } from '../firebase';
+import WithRestoService from '../hoc';
 import { Col, Row } from 'react-bootstrap';
 import './styles.css'
 
-const CartItem = ({ cartItem, addToCart, deleteFromCart, decCount }) => {
+const CartItem = ({ cartItem, addToCart, deleteFromCart, decCount, RestoService }) => {
 
     const { id, name, count, param, price } = cartItem
 
@@ -15,14 +15,17 @@ const CartItem = ({ cartItem, addToCart, deleteFromCart, decCount }) => {
         }
     }
 
-    
+    const [imgURL, setImgURL] = useState()
 
-
+    useEffect(() => {
+        RestoService.getImg('menu', id, 'jpg')
+        .then(url => setImgURL(url))
+    })
 
     return (
         <Row className='cart-item'>
             <Col xs={12} lg={3} className='cart-item-previev'>
-                <img alt={name} src={`../images/${id.split('-')[0]}-min.jpg`} />
+                <img alt={name} src={imgURL} />
             </Col>
             <Col xs={12} lg={4} className='cart-title-col'>
                 <h3>{name} {param ? `, ${param}` : null}</h3>
@@ -57,4 +60,4 @@ const CartItem = ({ cartItem, addToCart, deleteFromCart, decCount }) => {
     )
 }
 
-export default CartItem;
+export default WithRestoService()(CartItem);
