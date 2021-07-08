@@ -33,14 +33,11 @@ const ProductsSection = ({ latestProducts, loading, cart, menuType, addToCart, t
                 ))}
         </Row>
 
-
     return (
 
         <section id="products-section">
             <div className="section-content">
-                <header className="section-header"
-
-                >
+                <header className="section-header" >
                     <h1>Our latest bakery products</h1>
                     <p>Check some of our best products and feel the great passion for food</p>
                 </header>

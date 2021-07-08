@@ -1,14 +1,24 @@
 import React from 'react';
 import { Col, Row, Tab, Nav, Image } from 'react-bootstrap';
 import ProductCard from '../product-card';
+import WithRestoService from '../hoc';
 import { connect } from 'react-redux';
 import { addToCart } from '../../actions';
 import './offer.css'
 
-const OfferSection = ({ weekOfferItems, addToCart }) => {
+const OfferSection = ({ weekOfferItems, addToCart, RestoService }) => {
 
     const firstOffer = weekOfferItems.length > 0 && weekOfferItems[0]
     const secondOffer = weekOfferItems.length > 0 && weekOfferItems[1]
+
+    const getURL = (id) => {
+        RestoService.getImg('menu', id, 'jpg')
+        .then(url => {return url} )
+        console.log(RestoService.getImg('menu', id, 'jpg')
+        .then(url => {return url} ))
+    }
+
+//src={`images/${secondOffer.id}-min.jpg`}
 
     return (
         <section id="offer-section">
@@ -22,18 +32,18 @@ const OfferSection = ({ weekOfferItems, addToCart }) => {
 
                 <Row className='tabs-big-container' >
                     <Tab.Container id='left-tabs' defaultActiveKey="first" >
-
                         <Col xs={12} md={3} lg={2} className='nav-link-col'>
                             <Nav>
                                 <Nav.Item>
                                     <Nav.Link eventKey="first">
-                                        <Image fluid alt={firstOffer.title} src={`images/${firstOffer.id}-min.jpg`} />
+                                        <Image fluid alt={firstOffer.title} 
+                                        
+                                        src={`images/${firstOffer.id}-min.jpg`} />
                                     </Nav.Link>
                                 </Nav.Item>
-
                                 <Nav.Item>
                                     <Nav.Link eventKey="second">
-                                        <Image fluid alt={secondOffer.title} src={`images/${secondOffer.id}-min.jpg`} />
+                                        <Image fluid alt={secondOffer.title} src={() =>getURL(secondOffer.id)} />
                                     </Nav.Link>
                                 </Nav.Item>
                             </Nav>
@@ -41,7 +51,6 @@ const OfferSection = ({ weekOfferItems, addToCart }) => {
 
                         <Col md={8} lg={9}>
                             <Tab.Content>
-
                                 <Tab.Pane
                                     eventKey='first'>
                                     <ProductCard
@@ -49,7 +58,6 @@ const OfferSection = ({ weekOfferItems, addToCart }) => {
                                         onAddToCart={addToCart}
                                     />
                                 </Tab.Pane>
-
                                 <Tab.Pane
                                     eventKey='second'>
                                     <ProductCard
@@ -57,15 +65,12 @@ const OfferSection = ({ weekOfferItems, addToCart }) => {
                                         onAddToCart={addToCart}
                                     />
                                 </Tab.Pane>
-
                             </Tab.Content>
                         </Col>
-
                     </Tab.Container>
                 </Row>
             </div>
         </section>
-
     )
 }
 
@@ -79,4 +84,4 @@ const mapDispatchToProps = {
     addToCart
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(OfferSection);
+export default WithRestoService()(connect(mapStateToProps, mapDispatchToProps)(OfferSection));

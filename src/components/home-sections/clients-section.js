@@ -1,11 +1,9 @@
-import React from 'react';
 import { Col, Row } from 'react-bootstrap';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 import './clients.css'
 
 const ClientsSection = () => {
-
     return (
         <section id="clients-section">
             <header className="section-header">
