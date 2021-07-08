@@ -1,49 +1,11 @@
-import React, { useState, useCallback } from 'react';
-import WithRestoService from '../hoc';
-import { connect } from 'react-redux';
-import { Col } from 'react-bootstrap';
 import { FeedbackForm } from '../forms';
-import { setLoading, setError } from '../../actions';
 import './contact.css'
 
-const ContactSection = ({ RestoService, setLoading, setError }) => {
-
-    const [feedback, setFeedback] = useState(false)
-    const [respMsgIsShown, setResponseMessage] = useState(false)
-
-    const sendFeedback = useCallback(() => {
-        setLoading(true)
-        RestoService.setFeedback(feedback)
-            .catch(error => setError(error))
-        setLoading(false)
-    }, [feedback])
-
-    const setFeedbackData = (data) => {
-        setFeedback(data)
-        sendFeedback()
-    }
-
-
-
-
-
+const ContactSection = () => {
     return (
         <section id="contact-section">
             <div className="section-content">
-                <Col md={4} className='main-contact-form' >
-                    <div className="article-header">
-                        <h2>CONTACT US</h2>
-                        <p>Our Company is the best, meet the creative team that never sleeps. Say something to us we will answer to you.</p>
-                    </div>
-
-                    <FeedbackForm
-                        className='form-contact'
-                        reason={'feedback'}
-                        page={'main'}
-                        setFeedbackData={setFeedbackData}
-                        setResponseMessage={setResponseMessage}
-                    />
-                </Col>
+                <FeedbackForm type={'section'} />
                 <div className="google-map-big-container" >
                     <div className="google-map">
                         <div id="map-canvas" className='embed-responsive embed-responsive-4by3'>
@@ -58,20 +20,6 @@ const ContactSection = ({ RestoService, setLoading, setError }) => {
             </div>
         </section>
     )
-
 }
 
-const mapStateToProps = state => {
-    return {
-        loading: state.loading,
-        error: state.error,
-    }
-}
-
-const mapDispatchToProps = {
-    setLoading,
-    setError
-}
-
-
-export default WithRestoService()(connect(mapStateToProps, mapDispatchToProps)(ContactSection))
+export default ContactSection
