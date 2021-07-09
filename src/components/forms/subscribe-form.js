@@ -1,12 +1,13 @@
 import React, { useState, useCallback } from 'react';
-import { Formik } from 'formik';
+import './styles.css';
 import { Col, Form, Button } from 'react-bootstrap';
+import { Formik } from 'formik';
 import * as yup from 'yup';
+import { connect } from 'react-redux';
 import WithRestoService from '../hoc';
 import { ResponseMessage } from '../responses';
-import './styles.css';
 import { setLoading, setError } from '../../actions';
-import { connect } from 'react-redux';
+
 
 
 const validationSchema = yup.object().shape({
@@ -20,37 +21,35 @@ const SubscribeForm = ({ setLoading, setError, RestoService }) => {
 
     const sendSubscribersData = useCallback(() => {
         setLoading(true)
-        RestoService.setFeedback(subscriber)
+        RestoService.setSubscriber(subscriber)
             .catch(error => setError(error))
         setLoading(false)
     }, [subscriber])
 
-    const setSubscriberskData = (data) => {
+    const setSubscribersData = (data) => {
         setSubscriberState(data)
         sendSubscribersData()
     }
 
     return (
         <>
+            {subscriber &&
+                <ResponseMessage reason={'subscribe'} />
+            }
+
             {!subscriber && <>
                 <h4>Newsletter</h4>
                 <p>Give us your email, and we shall send regular updates for new stuff and events.</p>
-
-
-
                 <Formik
                     initialValues={{ email: "" }}
                     validationSchema={validationSchema}
                     onSubmit={(values, { setSubmitting, resetForm }) => {
                         setSubmitting(true);
                         setTimeout(() => {
-                            //console.log(JSON.stringify(values, null, 2))
                             resetForm()
-                            setSubmitting(false)
-                            setSubscriberskData(values)
-                        }, 1000)
-
-
+                            setSubscribersData(values)
+                            setSubmitting(false) 
+                        }, 1000) 
                     }}
                 >
                     {({ values, errors, touched, handleChange, handleBlur, handleSubmit, isSubmitting }) => (
@@ -88,12 +87,7 @@ const SubscribeForm = ({ setLoading, setError, RestoService }) => {
                         </>
                     )}
                 </Formik >
-            </>
-            }
-            {subscriber &&
-                <ResponseMessage
-                    reason={'subscribe'} />
-            }
+            </>}
         </>
     )
 }
