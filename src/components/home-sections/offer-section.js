@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { Col, Row, Tab, Nav, Image } from 'react-bootstrap';
 import ProductCard from '../product-card';
 import WithRestoService from '../hoc';
@@ -11,14 +11,19 @@ const OfferSection = ({ weekOfferItems, addToCart, RestoService }) => {
     const firstOffer = weekOfferItems.length > 0 && weekOfferItems[0]
     const secondOffer = weekOfferItems.length > 0 && weekOfferItems[1]
 
-    const getURL = (id) => {
-        RestoService.getImg('menu', id, 'jpg')
-        .then(url => {return url} )
-        console.log(RestoService.getImg('menu', id, 'jpg')
-        .then(url => {return url} ))
+    const getURL = (id, attribute) => {
+        RestoService.getImg('menu', id)
+            .then(url => {
+                let img = document.getElementById(attribute)
+                img.setAttribute('src', url)
+            })
     }
 
-//src={`images/${secondOffer.id}-min.jpg`}
+    useEffect(() => {
+        weekOfferItems.length > 0 && getURL(firstOffer.id, 'firstOffer')
+        weekOfferItems.length > 0 && getURL(secondOffer.id, 'secondOffer')
+    })
+
 
     return (
         <section id="offer-section">
@@ -36,14 +41,12 @@ const OfferSection = ({ weekOfferItems, addToCart, RestoService }) => {
                             <Nav>
                                 <Nav.Item>
                                     <Nav.Link eventKey="first">
-                                        <Image fluid alt={firstOffer.title} 
-                                        
-                                        src={`images/${firstOffer.id}-min.jpg`} />
+                                        <Image fluid alt={firstOffer.title} id='firstOffer' />
                                     </Nav.Link>
                                 </Nav.Item>
                                 <Nav.Item>
                                     <Nav.Link eventKey="second">
-                                        <Image fluid alt={secondOffer.title} src={() =>getURL(secondOffer.id)} />
+                                        <Image fluid alt={secondOffer.title} id='secondOffer' />
                                     </Nav.Link>
                                 </Nav.Item>
                             </Nav>

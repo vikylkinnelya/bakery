@@ -65,7 +65,7 @@ export default class RestoService {
             .catch(error => console.log(error))
     }
 
-    async getImg (folder, id, type, param='-min' ) {
+    async getImg (folder, id, type='jpg', param='-min' ) {
         let imgURL
         await storage.child(`${folder}/${id.split('-')[0]}${param}.${type}`)
             .getDownloadURL()
