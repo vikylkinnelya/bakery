@@ -1,10 +1,10 @@
-import React, { Component, useState, useMemo, useEffect, useCallback } from 'react';
+import React, {useState, useCallback } from 'react';
 import ErrorComponent from '../error';
 import Spinner from '../spinner';
 import { Col, Row, Container } from 'react-bootstrap';
 import CartItem from '../cart-item';
 import CartEmpty from '../cart-empty/cart-empty';
-import ModalAfterOrder from '../modal';
+import {ModalAfterOrder} from '../responses';
 import { OrderForm } from '../forms';
 import { connect } from 'react-redux';
 import WithRestoService from '../hoc';

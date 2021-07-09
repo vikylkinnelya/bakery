@@ -1,4 +1,4 @@
-import React, { Component, useMemo, useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import Spinner from '../spinner';
 import ErrorComponent from '../error';
 import { Col, Container, Row } from 'react-bootstrap';

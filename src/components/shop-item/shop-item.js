@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { storage } from '../firebase';
 import { LazyLoadImage } from 'react-lazy-load-image-component';
 import 'react-lazy-load-image-component/src/effects/blur.css';
 import { Col } from 'react-bootstrap';
@@ -47,7 +46,7 @@ const ShopItem = ({ menuItem, menuType, addToCart, cart, showTost, RestoService 
 
     const [imgURL, setImgURL] = useState()
 
-    useState(() => {
+    useEffect(() => {
         RestoService.getImg('menu', id, 'jpg')
         .then(url => setImgURL(url))
     })

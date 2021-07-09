@@ -1,7 +1,7 @@
 import React, { useState, useCallback } from 'react';
 import { Row, Col, Form, Button } from 'react-bootstrap';
 import { Formik } from 'formik';
-import ResponseMessage from '../response-message';
+import {ResponseMessage} from '../responses';
 import * as yup from 'yup';
 import './styles.css';
 import WithRestoService from '../hoc';
@@ -28,7 +28,7 @@ const validationSchema = yup.object().shape({
 
 const FeedbackForm = ({ type, setLoading, setError, RestoService }) => {
 
-    const [feedback, setFeedback] = useState(false)
+    const [feedback, setFeedbackstate] = useState(false)
 
     const sendFeedback = useCallback(() => {
         setLoading(true)
@@ -38,7 +38,7 @@ const FeedbackForm = ({ type, setLoading, setError, RestoService }) => {
     }, [feedback])
 
     const setFeedbackData = (data) => {
-        setFeedback(data)
+        setFeedbackstate(data)
         sendFeedback()
     }
 

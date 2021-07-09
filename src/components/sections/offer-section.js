@@ -70,6 +70,7 @@ const OfferSection = ({ weekOfferItems, addToCart, RestoService }) => {
                                 </Tab.Pane>
                             </Tab.Content>
                         </Col>
+                        
                     </Tab.Container>
                 </Row>
             </div>

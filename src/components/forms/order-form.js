@@ -1,5 +1,5 @@
 import React from 'react';
-import { Formik, form } from 'formik';
+import { Formik} from 'formik';
 import { Row, Col, Form, Button } from 'react-bootstrap';
 import * as yup from 'yup';
 import './styles.css';
@@ -33,8 +33,9 @@ const OrderForm = ({ setCustomer }) => {
                     //console.log(JSON.stringify(values, null, 2))
                     resetForm()
                     setSubmitting(false)
-                }, 1000)
-                setCustomer(values)
+                    setCustomer(values)
+                }, 1500)
+                
             }}
         >
             {({ values, errors, touched, handleChange, handleBlur, handleSubmit, isSubmitting }) => (
@@ -130,16 +131,16 @@ const OrderForm = ({ setCustomer }) => {
                     </Row>
 
                     <Row className='btn-order'>
-                        <button
-                            title='Submit order'
+                        <Button
+                            aria-label='Submit order'
                             type='submit'
+                            variant="light"
                             disabled={isSubmitting}
                             className='btn-order'
                         >
-                            <h3>Submit</h3>
-                        </button>
+                            <h3>{isSubmitting ? 'Submiting...' : 'Submit order'}</h3>
+                        </Button>
                     </Row>
-
                 </form>
 
             )}

@@ -1,20 +1,26 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import { Col, Row, Image } from 'react-bootstrap';
+import WithRestoService from '../hoc';
 import './styles.css'
 
-const ProductCard = ({ product, onAddToCart }) => {
+const ProductCard = ({ product, onAddToCart, RestoService }) => {
 
     const { name, description, pricing, ingredients, id } = product
 
-    return (
+    const [imgURL, setImgURL] = useState()
 
+    useEffect(() => {
+        product && RestoService.getImg('menu', product.id, 'jpg', '-img-min')
+        .then(url => setImgURL(url))
+    })
+
+    return (
         <Col md={12} className="offer-box">
             <Row>
                 <Col lg={{span:5, order: 1}} xs={{span: 12, order:2}} className="offer-box-left offer-info">
 
                     <h1>{name}</h1>
                     <p>{description}</p>
-
                     <h2>Includes:</h2>
                     <ul className="list-numbers">
                         {ingredients != null && ingredients.length > 0
@@ -35,7 +41,7 @@ const ProductCard = ({ product, onAddToCart }) => {
                     </Row>
                 </Col>
                 <Col xs={{span:12, order:1}} lg={{span:7, order:2}} className="offer-box-right" >
-                    <Image fluid src={`images/${id}-img-min.jpg`} />
+                    <Image fluid src={imgURL} />
 
                     <div className="product-label-container big-label">
                         <div className="product-label">
@@ -49,4 +55,4 @@ const ProductCard = ({ product, onAddToCart }) => {
     )
 }
 
-export default ProductCard;
+export default WithRestoService()(ProductCard);
