@@ -37,7 +37,7 @@ const Home = ({ RestoService, setMenu, setError, setLoading, setLatestProducts, 
                         <Row className="section-content">
                             <h2 className="heading-huge">Different types of bread products</h2>
                             <h3 className="heading-small">You will find them only the best products in our stores</h3>
-                            <Image fluid id="bread-image" alt="bread" className="img-responsive" src="bakery/images/bread-types-min.jpg" />
+                            <Image fluid id="bread-image" alt="bread" className="img-responsive" src="./images/bread-types-min.jpg" />
                         </Row>
                     </section>
                 </LazyLoadComponent>

@@ -30,7 +30,7 @@ const About = () => {
                         <Row className='sucsess-row'>
 
                             <Col sm={12} md={6} >
-                                <img className="img-responsive sucsess-page-img" alt="pastries" src="bakery/images/about-page.jpg" />
+                                <img className="img-responsive sucsess-page-img" alt="pastries" src="./images/about-page.jpg" />
                             </Col>
 
                             <Col sm={12} md={6}>
