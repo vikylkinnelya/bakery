@@ -1,6 +1,6 @@
-import React, { useState, useCallback } from 'react';
 import './styles.css';
 import { Col, Form, Button } from 'react-bootstrap';
+import { useState, useCallback } from 'react';
 import { Formik } from 'formik';
 import * as yup from 'yup';
 import { connect } from 'react-redux';

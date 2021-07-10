@@ -1,9 +1,9 @@
-import React, { useState, useCallback } from 'react';
+import './styles.css';
+import { useState, useCallback } from 'react';
 import { Row, Col, Form, Button } from 'react-bootstrap';
 import { Formik } from 'formik';
 import {ResponseMessage} from '../responses';
 import * as yup from 'yup';
-import './styles.css';
 import WithRestoService from '../hoc';
 import { connect } from 'react-redux';
 import { setLoading, setError } from '../../actions';

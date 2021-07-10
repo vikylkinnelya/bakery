@@ -1,7 +1,8 @@
+import './styles.css';
 import React, { useState, useEffect } from 'react';
 import WithRestoService from '../hoc';
 import { Col, Row } from 'react-bootstrap';
-import './styles.css'
+
 
 const CartItem = ({ cartItem, addToCart, deleteFromCart, decCount, RestoService }) => {
 

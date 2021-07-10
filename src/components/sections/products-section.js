@@ -61,7 +61,7 @@ const ProductsSection = ({ latestProducts, loading, cart, menuType, addToCart, t
                 </Carousel>
 
                 <div className="text-center">
-                    <Link className="button-void" aria-label='see all products' to='/shop/all'>See all our products</Link>
+                    <Link className="button-void" aria-label='see all products' to='/bakery/shop/all'>See all our products</Link>
                 </div>
             </div>
 

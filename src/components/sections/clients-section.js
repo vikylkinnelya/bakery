@@ -16,7 +16,7 @@ const ClientsSection = () => {
                         alt='Salomon'
                         delayTime={300}
                         effect="blur"
-                        src={`./images/clients/client1.png`}
+                        src={`images/clients/client1.png`}
                     />
                 </Col>
                 <Col xs={6} sm={4} md={3} lg={2} className="client-logo" >
@@ -24,7 +24,7 @@ const ClientsSection = () => {
                         alt='Acura'
                         delayTime={350}
                         effect="blur"
-                        src={`./images/clients/client5.png`}
+                        src={`images/clients/client5.png`}
                     />
                 </Col>
 
@@ -33,7 +33,7 @@ const ClientsSection = () => {
                         alt='Baldwin'
                         delayTime={400}
                         effect="blur"
-                        src={`./images/clients/client2.png`}
+                        src={`images/clients/client2.png`}
                     />
                 </Col>
                 <Col xs={6} sm={4} md={3} lg={2} className="client-logo">
@@ -41,7 +41,7 @@ const ClientsSection = () => {
                         alt='Geico'
                         delayTime={450}
                         effect="blur"
-                        src={`./images/clients/client3.png`}
+                        src={`images/clients/client3.png`}
                     />
                 </Col>
                 <Col xs={6} sm={4} md={3} lg={2} className="client-logo">
@@ -49,7 +49,7 @@ const ClientsSection = () => {
                         alt='Powerplay'
                         delayTime={500}
                         effect="blur"
-                        src={`./images/clients/client4.png`}
+                        src={`images/clients/client4.png`}
                     />
                 </Col>
             </Row>

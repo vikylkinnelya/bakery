@@ -1,7 +1,8 @@
+import './styles.css'
+import { Col, Row, Container } from 'react-bootstrap';
+import Spinner from '../spinner';
 import React, {useState, useCallback } from 'react';
 import ErrorComponent from '../error';
-import Spinner from '../spinner';
-import { Col, Row, Container } from 'react-bootstrap';
 import CartItem from '../cart-item';
 import CartEmpty from '../cart-empty/cart-empty';
 import {ModalAfterOrder} from '../responses';
@@ -9,8 +10,6 @@ import { OrderForm } from '../forms';
 import { connect } from 'react-redux';
 import WithRestoService from '../hoc';
 import { setLoading, setError, addToCart, setFormVisibility, setModalVisibility, deleteFromCart, decCount } from '../../actions';
-
-import './styles.css'
 
 const CartList = ({ RestoService, cart, setModalVisibility, setError, loading, error, modalIsShown, cartTotalPrice, addToCart, deleteFromCart, decCount, setFormVisibility, formIsOpen }) => {
 

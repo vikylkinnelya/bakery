@@ -1,15 +1,11 @@
-import React from 'react';
 import { Switch, Route, Redirect } from "react-router-dom";
 import Header from '../header';
 import Footer from '../footer';
 import ScrollToTop from '../scrollToTop';
 import { Shop, Cart, About, Contact, Home } from '../pages/index';
-//import { Col, Container, Row } from 'react-bootstrap';
 import { LazyLoadComponent } from 'react-lazy-load-image-component';
 
-
 const App = () => {
-
 
     return (
         <>
@@ -19,24 +15,25 @@ const App = () => {
             <>
                 <Switch>
 
-                    <Redirect exact from="/" to="/home" />
-                    <Route path='/about/'>
+                    <Redirect exact from="/" to="/bakery/home" />
+                    
+                    <Route path='/bakery/about/'>
                         <About />
                     </Route>
 
-                    <Route path='/contact/'>
+                    <Route path='/bakery/contact/'>
                         <Contact />
                     </Route>
 
-                    <Route path='/home/'>
+                    <Route path='/bakery/home/'>
                         <Home />
                     </Route>
 
-                    <Route path='/shop/'>
+                    <Route path='/bakery/shop/'>
                         <Shop />
                     </Route>
 
-                    <Route path='/cart/'>
+                    <Route path='/bakery/cart/'>
                         <Cart />
                     </Route>
 

@@ -17,7 +17,7 @@ const Footer = () => {
                             </p>
                         </Col>
                         <Col md={2} className="image-container">
-                            <img alt="logo" src="images/footer-logo.svg" />
+                            <img alt="logo" src="bakery/docs/images/footer-logo.svg" />
                         </Col>
                         <Col md={5} >
                             <SubscribeForm />
@@ -54,8 +54,7 @@ const Footer = () => {
                             <h4>Contact Us</h4>
                             <ContactsArticle />
                         </Col>
-                        <p className="site-info">2014 All rights reserved, Powered by IgnitionThemes</p>
-                        {/* <a href="#all" className="to-top scroll-to"></a> */}
+                        <p className="site-info">2021 All rights reserved</p>
                     </Row>
                 </Container>
             </div>

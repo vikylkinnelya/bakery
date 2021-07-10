@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import './styles.css';
+import { useState } from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { Col, Navbar, Image } from 'react-bootstrap';
-import './styles.css'
 
 const Header = ({ cart, cartTotalPrice, expanded }) => {
 
@@ -27,19 +27,19 @@ const Header = ({ cart, cartTotalPrice, expanded }) => {
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav " className='nav-top row' >
 
-                <Col xs={{ span: 4, order: 1 }} md={{ span: 'auto', order: 1 }} ><NavLink activeClassName="selected" to='/about' aria-label='About'> About</NavLink></Col>
-                <Col xs={{ span: 4, order: 3 }} md={{ span: 'auto', order: 2 }} ><NavLink activeClassName="selected" to='/contact' aria-label='Contact'>Contact</NavLink></Col>
+                <Col xs={{ span: 4, order: 1 }} md={{ span: 'auto', order: 1 }} ><NavLink activeClassName="selected" to='/bakery/about' aria-label='About'> About</NavLink></Col>
+                <Col xs={{ span: 4, order: 3 }} md={{ span: 'auto', order: 2 }} ><NavLink activeClassName="selected" to='/bakery/contact' aria-label='Contact'>Contact</NavLink></Col>
 
                 <Col xs={{ span: 4, order: 2 }} md={{ span: 'auto', order: 3 }} className='col logo-col' >
-                    <NavLink to='/home' activeClassName="selected" aria-label='home' title='Home'>
-                        <Image fluid className="logo-primary" src='images/header-logo.svg' id="logo-1" alt="Bakery logo" />
+                    <NavLink to='/bakery/home' activeClassName="selected" aria-label='home' title='Home'>
+                        <Image fluid className="logo-primary" src='bakery/docs/images/header-logo.svg' id="logo-1" alt="Bakery logo" />
                     </NavLink>
                 </Col >
 
-                <Col xs={{ span: 4, order: 4 }} md={{ span: 'auto', order: 4 }} > <NavLink activeClassName="selected" to='/shop/all' aria-label='Menu'>Menu</NavLink></Col >
+                <Col xs={{ span: 4, order: 4 }} md={{ span: 'auto', order: 4 }} > <NavLink activeClassName="selected" to='/bakery/shop/all' aria-label='Menu'>Menu</NavLink></Col >
 
                 <Col xs={{ span: 4, order: 5 }} md={{ span: 'auto', order: 5 }} >
-                    <NavLink activeClassName="selected" to='/cart' className='basket-link' aria-label='Cart' title='Cart'>
+                    <NavLink activeClassName="selected" to='/bakery/cart' className='basket-link' aria-label='Cart' title='Cart'>
                         {basket}
                     </NavLink>
                 </Col >

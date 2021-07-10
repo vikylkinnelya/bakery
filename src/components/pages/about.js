@@ -1,7 +1,7 @@
+import './styles.css';
 import { LazyLoadComponent } from 'react-lazy-load-image-component';
 import {PageHeader}  from '../header';
 import { Col, Container, Row } from 'react-bootstrap';
-import './styles.css'
 
 const About = () => {
 
@@ -30,7 +30,7 @@ const About = () => {
                         <Row className='sucsess-row'>
 
                             <Col sm={12} md={6} >
-                                <img className="img-responsive sucsess-page-img" alt="pastries" src="./images/about-page.jpg" />
+                                <img className="img-responsive sucsess-page-img" alt="pastries" src="bakery/docs/images/about-page.jpg" />
                             </Col>
 
                             <Col sm={12} md={6}>

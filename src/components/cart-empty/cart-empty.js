@@ -1,7 +1,7 @@
+import './styles.css';
 import { Col, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
-import './styles.css'
 const CartEmpty = () => {
 
     return (
@@ -44,7 +44,7 @@ const CartEmpty = () => {
             </Row>
 
             <Row>
-                <Link to='/shop/all' className='button-void'> Go shop now!</Link>
+                <Link to='/bakery/shop/all' className='button-void'> Go shop now!</Link>
             </Row>
         </Col>
     )
