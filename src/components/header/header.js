@@ -32,7 +32,7 @@ const Header = ({ cart, cartTotalPrice, expanded }) => {
 
                 <Col xs={{ span: 4, order: 2 }} md={{ span: 'auto', order: 3 }} className='col logo-col' >
                     <NavLink to='/bakery/home' activeClassName="selected" aria-label='home' title='Home'>
-                        <Image fluid className="logo-primary" src='bakery/docs/images/header-logo.svg' id="logo-1" alt="Bakery logo" />
+                        <Image fluid className="logo-primary" src='bakery/images/header-logo.svg' id="logo-1" alt="Bakery logo" />
                     </NavLink>
                 </Col >
 

@@ -17,7 +17,7 @@ const Footer = () => {
                             </p>
                         </Col>
                         <Col md={2} className="image-container">
-                            <img alt="logo" src="bakery/docs/images/footer-logo.svg" />
+                            <img alt="logo" src="bakery/images/footer-logo.svg" />
                         </Col>
                         <Col md={5} >
                             <SubscribeForm />

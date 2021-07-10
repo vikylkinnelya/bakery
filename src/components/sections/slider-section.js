@@ -9,28 +9,28 @@ const SliderSection = () => {
                 className='img-carousel offset-borders'
                 interval={7500}>
                 <Carousel.Item>
-                    <Image fluid src="bakery/docs/images/slider-1.jpg" alt="tarts" />
+                    <Image fluid src="bakery/images/slider-1.jpg" alt="tarts" />
                     <Carousel.Caption className="ms-layer">
                         <h2 className="ms-layer">Best Of Our Tartlet Selection</h2>
                         <h3 className="ms-layer">There’s something to please everyone here, so tuck in!</h3>
                     </Carousel.Caption>
                 </Carousel.Item>
                 <Carousel.Item>
-                    <Image fluid src="bakery/docs/images/slider-2.jpg" alt="croissants" />
+                    <Image fluid src="bakery/images/slider-2.jpg" alt="croissants" />
                     <Carousel.Caption className="ms-layer">
                         <h2 className="ms-layer">Best Of Our Breakfast Selection</h2>
                         <h3 className="ms-layer">Our best-selling breakfast pastries</h3>
                     </Carousel.Caption>
                 </Carousel.Item>
                 <Carousel.Item>
-                    <Image fluid src="bakery/docs/images/slider-3.jpg" alt="breads" />
+                    <Image fluid src="bakery/images/slider-3.jpg" alt="breads" />
                     <Carousel.Caption className="ms-layer">
                         <h2 className="ms-layer">Pain De Campagne</h2>
                         <h3 className="ms-layer">Soft blend of natural yeast, rye flour, milled flour and sea salt</h3>
                     </Carousel.Caption>
                 </Carousel.Item>
                 <Carousel.Item>
-                    <Image fluid src="bakery/docs/images/slider-4.jpg" alt="escargot" />
+                    <Image fluid src="bakery/images/slider-4.jpg" alt="escargot" />
                     <Carousel.Caption className="ms-layer">
                         <h2 className="ms-layer">Escargot</h2>
                         <h3 className="ms-layer">Rich buttery dough filled with vanilla custard and plump raisins</h3>
