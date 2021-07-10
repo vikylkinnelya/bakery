@@ -62,12 +62,12 @@ const About = () => {
                             <LazyLoadComponent>
                                 <Col lg={6} className='video-col'>
                                     <div className="embed-responsive embed-responsive-4by3">
-                                        <iframe title='video' src="http://www.youtube.com/embed/Xit0QEeE7H8" frameBorder="0"></iframe>
+                                        <iframe title='video' src="http://www.youtube.com/embed/Xit0QEeE7H8" frameBorder="0" loading="lazy"/>
                                     </div>
                                 </Col>
                                 <Col lg={6} className='video-col'>
                                     <div className="embed-responsive embed-responsive-4by3">
-                                        <iframe title='video' src="http://www.youtube.com/embed/EGbNI26PPYg" frameBorder="0"></iframe>
+                                        <iframe title='video' src="http://www.youtube.com/embed/EGbNI26PPYg" frameBorder="0" loading="lazy"/>
                                     </div>
                                 </Col>
                             </LazyLoadComponent>

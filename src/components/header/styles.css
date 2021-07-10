@@ -102,9 +102,13 @@
 }
 
 .navbar-collapse.collapse {
-    max-height: 300px;
+    max-height: 250px;
 }
 
-.navbar-toggler {
-    position: relative;
+.navbar-expand-sm.navbar-light .navbar-toggler {
+    position: absolute;
+    top: 30px;
+    color: rgba(70, 44, 28, 1);
+    border: 2px rgba(104, 79, 64, 0.4)solid;
+    background-color: rgba(235, 235, 235, 0.3)
 }

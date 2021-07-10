@@ -3,7 +3,7 @@ import { db, storage, auth } from '../components/firebase';
 export default class RestoService {
 
     async setOrder(orderData, customerData) {
-        const date = new Date()
+        const date = Date.now()
         const ordersRef = db.collection('orders')
         await ordersRef.doc(`${date}`).set({
             order: orderData,
@@ -13,9 +13,8 @@ export default class RestoService {
     }
 
     async setSubscriber(subscriber) {
-        const date = new Date()
         const subscribersRef = db.collection('subscribers')
-        await subscribersRef.doc(`${date}`).set({
+        await subscribersRef.doc(`${subscriber.email}`).set({
             ...subscriber,
             date: new Date()
         })

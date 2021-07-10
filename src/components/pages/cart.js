@@ -1,8 +1,6 @@
-import React from 'react';
 import {PageHeader}  from '../header';
 import CartList from '../cart-list';
 import { connect } from 'react-redux';
-
 
 const Cart = ({cart}) => {
 
@@ -19,7 +17,7 @@ const Cart = ({cart}) => {
 
 const mapStateToProps = state => {
     return {
-        cart: state.cart
+        cart: state.cart,
     }
 }
 

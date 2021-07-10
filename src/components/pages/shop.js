@@ -1,4 +1,3 @@
-import React from 'react';
 import {PageHeader}  from '../header';
 import ShopListItems from '../shop-list';
 

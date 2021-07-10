@@ -65,10 +65,10 @@ const reducer = (state = initialState, action) => {
         case 'ADD_TO_CART':
 
             const id = action.payload
-            const param = action.param? `-${action.param}` : ''
-            let priceIdx
-
-            if (param === 'L') {
+            const param = action.param ? action.param : ''
+            const idWithParam = action.param ? id + '-' + param : id
+            let priceIdx = { L: 1 || 2, M: 0 || 1, S: 0 }
+            /* if (param === 'L') {
                 priceIdx = 1 || 2
             }
             else if (param === 'M') {
@@ -79,18 +79,18 @@ const reducer = (state = initialState, action) => {
             }
             else {
                 priceIdx = 0
-            }
+            } */
 
-            const itemIdxinCart = state.cart.findIndex(el => el.id === id)
+            const itemIdxinCart = state.cart.findIndex(el => el.id === idWithParam)
 
             if (itemIdxinCart === -1) {
                 const item = state.menu.find(item => item.id === id)
 
                 const newItem = {
                     name: item.name,
-                    id: id + param,
+                    id: idWithParam,
                     param: param,
-                    price: item.pricing[priceIdx],
+                    price: item.pricing[priceIdx[param]],
                     count: 1
                 }
 
@@ -102,7 +102,7 @@ const reducer = (state = initialState, action) => {
                 };
             }
             else {
-                const itemInCart = state.cart.find(el => el.id === id)
+                const itemInCart = state.cart.find(el => el.id === idWithParam)
                 const newItem = {
                     ...itemInCart,
                     count: ++itemInCart.count
@@ -173,13 +173,13 @@ const reducer = (state = initialState, action) => {
             const offer = state.menu.filter(el => el.type === 'offer')
             return {
                 ...state,
-                weekOfferItems: offer.slice(0,3)
+                weekOfferItems: offer.slice(0, 3)
             }
 
 
         case 'SHOW_TOST':
             return {
-                ...state, 
+                ...state,
                 tostIsShown: action.payload
             }
 

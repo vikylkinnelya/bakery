@@ -18,7 +18,7 @@ const CartItem = ({ cartItem, addToCart, deleteFromCart, decCount, RestoService 
     const [imgURL, setImgURL] = useState()
 
     useEffect(() => {
-        RestoService.getImg('menu', id, 'jpg')
+        cartItem && RestoService.getImg('menu', id, 'jpg')
         .then(url => setImgURL(url))
     })
 
@@ -40,7 +40,7 @@ const CartItem = ({ cartItem, addToCart, deleteFromCart, decCount, RestoService 
                     <button
                         aria-label='increment'
                         title='increment'
-                        onClick={() => addToCart(id, param)}>
+                        onClick={() => addToCart(id)}>
                         +
                     </button>
                 </h4>

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect} from 'react';
 import { Col, Row, Tab, Nav, Image } from 'react-bootstrap';
 import ProductCard from '../product-card';
 import WithRestoService from '../hoc';
@@ -8,11 +8,11 @@ import './offer.css'
 
 const OfferSection = ({ weekOfferItems, addToCart, RestoService }) => {
 
-    const firstOffer = weekOfferItems.length > 0 && weekOfferItems[0]
-    const secondOffer = weekOfferItems.length > 0 && weekOfferItems[1]
+    const firstOffer = weekOfferItems[0]
+    const secondOffer = weekOfferItems[1]
 
     const getURL = (id, attribute) => {
-        RestoService.getImg('menu', id)
+        weekOfferItems && RestoService.getImg('menu', id)
             .then(url => {
                 let img = document.getElementById(attribute)
                 img.setAttribute('src', url)
@@ -20,10 +20,9 @@ const OfferSection = ({ weekOfferItems, addToCart, RestoService }) => {
     }
 
     useEffect(() => {
-        weekOfferItems.length > 0 && getURL(firstOffer.id, 'firstOffer')
-        weekOfferItems.length > 0 && getURL(secondOffer.id, 'secondOffer')
+        getURL(firstOffer.id, 'firstOffer')
+        getURL(secondOffer.id, 'secondOffer')
     })
-
 
     return (
         <section id="offer-section">
@@ -70,7 +69,7 @@ const OfferSection = ({ weekOfferItems, addToCart, RestoService }) => {
                                 </Tab.Pane>
                             </Tab.Content>
                         </Col>
-                        
+
                     </Tab.Container>
                 </Row>
             </div>

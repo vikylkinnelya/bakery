@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { ClientsSection, ContactSection, OfferSection, ProductsSection, ServisesSection, SliderSection } from '../sections';
 import { Container, Row, Image } from 'react-bootstrap';
 import { connect } from 'react-redux';
@@ -7,7 +7,7 @@ import { LazyLoadComponent } from 'react-lazy-load-image-component';
 import { setMenu, setLoading, setError, setMenuType, addToCart, setLatestProducts, setWeekOffer } from '../../actions';
 import './styles.css'
 
-const Home = ({ RestoService, setMenu, setError, setLoading, setLatestProducts, setWeekOffer, setMenuType }) => {
+const Home = ({ RestoService, setMenu, setError, setLoading, setLatestProducts, setWeekOffer, setMenuType, weekOfferItems }) => {
 
     useEffect(() => {
         setLoading(true)
@@ -42,8 +42,11 @@ const Home = ({ RestoService, setMenu, setError, setLoading, setLatestProducts, 
                     </section>
                 </LazyLoadComponent>
 
+
                 <LazyLoadComponent>
-                    <OfferSection />
+                    {weekOfferItems !== null && weekOfferItems.length > 0 &&
+                        <OfferSection />
+                    }
                 </LazyLoadComponent>
 
             </Container >

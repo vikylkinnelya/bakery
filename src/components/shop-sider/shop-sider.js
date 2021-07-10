@@ -8,10 +8,6 @@ const ShopSider = ({menuType, menuTotalLength}) => {
 
         <Col sm={{ span: 12, order: 1 }} lg={{ span: 2, order: 2 }} className="sidebar">
 
-            <form className="form-search onscroll-animate">
-                <input name="s" type="text" placeholder="Type and hit enter" />
-            </form>
-
             <div className="article-header-4">
                 <h1>Categories</h1>
             </div>

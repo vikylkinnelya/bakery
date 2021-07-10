@@ -47,8 +47,8 @@ const ShopItem = ({ menuItem, menuType, addToCart, cart, showTost, RestoService 
     const [imgURL, setImgURL] = useState()
 
     useEffect(() => {
-        RestoService.getImg('menu', id, 'jpg')
-        .then(url => setImgURL(url))
+        menuItem && RestoService.getImg('menu', id, 'jpg')
+            .then(url => setImgURL(url))
     })
 
 

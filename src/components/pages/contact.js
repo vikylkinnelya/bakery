@@ -1,9 +1,9 @@
+import './styles.css'
 import { LazyLoadComponent } from 'react-lazy-load-image-component';
 import { ContactsArticle, SocialLinks } from '../small-comp';
 import { PageHeader } from '../header';
 import { Col, Container, Row } from 'react-bootstrap';
 import { FeedbackForm } from '../forms';
-import './styles.css'
 
 const Contact = () => {
     return (

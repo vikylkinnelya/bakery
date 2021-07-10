@@ -8,8 +8,6 @@ import WithRestoService from '../hoc';
 import { ResponseMessage } from '../responses';
 import { setLoading, setError } from '../../actions';
 
-
-
 const validationSchema = yup.object().shape({
     email: yup.string()
         .matches(/^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i, 'Invalid email')
@@ -19,17 +17,15 @@ const SubscribeForm = ({ setLoading, setError, RestoService }) => {
 
     const [subscriber, setSubscriberState] = useState(false)
 
-    const sendSubscribersData = useCallback(() => {
+    const sendSubscribersData = useCallback((data) => {
         setLoading(true)
-        RestoService.setSubscriber(subscriber)
+        RestoService.setSubscriber(data)
             .catch(error => setError(error))
         setLoading(false)
+        setSubscriberState(true)
     }, [subscriber])
 
-    const setSubscribersData = (data) => {
-        setSubscriberState(data)
-        sendSubscribersData()
-    }
+    
 
     return (
         <>
@@ -47,7 +43,7 @@ const SubscribeForm = ({ setLoading, setError, RestoService }) => {
                         setSubmitting(true);
                         setTimeout(() => {
                             resetForm()
-                            setSubscribersData(values)
+                            sendSubscribersData(values)
                             setSubmitting(false) 
                         }, 1000) 
                     }}

@@ -30,17 +30,13 @@ const FeedbackForm = ({ type, setLoading, setError, RestoService }) => {
 
     const [feedback, setFeedbackstate] = useState(false)
 
-    const sendFeedback = useCallback(() => {
+    const sendFeedback = useCallback((data) => {
         setLoading(true)
-        RestoService.setFeedback(feedback)
+        RestoService.setFeedback(data)
             .catch(error => setError(error))
         setLoading(false)
+        setFeedbackstate(true)
     }, [feedback])
-
-    const setFeedbackData = (data) => {
-        setFeedbackstate(data)
-        sendFeedback()
-    }
 
     const section = {
         width: 4,
@@ -93,7 +89,7 @@ const FeedbackForm = ({ type, setLoading, setError, RestoService }) => {
                     setSubmitting(true); //нужно придумать что-нибудь для этого
                     setTimeout(() => {
                         resetForm()
-                        setFeedbackData(values)
+                        sendFeedback(values)
                         setSubmitting(false)
                     }, 1500)
                 }}
