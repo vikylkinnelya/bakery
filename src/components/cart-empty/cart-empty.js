@@ -44,7 +44,7 @@ const CartEmpty = () => {
             </Row>
 
             <Row>
-                <Link to='/bakery/shop/all' className='button-void'> Go shop now!</Link>
+                <Link to='/shop/all' className='button-void'> Go shop now!</Link>
             </Row>
         </Col>
     )

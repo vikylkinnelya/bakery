@@ -15,25 +15,25 @@ const App = () => {
             <>
                 <Switch>
 
-                    <Redirect exact from="/" to="/bakery/home" />
+                    <Redirect exact from="/" to="/home" />
                     
-                    <Route path='/bakery/about/'>
+                    <Route path='/about/'>
                         <About />
                     </Route>
 
-                    <Route path='/bakery/contact/'>
+                    <Route path='/contact/'>
                         <Contact />
                     </Route>
 
-                    <Route path='/bakery/home/'>
+                    <Route path='/home/'>
                         <Home />
                     </Route>
 
-                    <Route path='/bakery/shop/'>
+                    <Route path='/shop/'>
                         <Shop />
                     </Route>
 
-                    <Route path='/bakery/cart/'>
+                    <Route path='/cart/'>
                         <Cart />
                     </Route>
 

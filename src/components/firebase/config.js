@@ -31,4 +31,11 @@ const storage = firebaseApp.storage().ref();
 
 const auth= firebase.auth().signInAnonymously()
 
+
+
+
+
+
+
+
 export { db, storage, auth };

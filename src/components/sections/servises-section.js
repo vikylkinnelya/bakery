@@ -29,7 +29,7 @@ const ServisesSection = ({ setMenuType }) => {
                         <Link
                             title='Lunch'
                             className='more-href'
-                            to='/bakery/shop/lunch'
+                            to='/shop/lunch'
                             onClick={() => setMenuType('lunch')}
                         > more </Link>
                     </div>
@@ -64,7 +64,7 @@ const ServisesSection = ({ setMenuType }) => {
                         <Link
                             title='Breakfast'
                             className='more-href'
-                            to='/bakery/shop/breakfast'
+                            to='/shop/breakfast'
                             onClick={() => setMenuType('breakfast')}
                         > more </Link>
                     </div>
@@ -108,7 +108,7 @@ const ServisesSection = ({ setMenuType }) => {
                         <Link
                             title='Bread'
                             className='more-href'
-                            to='/bakery/shop/bread'
+                            to='/shop/bread'
                             onClick={() => setMenuType('bread')}
                         > more </Link>
                     </div>
@@ -130,7 +130,7 @@ const ServisesSection = ({ setMenuType }) => {
                         <Link
                             title='Tarts'
                             className='more-href'
-                            to='/bakery/shop/tarts'
+                            to='/shop/tarts'
                             onClick={() => setMenuType('tarts')}
                         > more </Link>
                     </div>
