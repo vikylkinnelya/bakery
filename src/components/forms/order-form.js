@@ -1,4 +1,3 @@
-import './styles.css';
 import { Formik} from 'formik';
 import { Row, Col, Form, Button } from 'react-bootstrap';
 import * as yup from 'yup';

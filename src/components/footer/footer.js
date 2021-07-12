@@ -1,4 +1,3 @@
-import './styles.css';
 import { ContactsArticle, SocialLinks } from '../small-comp';
 import { Col, Row, Container } from 'react-bootstrap';
 import { SubscribeForm } from '../forms';

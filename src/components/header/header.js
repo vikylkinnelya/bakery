@@ -1,4 +1,3 @@
-import './styles.css';
 import { useState } from 'react';
 import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
@@ -31,7 +30,7 @@ const Header = ({ cart, cartTotalPrice, expanded }) => {
                 <Col xs={{ span: 4, order: 3 }} md={{ span: 'auto', order: 2 }} ><NavLink activeClassName="selected" to='/contact' aria-label='Contact'>Contact</NavLink></Col>
 
                 <Col xs={{ span: 4, order: 2 }} md={{ span: 'auto', order: 3 }} className='col logo-col' >
-                    <NavLink to='/home' activeClassName="selected" aria-label='home' title='Home'>
+                    <NavLink exact to='/' activeClassName="selected" aria-label='home' title='Home'>
                         <Image fluid className="logo-primary" src='./images/header-logo.svg' id="logo-1" alt="Bakery logo" />
                     </NavLink>
                 </Col >

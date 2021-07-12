@@ -1,5 +1,4 @@
 import { Col, Row } from 'react-bootstrap';
-import './styles.css';
 
 const ErrorComponent = () => {
     return (

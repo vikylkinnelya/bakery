@@ -1,7 +1,6 @@
 import React, {useEffect, useState} from 'react';
 import { Col, Row, Image } from 'react-bootstrap';
-import WithRestoService from '../hoc';
-import './styles.css'
+import WithRestoService from '../hoc'; 
 
 const ProductCard = ({ product, onAddToCart, RestoService }) => {
 

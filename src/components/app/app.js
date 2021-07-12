@@ -1,25 +1,25 @@
-import React, { Suspense, lazy } from 'react';
-import { Switch, Route, Redirect } from "react-router-dom";
+import React, { Suspense } from 'react';
+import { Switch, Route } from "react-router-dom";
 import Header from '../header';
-import Footer from '../footer';
 import ScrollToTop from '../scrollToTop';
-import { Shop, Cart, About, Contact, Home } from '../pages/index';
+import Spinner from '../spinner';
 import { LazyLoadComponent } from 'react-lazy-load-image-component';
-
-
+const About = React.lazy(() => import('../about-page'));
+const Contact = React.lazy(() => import('../contact-page'));
+const Home = React.lazy(() => import('../home-page'));
+const Shop = React.lazy(() => import('../shop-page'));
+const Cart = React.lazy(() => import('../cart-page'));
+const Footer = React.lazy(() => import('../footer'))
 
 const App = () => {
 
     return (
-        <>
+        <Suspense fallback={<Spinner />}>
             <ScrollToTop />
             <Header />
 
-            <>
                 <Switch>
 
-                    <Redirect exact from="/" to="/home" />
-                    
                     <Route path='/about/'>
                         <About />
                     </Route>
@@ -28,7 +28,7 @@ const App = () => {
                         <Contact />
                     </Route>
 
-                    <Route path='/home/'>
+                    <Route exact path='/'>
                         <Home />
                     </Route>
 
@@ -41,13 +41,13 @@ const App = () => {
                     </Route>
 
                 </Switch>
-            </>
+           
 
             <LazyLoadComponent>
                 <Footer />
             </LazyLoadComponent>
 
-        </>
+        </Suspense>
     )
 }
 

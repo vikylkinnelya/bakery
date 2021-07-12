@@ -1,5 +1,3 @@
-import './styles.css'
-
 const PageHeader = ({ title, descr, id}) => {
     return (
         <section className='top-section'>
