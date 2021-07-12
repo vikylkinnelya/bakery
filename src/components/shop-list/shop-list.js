@@ -11,7 +11,8 @@ import { withRouter } from "react-router";
 import { LazyLoadComponent, trackWindowScroll } from 'react-lazy-load-image-component';
 import { setMenu, setLoading, setError, setMenuType, showTost } from '../../actions';
 import './styles.css';
-//import db from '../firebase';
+
+
 
 const ShopListItems = ({ RestoService, location, setMenuType, setMenu, setError, setLoading, scrollPosition, menuItems, loading, error, menuType, menuTotalLength, tostTitle, tostIsShown, showTost }) => {
 

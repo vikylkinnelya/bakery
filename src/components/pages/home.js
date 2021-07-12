@@ -1,4 +1,5 @@
 import './styles.css';
+import React, {lazy} from 'react';
 import { Container, Row, Image } from 'react-bootstrap';
 import { useEffect } from 'react';
 import { ClientsSection, ContactSection, OfferSection, ProductsSection, ServisesSection, SliderSection } from '../sections';

@@ -1,4 +1,4 @@
-import { db, storage, auth } from '../components/firebase';
+import { db, storage } from '../components/firebase';
 
 export default class RestoService {
 
@@ -27,11 +27,6 @@ export default class RestoService {
             ...feedback,
             date: new Date()
         })
-    }
-
-    async doAuth() {
-        await auth.then(() => console.log('signed in'))
-            .catch(error => console.log(error))
     }
 
     async getImg (folder, id, type='jpg', param='-min' ) {
