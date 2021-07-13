@@ -8,7 +8,7 @@ const ServisesSection = ({ setMenuType }) => {
                 <h1>Main services we provide</h1>
                 <p>Our services are the best in town, we provide great quality baked products</p>
             </header>
-            
+
             <Row >
                 <Col xs={6} lg={3} >
                     <div className="service-box">
@@ -30,7 +30,7 @@ const ServisesSection = ({ setMenuType }) => {
                             className='more-href'
                             to='/shop/lunch'
                             onClick={() => setMenuType('lunch')}
-                        > more </Link>
+                        > more lunch </Link>
                     </div>
                 </Col>
                 <Col xs={6} lg={3} >
@@ -65,7 +65,7 @@ const ServisesSection = ({ setMenuType }) => {
                             className='more-href'
                             to='/shop/breakfast'
                             onClick={() => setMenuType('breakfast')}
-                        > more </Link>
+                        > more breakfast</Link>
                     </div>
                 </Col>
                 <Col xs={6} lg={3} >
@@ -109,7 +109,7 @@ const ServisesSection = ({ setMenuType }) => {
                             className='more-href'
                             to='/shop/bread'
                             onClick={() => setMenuType('bread')}
-                        > more </Link>
+                        > more bread</Link>
                     </div>
                 </Col>
                 <Col xs={6} lg={3} >
@@ -125,13 +125,12 @@ const ServisesSection = ({ setMenuType }) => {
                         <p>
                             In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt.
                         </p>
-
                         <Link
                             title='Tarts'
                             className='more-href'
                             to='/shop/tarts'
                             onClick={() => setMenuType('tarts')}
-                        > more </Link>
+                        > more tarts</Link>
                     </div>
                 </Col>
             </Row>

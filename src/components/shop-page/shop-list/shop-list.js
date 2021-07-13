@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import Spinner from '../../spinner';
 import ErrorComponent from '../../error';
 import { Col, Container, Row } from 'react-bootstrap';
@@ -9,20 +9,26 @@ import WithRestoService from '../../hoc';
 import { connect } from 'react-redux';
 import { withRouter } from "react-router";
 import { LazyLoadComponent, trackWindowScroll } from 'react-lazy-load-image-component';
-import { setMenu, setLoading, setError, setMenuType, showTost } from '../../../actions'; 
+import { setMenu, setLoading, setError, setMenuType, showTost } from '../../../actions';
 
 const ShopListItems = ({ RestoService, location, setMenuType, setMenu, setError, setLoading, scrollPosition, menuItems, loading, error, menuType, menuTotalLength, tostTitle, tostIsShown, showTost }) => {
 
     const [endAt, setEndAt] = useState(12)
 
-    useEffect(() => { 
+    const getMenu = useCallback(() => {
+        const pathMenuType = location.pathname.split('/')[2]
+        RestoService.fetchMenu(menuType)
+            .then(res => setMenu(res)) //в этом экшене изменяется так же и ожидание
+            .catch(error => setError(error))
+    }, [menuType])
+
+    useEffect(() => {
         setLoading(true)
         const pathMenuType = location.pathname.split('/')[2]
         setMenuType(pathMenuType)
-        RestoService.fetchMenu(pathMenuType)
-            .then(res => setMenu(res)) //в этом экшене изменяется так же и ожидание
-            .catch(error => setError(error))
-    }, [location.pathname])
+        getMenu()
+    }, [getMenu])
+
 
 
     const showMoreBtn = <button className='show-more-btn' onClick={() => onShowMore()}>

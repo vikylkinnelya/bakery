@@ -170,7 +170,7 @@ const FeedbackForm = ({ type, setLoading, setError, RestoService }) => {
 
                                 <Form.Group controlId="formFeedback">
                                     <Form.Control as="textarea" rows={3}
-                                        type='text'
+                                        
                                         name='feedback'
                                         placeholder={page === 'main' ? 'Your message here' : undefined}
                                         onChange={handleChange}

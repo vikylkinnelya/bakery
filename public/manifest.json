@@ -1,5 +1,5 @@
 {
-    "name": "Our Bakery",
+    "name": "Our Bakery Web",
     "author": "Viktoryia Nelia",
     "short_name": "Our Bakery",
     "description": "Bakery where you can buy the best Miami Beach pastries",
@@ -19,5 +19,6 @@
     "background_color": "#ffffff",
     "start_url": "/",
     "scope": "/",
-    "display": "standalone"
+    "display": "standalone",
+    "prefer_related_applications": "true"
 }

@@ -22,41 +22,28 @@ const Home = ({ RestoService, setMenu, setError, setLoading, setLatestProducts, 
             <SliderSection />
             <Container>
 
-                <LazyLoadComponent>
-                    <ProductsSection />
-                </LazyLoadComponent>
+                <ProductsSection />
 
-                <LazyLoadComponent>
-                    <ServisesSection
-                        setMenuType={setMenuType} />
-                </LazyLoadComponent>
+                <ServisesSection
+                    setMenuType={setMenuType} />
 
-                <LazyLoadComponent>
-                    <section id="heading-section">
-                        <Row className="section-content">
-                            <h2 className="heading-huge">Different types of bread products</h2>
-                            <h3 className="heading-small">You will find them only the best products in our stores</h3>
-                            <Image fluid id="bread-image" alt="bread" className="img-responsive" src="./images/bread-types-min.jpg" />
-                        </Row>
-                    </section>
-                </LazyLoadComponent>
+                <section id="heading-section">
+                    <Row className="section-content">
+                        <h2 className="heading-huge">Different types of bread products</h2>
+                        <h3 className="heading-small">You will find them only the best products in our stores</h3>
+                        <Image fluid id="bread-image" alt="bread" className="img-responsive" src="./images/bread-types-min.jpg" />
+                    </Row>
+                </section>
 
-
-                <LazyLoadComponent>
-                    {weekOfferItems !== null && weekOfferItems.length > 0 &&
-                        <OfferSection />
-                    }
-                </LazyLoadComponent>
+                {weekOfferItems !== null && weekOfferItems.length > 0 &&
+                    <OfferSection />
+                }
 
             </Container >
 
-            <LazyLoadComponent>
-                <ContactSection />
-            </LazyLoadComponent>
+            <ContactSection />
 
-            <LazyLoadComponent>
-                <ClientsSection />
-            </LazyLoadComponent>
+            <ClientsSection />
 
         </>
     )

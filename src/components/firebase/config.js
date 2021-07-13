@@ -1,6 +1,5 @@
 import firebase from 'firebase/app';
-import 'firebase/firestore';
-import 'firebase/analytics';
+import 'firebase/firestore'; 
 import 'firebase/storage';
 import 'firebase/auth';
 
@@ -16,7 +15,6 @@ const firebaseConfig = {
 };
 
 const firebaseApp = firebase.initializeApp(firebaseConfig);
-firebase.analytics()
 firebase.auth().signInAnonymously()
 
 // Pass your reCAPTCHA v3 site key (public key) to activate(). Make sure this

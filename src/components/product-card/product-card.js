@@ -1,6 +1,6 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
 import { Col, Row, Image } from 'react-bootstrap';
-import WithRestoService from '../hoc'; 
+import WithRestoService from '../hoc';
 
 const ProductCard = ({ product, onAddToCart, RestoService }) => {
 
@@ -10,13 +10,13 @@ const ProductCard = ({ product, onAddToCart, RestoService }) => {
 
     useEffect(() => {
         product && RestoService.getImg('menu', product.id, 'jpg', '-img-min')
-        .then(url => setImgURL(url))
+            .then(url => setImgURL(url))
     })
 
     return (
         <Col md={12} className="offer-box">
             <Row>
-                <Col lg={{span:5, order: 1}} xs={{span: 12, order:2}} className="offer-box-left offer-info">
+                <Col lg={{ span: 5, order: 1 }} xs={{ span: 12, order: 2 }} className="offer-box-left offer-info">
 
                     <h1>{name}</h1>
                     <p>{description}</p>
@@ -39,8 +39,8 @@ const ProductCard = ({ product, onAddToCart, RestoService }) => {
                         </button>
                     </Row>
                 </Col>
-                <Col xs={{span:12, order:1}} lg={{span:7, order:2}} className="offer-box-right" >
-                    <Image fluid src={imgURL} />
+                <Col xs={{ span: 12, order: 1 }} lg={{ span: 7, order: 2 }} className="offer-box-right" >
+                    <Image fluid src={imgURL} alt={name} />
 
                     <div className="product-label-container big-label">
                         <div className="product-label">

@@ -24,11 +24,11 @@ const ShopItem = ({ menuItem, menuType, addToCart, cart, showTost, RestoService 
     const addedItem = cart.findIndex(el => el.id === id) !== -1 ? 'added' : null
 
     const smallSize = priceMenu && pricing.length === 3
-        && <button className='small-size' onClick={() => addToCart(id, 'S')}> S </button>
+        && <button className='small-size' onClick={() => addToCart(id, 'S')} aria-label='small size'> S </button>
     const mediumSize = priceMenu &&
-        <button className='medium-size' onClick={() => addToCart(id, 'M')}> M </button>
+        <button className='medium-size' onClick={() => addToCart(id, 'M')} aria-label='medium size'> M </button>
     const bigSize = priceMenu &&
-        <button className='big-size' onClick={() => addToCart(id, 'L')}> L </button>
+        <button className='big-size' onClick={() => addToCart(id, 'L')} aria-label='large size'> L </button>
 
     const defCartClick = (id) => {
         if (pricing.length > 1 && !priceMenu) {
@@ -46,7 +46,7 @@ const ShopItem = ({ menuItem, menuType, addToCart, cart, showTost, RestoService 
     const [imgURL, setImgURL] = useState()
 
     useEffect(() => {
-        menuItem && RestoService.getImg('menu', id, 'jpg')
+        RestoService.getImg('menu', id, 'jpg')
             .then(url => setImgURL(url))
     })
 
@@ -67,7 +67,7 @@ const ShopItem = ({ menuItem, menuType, addToCart, cart, showTost, RestoService 
 
                 <div className="product-icons">
 
-                    <button className={`product-icon-container ${addedItem}`} onClick={() => defCartClick(id)}>
+                    <button className={`product-icon-container ${addedItem}`} aria-label='order' onClick={() => defCartClick(id)}>
                         {!priceMenu && <i className='fa fa-shopping-cart' />}
                         {priceMenu && pricing && <i className="fas fa-times"></i>}
                     </button>
