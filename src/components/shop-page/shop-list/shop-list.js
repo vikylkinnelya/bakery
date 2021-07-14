@@ -11,12 +11,11 @@ import { withRouter } from "react-router";
 import { LazyLoadComponent, trackWindowScroll } from 'react-lazy-load-image-component';
 import { setMenu, setLoading, setError, setMenuType, showTost } from '../../../actions';
 
-const ShopListItems = ({ RestoService, location, setMenuType, setMenu, setError, setLoading, scrollPosition, menuItems, loading, error, menuType, menuTotalLength, tostTitle, tostIsShown, showTost }) => {
+const ShopListItems = React.memo(({ RestoService, location, setMenuType, setMenu, setError, setLoading, scrollPosition, menuItems, loading, error, menuType, menuTotalLength, tostTitle, tostIsShown, showTost }) => {
 
     const [endAt, setEndAt] = useState(12)
 
     const getMenu = useCallback(() => {
-        const pathMenuType = location.pathname.split('/')[2]
         RestoService.fetchMenu(menuType)
             .then(res => setMenu(res)) //в этом экшене изменяется так же и ожидание
             .catch(error => setError(error))
@@ -85,7 +84,7 @@ const ShopListItems = ({ RestoService, location, setMenuType, setMenu, setError,
             </Row>
         </ Container>
     )
-}
+})
 
 
 const mapStateToProps = state => {

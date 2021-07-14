@@ -5,7 +5,8 @@ import { ToastComp } from '../small-comp';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { addToCart, showTost } from '../../actions';
-const ProductsSection = ({ latestProducts, loading, cart, menuType, addToCart, tostIsShown, showTost, tostTitle }) => {
+
+const ProductsSection = React.memo(({ latestProducts, loading, cart, menuType, addToCart, tostIsShown, showTost, tostTitle }) => {
 
     const [startAt, setStart] = useState(0)
     const [endAt, setEnd] = useState(4)
@@ -41,8 +42,8 @@ const ProductsSection = ({ latestProducts, loading, cart, menuType, addToCart, t
                 </header>
                 <Carousel fade
                     className='shop-slide'
-                    controls={false}
-                    interval={7500}
+                    slide={false} 
+                    controls={false} 
                     onSelect={activeIndex => {
                         onChangeSliderPage(activeIndex)
                     }}
@@ -71,7 +72,7 @@ const ProductsSection = ({ latestProducts, loading, cart, menuType, addToCart, t
 
         </section>
     )
-}
+})
 
 
 const mapStateToProps = state => {

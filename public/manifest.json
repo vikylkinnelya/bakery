@@ -20,5 +20,5 @@
     "start_url": "/",
     "scope": "/",
     "display": "standalone",
-    "prefer_related_applications": "true"
+    "prefer_related_applications": true
 }

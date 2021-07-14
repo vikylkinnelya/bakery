@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Col, Row, Image } from 'react-bootstrap';
 import WithRestoService from '../hoc';
 
-const ProductCard = ({ product, onAddToCart, RestoService }) => {
+const ProductCard = React.memo(({ product, onAddToCart, RestoService }) => {
 
     const { name, description, pricing, ingredients, id } = product
 
@@ -52,6 +52,6 @@ const ProductCard = ({ product, onAddToCart, RestoService }) => {
             </Row>
         </Col>
     )
-}
+})
 
 export default WithRestoService()(ProductCard);

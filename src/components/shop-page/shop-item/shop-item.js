@@ -4,9 +4,9 @@ import 'react-lazy-load-image-component/src/effects/blur.css';
 import { Col } from 'react-bootstrap';
 import WithRestoService from '../../hoc';
 import { connect } from 'react-redux';
-import { addToCart, showTost } from '../../../actions'; 
+import { addToCart, showTost } from '../../../actions';
 
-const ShopItem = ({ menuItem, menuType, addToCart, cart, showTost, RestoService }) => {
+const ShopItem = React.memo(({ menuItem, menuType, addToCart, cart, showTost, RestoService }) => {
 
     const { name, description, pricing, type, id } = menuItem
     const [priceMenu, setShowPriceMenu] = useState(false)
@@ -45,10 +45,11 @@ const ShopItem = ({ menuItem, menuType, addToCart, cart, showTost, RestoService 
 
     const [imgURL, setImgURL] = useState()
 
-    useEffect(() => {
+    useEffect(() => { 
         RestoService.getImg('menu', id, 'jpg')
             .then(url => setImgURL(url))
-    })
+        
+    }, [menuItem])
 
 
     return (
@@ -85,7 +86,7 @@ const ShopItem = ({ menuItem, menuType, addToCart, cart, showTost, RestoService 
             {menuItem.label && productLabel}
         </ Col>
     )
-}
+})
 
 
 
