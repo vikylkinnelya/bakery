@@ -1,3 +1,4 @@
+import React from 'react';
 import { Container, Row, Image } from 'react-bootstrap';
 import { useEffect } from 'react';
 import { ClientsSection, ContactSection, OfferSection, ProductsSection, ServisesSection, SliderSection } from '../home-sections';
@@ -6,23 +7,24 @@ import WithRestoService from '../hoc';
 import { LazyLoadComponent } from 'react-lazy-load-image-component';
 import { setMenu, setLoading, setError, setMenuType, addToCart, setLatestProducts, setWeekOffer } from '../../actions';
 
-const Home = ({ RestoService, setMenu, setError, setLoading, setLatestProducts, setWeekOffer, setMenuType, weekOfferItems }) => {
+const Home = ({ RestoService, setMenu, setError, setLoading, latestProducts, setLatestProducts, setWeekOffer, setMenuType, weekOfferItems }) => {
 
     useEffect(() => {
         setLoading(true)
         RestoService.fetchMenu()
             .then(res => setMenu(res)) //в этом экшене изменяется так же и ожидание
-            .then(res => setLatestProducts())
-            .then(res => setWeekOffer())
             .catch(error => setError(error))
-    })
+        setLatestProducts()
+        setWeekOffer()
+    }, [])
 
     return (
         <>
             <SliderSection />
             <Container>
 
-                <ProductsSection />
+                {latestProducts.length > 0 && <ProductsSection />}
+
 
                 <ServisesSection
                     setMenuType={setMenuType} />
@@ -35,9 +37,7 @@ const Home = ({ RestoService, setMenu, setError, setLoading, setLatestProducts, 
                     </Row>
                 </section>
 
-                {weekOfferItems !== null && weekOfferItems.length > 0 &&
-                    <OfferSection />
-                }
+                {weekOfferItems.length > 0 && <OfferSection />}
 
             </Container >
 

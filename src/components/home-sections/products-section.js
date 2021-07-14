@@ -1,12 +1,12 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import { Carousel, Row } from 'react-bootstrap';
 import ShopItem from '../shop-page/shop-item';
 import { ToastComp } from '../small-comp';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { addToCart, showTost } from '../../actions';
+import { addToCart, showTost, setLatestProducts } from '../../actions';
 
-const ProductsSection = React.memo(({ latestProducts, loading, cart, menuType, addToCart, tostIsShown, showTost, tostTitle }) => {
+const ProductsSection = ({ latestProducts, loading, cart, menuType, setLatestProducts, addToCart, tostIsShown, showTost, tostTitle }) => {
 
     const [startAt, setStart] = useState(0)
     const [endAt, setEnd] = useState(4)
@@ -19,8 +19,7 @@ const ProductsSection = React.memo(({ latestProducts, loading, cart, menuType, a
 
     const CarouselItem =
         <Row className='product-row'>
-            {!loading && latestProducts != null && latestProducts.length > 0
-                && latestProducts.slice(startAt, endAt).map(menuItem => (
+            {latestProducts.slice(startAt, endAt).map(menuItem => (
                     <ShopItem
                         key={menuItem.id}
                         menuItem={menuItem}
@@ -42,8 +41,8 @@ const ProductsSection = React.memo(({ latestProducts, loading, cart, menuType, a
                 </header>
                 <Carousel fade
                     className='shop-slide'
-                    slide={false} 
-                    controls={false} 
+                    slide={false}
+                    controls={false}
                     onSelect={activeIndex => {
                         onChangeSliderPage(activeIndex)
                     }}
@@ -72,7 +71,7 @@ const ProductsSection = React.memo(({ latestProducts, loading, cart, menuType, a
 
         </section>
     )
-})
+}
 
 
 const mapStateToProps = state => {
@@ -87,7 +86,7 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = {
-    addToCart, showTost
+    addToCart, showTost, setLatestProducts
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProductsSection)

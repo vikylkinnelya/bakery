@@ -1,17 +1,14 @@
-import React, { useEffect} from 'react';
+import React, { useEffect } from 'react';
 import { Col, Row, Tab, Nav, Image } from 'react-bootstrap';
 import ProductCard from '../product-card';
 import WithRestoService from '../hoc';
 import { connect } from 'react-redux';
-import { addToCart } from '../../actions';
+import { addToCart, setWeekOffer } from '../../actions';
 
-const OfferSection = ({ weekOfferItems, addToCart, RestoService }) => {
-
-    const firstOffer = weekOfferItems[0]
-    const secondOffer = weekOfferItems[1]
+const OfferSection = ({ weekOfferItems, setWeekOffer, addToCart, RestoService }) => {
 
     const getURL = (id, attribute) => {
-        weekOfferItems && RestoService.getImg('menu', id)
+        RestoService.getImg('menu', id)
             .then(url => {
                 let img = document.getElementById(attribute)
                 img.setAttribute('src', url)
@@ -19,8 +16,8 @@ const OfferSection = ({ weekOfferItems, addToCart, RestoService }) => {
     }
 
     useEffect(() => {
-        getURL(firstOffer.id, 'firstOffer')
-        getURL(secondOffer.id, 'secondOffer')
+        getURL(weekOfferItems[0].id, 'firstOffer')
+        getURL(weekOfferItems[1].id, 'secondOffer')
     })
 
     return (
@@ -34,42 +31,44 @@ const OfferSection = ({ weekOfferItems, addToCart, RestoService }) => {
                 </header>
 
                 <Row className='tabs-big-container' >
-                    <Tab.Container id='left-tabs' defaultActiveKey="first" >
-                        <Col xs={12} md={3} lg={2} className='nav-link-col'>
-                            <Nav>
-                                <Nav.Item>
-                                    <Nav.Link eventKey="first">
-                                        <Image fluid alt={firstOffer.title} id='firstOffer' />
-                                    </Nav.Link>
-                                </Nav.Item>
-                                <Nav.Item>
-                                    <Nav.Link eventKey="second">
-                                        <Image fluid alt={secondOffer.title} id='secondOffer' />
-                                    </Nav.Link>
-                                </Nav.Item>
-                            </Nav>
-                        </Col>
 
-                        <Col md={8} lg={9}>
-                            <Tab.Content>
-                                <Tab.Pane
-                                    eventKey='first'>
-                                    <ProductCard
-                                        product={firstOffer}
-                                        onAddToCart={addToCart}
-                                    />
-                                </Tab.Pane>
-                                <Tab.Pane
-                                    eventKey='second'>
-                                    <ProductCard
-                                        product={secondOffer}
-                                        onAddToCart={addToCart}
-                                    />
-                                </Tab.Pane>
-                            </Tab.Content>
-                        </Col>
+                    {weekOfferItems.length > 0 && weekOfferItems !== null &&
 
-                    </Tab.Container>
+                        <Tab.Container id='left-tabs' defaultActiveKey="first" >
+                            <Col xs={12} md={3} lg={2} className='nav-link-col'>
+                                <Nav>
+                                    <Nav.Item>
+                                        <Nav.Link eventKey="first">
+                                            <Image fluid alt={weekOfferItems[0].title} id='firstOffer' />
+                                        </Nav.Link>
+                                    </Nav.Item>
+                                    <Nav.Item>
+                                        <Nav.Link eventKey="second">
+                                            <Image fluid alt={weekOfferItems[1].title} id='secondOffer' />
+                                        </Nav.Link>
+                                    </Nav.Item>
+                                </Nav>
+                            </Col>
+
+                            <Col md={8} lg={9}>
+                                <Tab.Content>
+                                    <Tab.Pane
+                                        eventKey='first'>
+                                        <ProductCard
+                                            product={weekOfferItems[0]}
+                                            onAddToCart={addToCart}
+                                        />
+                                    </Tab.Pane>
+                                    <Tab.Pane
+                                        eventKey='second'>
+                                        <ProductCard
+                                            product={weekOfferItems[1]}
+                                            onAddToCart={addToCart}
+                                        />
+                                    </Tab.Pane>
+                                </Tab.Content>
+                            </Col>
+                        </Tab.Container>}
                 </Row>
             </div>
         </section>
@@ -83,7 +82,7 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = {
-    addToCart
+    addToCart, setWeekOffer
 }
 
 export default WithRestoService()(connect(mapStateToProps, mapDispatchToProps)(OfferSection));
