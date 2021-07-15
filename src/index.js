@@ -6,7 +6,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 import RestoService from './servises/restoService';
 import RestoServiceContext from './components/resto-service-context';
 import store from './store';
-import "bootstrap/dist/css/bootstrap.min.css";
+import "bootstrap/dist/css/bootstrap.css";
 import './main.css';
 import '@fortawesome/fontawesome-free/css/all.min.css';
 

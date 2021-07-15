@@ -1,6 +1,5 @@
-import { Col, Row } from 'react-bootstrap';
-import { LazyLoadImage } from 'react-lazy-load-image-component';
-import 'react-lazy-load-image-component/src/effects/blur.css';
+import { Col, Row, Image } from 'react-bootstrap';
+
 
 const ClientsSection = () => {
     return (
@@ -10,45 +9,35 @@ const ClientsSection = () => {
                 <p>The companies that trust us are the main key to our succes, check out our top clients</p>
             </header>
             <Row className='clients-row'>
-                <Col xs={6} sm={4} md={3} lg={2} className="client-logo">
-                    <LazyLoadImage
-                        alt='Salomon'
-                        delayTime={300}
-                        effect="blur"
-                        src={`./images/clients/client1.png`}
+                <Col xs={6} sm={4} md={3} lg={2}>
+                    <Image fluid
+                        alt="Salomon"
+                        src="/images/client1-min.png"
                     />
                 </Col>
-                <Col xs={6} sm={4} md={3} lg={2} className="client-logo" >
-                    <LazyLoadImage
-                        alt='Acura'
-                        delayTime={350}
-                        effect="blur"
-                        src={`./images/clients/client5.png`}
+                <Col xs={6} sm={4} md={3} lg={2} >
+                    <img
+                        alt="Acura"
+                        src="/images/client5-min.png"
                     />
                 </Col>
 
-                <Col xs={6} sm={4} md={3} lg={2} className="client-logo">
-                    <LazyLoadImage
-                        alt='Baldwin'
-                        delayTime={400}
-                        effect="blur"
-                        src={`./images/clients/client2.png`}
+                <Col xs={6} sm={4} md={3} lg={2}>
+                    <img
+                        alt="Baldwin"
+                        src="/images/client2-min.png"
                     />
                 </Col>
-                <Col xs={6} sm={4} md={3} lg={2} className="client-logo">
-                    <LazyLoadImage
-                        alt='Geico'
-                        delayTime={450}
-                        effect="blur"
-                        src={`./images/clients/client3.png`}
+                <Col xs={6} sm={4} md={3} lg={2}>
+                    <img
+                        alt="Geico"
+                        src="/images/client3-min.png"
                     />
                 </Col>
-                <Col xs={6} sm={4} md={3} lg={2} className="client-logo">
-                    <LazyLoadImage
-                        alt='Powerplay'
-                        delayTime={500}
-                        effect="blur"
-                        src={`./images/clients/client4.png`}
+                <Col xs={6} sm={4} md={3} lg={2}>
+                    <img
+                        alt="Powerplay"
+                        src="/images/client4-min.png"
                     />
                 </Col>
             </Row>

@@ -1,7 +1,7 @@
 import React from 'react';
 import { Container, Row, Image } from 'react-bootstrap';
 import { useEffect } from 'react';
-import { ClientsSection, ContactSection, OfferSection, ProductsSection, ServisesSection, SliderSection } from '../home-sections';
+import { ProductsSection, OfferSection, ClientsSection, ContactSection, ServisesSection, SliderSection } from '../home-sections';
 import { connect } from 'react-redux';
 import WithRestoService from '../hoc';
 //import { LazyLoadComponent } from 'react-lazy-load-image-component';
@@ -13,17 +13,17 @@ const Home = ({ RestoService, setMenu, setError, setLoading, latestProducts, set
         setLoading(true)
         RestoService.fetchMenu()
             .then(res => setMenu(res)) //в этом экшене изменяется так же и ожидание
+            .then(res => setLatestProducts())
+            .then(res => setWeekOffer())
             .catch(error => setError(error))
-        setLatestProducts()
-        setWeekOffer()
-    })
+    }, [])
 
     return (
         <>
             <SliderSection />
             <Container>
 
-                {latestProducts.length > 0 && <ProductsSection />}
+                <ProductsSection />
 
 
                 <ServisesSection

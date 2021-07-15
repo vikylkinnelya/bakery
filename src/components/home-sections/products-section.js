@@ -1,12 +1,13 @@
 import React, { useState, useEffect, useCallback } from 'react';
 import { Carousel, Row } from 'react-bootstrap';
+import Spinner from '../spinner';
 import ShopItem from '../shop-page/shop-item';
 import { ToastComp } from '../small-comp';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { addToCart, showTost, setLatestProducts } from '../../actions';
 
-const ProductsSection = ({ latestProducts, loading, cart, menuType, setLatestProducts, addToCart, tostIsShown, showTost, tostTitle }) => {
+const ProductsSection = ({ latestProducts, loading, cart, menuType, addToCart, tostIsShown, showTost, tostTitle }) => {
 
     const [startAt, setStart] = useState(0)
     const [endAt, setEnd] = useState(4)
@@ -20,15 +21,15 @@ const ProductsSection = ({ latestProducts, loading, cart, menuType, setLatestPro
     const CarouselItem =
         <Row className='product-row'>
             {latestProducts.slice(startAt, endAt).map(menuItem => (
-                    <ShopItem
-                        key={menuItem.id}
-                        menuItem={menuItem}
-                        menuType={menuType}
-                        showTost={showTost}
-                        onAddToCart={addToCart}
-                        cart={cart}
-                    />
-                ))}
+                <ShopItem
+                    key={menuItem.id}
+                    menuItem={menuItem}
+                    menuType={menuType}
+                    showTost={showTost}
+                    onAddToCart={addToCart}
+                    cart={cart}
+                />
+            ))}
         </Row>
 
     return (
@@ -39,36 +40,43 @@ const ProductsSection = ({ latestProducts, loading, cart, menuType, setLatestPro
                     <h1>Our latest bakery products</h1>
                     <p>Check some of our best products and feel the great passion for food</p>
                 </header>
-                <Carousel fade
-                    className='shop-slide'
-                    slide={false}
-                    controls={false}
-                    onSelect={activeIndex => {
-                        onChangeSliderPage(activeIndex)
-                    }}
-                >
-                    <Carousel.Item>
-                        {CarouselItem}
-                    </Carousel.Item>
-                    <Carousel.Item>
-                        {CarouselItem}
-                    </Carousel.Item>
-                    <Carousel.Item>
-                        {CarouselItem}
-                    </Carousel.Item>
-                </Carousel>
 
+                <Row className='carousel-row'>
+                    {loading && <Spinner />}
+
+                    {latestProducts.length > 0 &&
+
+                        <Carousel fade
+                            className='shop-slide'
+                            interval={null}
+                            controls={false}
+                            onSelect={activeIndex => {
+                                onChangeSliderPage(activeIndex)
+                            }}
+                        >
+                            <Carousel.Item>
+                                {CarouselItem}
+                            </Carousel.Item>
+                            <Carousel.Item>
+                                {CarouselItem}
+                            </Carousel.Item>
+                            <Carousel.Item>
+                                {CarouselItem}
+                            </Carousel.Item>
+                        </Carousel>
+                    }
+                </Row>
                 <div className="text-center">
                     <Link className="button-void" aria-label='see all products' to='/shop/all'>See all our products</Link>
                 </div>
             </div>
+
 
             <ToastComp
                 tostTitle={tostTitle}
                 tostIsShown={tostIsShown}
                 showTost={showTost}
             />
-
         </section>
     )
 }

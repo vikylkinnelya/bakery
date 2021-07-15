@@ -1,4 +1,3 @@
-import React, { useEffect } from 'react';
 import { Col, Row, Tab, Nav, Image } from 'react-bootstrap';
 import ProductCard from '../product-card';
 import WithRestoService from '../hoc';
@@ -14,11 +13,8 @@ const OfferSection = ({ weekOfferItems, setWeekOffer, addToCart, RestoService })
                 img.setAttribute('src', url)
             })
     }
-
-    useEffect(() => {
-        getURL(weekOfferItems[0].id, 'firstOffer')
-        getURL(weekOfferItems[1].id, 'secondOffer')
-    })
+    getURL(weekOfferItems[0].id, 'firstOffer')
+    getURL(weekOfferItems[1].id, 'secondOffer')
 
     return (
         <section id="offer-section">

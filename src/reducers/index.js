@@ -69,8 +69,6 @@ const reducer = (state = initialState, action) => {
             const idWithParam = action.param ? id + '-' + param : id
             let priceIdx = { L: 1 || 2, M: 0 || 1, S: 0, '': 0 }
 
-            console.log(priceIdx, 'price idx')
-
             /* if (param === 'L') {
                 priceIdx = 1 || 2
             }
@@ -88,8 +86,6 @@ const reducer = (state = initialState, action) => {
 
             if (itemIdxinCart === -1) {
                 const item = state.menu.find(item => item.id === id)
-
-                console.log(item.pricing[priceIdx[param]])
 
                 const newItem = {
                     name: item.name,
