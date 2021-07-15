@@ -3,8 +3,7 @@ import { Switch, Route } from "react-router-dom";
 import Header from '../header';
 import Footer from '../footer'
 import ScrollToTop from '../scrollToTop';
-import Spinner from '../spinner';
-import { LazyLoadComponent } from 'react-lazy-load-image-component';
+import Spinner from '../spinner'; 
 const About = React.lazy(() => import('../about-page'));
 const Contact = React.lazy(() => import('../contact-page'));
 const Home = React.lazy(() => import('../home-page'));
@@ -42,10 +41,7 @@ const App = () => {
 
                 </Switch>
            
-
-            <LazyLoadComponent>
                 <Footer />
-            </LazyLoadComponent>
 
         </Suspense>
     )

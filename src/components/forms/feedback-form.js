@@ -1,7 +1,7 @@
 import { useState, useCallback } from 'react';
 import { Row, Col, Form, Button } from 'react-bootstrap';
 import { Formik } from 'formik';
-import {ResponseMessage} from '../responses';
+import { ResponseMessage } from '../responses';
 import * as yup from 'yup';
 import WithRestoService from '../hoc';
 import { connect } from 'react-redux';
@@ -84,7 +84,7 @@ const FeedbackForm = ({ type, setLoading, setError, RestoService }) => {
             <Formik
                 initialValues={{ name: "", email: "", subject: "", feedback: "" }}
                 validationSchema={validationSchema}
-                onSubmit={(values, { setSubmitting ,resetForm }) => {
+                onSubmit={(values, { setSubmitting, resetForm }) => {
                     setSubmitting(true); //нужно придумать что-нибудь для этого
                     setTimeout(() => {
                         resetForm()
@@ -170,7 +170,7 @@ const FeedbackForm = ({ type, setLoading, setError, RestoService }) => {
 
                                 <Form.Group controlId="formFeedback">
                                     <Form.Control as="textarea" rows={3}
-                                        
+                                        type='text'
                                         name='feedback'
                                         placeholder={page === 'main' ? 'Your message here' : undefined}
                                         onChange={handleChange}
@@ -192,7 +192,7 @@ const FeedbackForm = ({ type, setLoading, setError, RestoService }) => {
                                         disabled={isSubmitting}
                                         className='btn-order'
                                     >
-                                        <h4>{isSubmitting ? 'Sending...' : 'Send message'}</h4>
+                                        <h2>{isSubmitting ? 'Sending...' : 'Send message'}</h2>
                                     </Button>
                                 </Row>
 
