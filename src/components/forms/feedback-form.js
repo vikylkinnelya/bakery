@@ -183,19 +183,19 @@ const FeedbackForm = ({ type, setLoading, setError, RestoService }) => {
                                     ) : null}
 
                                 </Form.Group>
-
-                                <Row className='btn-order'>
-                                    <Button
-                                        aria-label='sent-message'
-                                        type='submit'
-                                        variant="light"
-                                        disabled={isSubmitting}
-                                        className='btn-order'
-                                    >
-                                        <h2>{isSubmitting ? 'Sending...' : 'Send message'}</h2>
-                                    </Button>
-                                </Row>
-
+                                <Col>
+                                    <Row className='btn-order'>
+                                        <Button
+                                            aria-label='sent-message'
+                                            type='submit'
+                                            variant="light"
+                                            disabled={isSubmitting}
+                                            className='btn-order'
+                                        >
+                                            <h2>{isSubmitting ? 'Sending...' : 'Send message'}</h2>
+                                        </Button>
+                                    </Row>
+                                </Col>
                             </form>
                         </>}
                     </>

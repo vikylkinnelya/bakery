@@ -15,8 +15,8 @@ const ShopListItems = React.memo(({ RestoService, location, setMenuType, setMenu
 
     const [endAt, setEndAt] = useState(12)
 
-    const getMenu = useCallback(() => {
-        RestoService.fetchMenu(menuType)
+    const getMenu = useCallback((type) => {
+        RestoService.fetchMenu(type)
             .then(res => setMenu(res)) //в этом экшене изменяется так же и ожидание
             .catch(error => setError(error))
     }, [menuType])
@@ -25,8 +25,9 @@ const ShopListItems = React.memo(({ RestoService, location, setMenuType, setMenu
         setLoading(true)
         const pathMenuType = location.pathname.split('/')[2]
         setMenuType(pathMenuType)
-        getMenu()
-    }, [getMenu])
+        getMenu(pathMenuType)
+        
+    }, [location.pathname])
 
 
 

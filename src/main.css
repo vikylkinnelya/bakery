@@ -83,7 +83,7 @@ body {
 }
 
 body.bg-pattern {
-  background-image: url('./home_pattern.jpg');
+  background-image: url('https://firebasestorage.googleapis.com/v0/b/bakery-23677.appspot.com/o/pages%2Fhome_pattern.jpg?alt=media&token=94ef74b2-5cb4-49c9-a4a3-dc316f4eb786');
 }
 
 
@@ -2226,9 +2226,6 @@ ul {
 }
 
 .form-subscribe>.submit-container button {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 700;
-  text-transform: uppercase;
   width: 100%;
   font-size: 18px;
   color: #303133;
@@ -2237,6 +2234,11 @@ ul {
   border: none;
   outline: none;
   padding: 10px 0;
+}
+
+.form-contact-alt>.btn-order>button>h2 {
+  font-size: 1.5rem;
+  margin-bottom: 0;
 }
 
 .form-contact-alt>.btn-order {
@@ -2252,6 +2254,7 @@ ul {
 
 .btn-order h4 {
   margin-bottom: 0;
+  font-size: 1.2rem;
 }
 
 .form-contact {
@@ -2403,7 +2406,7 @@ ul {
   top: 0;
   width: 100%;
   height: 100%;
-  background-image: url('./pattern_strips.png');
+  background-image: url('https://firebasestorage.googleapis.com/v0/b/bakery-23677.appspot.com/o/pages%2Fpattern_strips.png?alt=media&token=e347c399-a855-4798-bd84-24b586dbec1b');
   content: '';
 }
 
@@ -3318,8 +3321,8 @@ html.cssanimations .onscroll-animate {
 }
 
 @media screen and (min-width: 991px) {
-  .product-col .spinner-group{
-      margin-left: 18% ;
+  .product-col .spinner-group {
+    margin-left: 18%;
   }
 }
 
