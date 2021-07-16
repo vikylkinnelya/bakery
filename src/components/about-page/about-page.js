@@ -29,7 +29,7 @@ const About = () => {
                         <Row className='sucsess-row'>
 
                             <Col sm={12} md={6} >
-                                <img className="img-responsive sucsess-page-img" alt="pastries" src="./images/about-page.jpg" />
+                                <img className="img-responsive sucsess-page-img" alt="pastries" src="https://firebasestorage.googleapis.com/v0/b/bakery-23677.appspot.com/o/pages%2Fabout-page.jpg?alt=media&token=3de8421a-5e40-48f8-8873-7ebe1e016618" />
                             </Col>
 
                             <Col sm={12} md={6}>

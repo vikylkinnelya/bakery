@@ -33,7 +33,7 @@ const Home = ({ RestoService, setMenu, setError, setLoading, latestProducts, set
                     <Row className="section-content">
                         <h2 className="heading-huge">Different types of bread products</h2>
                         <h3 className="heading-small">You will find them only the best products in our stores</h3>
-                        <Image fluid id="bread-image" alt="bread" className="img-responsive" src="./images/bread-types-min.jpg" />
+                        <Image fluid id="bread-image" alt="bread" className="img-responsive" src="https://firebasestorage.googleapis.com/v0/b/bakery-23677.appspot.com/o/pages%2Fbread-types-min.jpg?alt=media&token=1f1878e7-29ef-4d32-aeef-47006fb98f20" />
                     </Row>
                 </section>
 
