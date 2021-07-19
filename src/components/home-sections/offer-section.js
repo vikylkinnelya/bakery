@@ -4,7 +4,7 @@ import WithRestoService from '../hoc';
 import { connect } from 'react-redux';
 import { addToCart, setWeekOffer } from '../../actions';
 
-const OfferSection = ({ weekOfferItems, setWeekOffer, addToCart, RestoService }) => {
+const OfferSection = ({ weekOfferItems, addToCart, RestoService }) => {
 
     const getURL = (id, attribute) => {
         RestoService.getImg('menu', id)
