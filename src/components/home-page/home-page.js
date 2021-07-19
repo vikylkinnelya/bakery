@@ -1,11 +1,12 @@
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import { Container, Row, Image } from 'react-bootstrap';
 import { useEffect } from 'react';
-import { ProductsSection, OfferSection, ClientsSection, ContactSection, ServisesSection, SliderSection } from '../home-sections';
+import { ProductsSection, ServisesSection, OfferSection, ClientsSection, SliderSection } from '../home-sections';
 import { connect } from 'react-redux';
 import WithRestoService from '../hoc';
-//import { LazyLoadComponent } from 'react-lazy-load-image-component';
+import Spinner from '../spinner'; 
 import { setMenu, setLoading, setError, setMenuType, addToCart, setLatestProducts, setWeekOffer } from '../../actions';
+const ContactSection = lazy(() => import ('../home-contact-section'))
 
 const Home = ({ RestoService, setMenu, setError, setLoading, latestProducts, setLatestProducts, setWeekOffer, setMenuType, weekOfferItems }) => {
 
@@ -19,7 +20,7 @@ const Home = ({ RestoService, setMenu, setError, setLoading, latestProducts, set
     }, [])
 
     return (
-        <>
+        <Suspense fallback={<Spinner />}>
             <SliderSection />
             <Container>
 
@@ -45,7 +46,7 @@ const Home = ({ RestoService, setMenu, setError, setLoading, latestProducts, set
 
             <ClientsSection />
 
-        </>
+        </Suspense>
     )
 }
 

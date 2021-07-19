@@ -1,14 +1,14 @@
-import React, { Suspense } from 'react';
+import React, { Suspense, lazy } from 'react';
 import { Switch, Route } from "react-router-dom";
 import Header from '../header';
-import Footer from '../footer'
 import ScrollToTop from '../scrollToTop';
 import Spinner from '../spinner'; 
-const About = React.lazy(() => import('../about-page'));
-const Contact = React.lazy(() => import('../contact-page'));
-const Home = React.lazy(() => import('../home-page'));
-const Shop = React.lazy(() => import('../shop-page'));
-const Cart = React.lazy(() => import('../cart-page'));
+const About = lazy(() => import('../about-page'));
+const Contact = lazy(() => import('../contact-page'));
+const Home = lazy(() => import('../home-page'));
+const Shop = lazy(() => import('../shop-page'));
+const Cart = lazy(() => import('../cart-page'));
+const Footer = lazy(() => import('../footer'))
 
 const App = () => {
 

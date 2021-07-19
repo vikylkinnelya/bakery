@@ -35,12 +35,12 @@ const OfferSection = ({ weekOfferItems, setWeekOffer, addToCart, RestoService })
                                 <Nav>
                                     <Nav.Item>
                                         <Nav.Link eventKey="first">
-                                            <Image fluid alt={weekOfferItems[0].title} id='firstOffer' />
+                                            <Image fluid alt='first offer' id='firstOffer' />
                                         </Nav.Link>
                                     </Nav.Item>
                                     <Nav.Item>
                                         <Nav.Link eventKey="second">
-                                            <Image fluid alt={weekOfferItems[1].title} id='secondOffer' />
+                                            <Image fluid alt='second offer' id='secondOffer' />
                                         </Nav.Link>
                                     </Nav.Item>
                                 </Nav>

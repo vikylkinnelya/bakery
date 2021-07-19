@@ -1,5 +1,5 @@
 import ClientsSection from "./clients-section";
-import ContactSection from "./contact-section";
+import ContactSection from "../home-contact-section/contact-section";
 import OfferSection from "./offer-section";
 import ProductsSection from "./products-section";
 import ServisesSection from "./servises-section";
