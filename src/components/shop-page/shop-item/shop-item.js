@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { LazyLoadImage } from 'react-lazy-load-image-component';
-import 'react-lazy-load-image-component/src/effects/blur.css';
+import LazyLoad from 'react-lazyload';
 import { Col } from 'react-bootstrap';
 import WithRestoService from '../../hoc';
 import { connect } from 'react-redux';
@@ -45,10 +44,10 @@ const ShopItem = React.memo(({ menuItem, menuType, addToCart, cart, showTost, Re
 
     const [imgURL, setImgURL] = useState()
 
-    useEffect(() => { 
+    useEffect(() => {
         RestoService.getImg('menu', id, 'jpg')
             .then(url => setImgURL(url))
-        
+
     }, [menuItem])
 
 
@@ -57,11 +56,12 @@ const ShopItem = React.memo(({ menuItem, menuType, addToCart, cart, showTost, Re
         < Col className="product" sm={2} lg={2}>
 
             <div className="product-preview">
-                <LazyLoadImage
-                    effect="blur"
-                    alt={name}
-                    src={imgURL}
-                />
+                <LazyLoad>
+                    <img
+                        alt={name}
+                        src={imgURL}
+                    />
+                </LazyLoad>
             </div>
 
             <div className="product-detail-container">

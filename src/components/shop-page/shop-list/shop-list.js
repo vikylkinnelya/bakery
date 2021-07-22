@@ -8,7 +8,6 @@ import { ToastComp } from '../../small-comp';
 import WithRestoService from '../../hoc';
 import { connect } from 'react-redux';
 import { withRouter } from "react-router";
-import { LazyLoadComponent, trackWindowScroll } from 'react-lazy-load-image-component';
 import { setMenu, setLoading, setError, setMenuType, showTost } from '../../../actions';
 
 const ShopListItems = React.memo(({ RestoService, location, setMenuType, setMenu, setError, setLoading, scrollPosition, menuItems, loading, error, menuType, menuTotalLength, tostTitle, tostIsShown, showTost }) => {
@@ -26,9 +25,8 @@ const ShopListItems = React.memo(({ RestoService, location, setMenuType, setMenu
         const pathMenuType = location.pathname.split('/')[2]
         setMenuType(pathMenuType)
         getMenu(pathMenuType)
-        
-    }, [location.pathname])
 
+    }, [location.pathname])
 
 
     const showMoreBtn = <button className='show-more-btn' onClick={() => onShowMore()}>
@@ -55,26 +53,19 @@ const ShopListItems = React.memo(({ RestoService, location, setMenuType, setMenu
                     <Row className='product-row'>
                         {!loading && !error && menuItems != null && menuItems.length > 0
                             && menuItems.slice(0, endAt).map(menuItem => (
-                                <LazyLoadComponent
+                                <ShopItem
                                     key={menuItem.id}
-                                    scrollPosition={scrollPosition}
-                                    threshold={50}
-                                >
-                                    <ShopItem
-                                        menuItem={menuItem}
-                                    />
-                                </LazyLoadComponent>
+                                    menuItem={menuItem}
+                                />
                             ))}
                     </Row>
                 </Col>
 
-                <LazyLoadComponent>
-                    {!loading &&
-                        <Col sm={{ order: 12 }} className='pagination-col'>
-                            {endAt <= menuItems.length && showMoreBtn}
-                        </Col>
-                    }
-                </LazyLoadComponent>
+                {!loading &&
+                    <Col sm={{ order: 12 }} className='pagination-col'>
+                        {endAt <= menuItems.length && showMoreBtn}
+                    </Col>
+                }
 
                 <ToastComp
                     tostTitle={tostTitle}
@@ -108,5 +99,5 @@ const mapDispatchToProps = {
     showTost
 }
 
-export default WithRestoService()(connect(mapStateToProps, mapDispatchToProps)(withRouter(trackWindowScroll(ShopListItems))))
+export default WithRestoService()(connect(mapStateToProps, mapDispatchToProps)(withRouter(ShopListItems)))
 

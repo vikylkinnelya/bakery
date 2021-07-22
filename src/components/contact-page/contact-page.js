@@ -1,4 +1,3 @@
-import { LazyLoadComponent } from 'react-lazy-load-image-component';
 import { ContactsArticle, SocialLinks } from '../small-comp';
 import { PageHeader } from '../header';
 import { Col, Container, Row } from 'react-bootstrap';
@@ -10,7 +9,7 @@ const Contact = () => {
             <PageHeader title={'Contact'} descr={'Say something!'} />
             <Container>
                 <div className="content-box">
-                    <LazyLoadComponent>
+                   
                         <div className="google-map-big-container">
                             <div className="google-map">
                                 <div id="map-canvas" className='embed-responsive embed-responsive-4by3'>
@@ -22,7 +21,7 @@ const Contact = () => {
                                 </div>
                             </div>
                         </div>
-                    </LazyLoadComponent>
+                    
                     <Row >
                         <FeedbackForm type={'page'} />
                         <Col md={4}>

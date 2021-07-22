@@ -1,13 +1,13 @@
 import React, { Suspense, lazy } from 'react';
-import { Container, Row} from 'react-bootstrap';
+import { Container, Row } from 'react-bootstrap';
 import { useEffect } from 'react';
 import { ProductsSection, ServisesSection, OfferSection, ClientsSection, SliderSection } from '../home-sections';
 import { connect } from 'react-redux';
 import WithRestoService from '../hoc';
-import { LazyLoadImage } from 'react-lazy-load-image-component';
-import Spinner from '../spinner'; 
+import LazyLoad from 'react-lazyload';
+import Spinner from '../spinner';
 import { setMenu, setLoading, setError, setMenuType, addToCart, setLatestProducts, setWeekOffer } from '../../actions';
-const ContactSection = lazy(() => import ('../home-contact-section'))
+const ContactSection = lazy(() => import('../home-contact-section'))
 
 const Home = ({ RestoService, setMenu, setError, setLoading, latestProducts, setLatestProducts, setWeekOffer, setMenuType, weekOfferItems }) => {
 
@@ -34,7 +34,9 @@ const Home = ({ RestoService, setMenu, setError, setLoading, latestProducts, set
                     <Row className="section-content">
                         <h2 className="heading-huge">Different types of bread products</h2>
                         <h3 className="heading-small">You will find them only the best products in our stores</h3>
-                        <LazyLoadImage className='img-fluid'  id="bread-image" alt="bread"  src="https://firebasestorage.googleapis.com/v0/b/bakery-23677.appspot.com/o/pages%2Fbread-types-min.jpg?alt=media&token=1f1878e7-29ef-4d32-aeef-47006fb98f20" />
+                        <LazyLoad>
+                            <img className='img-fluid' id="bread-image" alt="bread" src="https://firebasestorage.googleapis.com/v0/b/bakery-23677.appspot.com/o/pages%2Fbread-types-min.jpg?alt=media&token=1f1878e7-29ef-4d32-aeef-47006fb98f20" />
+                        </LazyLoad>
                     </Row>
                 </section>
 
