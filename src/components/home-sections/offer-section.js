@@ -1,20 +1,9 @@
 import { Col, Row, Tab, Nav, Image } from 'react-bootstrap';
 import ProductCard from '../product-card';
-import WithRestoService from '../hoc';
 import { connect } from 'react-redux';
 import { addToCart, setWeekOffer } from '../../actions';
 
-const OfferSection = ({ weekOfferItems, addToCart, RestoService }) => {
-
-    const getURL = (id, attribute) => {
-        RestoService.getImg('menu', id)
-            .then(url => {
-                let img = document.getElementById(attribute)
-                img.setAttribute('src', url)
-            })
-    }
-    getURL(weekOfferItems[0].id, 'firstOffer')
-    getURL(weekOfferItems[1].id, 'secondOffer')
+const OfferSection = ({ weekOfferItems, addToCart }) => {
 
     return (
         <section id="offer-section">
@@ -35,12 +24,12 @@ const OfferSection = ({ weekOfferItems, addToCart, RestoService }) => {
                                 <Nav>
                                     <Nav.Item>
                                         <Nav.Link eventKey="first">
-                                            <Image fluid alt='first offer' id='firstOffer' />
+                                            <Image fluid alt='first offer' src={weekOfferItems[0].preImg}/>
                                         </Nav.Link>
                                     </Nav.Item>
                                     <Nav.Item>
                                         <Nav.Link eventKey="second">
-                                            <Image fluid alt='second offer' id='secondOffer' />
+                                            <Image fluid alt='second offer' src={weekOfferItems[1].preImg} />
                                         </Nav.Link>
                                     </Nav.Item>
                                 </Nav>
@@ -81,4 +70,4 @@ const mapDispatchToProps = {
     addToCart, setWeekOffer
 }
 
-export default WithRestoService()(connect(mapStateToProps, mapDispatchToProps)(OfferSection));
+export default connect(mapStateToProps, mapDispatchToProps)(OfferSection)

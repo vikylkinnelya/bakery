@@ -18,6 +18,7 @@ const Home = ({ RestoService, setMenu, setError, setLoading, latestProducts, set
             .then(res => setLatestProducts())
             .then(res => setWeekOffer())
             .catch(error => setError(error))
+
     }, [])
 
     return (

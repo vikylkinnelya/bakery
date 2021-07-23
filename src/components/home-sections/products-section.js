@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState} from 'react';
 import { Carousel, Row } from 'react-bootstrap';
 import Spinner from '../spinner';
 import ShopItem from '../shop-page/shop-item';

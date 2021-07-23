@@ -1,13 +1,12 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState} from 'react';
 import LazyLoad from 'react-lazyload';
 import { Col } from 'react-bootstrap';
-import WithRestoService from '../../hoc';
 import { connect } from 'react-redux';
 import { addToCart, showTost } from '../../../actions';
 
-const ShopItem = React.memo(({ menuItem, menuType, addToCart, cart, showTost, RestoService }) => {
+const ShopItem = React.memo(({ menuItem, menuType, addToCart, cart, showTost }) => {
 
-    const { name, description, pricing, type, id } = menuItem
+    const { name, description, pricing, type, id, img } = menuItem
     const [priceMenu, setShowPriceMenu] = useState(false)
 
     const productPrice = pricing[0]
@@ -42,14 +41,6 @@ const ShopItem = React.memo(({ menuItem, menuType, addToCart, cart, showTost, Re
         }
     }
 
-    const [imgURL, setImgURL] = useState()
-
-    useEffect(() => {
-        RestoService.getImg('menu', id, 'jpg')
-            .then(url => setImgURL(url))
-
-    }, [menuItem])
-
 
     return (
 
@@ -59,7 +50,7 @@ const ShopItem = React.memo(({ menuItem, menuType, addToCart, cart, showTost, Re
                 <LazyLoad>
                     <img
                         alt={name}
-                        src={imgURL}
+                        src={img}
                     />
                 </LazyLoad>
             </div>
@@ -102,4 +93,4 @@ const mapDispatchToProps = {
     showTost
 }
 
-export default WithRestoService()(connect(mapStateToProps, mapDispatchToProps)(ShopItem))
+export default connect(mapStateToProps, mapDispatchToProps)(ShopItem)

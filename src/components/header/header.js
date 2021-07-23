@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { Col, Navbar, Image } from 'react-bootstrap';
 
-const Header = ({ cart, cartTotalPrice, expanded }) => {
+const Header = ({ cart, cartTotalPrice}) => {
 
     const [collapsed, setCollapse] = useState(false)
 
@@ -31,7 +31,7 @@ const Header = ({ cart, cartTotalPrice, expanded }) => {
 
                 <Col xs={{ span: 4, order: 2 }} md={{ span: 'auto', order: 3 }} className='col logo-col' >
                     <NavLink exact to='/' activeClassName="selected" aria-label='home' title='Home'>
-                        <Image fluid className="logo-primary" src='./images/header-logo.svg' id="logo-1" alt="Bakery logo" />
+                        <Image fluid className="logo-primary" src='https://firebasestorage.googleapis.com/v0/b/bakery-23677.appspot.com/o/pages%2Fheader-logo.svg?alt=media&token=a0ff2e5d-5397-4afc-90ec-1a80d50cfb8b' id="logo-1" alt="Bakery logo" />
                     </NavLink>
                 </Col >
 

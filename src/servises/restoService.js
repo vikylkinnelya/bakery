@@ -29,7 +29,7 @@ export default class RestoService {
         })
     }
 
-    async getImg (folder, id, type='jpg', param='-min' ) {
+    async getImg(folder, id, type = 'jpg', param = '-min') {
         let imgURL
         await storage.child(`${folder}/${id.split('-')[0]}${param}.${type}`)
             .getDownloadURL()
@@ -80,21 +80,6 @@ export default class RestoService {
         return response.docs
     }
 
-    /* async fetchMenuSize(type) {
-        let response
-        if (type === 'all') {
-            response = db.collection('products')
-        } else {
-            response = db.collection('products')
-                .where("type", "==", type);
-        }
-        response = await response.get()
-        return response.size
-    } */
-
-
-
-
     async addMenu() {
         const productRef = db.collection('products')
 
@@ -103,35 +88,42 @@ export default class RestoService {
             description: "A flavourful filling of salami and gherkins in a sandwich bread which has been rolled in grated cheese before baking.",
             type: 'lunch',
             ingredients: ['sandwich', 'salami', 'cheese'],
-            pricing: [4.10]
+            pricing: [4.10],
+            img: await this.getImg('menu', 'safroro5')
         }, { merge: true })
         await productRef.doc('b4sd').set({
             name: "Sandwich Dieppois",
             description: "A generous filling of tuna mayonnaise with tomato, cucumber and lettuce in a freshly made bread.",
             ingredients: ['tomato', 'tyna', 'cucumber'],
             type: 'lunch',
-            pricing: [4.45]
+            pricing: [4.45],
+            img: await this.getImg('menu', 'b4sd')
         }, { merge: true })
+        
+        
         await productRef.doc('saseca4').set({
             name: "Sandwich Sesame Camembert",
             description: "Freshly baked sesame seed bread, buttered and filled with creamy Camembert cheese and lettuce.",
             ingredients: ['cheese'],
             type: 'lunch',
-            pricing: [4.20]
+            pricing: [4.20],
+            img: await this.getImg('menu', 'saseca4')
         }, { merge: true })
         await productRef.doc('b3hecb').set({
             name: "Ham, Egg & Cheese Baguette",
             description: "Ham, scrambled egg and Swiss cheese on a baguettine.",
             ingredients: ['cheese', 'egg', 'ham'],
             type: 'lunch',
-            pricing: [6.65]
+            pricing: [6.65],
+            img: await this.getImg('menu', 'b3hecb')
         }, { merge: true })
         await productRef.doc('b5sm').set({
             name: "Sandwich Montagnard",
             description: "Dry-cured Coppa ham, Comté cheese, tomatoes, olive tapenade and salad leaves in a freshly baked poppy seed bread.",
             ingredients: ['cheese', 'tomato', 'ham'],
             type: 'lunch',
-            pricing: [4.45]
+            pricing: [4.45],
+            img: await this.getImg('menu', 'b5sm')
         }, { merge: true })
         await productRef.doc('b6ql').set({
             name: "Quiche Lorraine",
@@ -139,7 +131,8 @@ export default class RestoService {
             ingredients: ['cheese', 'ham', 'bacon', 'egg'],
             type: 'lunch',
             label: 'New offer',
-            pricing: [10.45]
+            pricing: [10.45],
+            img: await this.getImg('menu', 'b6ql')
         }, { merge: true })
         await productRef.doc('b1hcc').set({
             name: "Ham & Cheese Croissant",
@@ -147,6 +140,7 @@ export default class RestoService {
             ingredients: ['cheese', 'ham', 'tomato'],
             type: 'lunch',
             pricing: [4.95],
+            img: await this.getImg('menu', 'b1hcc'),
         }, { merge: true })
         await productRef.doc('b3ssc').set({
             name: "Smoked Salmon Croissant",
@@ -154,23 +148,25 @@ export default class RestoService {
             ingredients: ['salmon', 'lettuce', 'tomato'],
             type: 'lunch',
             label: 'Best seller',
-            pricing: [5.45]
+            pricing: [5.45],
+            img: await this.getImg('menu', 'b3ssc')
         }, { merge: true })
         await productRef.doc('b2hescc').set({
             name: "Ham, Egg & Swiss Cheese Croissant",
             description: "Ham, scrambled egg and Swiss cheese on a croissant.",
             ingredients: ['ham', 'egg', 'cheese'],
             type: 'lunch',
-            pricing: [5.65]
+            pricing: [5.65],
+            img: await this.getImg('menu', 'b2hescc')
         }, { merge: true })
-
 
 
         await productRef.doc('b11hfbj').set({
             name: "Half Flute, Butter & Jam",
             description: "Half Baguette served with butter and Jam",
             type: 'breakfast',
-            pricing: [2.95]
+            pricing: [2.95],
+            img: await this.getImg('menu', 'b11hfbj')
         }, { merge: true })
 
         await productRef.doc('ba1c').set({
@@ -178,7 +174,8 @@ export default class RestoService {
             description: "Croissant – rich and tasty with a crisp crust and a deliciously soft centre. 1|4",
             type: 'breakfast',
             label: 'Best seller',
-            pricing: [2.55, 5.95]
+            pricing: [2.55, 5.95],
+            img: await this.getImg('menu', 'ba1c')
         }, { merge: true })
 
         await productRef.doc('ba2pac').set({
@@ -186,47 +183,54 @@ export default class RestoService {
             description: "Our Pain au Chocolat is a best seller for a reason, made with pure butter and a heart of rich, dark chocolate.",
             ingredients: ['chocolate'],
             type: 'breakfast',
-            pricing: [15]
+            pricing: [15],
+            img: await this.getImg('menu', 'ba2pac')
         }, { merge: true })
         await productRef.doc('ba3ac').set({
             name: "Almond Croissant",
             description: "",
             type: 'breakfast',
-            pricing: [3.65]
+            pricing: [3.65],
+            img: await this.getImg('menu', 'ba3ac')
         }, { merge: true })
         await productRef.doc('ba3cac').set({
             name: "Chocolate Almond Croissant",
             description: "",
             ingredients: ['chocolate'],
             type: 'breakfast',
-            pricing: [4.59]
+            pricing: [4.59],
+            img: await this.getImg('menu', 'ba3cac')
         }, { merge: true })
         await productRef.doc('ba4er').set({
             name: "Escargot Raisins x 4",
             description: "These delicious pastries are made with a rich buttery dough filled with vanilla custard and plump raisins.",
             ingredients: ['vanilla'],
             type: 'breakfast',
-            pricing: [5.65]
+            pricing: [5.65],
+            img: await this.getImg('menu', 'ba4er')
         }, { merge: true })
         await productRef.doc('ba8ee').set({
             name: "Elephant Ear",
             description: "A crisp, butter puff pastry biscuit. The puff pastry is rolled up with sugar, sliced and baked so that the sugar caramelises.",
             type: 'breakfast',
-            pricing: [2.95]
+            pricing: [2.95],
+            img: await this.getImg('menu', 'ba8ee')
         }, { merge: true })
         await productRef.doc('ba9mcb').set({
             name: "Mini Chocolat Beignet",
             description: "A delicious soft mini doughnut with a chocolate hazelnut filling.",
             ingredients: ['chocolate', 'hazelnut'],
             type: 'breakfast',
-            pricing: [3.3]
+            pricing: [3.3],
+            img: await this.getImg('menu', 'ba9mcb')
         }, { merge: true })
         await productRef.doc('ba11ce').set({
             name: "Chocolate Éclair",
             description: "Chocolate hazelnut, red fruit, apple.",
             ingredients: ['chocolate', 'hazelnut'],
             type: 'breakfast',
-            pricing: [3.55]
+            pricing: [3.55],
+            img: await this.getImg('menu', 'ba11ce')
         }, { merge: true })
 
 
@@ -235,14 +239,16 @@ export default class RestoService {
             description: "This new Apple Tartlet makes a great light dessert, as it has no pastry cream.",
             type: 'tarts',
             label: 'New offer',
-            pricing: [3.45]
+            pricing: [3.45],
+            img: await this.getImg('menu', 'ba6tfap')
         }, { merge: true })
         await productRef.doc('ba5ltd').set({
             name: "Lemon Tartlet Duo",
             description: "A pair of individual tartlets – crisp shortcrust pastry filled with a refreshing lemon cream.",
             ingredients: ['lemon'],
             type: 'tarts',
-            pricing: [5.25]
+            pricing: [5.25],
+            img: await this.getImg('menu', 'ba5ltd')
         }, { merge: true })
 
         await productRef.doc('strawtarts1').set({
@@ -251,14 +257,16 @@ export default class RestoService {
             ingredients: ['strawberry'],
             type: 'tarts',
             label: 'Best seller',
-            pricing: [8, 15.45, 20]
+            pricing: [8, 15.45, 20],
+            img: await this.getImg('menu', 'strawtarts1')
         }, { merge: true })
         await productRef.doc('choctarts2').set({
             name: "Chocolate Tartlets",
             description: "Crisp sweet shortcrust pastry cases filled with rich, dark chocolate ganache. Delicious for dessert or as a treat with tea or coffee. 2|4|6",
             ingredients: ['chocolate'],
             type: 'tarts',
-            pricing: [8, 15.45, 20]
+            pricing: [8, 15.45, 20],
+            img: await this.getImg('menu', 'choctarts2')
         }, { merge: true })
 
 
@@ -266,14 +274,16 @@ export default class RestoService {
             name: "Pain Two Olives",
             description: "Two Olive Bread. Crusty but light, with an intense flavour of the olives of Provence, scented with thyme, this is irresistible. 400|800",
             type: 'bread',
-            pricing: [3.3, 6.6]
+            pricing: [3.3, 6.6],
+            img: await this.getImg('menu', 'breapatwol1')
         }, { merge: true })
 
         await productRef.doc('breabag2').set({
             name: "Classic Baguette Duo",
             description: "A pair of our best-selling classic baguettes made the old-fashioned way with PAUL white flour, natural yeast, sea salt and water.",
             type: 'bread',
-            pricing: [2.95]
+            pricing: [2.95],
+            img: await this.getImg('menu', 'breabag2')
         }, { merge: true })
 
         await productRef.doc('breapadeca3').set({
@@ -281,14 +291,16 @@ export default class RestoService {
             description: "This is our rich, brown Farmhouse Bread made from a soft blend of natural yeast, rye flour, milled flour and sea salt. 400|800",
             type: 'bread',
             label: 'Best seller',
-            pricing: [2.75, 5.5]
+            pricing: [2.75, 5.5],
+            img: await this.getImg('menu', 'breapadeca3')
         }, { merge: true })
 
         await productRef.doc('breapami4').set({
             name: "Pain De Campagne",
             description: "A large, round multigrain loaf made with a mix of wheat, barley, spelt, rye and buckwheat flour with added buckwheat and crushed soya seeds, topped with pumpkin, sunflower, millet, brown flax and sesame seeds.. 400|800",
             type: 'bread',
-            pricing: [3.25, 5.95]
+            pricing: [3.25, 5.95],
+            img: await this.getImg('menu', 'breapami4')
         }, { merge: true })
 
 
@@ -299,7 +311,8 @@ export default class RestoService {
             pricing: [
                 1.99,
                 2.9
-            ]
+            ],
+            img: await this.getImg('menu', 'ct1rc')
         }, { merge: true })
         await productRef.doc('ct2cal').set({
             name: "Cafe Au Lait",
@@ -308,7 +321,8 @@ export default class RestoService {
             pricing: [
                 2,
                 2.55
-            ]
+            ],
+            img: await this.getImg('menu', 'ct2cal')
         }, { merge: true })
         await productRef.doc('ct3e').set({
             name: "Espresso",
@@ -317,7 +331,8 @@ export default class RestoService {
             pricing: [
                 2.45,
                 2.95
-            ]
+            ],
+            img: await this.getImg('menu', 'ct3e')
         }, { merge: true })
         await productRef.doc('ct4m').set({
             name: "Macchiato",
@@ -326,7 +341,8 @@ export default class RestoService {
             pricing: [
                 2.75,
                 3.25
-            ]
+            ],
+            img: await this.getImg('menu', 'ct4m')
         }, { merge: true })
         await productRef.doc('ct5a').set({
             name: "Americano",
@@ -335,7 +351,8 @@ export default class RestoService {
             pricing: [
                 2.45,
                 2.95
-            ]
+            ],
+            img: await this.getImg('menu', 'ct5a')
         }, { merge: true })
         await productRef.doc('ct6c').set({
             name: "Cappuccino",
@@ -344,7 +361,8 @@ export default class RestoService {
             pricing: [
                 2.95,
                 3.95
-            ]
+            ],
+            img: await this.getImg('menu', 'ct6c')
         }, { merge: true })
         await productRef.doc('ct7').set({
             name: "Late",
@@ -353,7 +371,8 @@ export default class RestoService {
             pricing: [
                 2.95,
                 3.95
-            ]
+            ],
+            img: await this.getImg('menu', 'ct7')
         }, { merge: true })
         await productRef.doc('ct8m').set({
             name: "Mochaccino",
@@ -362,7 +381,8 @@ export default class RestoService {
             pricing: [
                 4.45,
                 5.95
-            ]
+            ],
+            img: await this.getImg('menu', 'ct8m')
         }, { merge: true })
         await productRef.doc('ct9hc').set({
             name: "Hot Chocolate",
@@ -371,36 +391,11 @@ export default class RestoService {
             pricing: [
                 4.45,
                 5.95
-            ]
-        }, { merge: true })
-        await productRef.doc('ct10ic').set({
-            name: "Iced Coffee",
-            description: "",
-            type: 'drinks',
-            pricing: [2.65]
-        }, { merge: true })
-        await productRef.doc('ct11ic').set({
-            name: "Iced Cappuccino",
-            description: "",
-            categhory: 0,
-            type: ' ',
-            pricing: [4.45]
-        }, { merge: true })
-        await productRef.doc('ct12il').set({
-            name: "Iced Latte",
-            description: "",
-            type: 'drinks',
-            pricing: [4.45]
-        }, { merge: true })
-        await productRef.doc('ct13im').set({
-            name: "Iced Mochaccino",
-            description: "",
-            type: 'drinks',
-            pricing: [4.95]
+            ],
+            img: await this.getImg('menu', 'ct9hc')
         }, { merge: true })
 
-
-
+        
         await productRef.doc('wo1').set({
             name: "Afternoon Tea Delivery",
             description: "For those looking for a moment to savour, and a special treat delivered straight to your door, our new Afternoon Tea is for you. Perfect for 2 people, our box of indulgent treats feature sweet and savoury creations , all lovingly made in the PAUL kitchen",
@@ -415,7 +410,9 @@ export default class RestoService {
                 '4 x Scones with Clotted Cream & Jam',
                 'Fairtrade & Organic English Breakfast Tea',
                 'Afternoon Tea Menu Card'],
-            pricing: [30]
+            pricing: [30],
+            img: await this.getImg('menu', 'wo1-img'),
+            preImg: await this.getImg('menu', 'wo1'),
         }, { merge: true })
 
         await productRef.doc('wo2').set({
@@ -424,7 +421,9 @@ export default class RestoService {
             type: 'offer',
             ingredients: [
                 'raspberry', 'chocolate', 'pistachio', 'vanilla', 'coffee', 'lime'],
-            pricing: [30]
+            pricing: [30],
+            img: await this.getImg('menu', 'wo2-img'),
+            preImg: await this.getImg('menu', 'wo2'),
         }, { merge: true })
 
         await productRef.doc('wo3').set({
@@ -437,9 +436,13 @@ export default class RestoService {
                 '250g bag of our ground coffee',
                 '1 litre carton of our rich, darkHot Chocolate',
                 '6 x buttery shortbread biscuits'],
-            pricing: [30]
+            pricing: [30],
+            img: await this.getImg('menu', 'wo3-img'),
+            preImg: await this.getImg('menu', 'wo3'),
         }, { merge: true })
     }
+
+
 
 }
 

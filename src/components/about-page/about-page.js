@@ -3,7 +3,7 @@ import { Col, Container, Row } from 'react-bootstrap';
 import LazyLoad from 'react-lazyload';
 
 const About = () => {
-
+  
     return (
         <>
             <PageHeader title={'About'} descr={'What is our company worth for'} />

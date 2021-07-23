@@ -13,7 +13,7 @@ const SocialLinks = ({ classN = '' }) => {
             </div>
             <div className={`social-icon-container${classN}`}>
                 <a href="https://www.instagram.com/" title='instagram'>
-                    <img src='./images/icons/instagram.svg' alt='instagram' />
+                    <img src='https://firebasestorage.googleapis.com/v0/b/bakery-23677.appspot.com/o/icons%2Finstagram.svg?alt=media&token=aac9a6b9-f61a-4f07-a053-bc7c9f11bc95' alt='instagram' />
                 </a>
             </div>
             <div className={`social-icon-container${classN}`}>

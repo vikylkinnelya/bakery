@@ -1310,7 +1310,6 @@ ul {
   min-height: 40px;
   min-width: 90px;
   margin: 3px 5px;
-  border-radius: 35px;
   transition: all 0.2s ease-out;
   z-index: 4;
 }
@@ -1322,6 +1321,10 @@ ul {
 .page-footer {
   font-weight: 300;
   margin-top: 50px;
+}
+
+.btn-order h2 {
+  margin-bottom: 0;
 }
 
 .page-footer h4 {
@@ -1983,8 +1986,8 @@ article .icon-opening-wrapper .icon-opening-content a {
 .carousel-item img {
   object-fit: cover;
   overflow: hidden;
-  max-width: 1349px;
-  max-height: 413px;
+  width: 100vw;
+  height: auto;
 }
 
 .tabs-big-container {
@@ -2196,12 +2199,11 @@ input[type=submit] {
 
 .offer-box .offer-box-right {
   padding-top: 10px;
-  position: relative;
-  background-position: center center;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
+}
+
+.offer-box .offer-box-right img {
+  max-width: 440px;
+  max-height: 351px;
 }
 
 .offer-box-left.offer-info {

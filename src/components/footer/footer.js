@@ -16,7 +16,7 @@ const Footer = () => {
                             </p>
                         </Col>
                         <Col md={2} className="image-container">
-                            <img alt="logo" src="./images/footer-logo.svg" />
+                            <img alt="logo" src="https://firebasestorage.googleapis.com/v0/b/bakery-23677.appspot.com/o/pages%2Ffooter-logo.svg?alt=media&token=cc342267-b5ab-4a76-82a2-30186f11c513" />
                         </Col>
                         <Col md={5} >
                             <SubscribeForm />
