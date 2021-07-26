@@ -1,4 +1,4 @@
-import React, { useState} from 'react';
+import React, { useState, useEffect} from 'react';
 import { Carousel, Row } from 'react-bootstrap';
 import Spinner from '../spinner';
 import ShopItem from '../shop-page/shop-item';
@@ -7,7 +7,7 @@ import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { addToCart, showTost, setLatestProducts } from '../../actions';
 
-const ProductsSection = ({ latestProducts, loading, cart, menuType, addToCart, tostIsShown, showTost, tostTitle }) => {
+const ProductsSection = ({ menuItems, setLatestProducts, latestProducts, loading, cart, menuType, addToCart, tostIsShown, showTost, tostTitle }) => {
 
     const [startAt, setStart] = useState(0)
     const [endAt, setEnd] = useState(4)
@@ -17,6 +17,10 @@ const ProductsSection = ({ latestProducts, loading, cart, menuType, addToCart, t
         setStart(idxPairs[activeIdx][0])
         setEnd(idxPairs[activeIdx][1])
     }
+
+    useEffect(() => {
+        setLatestProducts()
+    }, [menuItems])
 
     const CarouselItem =
         <Row className='product-row'>
@@ -84,6 +88,7 @@ const ProductsSection = ({ latestProducts, loading, cart, menuType, addToCart, t
 
 const mapStateToProps = state => {
     return {
+        menuItems: state.menu,
         loading: state.loading,
         menuType: state.menuType,
         cart: state.cart,

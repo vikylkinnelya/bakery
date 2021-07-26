@@ -1,25 +1,25 @@
 import React, { Suspense, lazy } from 'react';
 import { Container, Row } from 'react-bootstrap';
 import { useEffect } from 'react';
-import { ProductsSection, ServisesSection, OfferSection, ClientsSection, SliderSection } from '../home-sections';
+import { ProductsSection, ServisesSection, ClientsSection, SliderSection } from '../home-sections';
 import { connect } from 'react-redux';
 import WithRestoService from '../hoc';
 import LazyLoad from 'react-lazyload';
 import Spinner from '../spinner';
-import { setMenu, setLoading, setError, setMenuType, addToCart, setLatestProducts, setWeekOffer } from '../../actions';
-const ContactSection = lazy(() => import('../home-contact-section'))
+import { setMenu, setWeekOffer, setLoading, setError, setMenuType, addToCart } from '../../actions';
 
-const Home = ({ RestoService, setMenu, setError, setLoading, latestProducts, setLatestProducts, setWeekOffer, setMenuType, weekOfferItems }) => {
+const OfferSection = lazy(() => import ('../home-offer-section'))
+const ContactSection = lazy(() => import('../home-contact-section')) 
+
+const Home = ({ RestoService, setWeekOffer, setMenu, setError, setLoading, setMenuType }) => {
 
     useEffect(() => {
         setLoading(true)
         RestoService.fetchMenu()
             .then(res => setMenu(res)) //в этом экшене изменяется так же и ожидание
-            .then(res => setLatestProducts())
             .then(res => setWeekOffer())
             .catch(error => setError(error))
-
-    }, [])
+    }, [RestoService, setLoading, setError, setMenu, setWeekOffer])
 
     return (
         <Suspense fallback={<Spinner />}>
@@ -41,7 +41,7 @@ const Home = ({ RestoService, setMenu, setError, setLoading, latestProducts, set
                     </Row>
                 </section>
 
-                {weekOfferItems.length > 0 && <OfferSection />}
+                <OfferSection />
 
             </Container >
 
@@ -60,9 +60,7 @@ const mapStateToProps = state => {
         loading: state.loading,
         error: state.error,
         menuType: state.menuType,
-        cart: state.cart,
-        latestProducts: state.latestProducts,
-        weekOfferItems: state.weekOfferItems,
+        cart: state.cart
     }
 }
 
@@ -72,8 +70,7 @@ const mapDispatchToProps = {
     setError,
     setMenuType,
     addToCart,
-    setLatestProducts,
-    setWeekOffer,
+    setWeekOffer
 }
 
 export default WithRestoService()(connect(mapStateToProps, mapDispatchToProps)(Home))

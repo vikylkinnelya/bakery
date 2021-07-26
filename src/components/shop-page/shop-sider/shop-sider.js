@@ -1,10 +1,9 @@
 import { Link } from 'react-router-dom';
 import { Col} from 'react-bootstrap'; 
+import { connect } from 'react-redux';
 
 const ShopSider = ({menuType, menuTotalLength}) => {
-
     return (
-
         <Col sm={{ span: 12, order: 1 }} lg={{ span: 2, order: 2 }} className="sidebar">
 
             <div className="article-header-4">
@@ -80,4 +79,11 @@ const ShopSider = ({menuType, menuTotalLength}) => {
     )
 }
 
-export default ShopSider;
+const mapStateToProps = state => {
+    return {
+        menuType: state.menuType,
+        menuTotalLength: state.menuTotalLength,
+    }
+}
+
+export default connect(mapStateToProps)(ShopSider);

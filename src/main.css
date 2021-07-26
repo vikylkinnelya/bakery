@@ -220,7 +220,7 @@ ul {
 
 .article-header-4 h1 {
   text-transform: uppercase;
-  margin-top: 45px;
+  margin-top: 25px;
   margin-bottom: 10px;
   padding: 0;
 }
@@ -1633,6 +1633,7 @@ ul {
 
 .logo-primary {
   padding: 0;
+  width: 100%;
   max-height: 120px;
   max-width: 135px;
   min-height: 65px;
@@ -2572,10 +2573,6 @@ html.cssanimations .onscroll-animate {
 
 .toast-body svg {
   margin-right: 10px;
-}
-
-.sidebar {
-  margin-top: 30px;
 }
 
 .sidebar hr {

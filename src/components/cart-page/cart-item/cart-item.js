@@ -1,11 +1,12 @@
-import React, { useState, useEffect } from 'react';
-import WithRestoService from '../../hoc';
+import React from 'react';
 import { Col, Row } from 'react-bootstrap';
+import { connect } from 'react-redux';
+import { addToCart, deleteFromCart, decCount } from '../../../actions';
 
 
-const CartItem = ({ cartItem, addToCart, deleteFromCart, decCount, RestoService }) => {
+const CartItem = React.memo(({ cartItem, addToCart, deleteFromCart, decCount }) => {
 
-    const { id, name, count, param, price } = cartItem
+    const { id, name, count, param, price, img } = cartItem
 
     const onDecOrDelCount = (id) => {
         if (count - 1 < 0) {
@@ -15,17 +16,10 @@ const CartItem = ({ cartItem, addToCart, deleteFromCart, decCount, RestoService 
         }
     }
 
-    const [imgURL, setImgURL] = useState()
-
-    useEffect(() => {
-        cartItem && RestoService.getImg('menu', id, 'jpg')
-        .then(url => setImgURL(url))
-    })
-
     return (
         <Row className='cart-item'>
             <Col xs={12} lg={3} className='cart-item-previev'>
-                <img alt={name} src={imgURL} />
+                <img alt={name} src={img} />
             </Col>
             <Col xs={12} lg={4} className='cart-title-col'>
                 <h3>{name} {param ? `, ${param}` : null}</h3>
@@ -58,6 +52,12 @@ const CartItem = ({ cartItem, addToCart, deleteFromCart, decCount, RestoService 
             </Col>
         </Row>
     )
+})
+
+const mapDispatchToProps = {
+    addToCart,
+    deleteFromCart,
+    decCount,
 }
 
-export default WithRestoService()(CartItem);
+export default connect(mapDispatchToProps)(CartItem);

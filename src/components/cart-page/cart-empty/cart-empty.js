@@ -1,8 +1,6 @@
 import { Col, Row } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
-
 const CartEmpty = () => {
-
     return (
         <Col className='cart-empty'>
             <Row>

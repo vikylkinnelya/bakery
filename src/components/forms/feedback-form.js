@@ -7,7 +7,6 @@ import WithRestoService from '../hoc';
 import { connect } from 'react-redux';
 import { setLoading, setError } from '../../actions';
 
-
 const validationSchema = yup.object().shape({
     name: yup.string()
         .min(2, 'Too short')

@@ -18,11 +18,6 @@ const setMenuType = (type) => ({
     payload: type
 })
 
-const setMenuTotalItems = (count) => ({
-    type: 'SET_MENU_TOTAL_ITEMS',
-    payload: count
-})
-
 const addToCart = (id, param) => {
     return {
         type: 'ADD_TO_CART',
@@ -58,13 +53,6 @@ const showTost = (bool) => ({
     payload: bool
 })
 
-
-
-
-
-
-
-
 const setWeekOffer = () => ({
     type: 'SET_WEEK_OFFER'
 })
@@ -73,12 +61,9 @@ const setLatestProducts = () => ({
     type: 'SET_LATEST_PRODUCTS'
 })
 
-
-
-
 export {
     setMenu, setLoading, setError,
-    setMenuType, setMenuTotalItems,
+    setMenuType,
     addToCart, deleteFromCart, decCount,
     setFormVisibility, setModalVisibility,
     setWeekOffer, setLatestProducts,

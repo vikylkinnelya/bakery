@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { NavLink } from 'react-router-dom';
 import { Col, Navbar, Image } from 'react-bootstrap';
 
-const Header = ({ cart, cartTotalPrice}) => {
+const Header = ({ cart, cartTotalPrice }) => {
 
     const [collapsed, setCollapse] = useState(false)
 

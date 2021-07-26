@@ -1,9 +1,11 @@
 import { Col, Row, Tab, Nav, Image } from 'react-bootstrap';
 import ProductCard from '../product-card';
+import { ToastComp } from '../small-comp';
 import { connect } from 'react-redux';
-import { addToCart, setWeekOffer } from '../../actions';
+import { addToCart, showTost } from '../../actions';
+import React, { useEffect, useCallback } from 'react';
 
-const OfferSection = ({ weekOfferItems, addToCart }) => {
+const OfferSection = ({weekOfferItems, addToCart, showTost, tostIsShown, tostTitle }) => {
 
     return (
         <section id="offer-section">
@@ -18,13 +20,13 @@ const OfferSection = ({ weekOfferItems, addToCart }) => {
                 <Row className='tabs-big-container' >
 
                     {weekOfferItems.length > 0 && weekOfferItems !== null &&
-
                         <Tab.Container id='left-tabs' defaultActiveKey="first" >
+                            
                             <Col xs={12} md={3} lg={2} className='nav-link-col'>
                                 <Nav>
                                     <Nav.Item>
                                         <Nav.Link eventKey="first">
-                                            <Image fluid alt='first offer' src={weekOfferItems[0].preImg}/>
+                                            <Image fluid alt='first offer' src={weekOfferItems[0].preImg} />
                                         </Nav.Link>
                                     </Nav.Item>
                                     <Nav.Item>
@@ -42,6 +44,7 @@ const OfferSection = ({ weekOfferItems, addToCart }) => {
                                         <ProductCard
                                             product={weekOfferItems[0]}
                                             onAddToCart={addToCart}
+                                            onShowTost={showTost}
                                         />
                                     </Tab.Pane>
                                     <Tab.Pane
@@ -49,6 +52,7 @@ const OfferSection = ({ weekOfferItems, addToCart }) => {
                                         <ProductCard
                                             product={weekOfferItems[1]}
                                             onAddToCart={addToCart}
+                                            onShowTost={showTost}
                                         />
                                     </Tab.Pane>
                                 </Tab.Content>
@@ -56,18 +60,27 @@ const OfferSection = ({ weekOfferItems, addToCart }) => {
                         </Tab.Container>}
                 </Row>
             </div>
+
+            <ToastComp
+                tostTitle={tostTitle}
+                tostIsShown={tostIsShown}
+                showTost={showTost}
+            />
         </section>
     )
 }
 
 const mapStateToProps = state => {
     return {
-        weekOfferItems: state.weekOfferItems
+        menuItems: state.menu,
+        weekOfferItems: state.weekOfferItems,
+        tostIsShown: state.tostIsShown,
+        tostTitle: state.tostTitle
     }
 }
 
 const mapDispatchToProps = {
-    addToCart, setWeekOffer
+    addToCart, showTost
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(OfferSection)

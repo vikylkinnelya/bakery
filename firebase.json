@@ -39,11 +39,11 @@
         ]
       },
       {
-        "source": "**/*.@(jpg|jpeg|gif|png)",
+        "source": "**/*.@(jpg|jpeg|gif|png|svg)",
         "headers": [
           {
             "key": "Cache-Control",
-            "value": "max-age=7200"
+            "value": "max-age=31536000"
           }
         ]
       },
@@ -52,7 +52,16 @@
         "headers": [
           {
             "key": "Cache-Control",
-            "value": "max-age=300"
+            "value": "max-age=900"
+          }
+        ]
+      },
+      {
+        "source": "/",
+        "headers": [
+          {
+            "key": "Link",
+            "value": "</js/main.6c6b3fcf.chunk.js>;rel=preload;as=script, </css/main.4caf380c.chunk.css>;rel=preload;as=style"
           }
         ]
       }

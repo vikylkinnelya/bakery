@@ -1,4 +1,4 @@
-import React, { useState} from 'react';
+import React, { useState } from 'react';
 import LazyLoad from 'react-lazyload';
 import { Col } from 'react-bootstrap';
 import { connect } from 'react-redux';
@@ -22,25 +22,29 @@ const ShopItem = React.memo(({ menuItem, menuType, addToCart, cart, showTost }) 
     const addedItem = cart.findIndex(el => el.id === id) !== -1 ? 'added' : null
 
     const smallSize = priceMenu && pricing.length === 3
-        && <button className='small-size' onClick={() => addToCart(id, 'S')} aria-label='small size'> S </button>
+        && <button className='small-size' onClick={() => onSizeAdd(id, 'S')} aria-label='small size'> S </button>
     const mediumSize = priceMenu &&
-        <button className='medium-size' onClick={() => addToCart(id, 'M')} aria-label='medium size'> M </button>
+        <button className='medium-size' onClick={() => onSizeAdd(id, 'M')} aria-label='medium size'> M </button>
     const bigSize = priceMenu &&
-        <button className='big-size' onClick={() => addToCart(id, 'L')} aria-label='large size'> L </button>
+        <button className='big-size' onClick={() => onSizeAdd(id, 'L')} aria-label='large size'> L </button>
 
     const defCartClick = (id) => {
         if (pricing.length > 1 && !priceMenu) {
-            return setShowPriceMenu(!priceMenu)
+            setShowPriceMenu(!priceMenu)
         }
         if (pricing && priceMenu) {
-            return setShowPriceMenu(!priceMenu)
+            setShowPriceMenu(!priceMenu)
         }
         if (pricing.length === 1) {
             showTost(true, name)
-            return addToCart(id)
+            addToCart(id)
         }
     }
 
+    const onSizeAdd = (id, param) => {
+        addToCart(id, param)
+        showTost(true, name)
+    }
 
     return (
 

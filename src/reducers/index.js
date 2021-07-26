@@ -56,31 +56,12 @@ const reducer = (state = initialState, action) => {
                 menuType: action.payload
             }
 
-        /* case 'SET_MENU_TOTAL_ITEMS':
-            return {
-                ...state,
-                menuTotalLength: action.payload
-            } */
-
         case 'ADD_TO_CART':
 
             const id = action.payload
             const param = action.param ? action.param : ''
             const idWithParam = action.param ? id + '-' + param : id
             let priceIdx = { L: 1 || 2, M: 0 || 1, S: 0, '': 0 }
-
-            /* if (param === 'L') {
-                priceIdx = 1 || 2
-            }
-            else if (param === 'M') {
-                priceIdx = 0 || 1
-            }
-            else if (param === 'S') {
-                priceIdx = 0
-            }
-            else {
-                priceIdx = 0
-            } */
 
             const itemIdxinCart = state.cart.findIndex(el => el.id === idWithParam)
 
@@ -92,14 +73,17 @@ const reducer = (state = initialState, action) => {
                     id: idWithParam,
                     param: param,
                     price: item.pricing[priceIdx[param]],
+                    img: item.img,
                     count: 1
                 }
+
+                const fullToastTitle = param? newItem.name + `. Size: ${param}` : newItem.name
 
                 return {
                     ...state,
                     cart: [...state.cart, newItem],
                     cartTotalPrice: state.cartTotalPrice + newItem.price,
-                    tostTitle: newItem.name
+                    tostTitle: fullToastTitle
                 };
             }
             else {
@@ -174,7 +158,7 @@ const reducer = (state = initialState, action) => {
             const offer = state.menu.filter(el => el.type === 'offer')
             return {
                 ...state,
-                weekOfferItems: offer.slice(0, 3)
+                weekOfferItems: offer.slice(0, 2)
             }
 
 

@@ -3,9 +3,9 @@ import { Switch, Route } from "react-router-dom";
 import Header from '../header';
 import ScrollToTop from '../scrollToTop';
 import Spinner from '../spinner'; 
+import Home from '../home-page'
 const About = lazy(() => import('../about-page'));
 const Contact = lazy(() => import('../contact-page'));
-const Home = lazy(() => import('../home-page'));
 const Shop = lazy(() => import('../shop-page'));
 const Cart = lazy(() => import('../cart-page'));
 const Footer = lazy(() => import('../footer'))
@@ -16,9 +16,7 @@ const App = () => {
         <Suspense fallback={<Spinner />}>
             <ScrollToTop />
             <Header />
-
                 <Switch>
-
                     <Route path='/about/'>
                         <About />
                     </Route>
@@ -38,9 +36,7 @@ const App = () => {
                     <Route path='/cart/'>
                         <Cart />
                     </Route>
-
                 </Switch>
-           
                 <Footer />
 
         </Suspense>
