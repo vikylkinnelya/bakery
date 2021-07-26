@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react';
+import React, { useState, useEffect, useCallback, useMemo } from 'react';
 import Spinner from '../../spinner';
 import ErrorComponent from '../../error';
 import { Col, Row } from 'react-bootstrap';
@@ -9,22 +9,26 @@ import { connect } from 'react-redux';
 import { withRouter } from "react-router";
 import { setMenu, setLoading, setError, setMenuType, showTost } from '../../../actions';
 
-const ShopListItems = React.memo(({ RestoService, location, setMenuType, setMenu, setError, setLoading, scrollPosition, menuItems, loading, error, menuType, menuTotalLength, tostTitle, tostIsShown, showTost }) => {
+const ShopListItems = ({ RestoService, location, setMenuType, setMenu, setError, setLoading, scrollPosition, menuItems, loading, error, menuType, menuTotalLength, tostTitle, tostIsShown, showTost }) => {
 
     const [endAt, setEndAt] = useState(12)
 
-    const getMenu = useCallback((type) => {
-        RestoService.fetchMenu(type)
+    const memoizedLocation = useMemo(() => {
+        const locationName = location.pathname.split('/')[2]
+        setMenuType(locationName)
+        return locationName
+    }, [location.pathname, setMenuType])
+
+    const getMenu = useCallback(() => {
+        RestoService.fetchMenu(memoizedLocation)
             .then(res => setMenu(res)) //в этом экшене изменяется так же и ожидание
             .catch(error => setError(error))
-    }, [menuType, RestoService, setError, setMenu])
+    }, [memoizedLocation, RestoService, setError, setMenu])
 
     useEffect(() => {
         setLoading(true)
-        const pathMenuType = location.pathname.split('/')[2]
-        setMenuType(pathMenuType)
-        getMenu(pathMenuType)
-    }, [location.pathname, setLoading])
+        getMenu(memoizedLocation)
+    }, [memoizedLocation, getMenu, setLoading])
 
 
     const showMoreBtn = <button className='show-more-btn' onClick={() => onShowMore()}>
@@ -67,7 +71,7 @@ const ShopListItems = React.memo(({ RestoService, location, setMenuType, setMenu
 
         </>
     )
-})
+}
 
 
 const mapStateToProps = state => {

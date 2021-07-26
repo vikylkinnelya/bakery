@@ -63,12 +63,12 @@ const About = () => {
 
                             <Col lg={6} className='video-col'>
                                 <div className="embed-responsive embed-responsive-4by3">
-                                    <iframe title='video' loading='lazy' src="http://www.youtube.com/embed/Xit0QEeE7H8" frameBorder="0" loading="lazy" />
+                                    <iframe title='video' loading='lazy' src="http://www.youtube.com/embed/Xit0QEeE7H8" frameBorder="0"/>
                                 </div>
                             </Col>
                             <Col lg={6} className='video-col'>
                                 <div className="embed-responsive embed-responsive-4by3">
-                                    <iframe title='video' loading='lazy' src="http://www.youtube.com/embed/EGbNI26PPYg" frameBorder="0" loading="lazy" />
+                                    <iframe title='video' loading='lazy' src="http://www.youtube.com/embed/EGbNI26PPYg" frameBorder="0" />
                                 </div>
                             </Col>
 

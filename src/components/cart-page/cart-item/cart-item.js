@@ -1,8 +1,5 @@
 import React from 'react';
 import { Col, Row } from 'react-bootstrap';
-import { connect } from 'react-redux';
-import { addToCart, deleteFromCart, decCount } from '../../../actions';
-
 
 const CartItem = React.memo(({ cartItem, addToCart, deleteFromCart, decCount }) => {
 
@@ -54,10 +51,4 @@ const CartItem = React.memo(({ cartItem, addToCart, deleteFromCart, decCount }) 
     )
 })
 
-const mapDispatchToProps = {
-    addToCart,
-    deleteFromCart,
-    decCount,
-}
-
-export default connect(mapDispatchToProps)(CartItem);
+export default CartItem;

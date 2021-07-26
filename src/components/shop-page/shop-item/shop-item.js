@@ -4,7 +4,7 @@ import { Col } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { addToCart, showTost } from '../../../actions';
 
-const ShopItem = React.memo(({ menuItem, menuType, addToCart, cart, showTost }) => {
+const ShopItem = ({ menuItem, menuType, addToCart, cart, showTost }) => {
 
     const { name, description, pricing, type, id, img } = menuItem
     const [priceMenu, setShowPriceMenu] = useState(false)
@@ -81,7 +81,7 @@ const ShopItem = React.memo(({ menuItem, menuType, addToCart, cart, showTost }) 
             {menuItem.label && productLabel}
         </ Col>
     )
-})
+}
 
 
 

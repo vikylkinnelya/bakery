@@ -1,13 +1,13 @@
-import React, { useState, useEffect} from 'react';
+import React, { useState } from 'react';
 import { Carousel, Row } from 'react-bootstrap';
 import Spinner from '../spinner';
 import ShopItem from '../shop-page/shop-item';
 import { ToastComp } from '../small-comp';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { addToCart, showTost, setLatestProducts } from '../../actions';
+import { showTost } from '../../actions';
 
-const ProductsSection = ({ menuItems, setLatestProducts, latestProducts, loading, cart, menuType, addToCart, tostIsShown, showTost, tostTitle }) => {
+const ProductsSection = ({ latestProducts, loading, tostIsShown, showTost, tostTitle }) => {
 
     const [startAt, setStart] = useState(0)
     const [endAt, setEnd] = useState(4)
@@ -18,20 +18,12 @@ const ProductsSection = ({ menuItems, setLatestProducts, latestProducts, loading
         setEnd(idxPairs[activeIdx][1])
     }
 
-    useEffect(() => {
-        setLatestProducts()
-    }, [menuItems])
-
     const CarouselItem =
         <Row className='product-row'>
             {latestProducts.slice(startAt, endAt).map(menuItem => (
                 <ShopItem
                     key={menuItem.id}
                     menuItem={menuItem}
-                    menuType={menuType}
-                    showTost={showTost}
-                    onAddToCart={addToCart}
-                    cart={cart}
                 />
             ))}
         </Row>
@@ -88,10 +80,7 @@ const ProductsSection = ({ menuItems, setLatestProducts, latestProducts, loading
 
 const mapStateToProps = state => {
     return {
-        menuItems: state.menu,
         loading: state.loading,
-        menuType: state.menuType,
-        cart: state.cart,
         latestProducts: state.latestProducts,
         tostIsShown: state.tostIsShown,
         tostTitle: state.tostTitle
@@ -99,7 +88,7 @@ const mapStateToProps = state => {
 }
 
 const mapDispatchToProps = {
-    addToCart, showTost, setLatestProducts
+    showTost
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProductsSection)

@@ -1291,12 +1291,14 @@ ul {
 */
 .btn-order button:hover,
 .modal-order-footer.modal-footer .btn-order:hover,
-.show-more-btn:hover {
+.show-more-btn:hover,
+.contact-form>.col>.btn-order>.btn>h2:hover {
   background-color: #684f40;
   border-color: #684f40;
   color: #FFF;
   z-index: 4;
 }
+
 
 .btn-order button,
 .modal-order-footer.modal-footer .btn-order,
@@ -1386,8 +1388,8 @@ ul {
 
 .social-icon-container>a>img {
   color: #28292b;
-  width: 31px;
-  height: 31px;
+  width: 26px;
+  height: 26px;
 }
 
 .social-icon-container a {
@@ -1553,6 +1555,7 @@ ul {
   border: none;
   outline: none;
   padding: 10px 0;
+  margin-bottom: 1rem;
 }
 
 .form-contact-alt>.btn-order>button>h2 {
@@ -2001,16 +2004,10 @@ article .icon-opening-wrapper .icon-opening-content a {
   margin-bottom: 10px;
 }
 
-.tabs-big-container .nav>.nav-item>.nav-link {
+.tabs-big-container .nav>.nav-item>.nav-link img {
   padding: 7px;
   background: none;
   z-index: 10;
-  -webkit-border-radius: 50%;
-  -moz-border-radius: 50%;
-  border-radius: 50%;
-}
-
-.tabs-big-container .nav>.nav-item>.nav-link img {
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
   border-radius: 50%;
@@ -2043,13 +2040,12 @@ article .icon-opening-wrapper .icon-opening-content a {
   border-radius: 50%;
 }
 
-.tabs-big-container .nav>.nav-item>.nav-link.active {
+.tabs-big-container .nav>.nav-item>.nav-link.active img {
   background-color: #FFF;
   z-index: 10;
 }
 
-.tabs-big-container .nav>.nav-item>.nav-link {
-
+.tabs-big-container .nav>.nav-item>.nav-link img {
   border: 2px #fdb822 solid;
   -webkit-transition: all 0.3s ease-out;
   -moz-transition: all 0.3s ease-out;
@@ -2062,8 +2058,8 @@ article .icon-opening-wrapper .icon-opening-content a {
   transform: scale(0.8);
 }
 
-.tabs-big-container .nav>.nav-item>.nav-link:hover,
-.tabs-big-container .nav>.nav-item>.nav-link.active {
+.tabs-big-container .nav>.nav-item>.nav-link img:hover,
+.tabs-big-container .nav>.nav-item>.nav-link.active img {
   -webkit-transform: scale(1);
   -moz-transform: scale(1);
   -o-transform: scale(1);

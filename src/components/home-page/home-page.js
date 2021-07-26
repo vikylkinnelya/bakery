@@ -1,4 +1,4 @@
-import React, { Suspense, lazy } from 'react';
+import React, { Suspense, lazy, useCallback } from 'react';
 import { Container, Row } from 'react-bootstrap';
 import { useEffect } from 'react';
 import { ProductsSection, ServisesSection, ClientsSection, SliderSection } from '../home-sections';
@@ -6,20 +6,25 @@ import { connect } from 'react-redux';
 import WithRestoService from '../hoc';
 import LazyLoad from 'react-lazyload';
 import Spinner from '../spinner';
-import { setMenu, setWeekOffer, setLoading, setError, setMenuType, addToCart } from '../../actions';
+import { setMenu, setWeekOffer, setLatestProducts, setLoading, setError, setMenuType, addToCart } from '../../actions';
 
 const OfferSection = lazy(() => import ('../home-offer-section'))
 const ContactSection = lazy(() => import('../home-contact-section')) 
 
-const Home = ({ RestoService, setWeekOffer, setMenu, setError, setLoading, setMenuType }) => {
+const Home = ({ RestoService, setWeekOffer, setLatestProducts, setMenu, setError, setLoading, setMenuType }) => {
 
-    useEffect(() => {
-        setLoading(true)
+    const fetchItems = useCallback(() => {
         RestoService.fetchMenu()
             .then(res => setMenu(res)) //в этом экшене изменяется так же и ожидание
             .then(res => setWeekOffer())
+            .then(res => setLatestProducts())
             .catch(error => setError(error))
-    }, [RestoService, setLoading, setError, setMenu, setWeekOffer])
+    }, [RestoService, setError, setMenu, setWeekOffer, setLatestProducts])
+
+    useEffect(() => {
+        setLoading(true)
+        fetchItems()
+    }, [fetchItems, setLoading] )
 
     return (
         <Suspense fallback={<Spinner />}>
@@ -70,7 +75,8 @@ const mapDispatchToProps = {
     setError,
     setMenuType,
     addToCart,
-    setWeekOffer
+    setWeekOffer, 
+    setLatestProducts
 }
 
 export default WithRestoService()(connect(mapStateToProps, mapDispatchToProps)(Home))

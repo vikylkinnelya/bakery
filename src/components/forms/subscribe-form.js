@@ -1,5 +1,5 @@
 import { Col, Form, Button } from 'react-bootstrap';
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { Formik } from 'formik';
 import * as yup from 'yup';
 import { connect } from 'react-redux';
@@ -15,16 +15,15 @@ const validationSchema = yup.object().shape({
 const SubscribeForm = ({ setLoading, setError, RestoService }) => {
 
     const [subscriber, setSubscriberState] = useState(false)
+    const [subscriberData, setSubscriberData] = useState()
 
-    const sendSubscribersData = useCallback((data) => {
+    const sendSubscribersData = useCallback(() => {
         setLoading(true)
-        RestoService.setSubscriber(data)
+        RestoService.setSubscriber(subscriberData)
             .catch(error => setError(error))
         setLoading(false)
-        setSubscriberState(true)
-    }, [subscriber])
-
-    
+        setSubscriberState(true)    
+    }, [subscriberData])
 
     return (
         <>
@@ -42,7 +41,7 @@ const SubscribeForm = ({ setLoading, setError, RestoService }) => {
                         setSubmitting(true);
                         setTimeout(() => {
                             resetForm()
-                            sendSubscribersData(values)
+                            setSubscriberData(values)
                             setSubmitting(false) 
                         }, 1000) 
                     }}

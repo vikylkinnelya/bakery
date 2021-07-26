@@ -3,7 +3,6 @@ import ProductCard from '../product-card';
 import { ToastComp } from '../small-comp';
 import { connect } from 'react-redux';
 import { addToCart, showTost } from '../../actions';
-import React, { useEffect, useCallback } from 'react';
 
 const OfferSection = ({weekOfferItems, addToCart, showTost, tostIsShown, tostTitle }) => {
 

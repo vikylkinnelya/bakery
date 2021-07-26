@@ -2,8 +2,8 @@ import React, { Suspense, lazy } from 'react';
 import { Switch, Route } from "react-router-dom";
 import Header from '../header';
 import ScrollToTop from '../scrollToTop';
-import Spinner from '../spinner'; 
-import Home from '../home-page'
+import Spinner from '../spinner';
+import Home from '../home-page'; 
 const About = lazy(() => import('../about-page'));
 const Contact = lazy(() => import('../contact-page'));
 const Shop = lazy(() => import('../shop-page'));
@@ -13,9 +13,9 @@ const Footer = lazy(() => import('../footer'))
 const App = () => {
 
     return (
-        <Suspense fallback={<Spinner />}>
-            <ScrollToTop />
-            <Header />
+            <Suspense fallback={<Spinner />}>
+                <ScrollToTop />
+                <Header />
                 <Switch>
                     <Route path='/about/'>
                         <About />
@@ -39,7 +39,7 @@ const App = () => {
                 </Switch>
                 <Footer />
 
-        </Suspense>
+            </Suspense>
     )
 }
 

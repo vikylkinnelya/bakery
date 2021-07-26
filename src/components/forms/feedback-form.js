@@ -1,4 +1,4 @@
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useEffect } from 'react';
 import { Row, Col, Form, Button } from 'react-bootstrap';
 import { Formik } from 'formik';
 import { ResponseMessage } from '../responses';
@@ -27,14 +27,16 @@ const validationSchema = yup.object().shape({
 const FeedbackForm = ({ type, setLoading, setError, RestoService }) => {
 
     const [feedback, setFeedbackstate] = useState(false)
+    const [feedbackData, setFeedbackData] = useState()
 
-    const sendFeedback = useCallback((data) => {
+    const sendFeedback = useCallback(() => {
         setLoading(true)
-        RestoService.setFeedback(data)
+        RestoService.setFeedback(feedbackData)
             .catch(error => setError(error))
         setLoading(false)
         setFeedbackstate(true)
-    }, [feedback])
+    }, [feedbackData])
+
 
     const section = {
         width: 4,
@@ -87,7 +89,7 @@ const FeedbackForm = ({ type, setLoading, setError, RestoService }) => {
                     setSubmitting(true); //нужно придумать что-нибудь для этого
                     setTimeout(() => {
                         resetForm()
-                        sendFeedback(values)
+                        setFeedbackData(values)
                         setSubmitting(false)
                     }, 1500)
                 }}

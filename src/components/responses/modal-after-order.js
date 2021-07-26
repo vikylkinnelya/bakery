@@ -29,7 +29,7 @@ const ModalAfterOrder = ({ modalIsShown, setModalVisibility }) => {
             <Modal.Footer className='modal-order-footer'>
                 <button
                     className='btn-order'
-                    onClick={() => setModalVisibility()}
+                    onClick={() => {setModalVisibility(); window.scrollTo(0, 0);}}
                 >
                     Ok, I'm waiting
                 </button>
