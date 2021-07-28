@@ -5,25 +5,21 @@ import * as yup from 'yup';
 import { connect } from 'react-redux';
 import WithRestoService from '../hoc';
 import { ResponseMessage } from '../responses';
-import { setLoading, setError } from '../../actions';
+import { setError } from '../../actions';
 
 const validationSchema = yup.object().shape({
     email: yup.string()
         .matches(/^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i, 'Invalid email')
 })
 
-const SubscribeForm = ({ setLoading, setError, RestoService }) => {
+const SubscribeForm = ({RestoService, setError }) => {
 
     const [subscriber, setSubscriberState] = useState(false)
-    const [subscriberData, setSubscriberData] = useState()
 
-    const sendSubscribersData = useCallback(() => {
-        setLoading(true)
-        RestoService.setSubscriber(subscriberData)
-            .catch(error => setError(error))
-        setLoading(false)
-        setSubscriberState(true)    
-    }, [subscriberData])
+    const sendSubscribersData = useCallback((values) => {
+        RestoService.setSubscriber(values)
+            .catch(error => setError(error))  
+    }, [setError, RestoService])
 
     return (
         <>
@@ -41,7 +37,8 @@ const SubscribeForm = ({ setLoading, setError, RestoService }) => {
                         setSubmitting(true);
                         setTimeout(() => {
                             resetForm()
-                            setSubscriberData(values)
+                            setSubscriberState(true)  
+                            sendSubscribersData(values)
                             setSubmitting(false) 
                         }, 1000) 
                     }}
@@ -88,13 +85,11 @@ const SubscribeForm = ({ setLoading, setError, RestoService }) => {
 
 const mapStateToProps = state => {
     return {
-        loading: state.loading,
         error: state.error,
     }
 }
 
 const mapDispatchToProps = {
-    setLoading,
     setError
 }
 

@@ -1,11 +1,11 @@
-import { useState, useCallback, useEffect } from 'react';
+import { useState, useCallback} from 'react';
 import { Row, Col, Form, Button } from 'react-bootstrap';
 import { Formik } from 'formik';
 import { ResponseMessage } from '../responses';
 import * as yup from 'yup';
 import WithRestoService from '../hoc';
 import { connect } from 'react-redux';
-import { setLoading, setError } from '../../actions';
+import { setError } from '../../actions';
 
 const validationSchema = yup.object().shape({
     name: yup.string()
@@ -24,18 +24,14 @@ const validationSchema = yup.object().shape({
 })
 
 
-const FeedbackForm = ({ type, setLoading, setError, RestoService }) => {
+const FeedbackForm = ({ type, setError, RestoService }) => {
 
     const [feedback, setFeedbackstate] = useState(false)
-    const [feedbackData, setFeedbackData] = useState()
 
-    const sendFeedback = useCallback(() => {
-        setLoading(true)
-        RestoService.setFeedback(feedbackData)
+    const sendFeedback = useCallback((values) => {
+        RestoService.setFeedback(values)
             .catch(error => setError(error))
-        setLoading(false)
-        setFeedbackstate(true)
-    }, [feedbackData])
+    }, [RestoService, setError])
 
 
     const section = {
@@ -89,7 +85,8 @@ const FeedbackForm = ({ type, setLoading, setError, RestoService }) => {
                     setSubmitting(true); //нужно придумать что-нибудь для этого
                     setTimeout(() => {
                         resetForm()
-                        setFeedbackData(values)
+                        sendFeedback(values)
+                        setFeedbackstate(true)
                         setSubmitting(false)
                     }, 1500)
                 }}
@@ -209,13 +206,11 @@ const FeedbackForm = ({ type, setLoading, setError, RestoService }) => {
 
 const mapStateToProps = state => {
     return {
-        loading: state.loading,
         error: state.error,
     }
 }
 
 const mapDispatchToProps = {
-    setLoading,
     setError
 }
 

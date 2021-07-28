@@ -674,6 +674,7 @@ ul {
 
 .image-container {
   text-align: center;
+  margin-bottom: 1rem;
 }
 
 .image-container img {
@@ -1380,10 +1381,7 @@ ul {
   -webkit-border-radius: 50%;
   -moz-border-radius: 50%;
   border-radius: 50%;
-  -webkit-transition: all 0.2s ease-out;
-  -moz-transition: all 0.2s ease-out;
-  -o-transition: all 0.2s ease-out;
-  transition: all 0.2s ease-out;
+margin-bottom: 1rem;
 }
 
 .social-icon-container>a>img {
@@ -1548,14 +1546,14 @@ ul {
 
 .form-subscribe>.submit-container button {
   width: 100%;
-  font-size: 18px;
   color: #303133;
   text-align: center;
   background-color: #a1a3a5;
   border: none;
   outline: none;
+  margin: 10px 0 1rem 0;
+  height: 40px;
   padding: 10px 0;
-  margin-bottom: 1rem;
 }
 
 .form-contact-alt>.btn-order>button>h2 {
@@ -1738,8 +1736,6 @@ ul {
 }
 
 .navbar-expand-sm.navbar-light .navbar-toggler {
-  position: absolute;
-  top: 30px;
   color: rgba(70, 44, 28, 1);
   border: 2px rgba(104, 79, 64, 0.4)solid;
   background-color: rgba(235, 235, 235, 0.3)
@@ -2004,6 +2000,10 @@ article .icon-opening-wrapper .icon-opening-content a {
   margin-bottom: 10px;
 }
 
+.nav-link-col >.nav>.nav-item>.nav-link{
+  padding: 0;
+}
+
 .tabs-big-container .nav>.nav-item>.nav-link img {
   padding: 7px;
   background: none;
@@ -2031,14 +2031,6 @@ article .icon-opening-wrapper .icon-opening-content a {
 }
 
 
-.tabs-big-container .nav>.nav-item>.nav-link a {
-  padding: 7px;
-  background: none;
-  z-index: 10;
-  -webkit-border-radius: 50%;
-  -moz-border-radius: 50%;
-  border-radius: 50%;
-}
 
 .tabs-big-container .nav>.nav-item>.nav-link.active img {
   background-color: #FFF;
@@ -2196,11 +2188,6 @@ input[type=submit] {
 
 .offer-box .offer-box-right {
   padding-top: 10px;
-}
-
-.offer-box .offer-box-right img {
-  max-width: 440px;
-  max-height: 351px;
 }
 
 .offer-box-left.offer-info {

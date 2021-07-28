@@ -33,6 +33,11 @@ const OfferSection = ({weekOfferItems, addToCart, showTost, tostIsShown, tostTit
                                             <Image fluid alt='second offer' src={weekOfferItems[1].preImg} />
                                         </Nav.Link>
                                     </Nav.Item>
+                                    <Nav.Item>
+                                        <Nav.Link eventKey="third">
+                                            <Image fluid alt='third offer' src={weekOfferItems[2].preImg} />
+                                        </Nav.Link>
+                                    </Nav.Item>
                                 </Nav>
                             </Col>
 
@@ -50,6 +55,14 @@ const OfferSection = ({weekOfferItems, addToCart, showTost, tostIsShown, tostTit
                                         eventKey='second'>
                                         <ProductCard
                                             product={weekOfferItems[1]}
+                                            onAddToCart={addToCart}
+                                            onShowTost={showTost}
+                                        />
+                                    </Tab.Pane>
+                                    <Tab.Pane
+                                        eventKey='third'>
+                                        <ProductCard
+                                            product={weekOfferItems[2]}
                                             onAddToCart={addToCart}
                                             onShowTost={showTost}
                                         />

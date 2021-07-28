@@ -158,7 +158,7 @@ const reducer = (state = initialState, action) => {
             const offer = state.menu.filter(el => el.type === 'offer')
             return {
                 ...state,
-                weekOfferItems: offer.slice(0, 2)
+                weekOfferItems: offer.slice(0, 3)
             }
 
 

@@ -20,11 +20,11 @@
     ],
     "rewrites": [
       {
-        "source": "/app/**",
-        "destination": "/app/index.html"
+        "source": "**",
+        "destination": "index.html"
       },
       {
-        "source": "/app/**",
+        "source": "**",
         "dynamicLinks": true
       }
     ],
@@ -61,7 +61,7 @@
         "headers": [
           {
             "key": "Link",
-            "value": "</js/main.6c6b3fcf.chunk.js>;rel=preload;as=script, </css/main.4caf380c.chunk.css>;rel=preload;as=style"
+            "value": "</static/js/2.4f355f6f.chunk.js>;rel=preload;as=script"
           }
         ]
       }
