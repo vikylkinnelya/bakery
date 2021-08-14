@@ -9,6 +9,7 @@ const initialState = {
     latestProducts: [],
     weekOfferItems: [],
     formIsOpen: false,
+    productModal: false,
     modalIsShown: false,
     tostIsShown: false,
     tostTitle: null
@@ -77,7 +78,7 @@ const reducer = (state = initialState, action) => {
                     count: 1
                 }
 
-                const fullToastTitle = param? newItem.name + `. Size: ${param}` : newItem.name
+                const fullToastTitle = param ? newItem.name + `. Size: ${param}` : newItem.name
 
                 return {
                     ...state,
@@ -134,6 +135,12 @@ const reducer = (state = initialState, action) => {
                     ...state.cart.slice(itemIdxToDecCount + 1)
                 ],
                 cartTotalPrice: state.cartTotalPrice - newDecItem.price
+            }
+
+        case 'SET_DETAILS_MODAL_VISIBILITY':
+            return {
+                ...state,
+                productModal: action.payload
             }
 
         case 'SET_FORM_VISIBILITY':

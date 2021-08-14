@@ -1,5 +1,5 @@
-import { useState, useCallback} from 'react';
-import { Row, Col, Form, Button } from 'react-bootstrap';
+import { useState, useCallback } from 'react';
+import { Row, Col, Form, Button, Spinner } from 'react-bootstrap';
 import { Formik } from 'formik';
 import { ResponseMessage } from '../responses';
 import * as yup from 'yup';
@@ -183,15 +183,34 @@ const FeedbackForm = ({ type, setError, RestoService }) => {
                                 </Form.Group>
                                 <Col>
                                     <Row className='btn-order'>
-                                        <Button
-                                            aria-label='sent-message'
-                                            type='submit'
-                                            variant="light"
-                                            disabled={isSubmitting}
-                                            className='btn-order'
-                                        >
-                                            <h2>{isSubmitting ? 'Sending...' : 'Send message'}</h2>
-                                        </Button>
+                                        {!isSubmitting &&
+                                            <Button
+                                                aria-label='sent message'
+                                                type='submit'
+                                                className='btn-order'
+                                            >
+                                                <h2>Send message</h2>
+                                            </Button>
+                                        }
+                                        {isSubmitting &&
+                                            <Button
+                                                aria-label='sending message'
+                                                type='submit'
+                                                disabled={true}
+                                                className='btn-order'
+                                            >
+                                                <Spinner
+                                                    as="span"
+                                                    animation="border"
+                                                    size="sm"
+                                                    role="status"
+                                                    aria-hidden="true"
+                                                />
+                                                <h3>Sending...</h3>
+                                            </Button>
+                                        }
+
+
                                     </Row>
                                 </Col>
                             </form>

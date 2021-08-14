@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback, useMemo } from 'react';
+import React, { useState, useEffect, useCallback, useMemo, lazy } from 'react';
 import Spinner from '../../spinner';
 import ErrorComponent from '../../error';
 import { Col, Row } from 'react-bootstrap';
@@ -8,8 +8,9 @@ import WithRestoService from '../../hoc';
 import { connect } from 'react-redux';
 import { withRouter } from "react-router";
 import { setMenu, setLoading, setError, setMenuType, showTost } from '../../../actions';
+const ModalWithProductDetail = lazy(() => import('../../modal-with-product-details/modal-with-product-detail'));
 
-const ShopListItems = ({ RestoService, location, setMenuType, setMenu, setError, setLoading, scrollPosition, menuItems, loading, error, menuType, menuTotalLength, tostTitle, tostIsShown, showTost }) => {
+const ShopListItems = ({ productModal, RestoService, location, setMenuType, setMenu, setError, setLoading, scrollPosition, menuItems, loading, error, menuType, menuTotalLength, tostTitle, tostIsShown, showTost }) => {
 
     const [endAt, setEndAt] = useState(12)
 
@@ -54,20 +55,23 @@ const ShopListItems = ({ RestoService, location, setMenuType, setMenu, setError,
                             />
                         ))}
                 </Row>
+                {
+                    !loading &&
+                    <Row className='pagination-col'>
+                        {endAt <= menuItems.length && showMoreBtn}
+                    </Row>
+                }
             </Col>
 
-            {
-                !loading &&
-                <Col sm={{ order: 12 }} className='pagination-col'>
-                    {endAt <= menuItems.length && showMoreBtn}
-                </Col>
-            }
+
 
             <ToastComp
                 tostTitle={tostTitle}
                 tostIsShown={tostIsShown}
                 showTost={showTost}
             />
+
+            <ModalWithProductDetail product={productModal} />
 
         </>
     )
@@ -82,7 +86,8 @@ const mapStateToProps = state => {
         menuType: state.menuType,
         menuTotalLength: state.menuTotalLength,
         tostIsShown: state.tostIsShown,
-        tostTitle: state.tostTitle
+        tostTitle: state.tostTitle,
+        productModal: state.productModal
     }
 }
 
@@ -91,7 +96,7 @@ const mapDispatchToProps = {
     setLoading,
     setError,
     setMenuType,
-    showTost
+    showTost,
 }
 
 export default WithRestoService()(connect(mapStateToProps, mapDispatchToProps)(withRouter(ShopListItems)))

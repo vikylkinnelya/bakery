@@ -1,8 +1,4 @@
-import {createStore, applyMiddleware} from 'redux';
-
+import {createStore} from 'redux';
 import reducer from './reducers/index';
-import thunk from 'redux-thunk'; //для асинхронных экшенов
-
-const store = createStore(reducer, applyMiddleware(thunk));
-
+const store = createStore(reducer);
 export default store;

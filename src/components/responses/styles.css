@@ -1,5 +1,6 @@
 .modal-order-header.modal-header,
-.modal-order-footer.modal-footer {
+.modal-order-footer.modal-footer,
+.modal-product-detail .modal-header {
     border: none;
 }
 
@@ -13,7 +14,7 @@
     text-align: center;
 }
 
-.modal-order-header.modal-header svg{
+.modal-order-header.modal-header svg {
     margin-left: 47%;
 }
 
@@ -21,11 +22,38 @@
     padding-bottom: 0;
 }
 
-.modal-order>.modal-dialog>.modal-content {
+.modal-product-detail .modal-header {
+    padding: 10px 10px 0 0;
+}
+
+.modal-product-detail .modal-body {
+    padding-top: 0;
+}
+
+.modal-product-detail .modal-body .offer-box-left,
+.modal-product-detail .modal-body .offer-box-right {
+    padding-top: 0;
+}
+
+.modal-product-detail .price-order-row .row {
+    justify-content: flex-end;
+}
+
+.modal-order>.modal-dialog>.modal-content,
+.modal-product-detail>.modal-dialog>.modal-content {
     padding: 15px;
-    outline: 2px solid #684f40;
     outline-offset: -15px;
 }
+
+.modal-order>.modal-dialog>.modal-content {
+    border: 2px #fdb82252 solid;
+}
+
+.modal-product-detail>.modal-dialog>.modal-content {
+    outline: 2px #fdb822 solid;
+}
+
+
 
 .modal-content>.modal-order-footer.modal-footer .btn-order {
     border-radius: 0;
@@ -35,4 +63,12 @@
 
 .response-message h4 {
     text-transform: none;
+}
+
+
+.modal-product-detail .offer-box-right img {
+    width: 100%;
+    height: 270px;
+    object-fit: cover;
+
 }

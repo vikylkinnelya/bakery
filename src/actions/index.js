@@ -44,6 +44,11 @@ const setFormVisibility = () => ({
     type: 'SET_FORM_VISIBILITY'
 })
 
+const setProductModal = (param) => ({
+    type: 'SET_DETAILS_MODAL_VISIBILITY',
+    payload: param
+})
+
 const setModalVisibility = () => ({
     type: 'SET_MODAL_VISIBILITY'
 })
@@ -65,7 +70,7 @@ export {
     setMenu, setLoading, setError,
     setMenuType,
     addToCart, deleteFromCart, decCount,
-    setFormVisibility, setModalVisibility,
+    setFormVisibility, setProductModal, setModalVisibility,
     setWeekOffer, setLatestProducts,
     showTost
 }

@@ -1,5 +1,5 @@
-import { Col, Form, Button } from 'react-bootstrap';
-import { useState, useCallback, useEffect } from 'react';
+import { Col, Form, Button, Spinner } from 'react-bootstrap';
+import { useState, useCallback } from 'react';
 import { Formik } from 'formik';
 import * as yup from 'yup';
 import { connect } from 'react-redux';
@@ -12,13 +12,13 @@ const validationSchema = yup.object().shape({
         .matches(/^(([^<>()[\].,;:\s@"]+(\.[^<>()[\].,;:\s@"]+)*)|(".+"))@(([^<>()[\].,;:\s@"]+\.)+[^<>()[\].,;:\s@"]{2,})$/i, 'Invalid email')
 })
 
-const SubscribeForm = ({RestoService, setError }) => {
+const SubscribeForm = ({ RestoService, setError }) => {
 
     const [subscriber, setSubscriberState] = useState(false)
 
     const sendSubscribersData = useCallback((values) => {
         RestoService.setSubscriber(values)
-            .catch(error => setError(error))  
+            .catch(error => setError(error))
     }, [setError, RestoService])
 
     return (
@@ -37,10 +37,10 @@ const SubscribeForm = ({RestoService, setError }) => {
                         setSubmitting(true);
                         setTimeout(() => {
                             resetForm()
-                            setSubscriberState(true)  
+                            setSubscriberState(true)
                             sendSubscribersData(values)
-                            setSubmitting(false) 
-                        }, 1000) 
+                            setSubmitting(false)
+                        }, 1000)
                     }}
                 >
                     {({ values, errors, touched, handleChange, handleBlur, handleSubmit, isSubmitting }) => (
@@ -64,15 +64,35 @@ const SubscribeForm = ({RestoService, setError }) => {
                                 </Col>
 
                                 <Col sm={6} lg={4} className="submit-container">
-                                    <Button
-                                        aria-label='subscribe'
-                                        type='submit'
-                                        variant="light"
-                                        disabled={isSubmitting}
-                                        className='btn-order'
-                                    >
-                                        <h4>{isSubmitting ? 'Subscribing...' : 'Subscribe'}</h4>
-                                    </Button>
+                                    {!isSubmitting &&
+                                        <Button
+                                            aria-label='subscribe'
+                                            type='submit'
+                                            variant="light"
+                                            className='btn-order'
+                                        >
+                                            <h4>Subscribe</h4>
+                                        </Button>
+                                    }
+                                    {isSubmitting &&
+                                        <Button
+                                            aria-label='subscribe'
+                                            type='submit'
+                                            disabled={true}
+                                            className='btn-order'
+                                        >
+                                            <Spinner
+                                                as="span"
+                                                animation="border"
+                                                size="sm"
+                                                role="status"
+                                                aria-hidden="true"
+                                            />
+                                            <h3>Subscribing...</h3>
+                                        </Button>
+                                    }
+
+
                                 </Col>
                             </form>
                         </>

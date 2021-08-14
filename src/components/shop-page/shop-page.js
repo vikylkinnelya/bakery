@@ -1,5 +1,5 @@
 import { Container, Row } from 'react-bootstrap';
-import Spinner from '../spinner'; 
+import Spinner from '../spinner';
 import { PageHeader } from '../header';
 import ShopSider from './shop-sider';
 import React, { Suspense, lazy } from 'react';

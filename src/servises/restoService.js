@@ -51,7 +51,10 @@ export default class RestoService {
             response = this.fetchMenuAll()
         }
 
-        data = await response.get()
+        data = await response.get({ source: 'cache' })
+        if (!data.exists) {
+            data = await response.get({sourse:'server'})
+        }
         return data.docs
     }
 

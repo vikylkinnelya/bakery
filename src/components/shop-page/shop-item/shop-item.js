@@ -2,9 +2,9 @@ import React, { useState } from 'react';
 import LazyLoad from 'react-lazyload';
 import { Col } from 'react-bootstrap';
 import { connect } from 'react-redux';
-import { addToCart, showTost } from '../../../actions';
+import { addToCart, showTost, setProductModal } from '../../../actions';
 
-const ShopItem = ({ menuItem, menuType, addToCart, cart, showTost }) => {
+const ShopItem = ({ menuItem, menuType, addToCart, cart, showTost, setProductModal, productModal }) => {
 
     const { name, description, pricing, type, id, img } = menuItem
     const [priceMenu, setShowPriceMenu] = useState(false)
@@ -20,6 +20,9 @@ const ShopItem = ({ menuItem, menuType, addToCart, cart, showTost }) => {
     </div>
 
     const addedItem = cart.findIndex(el => el.id === id) !== -1 ? 'added' : null
+
+    const basketBtn = !priceMenu && <i className='fa fa-shopping-cart' />
+    const closeSizesBtn = priceMenu && pricing && <i className="fas fa-times"></i>
 
     const smallSize = priceMenu && pricing.length === 3
         && <button className='small-size' onClick={() => onSizeAdd(id, 'S')} aria-label='small size'> S </button>
@@ -63,9 +66,13 @@ const ShopItem = ({ menuItem, menuType, addToCart, cart, showTost }) => {
 
                 <div className="product-icons">
 
+                    <button className='product-icon-container' aria-label='info' onClick={() => setProductModal(menuItem)}>
+                        <i className="fas fa-ellipsis-h" />
+                    </button>
+
                     <button className={`product-icon-container ${addedItem}`} aria-label='order' onClick={() => defCartClick(id)}>
-                        {!priceMenu && <i className='fa fa-shopping-cart' />}
-                        {priceMenu && pricing && <i className="fas fa-times"></i>}
+                        {basketBtn}
+                        {closeSizesBtn}
                     </button>
                     {smallSize}
                     {mediumSize}
@@ -83,18 +90,18 @@ const ShopItem = ({ menuItem, menuType, addToCart, cart, showTost }) => {
     )
 }
 
-
-
 const mapStateToProps = state => {
     return {
         menuType: state.menuType,
         cart: state.cart,
+        productModal: state.productModal
     }
 }
 
 const mapDispatchToProps = {
     addToCart,
-    showTost
+    showTost,
+    setProductModal
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(ShopItem)

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, lazy } from 'react';
 import { Carousel, Row } from 'react-bootstrap';
 import Spinner from '../spinner';
 import ShopItem from '../shop-page/shop-item';
@@ -6,8 +6,9 @@ import { ToastComp } from '../small-comp';
 import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { showTost } from '../../actions';
+const ModalWithProductDetail = lazy(() => import ('../modal-with-product-details/modal-with-product-detail'));
 
-const ProductsSection = ({ latestProducts, loading, tostIsShown, showTost, tostTitle }) => {
+const ProductsSection = ({ latestProducts, loading, tostIsShown, showTost, tostTitle, productModal }) => {
 
     const [startAt, setStart] = useState(0)
     const [endAt, setEnd] = useState(4)
@@ -73,6 +74,9 @@ const ProductsSection = ({ latestProducts, loading, tostIsShown, showTost, tostT
                 tostIsShown={tostIsShown}
                 showTost={showTost}
             />
+
+            <ModalWithProductDetail product={productModal} />
+
         </section>
     )
 }
@@ -83,7 +87,8 @@ const mapStateToProps = state => {
         loading: state.loading,
         latestProducts: state.latestProducts,
         tostIsShown: state.tostIsShown,
-        tostTitle: state.tostTitle
+        tostTitle: state.tostTitle,
+        productModal: state.productModal
     }
 }
 

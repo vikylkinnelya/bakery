@@ -1,7 +1,6 @@
-import { Formik} from 'formik';
-import { Row, Col, Form, Button } from 'react-bootstrap';
+import { Formik } from 'formik';
+import { Row, Col, Form, Button, Spinner } from 'react-bootstrap';
 import * as yup from 'yup';
-
 
 const validationSchema = yup.object().shape({
     firstName: yup.string()
@@ -20,7 +19,6 @@ const validationSchema = yup.object().shape({
 })
 
 const OrderForm = ({ setCustomer }) => {
-
     return (
 
         <Formik
@@ -29,17 +27,13 @@ const OrderForm = ({ setCustomer }) => {
             onSubmit={(values, { setSubmitting, resetForm }) => {
                 setSubmitting(true);
                 setTimeout(() => {
-                    //console.log(JSON.stringify(values, null, 2))
                     resetForm()
                     setSubmitting(false)
                     setCustomer(values)
-                }, 1500)
-                
+                }, 2500)
             }}
         >
             {({ values, errors, touched, handleChange, handleBlur, handleSubmit, isSubmitting }) => (
-
-
                 <form onSubmit={handleSubmit} className='bakery-form'>
                     <Row>
                         <Col lg={5}>
@@ -130,15 +124,35 @@ const OrderForm = ({ setCustomer }) => {
                     </Row>
 
                     <Row className='btn-order'>
-                        <Button
-                            aria-label='Submit order'
-                            type='submit'
-                            variant="light"
-                            disabled={isSubmitting}
-                            className='btn-order'
-                        >
-                            <h3>{isSubmitting ? 'Submiting...' : 'Submit order'}</h3>
-                        </Button>
+                        {!isSubmitting &&
+                            <Button
+                                aria-label='Submit order'
+                                type='submit'
+                                variant="light"
+                                disabled={isSubmitting}
+                                className='btn-order'
+                            >
+                                <h3>Submit order </h3>
+                            </Button>
+                        }
+
+                        {isSubmitting &&
+                            <Button
+                                aria-label='Submit order'
+                                type='submit'
+                                disabled={true}
+                                className='btn-order'
+                            >
+                                <Spinner
+                                    as="span"
+                                    animation="border"
+                                    size="sm"
+                                    role="status"
+                                    aria-hidden="true"
+                                />
+                                <h3>Submiting...</h3>
+                            </Button>
+                        }
                     </Row>
                 </form>
 
