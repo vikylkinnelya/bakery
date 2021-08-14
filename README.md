@@ -1,5 +1,5 @@
 <h1 align="center">The Our Bakery website</h1>
-<img src='https://firebasestorage.googleapis.com/v0/b/bakery-23677.appspot.com/o/pages%2Fheader-logo.svg?alt=media&token=a0ff2e5d-5397-4afc-90ec-1a80d50cfb8b' width="10%">
+<img src='https://firebasestorage.googleapis.com/v0/b/bakery-23677.appspot.com/o/pages%2Fheader-logo.svg?alt=media&token=a0ff2e5d-5397-4afc-90ec-1a80d50cfb8b' width="50%" align="center">
 <h2 align="center"><a  href="https://bakery-23677.web.app/">Try it</a></h2>
 
 ## Description 
